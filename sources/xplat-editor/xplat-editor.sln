@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Avalonia.GameStudio", "Stride.Avalonia.GameStudio\Stride.Avalonia.GameStudio.csproj", "{2F35DC82-FA58-49B1-BFDF-C0F3E04E6F83}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Avalonia.GameStudio.Desktop", "Stride.Avalonia.GameStudio.Desktop\Stride.Avalonia.GameStudio.Desktop.csproj", "{DE021DC1-EEA2-497F-9A4C-E20A6C33D647}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F35DC82-FA58-49B1-BFDF-C0F3E04E6F83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F35DC82-FA58-49B1-BFDF-C0F3E04E6F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F35DC82-FA58-49B1-BFDF-C0F3E04E6F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F35DC82-FA58-49B1-BFDF-C0F3E04E6F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE021DC1-EEA2-497F-9A4C-E20A6C33D647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE021DC1-EEA2-497F-9A4C-E20A6C33D647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE021DC1-EEA2-497F-9A4C-E20A6C33D647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE021DC1-EEA2-497F-9A4C-E20A6C33D647}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCDD3B81-992D-4908-85B5-4E7EB6026D71}
+	EndGlobalSection
+EndGlobal
