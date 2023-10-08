@@ -24,7 +24,14 @@
       <MenuItem Header="_Help">
         <MenuItem Header="_About..." Command="{Binding AboutCommand}" />
       </MenuItem>
-    </Menu>
+    </Menu> 
+    <DockControl x:Name="DockControl"
+                 Margin="4"
+                 Grid.Row="1"
+                 Layout="{Binding Layout}"
+                 Background="Green">
+      
+    </DockControl>
     <TextBlock Grid.Row="2"
                Text="{Binding Message}"
                HorizontalAlignment="Center" VerticalAlignment="Center"/>
