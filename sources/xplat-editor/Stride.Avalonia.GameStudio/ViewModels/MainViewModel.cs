@@ -70,13 +70,19 @@ public partial class MainViewModel : ViewModelBase
 
             var topDock = new ProportionalDock
             {
+                Id = "TopDock",
                 Orientation = Orientation.Horizontal,
                 ActiveDockable = null,
                 VisibleDockables = CreateList<IDockable>
                 (
                     new ToolDock
                     {
-                        ActiveDockable = editorContainer
+                        Id = "EditorsDock"
+                    },
+                    new ProportionalDockSplitter(),
+                    new ToolDock
+                    {
+                        Id = "PropertyGridDock"
                     }
                 )
             };
@@ -88,12 +94,17 @@ public partial class MainViewModel : ViewModelBase
                 (
                     new ToolDock
                     {
-                        ActiveDockable = projectExplorer
+                        Id = "ProjectExplorerDock"
                     },
                     new ProportionalDockSplitter(),
                     new ToolDock
                     {
-                        ActiveDockable = assetExplorer
+                        Id = "AssetExplorerDock",
+                    },
+                    new ProportionalDockSplitter(),
+                    new ToolDock
+                    {
+                        Id = "AssetPreviewDock",
                     }
                 )
             };
