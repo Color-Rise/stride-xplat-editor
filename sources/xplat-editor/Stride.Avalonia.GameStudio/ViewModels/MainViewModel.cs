@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia;
@@ -62,74 +64,97 @@ public partial class MainViewModel : ViewModelBase
 
     private class DockFactory : Factory
     {
+        private IRootDock? _rootDock;
+
+        private IProportionalDock? _mainLayout;
+        private IProportionalDock? _topDock;
+        private IProportionalDock? _bottomDock;
+
+        private IDocumentDock? _documentDock;
+
+        private IToolDock? _assetExplorer;
+        private IToolDock? _assetPreview;
+        private IToolDock? _projectExplorer;
+        private IToolDock? _propertyGrid;
+
         public override IRootDock CreateLayout()
         {
-            var assetExplorer = new AssetExplorer { Id = nameof(AssetExplorer), Title = nameof(AssetExplorer) };
-            var editorContainer = new EditorContainer { Id = nameof(EditorContainer), Title = nameof(EditorContainer) };
-            var projectExplorer = new ProjectExplorer { Id = nameof(ProjectExplorer), Title = nameof(ProjectExplorer) };
-
-            var topDock = new ProportionalDock
+            _topDock = new ProportionalDock
             {
-                Id = "TopDock",
+                Id = "Top",
                 Orientation = Orientation.Horizontal,
                 ActiveDockable = null,
                 VisibleDockables = CreateList<IDockable>
                 (
-                    new ToolDock
+                    _documentDock = new DocumentDock
                     {
-                        Id = "EditorsDock"
+                        Id = "Editors"
                     },
                     new ProportionalDockSplitter(),
-                    new ToolDock
+                    _propertyGrid = new ToolDock
                     {
-                        Id = "PropertyGridDock"
+                        Id = "PropertyGrid"
                     }
                 )
             };
-            var bottomDock = new ProportionalDock
+            _bottomDock = new ProportionalDock
             {
+                Id = "Bottom",
                 Orientation = Orientation.Horizontal,
                 ActiveDockable = null,
                 VisibleDockables = CreateList<IDockable>
                 (
-                    new ToolDock
+                    _projectExplorer = new ToolDock
                     {
-                        Id = "ProjectExplorerDock"
+                        Id = "ProjectExplorer"
                     },
                     new ProportionalDockSplitter(),
-                    new ToolDock
+                    _assetExplorer = new ToolDock
                     {
-                        Id = "AssetExplorerDock",
+                        Id = "AssetExplorer",
                     },
                     new ProportionalDockSplitter(),
-                    new ToolDock
+                    _assetPreview = new ToolDock
                     {
-                        Id = "AssetPreviewDock",
+                        Id = "AssetPreview",
                     }
                 )
             };
-            var mainLayout = new ProportionalDock
+            _mainLayout = new ProportionalDock
             {
-                Id = "MainLayout",
+                Id = "Main",
                 Orientation = Orientation.Vertical,
                 VisibleDockables = CreateList<IDockable>(
-                    topDock,
+                    _topDock,
                     new ProportionalDockSplitter(),
-                    bottomDock
+                    _bottomDock
                 )
             };
 
-            var root = CreateRootDock();
-            root.Id = "Root";
-            root.IsCollapsable = false;
-            root.ActiveDockable = mainLayout;
-            root.DefaultDockable = mainLayout;
+            _rootDock = CreateRootDock();
+            _rootDock.Id = "Root";
+            _rootDock.IsCollapsable = false;
+            _rootDock.ActiveDockable = _mainLayout;
+            _rootDock.DefaultDockable = _mainLayout;
 
-            return root;
+            return _rootDock;
         }
 
         public override void InitLayout(IDockable layout)
         {
+            DockableLocator = new Dictionary<string, Func<IDockable?>>
+            {
+                ["Root"] = () => _rootDock,
+                ["Main"] = () => _mainLayout,
+                ["Top"] = () => _mainLayout,
+                ["Bottom"] = () => _mainLayout,
+                ["Editors"] = () => _documentDock,
+                ["AssetExplorer"] = () => _assetExplorer,
+                ["AssetPreview"] = () => _assetPreview,
+                ["ProjectExplorer"] = () => _projectExplorer,
+                ["PropertyGrid"] = () => _propertyGrid,
+            };
+
             base.InitLayout(layout);
         }
     }
@@ -143,21 +168,23 @@ public partial class MainViewModel : ViewModelBase
     //  - AssetExplorer
     //  - AssetPreview
 
+    // 2023-10-09
+    // below probably not needed
     // 2023-10-08
     // those are like controls, not view models
     // basically they will "control" the behavior of a dock and their context will be the viewmodels
-    private class AssetExplorer : Tool
-    {
+    //private class AssetExplorer : Tool
+    //{
 
-    }
+    //}
 
-    private class EditorContainer : Tool
-    {
+    //private class EditorContainer : Tool
+    //{
         
-    }
+    //}
 
-    private class ProjectExplorer : Tool
-    {
+    //private class ProjectExplorer : Tool
+    //{
         
-    }
+    //}
 }
