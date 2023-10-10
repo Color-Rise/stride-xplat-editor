@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Avalonia.GameStudio"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Avalonia.GameStudio.Desktop", "Stride.Avalonia.GameStudio.Desktop\Stride.Avalonia.GameStudio.Desktop.csproj", "{DE021DC1-EEA2-497F-9A4C-E20A6C33D647}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8C5BA07-1275-4FD1-896F-1DD25F2F0191}"
+	ProjectSection(SolutionItems) = preProject
+		xplat_editor-todo.md = xplat_editor-todo.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
