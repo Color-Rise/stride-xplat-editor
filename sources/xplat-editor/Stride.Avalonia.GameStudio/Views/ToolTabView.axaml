@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Stride.Avalonia.GameStudio.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Stride.Avalonia.GameStudio.Views.SolutionExplorerView"
-             x:DataType="vm:SolutionExplorerViewModel">
-  <StackPanel Background="Green">    
-    <TextBlock Text="Solution Explorer" />
-    <TextBlock Text="{Binding SolutionName}" />
+             x:Class="Stride.Avalonia.GameStudio.Views.ToolTabView"
+             x:DataType="vm:ToolTabViewModel">
+  <StackPanel Background="Pink">
+    <TextBlock Text="Dock" />
+    <ContentPresenter Content="{Binding Context}" />    
   </StackPanel>
 </UserControl>
