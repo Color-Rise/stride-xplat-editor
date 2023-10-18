@@ -8,6 +8,8 @@ using Stride.Core.Diagnostics;
 
 namespace Stride.Core.Assets.Presentation;
 
+// NOTE how can a 3rd-party plugin override the type of view model for the same asset type?
+
 public abstract class AssetsPlugin
 {
     private static readonly List<AssetsPlugin> registeredPlugins = new();

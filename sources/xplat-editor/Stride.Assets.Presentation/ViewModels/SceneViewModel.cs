@@ -8,11 +8,14 @@ using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.ViewModels;
 
+// NOTE should we allow deriving from this to have custom behavior in some 3rd-party plugins?
+// if so, the class shouldn't be sealed
+
 /// <summary>
 /// View model for <see cref="SceneAsset"/>.
 /// </summary>
 [AssetViewModel<SceneAsset>]
-public sealed class SceneViewModel : EntityHierarchyViewModel, IAssetViewModel<SceneAsset>
+public class SceneViewModel : EntityHierarchyViewModel, IAssetViewModel<SceneAsset>
 {
     public SceneViewModel(AssetItem assetItem, DirectoryBaseViewModel directory)
         : base(assetItem, directory)
