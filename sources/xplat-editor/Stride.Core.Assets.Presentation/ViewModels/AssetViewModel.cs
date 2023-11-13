@@ -4,6 +4,7 @@
 using System.Reflection;
 using Stride.Core.Assets.Presentation.Components.Properties;
 using Stride.Core.Assets.Quantum;
+using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.Quantum;
 using Stride.Core.Presentation.Services;
 using Stride.Core.Quantum;
@@ -49,6 +50,7 @@ public abstract class AssetViewModel : SessionObjectViewModel, IAssetPropertyPro
         InitialUndelete(parameters.CanUndoRedoCreation);
 
         this.name = Path.GetFileName(assetItem.Location);
+        Tags.AddRange(assetItem.Asset.Tags);
         PropertyGraph = Session.GraphContainer.TryGetGraph(assetItem.Id);
         Initializing = false;
     }
@@ -96,6 +98,11 @@ public abstract class AssetViewModel : SessionObjectViewModel, IAssetPropertyPro
     /// Gets the view model of the sources of this asset.
     /// </summary>
     public AssetSourcesViewModel Sources { get; }
+
+    /// <summary>
+    /// Gets or sets the collection of tags associated to this asset.
+    /// </summary>
+    public ObservableSet<string> Tags { get; } = new();
 
     /// <summary>
     /// The <see cref="ThumbnailData"/> associated to this <see cref="AssetViewModel"/>.

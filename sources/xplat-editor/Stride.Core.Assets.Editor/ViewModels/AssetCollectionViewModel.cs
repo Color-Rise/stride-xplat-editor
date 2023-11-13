@@ -10,7 +10,7 @@ using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.ViewModels;
 
-public sealed class AssetCollectionViewModel : DispatcherViewModel
+public sealed partial class AssetCollectionViewModel : DispatcherViewModel
 {
     private readonly ObservableSet<AssetViewModel> assets = new();
     private readonly HashSet<DirectoryBaseViewModel> monitoredDirectories = new();
@@ -50,7 +50,7 @@ public sealed class AssetCollectionViewModel : DispatcherViewModel
     /// </summary>
     public IReadOnlyObservableCollection<object> SelectedContent => selectedContent;
 
-    public ObservableCollection<object> SelectedLocations { get; } = new ObservableCollection<object>();
+    public ObservableCollection<object> SelectedLocations { get; } = new();
 
     public SessionViewModel Session { get; }
 
@@ -61,7 +61,7 @@ public sealed class AssetCollectionViewModel : DispatcherViewModel
         get => singleSelectedContent;
         private set => SetValue(ref singleSelectedContent, value);
     }
- 
+
     internal IReadOnlyCollection<DirectoryBaseViewModel> GetSelectedDirectories(bool includeSubDirectoriesOfSelected)
     {
         var selectedDirectories = new List<DirectoryBaseViewModel>();
@@ -134,7 +134,7 @@ public sealed class AssetCollectionViewModel : DispatcherViewModel
             }
         }
     }
-
+    
     private async void SelectedContentCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
         UpdateSingleSelectedContent();
@@ -162,7 +162,7 @@ public sealed class AssetCollectionViewModel : DispatcherViewModel
         }
 
         AssetViewProperties.UpdateTypeAndName(SelectedAssets, x => x.TypeDisplayName, x => x.Url, "assets");
-        await AssetViewProperties.GenerateSelectionPropertiesAsync(SelectedAssets);            
+        await AssetViewProperties.GenerateSelectionPropertiesAsync(SelectedAssets);
     }
 
     private void SelectedLocationCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
