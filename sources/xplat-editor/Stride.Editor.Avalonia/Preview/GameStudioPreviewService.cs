@@ -125,15 +125,13 @@ public class GameStudioPreviewService : IAssetPreviewService, IPreviewBuilder
 
     private void StrideUIThread()
     {
-        // FIXME xplat-editor
-        //gameForm = new EmbeddedGameForm { TopLevel = false, Visible = false };
-        gameForm = new EmbeddedGameForm { Visible = false };
+        gameForm = new EmbeddedGameForm { TopLevel = false, Visible = false };
         windowHandle = gameForm.Handle;
 
         initializationSignal.Set();
 
         PreviewGame = new PreviewGame(AssetBuilderService.EffectCompiler);
-        var context = new GameContextSDL(gameForm) { InitializeDatabase = false };
+        var context = new GameContextWinforms(gameForm) { InitializeDatabase = false };
 
         // Wait for shaders to be loaded
         AssetBuilderService.WaitForShaders();

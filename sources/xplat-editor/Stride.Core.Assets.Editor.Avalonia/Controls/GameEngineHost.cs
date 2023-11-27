@@ -15,7 +15,7 @@ namespace Stride.Core.Assets.Editor.Avalonia.Controls;
 /// A <see cref="FrameworkElement"/> that can host a game engine window. This control is faster than <see cref="HwndHost"/> but might behave
 /// a bit less nicely on certain cases (such as resize, etc.).
 /// </summary>
-public class GameEngineHost : Control, IDisposable /*, IWin32Window, IKeyboardInputSink*/
+public partial class GameEngineHost : Control, IDisposable /*, IWin32Window, IKeyboardInputSink*/
 {
     // FIXME xplat-editor
     //private readonly List<HwndSource> contextMenuSources = new List<HwndSource>();

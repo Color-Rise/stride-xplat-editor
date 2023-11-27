@@ -38,9 +38,9 @@ public sealed class StrideEditorViewPlugin : AssetsEditorPlugin
         }
 
         // FIXME xplat-editor crashes because SDL dependencies not found
-        // var previewService = new GameStudioPreviewService(session);
-        // previewService.RegisterAssetPreviewFactories(previewFactories);
-        // session.ServiceProvider.RegisterService(previewService);
+        var previewService = new GameStudioPreviewService(session);
+        previewService.RegisterAssetPreviewFactories(previewFactories);
+        session.ServiceProvider.RegisterService(previewService);
     }
 
     public override void RegisterAssetPreviewViewModelTypes(IDictionary<Type, Type> assetPreviewViewModelTypes)

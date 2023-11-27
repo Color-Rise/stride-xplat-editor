@@ -49,7 +49,10 @@ partial class SessionViewModel
                 PackageSession.Load(path, sessionResult, CreatePackageLoadParameters(token));
                 if (!token.IsCancellationRequested)
                 {
-                    result = new SessionViewModel(sessionResult.Session, main, serviceProvider, sessionResult);
+                    result = serviceProvider.Get<IDispatcherService>().Invoke(() =>
+                    {
+                        return new SessionViewModel(sessionResult.Session, main, serviceProvider, sessionResult);
+                    });
 
                     // Build asset view models
                     result.LoadAssetsFromPackages(workProgress, token);
