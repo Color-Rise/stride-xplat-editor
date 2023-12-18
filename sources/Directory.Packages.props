@@ -1,6 +1,7 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <AvaloniaVersion>11.0.5</AvaloniaVersion> 
   </PropertyGroup>
   <!-- Runtime dependencies -->
   <ItemGroup>
@@ -57,6 +58,7 @@
     <PackageVersion Include="Stride.GNU.Getopt" Version="2.0.0" />
     <PackageVersion Include="Stride.GNU.Gettext" Version="2.0.0" />
     <PackageVersion Include="Stride.Mono.TextTemplating" Version="2.1.0-preview-0009-g0d0b6db3ca" />
+    <PackageVersion Include="Stride.QuickGraph" Version="3.7.0" />
     <PackageVersion Include="SSH.NET" Version="2023.0.0" />
     <PackageVersion Include="System.AppContext" Version="4.3.0" />
     <PackageVersion Include="System.Collections.Immutable" Version="8.0.0" />
@@ -109,10 +111,13 @@
   </ItemGroup>
   <!-- Avalonia dependencies -->
   <ItemGroup>
-    <PackageVersion Include="Avalonia" Version="11.0.5" />
-    <PackageVersion Include="Avalonia.Desktop" Version="11.0.5" />
-    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.0.5" />
-    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.0.5" />
+    <PackageVersion Include="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+    <PackageVersion Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+    <PackageVersion Include="Avalonia.Xaml.Interactions" Version="$(AvaloniaVersion)" />
+    <PackageVersion Include="Markdown.Avalonia.Tight" Version="11.0.2" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
   </ItemGroup>
   <!-- Windows/WPF dependencies -->
