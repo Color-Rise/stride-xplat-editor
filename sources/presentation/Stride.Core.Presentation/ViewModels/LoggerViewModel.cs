@@ -3,22 +3,22 @@
 
 using System.Collections.Specialized;
 using System.ComponentModel;
-using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Diagnostics;
 using Stride.Core.Presentation.Collections;
-using Stride.Core.Presentation.ViewModels;
+using Stride.Core.Presentation.Commands;
+using Stride.Core.Presentation.Services;
 
-namespace Stride.Core.Assets.Editor.ViewModels;
+namespace Stride.Core.Presentation.ViewModels;
 
-public class LoggerViewModel : DispatcherViewModel, IDebugPage
+public class LoggerViewModel : DispatcherViewModel, ITitledPage
 {
     /// <summary>
     /// The default delay to wait before updating the <see cref="Messages"/> collection, after a message has been received.
     /// </summary>
     public const int DefaultUpdateInterval = 300;
 
-    private readonly ObservableList<ILogMessage> messages = new();
-    private readonly List<(Logger, ILogMessage)> pendingMessages = new();
+    private readonly ObservableList<ILogMessage> messages = [];
+    private readonly List<(Logger, ILogMessage)> pendingMessages = [];
 
     private int updateInterval = DefaultUpdateInterval;
     private bool updatePending;
@@ -27,13 +27,18 @@ public class LoggerViewModel : DispatcherViewModel, IDebugPage
     public LoggerViewModel(IViewModelServiceProvider serviceProvider)
         : base(serviceProvider)
     {
+        AddLoggerCommand = new AnonymousCommand<Logger>(serviceProvider, AddLogger);
+        RemoveLoggerCommand = new AnonymousCommand<Logger>(serviceProvider, RemoveLogger);
+        ClearLoggersCommand = new AnonymousCommand(serviceProvider, ClearLoggers);
+        ClearMessagesCommand = new AnonymousCommand(serviceProvider, ClearMessages);
+        ClearNewMessageFlagCommand = new AnonymousCommand(serviceProvider, () => HasNewMessages = false);
         messages.CollectionChanged += MessagesCollectionChanged;
     }
 
     public LoggerViewModel(IViewModelServiceProvider serviceProvider, Logger logger)
         : this(serviceProvider)
     {
-        Loggers.Add(logger, new List<ILogMessage>());
+        Loggers.Add(logger, []);
         logger.MessageLogged += MessageLogged;
     }
 
@@ -42,7 +47,7 @@ public class LoggerViewModel : DispatcherViewModel, IDebugPage
     {
         foreach (var logger in loggers)
         {
-            Loggers.Add(logger, new List<ILogMessage>());
+            Loggers.Add(logger, []);
             logger.MessageLogged += MessageLogged;
         }
     }
@@ -83,7 +88,34 @@ public class LoggerViewModel : DispatcherViewModel, IDebugPage
     /// <remarks>The default value is equal to <see cref="DefaultUpdateInterval"/>.</remarks>
     public int UpdateInterval { get { return updateInterval; } set { SetValue(ref updateInterval, value); } }
 
-    protected Dictionary<Logger, List<ILogMessage>> Loggers { get; } = new();
+    /// <summary>
+    /// Gets the command that will add a logger to monitor.
+    /// </summary>
+    /// <remarks>An instance of <see cref="Logger"/> must be passed as parameter of this command.</remarks>
+    public ICommandBase AddLoggerCommand { get; }
+
+    /// <summary>
+    /// Gets the command that will remove all loggers from monitoring. 
+    /// </summary>
+    public ICommandBase ClearLoggersCommand { get; }
+
+    /// <summary>
+    /// Gets the command that will clear the <see cref="Messages"/> collection.
+    /// </summary>
+    public ICommandBase ClearMessagesCommand { get; }
+
+    /// <summary>
+    /// Gets the command that will reset the <see cref="HasNewMessages"/> flag.
+    /// </summary>
+    public ICommandBase ClearNewMessageFlagCommand { get; }
+
+    /// <summary>
+    /// Gets the command that will remove a logger from monitoring.
+    /// </summary>
+    /// <remarks>An instance of <see cref="Logger"/> must be passed as parameter of this command.</remarks>
+    public ICommandBase RemoveLoggerCommand { get; }
+
+    protected Dictionary<Logger, List<ILogMessage>> Loggers { get; } = [];
 
     /// <summary>
     /// Adds a <see cref="Logger"/> to monitor.
@@ -91,7 +123,7 @@ public class LoggerViewModel : DispatcherViewModel, IDebugPage
     /// <param name="logger">The <see cref="Logger"/> to monitor.</param>
     public virtual void AddLogger(Logger logger)
     {
-        Loggers.Add(logger, new List<ILogMessage>());
+        Loggers.Add(logger, []);
         logger.MessageLogged += MessageLogged;
     }
 
@@ -118,6 +150,18 @@ public class LoggerViewModel : DispatcherViewModel, IDebugPage
     }
 
     /// <summary>
+    /// Clears the <see cref="Messages"/> collection.
+    /// </summary>
+    public void ClearMessages()
+    {
+        messages.Clear();
+        foreach (var logger in Loggers)
+        {
+            logger.Value.Clear();
+        }
+    }
+
+    /// <summary>
     /// Removes messages that comes from the given logger from the <see cref="Messages"/> collection.
     /// </summary>
     public void ClearMessages(Logger logger)
@@ -140,7 +184,7 @@ public class LoggerViewModel : DispatcherViewModel, IDebugPage
         // prevent triggering a PropertyChanged event.
         var interval = updateInterval;
         updateInterval = 0;
-        Dispatcher.Invoke(UpdateMessagesAsync);
+        Dispatcher.InvokeTask(UpdateMessagesAsync);
         updateInterval = interval;
     }
 
@@ -191,7 +235,7 @@ public class LoggerViewModel : DispatcherViewModel, IDebugPage
                 if (!updatePending)
                 {
                     updatePending = true;
-                    Dispatcher.Invoke(UpdateMessagesAsync);
+                    Dispatcher.InvokeTask(UpdateMessagesAsync);
                 }
             }
         }
@@ -209,7 +253,7 @@ public class LoggerViewModel : DispatcherViewModel, IDebugPage
         {
             if (pendingMessages.Count > 0)
             {
-                messagesToAdd = pendingMessages.ToList();
+                messagesToAdd = [.. pendingMessages];
                 pendingMessages.Clear();
             }
             updatePending = false;

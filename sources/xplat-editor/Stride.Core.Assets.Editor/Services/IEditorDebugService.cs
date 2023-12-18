@@ -9,13 +9,13 @@ namespace Stride.Core.Assets.Editor.Services;
 
 public interface IEditorDebugService
 {    
-    IDebugPage? CreateLogDebugPage(Logger logger, string title, bool register = true);
+    ITitledPage? CreateLogDebugPage(Logger logger, string title, bool register = true);
 
-    IDebugPage? CreateUndoRedoDebugPage(IUndoRedoService actionService, string title, bool register = true);
+    ITitledPage? CreateUndoRedoDebugPage(IUndoRedoService actionService, string title, bool register = true);
 
-    IDebugPage? CreateAssetNodesDebugPage(ISessionViewModel session, string title, bool register = true);
+    ITitledPage? CreateAssetNodesDebugPage(ISessionViewModel session, string title, bool register = true);
 
-    void RegisterDebugPage(IDebugPage? page);
+    void RegisterDebugPage(ITitledPage? page);
 
-    void UnregisterDebugPage(IDebugPage? page);
+    void UnregisterDebugPage(ITitledPage? page);
 }

@@ -332,7 +332,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.NuGetResolver", "..\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGetResolver", "NuGetResolver", "{158087CF-AF74-44E9-AA20-A6AEB1E398A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stride.Core.Presentation", "..\sources\presentation\Stride.Core.Presentation\Stride.Core.Presentation.csproj", "{0C63EF8B-26F9-4511-9FC5-7431DE9657D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Presentation", "..\sources\presentation\Stride.Core.Presentation\Stride.Core.Presentation.csproj", "{0C63EF8B-26F9-4511-9FC5-7431DE9657D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XX-Editor", "XX-Editor", "{BD3F1AB2-28DA-4C23-B819-B5873C74E962}"
 EndProject
@@ -341,8 +341,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.GameStudio.Avalonia.Desktop", "..\sources\xplat-editor\Stride.GameStudio.Avalonia.Desktop\Stride.GameStudio.Avalonia.Desktop.csproj", "{19838BC4-E889-422B-B234-B94A3996A4AA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.Editor", "..\sources\xplat-editor\Stride.Core.Assets.Editor\Stride.Core.Assets.Editor.csproj", "{CF5D2741-B515-467F-B8E2-31F450AE5531}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Presentation", "..\sources\xplat-editor\Stride.Core.Presentation\Stride.Core.Presentation.csproj", "{E89E2254-A8BE-4A87-8C88-CCBED98509A3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.Presentation", "..\sources\xplat-editor\Stride.Core.Assets.Presentation\Stride.Core.Assets.Presentation.csproj", "{2C4CA75F-7FC5-465B-BA9B-70A90EF2A0FE}"
 EndProject
@@ -1557,18 +1555,6 @@ Global
 		{CF5D2741-B515-467F-B8E2-31F450AE5531}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CF5D2741-B515-467F-B8E2-31F450AE5531}.Release|Win32.ActiveCfg = Release|Any CPU
 		{CF5D2741-B515-467F-B8E2-31F450AE5531}.Release|Win32.Build.0 = Release|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Debug|Win32.Build.0 = Debug|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Release|Win32.ActiveCfg = Release|Any CPU
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3}.Release|Win32.Build.0 = Release|Any CPU
 		{2C4CA75F-7FC5-465B-BA9B-70A90EF2A0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C4CA75F-7FC5-465B-BA9B-70A90EF2A0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C4CA75F-7FC5-465B-BA9B-70A90EF2A0FE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -1794,7 +1780,6 @@ Global
 		{FBD0417E-94F5-433A-967C-997F66AAA9BB} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{19838BC4-E889-422B-B234-B94A3996A4AA} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{CF5D2741-B515-467F-B8E2-31F450AE5531} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
-		{E89E2254-A8BE-4A87-8C88-CCBED98509A3} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{2C4CA75F-7FC5-465B-BA9B-70A90EF2A0FE} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{BB6F37DE-40E5-4AC6-B599-358D99EFD493} = {358506E6-D2AE-4678-A434-C25F09417858}
 		{B7FD8293-7F32-46FF-AAF6-36D2C594760D} = {358506E6-D2AE-4678-A434-C25F09417858}
@@ -1824,7 +1809,6 @@ Global
 		..\sources\shared\Stride.NuGetResolver.Targets\Stride.NuGetResolver.Targets.projitems*{75d71310-ecf7-4592-9e35-3fe540040982}*SharedItemsImports = 5
 		..\sources\shared\Stride.Core.ShellHelper\Stride.Core.ShellHelper.projitems*{77e2fcc0-4ca6-436c-be6f-9418cb807d45}*SharedItemsImports = 5
 		..\sources\shared\Stride.NuGetResolver.Targets\Stride.NuGetResolver.Targets.projitems*{77e2fcc0-4ca6-436c-be6f-9418cb807d45}*SharedItemsImports = 5
-		..\sources\engine\Stride.Shared\Refactor\Stride.Refactor.projitems*{7af4b563-aad3-42ff-b91e-84b9d34d904a}*SharedItemsImports = 5
 		..\sources\editor\Stride.PrivacyPolicy\Stride.PrivacyPolicy.projitems*{950badd0-ad5a-4f58-87ec-4adaecbea89b}*SharedItemsImports = 13
 		..\sources\editor\Stride.Core.MostRecentlyUsedFiles\Stride.Core.MostRecentlyUsedFiles.projitems*{9ac6d791-811e-4d6a-b08e-93f0093ef268}*SharedItemsImports = 13
 		..\sources\shared\Stride.Core.ShellHelper\Stride.Core.ShellHelper.projitems*{a5dc820b-9554-45b6-9677-6a2f902e7787}*SharedItemsImports = 5

@@ -27,7 +27,7 @@ public class GameStudioPreviewService : IAssetPreviewService, IPreviewBuilder
 
     private readonly AutoResetEvent initializationSignal = new(false);
     private readonly GameEngineHost host;
-    private readonly IDebugPage? loggerDebugPage;
+    private readonly ITitledPage? loggerDebugPage;
     private IAssetPreview currentPreview;
     private IntPtr windowHandle;
     private EmbeddedGameForm gameForm;

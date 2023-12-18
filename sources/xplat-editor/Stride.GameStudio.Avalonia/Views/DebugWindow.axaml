@@ -3,7 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ctrl="using:Stride.GameStudio.Avalonia.Controls"
-        xmlns:vm="using:Stride.Core.Assets.Editor.ViewModels"
+        xmlns:vm="using:Stride.Core.Presentation.ViewModels"
+        xmlns:vm2="using:Stride.Core.Assets.Editor.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Stride.GameStudio.Avalonia.Views.DebugWindow"
         Title="Debug Window" Width="1024" Height="768"
@@ -16,7 +17,7 @@
         </DataTemplate>
       </ItemsControl.ItemTemplate>
       <Control.DataTemplates>
-        <DataTemplate DataType="{x:Type vm:DebugAssetNodeCollectionViewModel}">
+        <DataTemplate DataType="{x:Type vm2:DebugAssetNodeCollectionViewModel}">
           <ctrl:DebugAssetNodesUserControl />
         </DataTemplate>
 
@@ -24,7 +25,7 @@
           <ctrl:DebugLogUserControl />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:UndoRedoViewModel}">
+        <DataTemplate DataType="{x:Type vm2:UndoRedoViewModel}">
           <ctrl:DebugUndoRedoUserControl />
         </DataTemplate>
       </Control.DataTemplates>

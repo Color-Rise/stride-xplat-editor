@@ -2,6 +2,8 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using Stride.Core.Annotations;
 
 namespace Stride.Core.Presentation.Collections;
@@ -17,8 +19,8 @@ public class ObservableSet<T> : ObservableCollection<T>, IObservableList<T>, IRe
     }
 
     [CollectionAccess(CollectionAccessType.UpdatedContent)]
-    public ObservableSet([NotNull] IEnumerable<T> collection)
-            : this(EqualityComparer<T>.Default, collection)
+    public ObservableSet(IEnumerable<T> collection)
+        : this(EqualityComparer<T>.Default, collection)
     {
     }
 
@@ -29,14 +31,10 @@ public class ObservableSet<T> : ObservableCollection<T>, IObservableList<T>, IRe
     }
 
     [CollectionAccess(CollectionAccessType.UpdatedContent)]
-    public ObservableSet(IEqualityComparer<T> comparer, [NotNull] IEnumerable<T> collection)
+    public ObservableSet(IEqualityComparer<T> comparer, IEnumerable<T> collection)
     {
         hashSet = new HashSet<T>(comparer);
-        foreach (var item in collection)
-        {
-            if (hashSet.Add(item))
-                Add(item);
-        }
+        AddRange(collection);
     }
 
     [CollectionAccess(CollectionAccessType.UpdatedContent)]
@@ -45,11 +43,15 @@ public class ObservableSet<T> : ObservableCollection<T>, IObservableList<T>, IRe
         var itemList = items.Where(x => hashSet.Add(x)).ToList();
         if (itemList.Count > 0)
         {
-            var index = Count;
             foreach (var item in itemList)
             {
-                base.InsertItem(index++, item);
+                Items.Add(item);
             }
+
+            OnCountPropertyChanged();
+            OnIndexerPropertyChanged();
+            var arg = new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, itemList, Count - itemList.Count);
+            OnCollectionChanged(arg);
         }
     }
 
@@ -93,4 +95,14 @@ public class ObservableSet<T> : ObservableCollection<T>, IObservableList<T>, IRe
     {
         return $"{{ObservableSet}} Count = {Count}";
     }
+
+    /// <summary>
+    /// Helper to raise a PropertyChanged event for the Count property
+    /// </summary>
+    private void OnCountPropertyChanged() => OnPropertyChanged(new PropertyChangedEventArgs("Count"));
+
+    /// <summary>
+    /// Helper to raise a PropertyChanged event for the Indexer property
+    /// </summary>
+    private void OnIndexerPropertyChanged() => OnPropertyChanged(new PropertyChangedEventArgs("Item[]"));
 }

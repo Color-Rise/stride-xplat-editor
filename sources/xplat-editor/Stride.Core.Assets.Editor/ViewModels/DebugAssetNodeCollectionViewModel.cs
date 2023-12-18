@@ -2,17 +2,17 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
 using System.Reflection;
-using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.Commands;
+using Stride.Core.Presentation.Services;
 using Stride.Core.Presentation.ViewModels;
 using Stride.Core.Quantum;
 
 namespace Stride.Core.Assets.Editor.ViewModels;
 
-public class DebugAssetNodeCollectionViewModel : DispatcherViewModel, IDebugPage
+public class DebugAssetNodeCollectionViewModel : DispatcherViewModel, ITitledPage
 {
     private static readonly FieldInfo FieldInfoListener;
     private static readonly FieldInfo FieldInfoRegisteredNodes;

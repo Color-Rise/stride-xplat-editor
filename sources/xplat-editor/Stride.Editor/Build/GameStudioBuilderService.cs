@@ -7,6 +7,7 @@ using Stride.Core.Assets.Editor.ViewModels;
 using Stride.Core.BuildEngine;
 using Stride.Core.Diagnostics;
 using Stride.Core.IO;
+using Stride.Core.Presentation.Services;
 using Stride.Shaders.Compiler;
 
 namespace Stride.Editor.Build;
@@ -18,8 +19,8 @@ public sealed class GameStudioBuilderService : AssetBuilderService
     private readonly EffectPriorityScheduler taskScheduler;
     private readonly EffectCompilerBase effectCompiler;
     private readonly IEditorDebugService? debugService;
-    private readonly IDebugPage? assetBuilderServiceDebugPage;
-    private readonly IDebugPage? effectCompilerServiceDebugPage;
+    private readonly ITitledPage? assetBuilderServiceDebugPage;
+    private readonly ITitledPage? effectCompilerServiceDebugPage;
     private readonly bool createDebugTools;
     private int currentJobToken = -1;
 

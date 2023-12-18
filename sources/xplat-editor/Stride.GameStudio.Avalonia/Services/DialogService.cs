@@ -39,28 +39,54 @@ internal class DialogService : IDialogService
         }
     }
 
-    public async Task<UFile?> OpenFilePickerAsync(UPath? initialPath = null)
+    public async Task<UFile?> OpenFilePickerAsync(UDirectory? initialPath = null, IReadOnlyList<FilePickerFilter>? filters = null)
     {
         if (StorageProvider is null) return null;
 
         return await Dispatcher.InvokeTask(async () =>
         {
             var initialLocation = await StorageProvider.TryGetFolderFromPathAsync(initialPath);
-            var files = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+            var storageFiles = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
             {
                 AllowMultiple = false,
                 SuggestedStartLocation = initialLocation,
             });
 
-            var file = files?.Count > 0 ? files[0] : null;
-            var path = file?.TryGetLocalPath();
+            var storageFile = storageFiles?.Count > 0 ? storageFiles[0] : null;
+            var path = storageFile?.TryGetLocalPath();
             if (string.IsNullOrEmpty(path)) return null;
 
             return path;
         });
     }
 
-    public async Task<UDirectory?> OpenFolderPickerAsync(UPath? initialPath = null)
+    public async Task<IReadOnlyList<UFile>> OpenMultipleFilesPickerAsync(UDirectory? initialPath = null, IReadOnlyList<FilePickerFilter>? filters = null)
+    {
+        if (StorageProvider is null) return Array.Empty<UFile>();
+        
+        return await Dispatcher.InvokeTask(async () =>
+        {
+            var initialLocation = await StorageProvider.TryGetFolderFromPathAsync(initialPath);
+            var storageFiles = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+            {
+                AllowMultiple = false,
+                SuggestedStartLocation = initialLocation,
+            });
+
+            var files = new List<UFile>(storageFiles.Count);
+            foreach (var storageFile in storageFiles)
+            {
+                var path = storageFile?.TryGetLocalPath();
+                if (string.IsNullOrEmpty(path)) continue;
+
+                files.Add(path);
+            }
+
+            return files;
+        });
+    }
+
+    public async Task<UDirectory?> OpenFolderPickerAsync(UDirectory? initialPath = null)
     {
         if (StorageProvider is null) return null;
 
@@ -79,5 +105,10 @@ internal class DialogService : IDialogService
 
             return path;
         });
+    }
+
+    Task<MessageBoxResult> IDialogService.MessageBoxAsync(string message, MessageBoxButton buttons, MessageBoxImage image)
+    {
+        throw new NotImplementedException();
     }
 }

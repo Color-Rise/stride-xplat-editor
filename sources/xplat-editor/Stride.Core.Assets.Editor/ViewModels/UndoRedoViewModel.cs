@@ -7,11 +7,10 @@ using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Services;
 using Stride.Core.Presentation.ViewModels;
-using Stride.Core.Assets.Editor.Services;
 
 namespace Stride.Core.Assets.Editor.ViewModels;
 
-public sealed class UndoRedoViewModel : DispatcherViewModel, IDebugPage
+public sealed class UndoRedoViewModel : DispatcherViewModel, ITitledPage
 {
     private readonly IUndoRedoService actionService;
 

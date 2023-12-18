@@ -33,9 +33,9 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
     private readonly PackageSession session;
     private bool sessionStateUpdating;
 
-    private readonly IDebugPage? assetNodesDebugPage;
-    private readonly IDebugPage? quantumDebugPage;
-    private readonly IDebugPage? undoRedoStackPage;
+    private readonly ITitledPage? assetNodesDebugPage;
+    private readonly ITitledPage? quantumDebugPage;
+    private readonly ITitledPage? undoRedoStackPage;
 
     private SessionViewModel(PackageSession session, IMainViewModel main, IViewModelServiceProvider serviceProvider, ILogger logger)
         : base(serviceProvider)

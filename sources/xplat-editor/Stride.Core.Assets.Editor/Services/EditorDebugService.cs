@@ -11,8 +11,8 @@ namespace Stride.Core.Assets.Editor.Services;
 
 public sealed class EditorDebugService : IEditorDebugService
 {
-    private static readonly List<IDebugPage> debugPages = new();
-    private static readonly HashSet<DebugWindowViewModel> debugWindows = new();
+    private static readonly List<ITitledPage> debugPages = [];
+    private static readonly HashSet<DebugWindowViewModel> debugWindows = [];
 
     private readonly IViewModelServiceProvider serviceProvider;
 
@@ -23,7 +23,7 @@ public sealed class EditorDebugService : IEditorDebugService
 
     private IDispatcherService Dispatcher => serviceProvider.Get<IDispatcherService>();
 
-    public IDebugPage? CreateAssetNodesDebugPage(ISessionViewModel session, string title, bool register = true)
+    public ITitledPage? CreateAssetNodesDebugPage(ISessionViewModel session, string title, bool register = true)
     {
         return Dispatcher.Invoke(() =>
         {
@@ -36,7 +36,7 @@ public sealed class EditorDebugService : IEditorDebugService
         });
     }
 
-    public IDebugPage? CreateLogDebugPage(Logger logger, string title, bool register = true)
+    public ITitledPage? CreateLogDebugPage(Logger logger, string title, bool register = true)
     {
         // Activate all log levels
         logger.ActivateLog(LogMessageType.Debug);
@@ -52,7 +52,7 @@ public sealed class EditorDebugService : IEditorDebugService
         });
     }
 
-    public IDebugPage? CreateUndoRedoDebugPage(IUndoRedoService actionService, string title, bool register = true)
+    public ITitledPage? CreateUndoRedoDebugPage(IUndoRedoService actionService, string title, bool register = true)
     {
         return Dispatcher.Invoke(() =>
         {
@@ -65,7 +65,7 @@ public sealed class EditorDebugService : IEditorDebugService
         });
     }
 
-    public void RegisterDebugPage(IDebugPage? page)
+    public void RegisterDebugPage(ITitledPage? page)
     {
         if (page is null) return;
         Dispatcher.CheckAccess();
@@ -77,7 +77,7 @@ public sealed class EditorDebugService : IEditorDebugService
         }
     }
 
-    public void UnregisterDebugPage(IDebugPage? page)
+    public void UnregisterDebugPage(ITitledPage? page)
     {
         if (page is null) return;
         Dispatcher.CheckAccess();

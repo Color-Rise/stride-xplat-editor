@@ -23,7 +23,6 @@ using Stride.GameStudio.Logs;
 using Stride.GameStudio.Debugging;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Services;
-using Stride.Core.Presentation.ViewModel;
 using Stride.Assets.Presentation.AssemblyReloading;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Annotations;

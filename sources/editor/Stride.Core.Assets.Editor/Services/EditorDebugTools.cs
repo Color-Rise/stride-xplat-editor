@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using Stride.Core.Assets.Editor.Components.DebugTools.UndoRedo.Views;
 using Stride.Core.Assets.Editor.View.DebugTools;
 using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core;
 using Stride.Core.Diagnostics;
 using Stride.Core.Presentation.Services;
-using Stride.Core.Presentation.ViewModel;
+using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.Services
 {

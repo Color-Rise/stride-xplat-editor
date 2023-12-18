@@ -22,4 +22,4 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://schemas.stride3d.net/xaml/presentation", "Stride.Core.Presentation.MarkupExtensions")]
 [assembly: XmlnsDefinition("http://schemas.stride3d.net/xaml/presentation", "Stride.Core.Presentation.ValueConverters")]
 [assembly: XmlnsDefinition("http://schemas.stride3d.net/xaml/presentation", "Stride.Core.Presentation.View")]
-[assembly: XmlnsDefinition("http://schemas.stride3d.net/xaml/presentation", "Stride.Core.Presentation.ViewModel")]
+[assembly: XmlnsDefinition("http://schemas.stride3d.net/xaml/presentation", "Stride.Core.Presentation.ViewModels")]
