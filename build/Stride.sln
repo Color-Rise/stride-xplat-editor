@@ -352,13 +352,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets.Editor.Avalon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.Editor.Avalonia", "..\sources\xplat-editor\Stride.Core.Assets.Editor.Avalonia\Stride.Core.Assets.Editor.Avalonia.csproj", "{FFC5B452-0799-4B74-B1AC-200EB287F9D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Presentation.Quantum", "..\sources\xplat-editor\Stride.Core.Presentation.Quantum\Stride.Core.Presentation.Quantum.csproj", "{72AB012F-8756-44DB-842E-BA1856CF168A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Editor", "..\sources\xplat-editor\Stride.Editor\Stride.Editor.csproj", "{CC16DE9A-F346-4AE3-9BF0-EE8A4D385B14}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Editor.Avalonia", "..\sources\xplat-editor\Stride.Editor.Avalonia\Stride.Editor.Avalonia.csproj", "{2C7C4631-CCB2-4BDD-9D9B-7E5ABCCD51EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{358506E6-D2AE-4678-A434-C25F09417858}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Presentation.Quantum.Wpf", "..\sources\presentation\Stride.Core.Presentation.Quantum.Wpf\Stride.Core.Presentation.Quantum.Wpf.csproj", "{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1615,18 +1615,6 @@ Global
 		{FFC5B452-0799-4B74-B1AC-200EB287F9D8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FFC5B452-0799-4B74-B1AC-200EB287F9D8}.Release|Win32.ActiveCfg = Release|Any CPU
 		{FFC5B452-0799-4B74-B1AC-200EB287F9D8}.Release|Win32.Build.0 = Release|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Debug|Win32.Build.0 = Debug|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Release|Win32.ActiveCfg = Release|Any CPU
-		{72AB012F-8756-44DB-842E-BA1856CF168A}.Release|Win32.Build.0 = Release|Any CPU
 		{CC16DE9A-F346-4AE3-9BF0-EE8A4D385B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC16DE9A-F346-4AE3-9BF0-EE8A4D385B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC16DE9A-F346-4AE3-9BF0-EE8A4D385B14}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -1651,6 +1639,18 @@ Global
 		{2C7C4631-CCB2-4BDD-9D9B-7E5ABCCD51EB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2C7C4631-CCB2-4BDD-9D9B-7E5ABCCD51EB}.Release|Win32.ActiveCfg = Release|Any CPU
 		{2C7C4631-CCB2-4BDD-9D9B-7E5ABCCD51EB}.Release|Win32.Build.0 = Release|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Debug|Win32.Build.0 = Debug|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Release|Win32.ActiveCfg = Release|Any CPU
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}.Release|Win32.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1785,10 +1785,10 @@ Global
 		{B7FD8293-7F32-46FF-AAF6-36D2C594760D} = {358506E6-D2AE-4678-A434-C25F09417858}
 		{6F5A1D7F-15A0-4439-86AE-7102478DAA8B} = {358506E6-D2AE-4678-A434-C25F09417858}
 		{FFC5B452-0799-4B74-B1AC-200EB287F9D8} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
-		{72AB012F-8756-44DB-842E-BA1856CF168A} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{CC16DE9A-F346-4AE3-9BF0-EE8A4D385B14} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{2C7C4631-CCB2-4BDD-9D9B-7E5ABCCD51EB} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{358506E6-D2AE-4678-A434-C25F09417858} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
+		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1} = {75A820AB-0F21-40F2-9448-5D7F495B97A0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF877973-604D-4EA7-B5F5-A129961F9EF2}

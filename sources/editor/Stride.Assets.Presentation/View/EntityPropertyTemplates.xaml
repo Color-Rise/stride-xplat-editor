@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:tp="clr-namespace:Stride.Assets.Presentation.TemplateProviders"
                     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-                    xmlns:view="clr-namespace:Stride.Core.Presentation.Quantum.View;assembly=Stride.Core.Presentation.Quantum"
+                    xmlns:view="clr-namespace:Stride.Core.Presentation.Quantum.View;assembly=Stride.Core.Presentation.Quantum.Wpf"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:behaviors="clr-namespace:Stride.Core.Assets.Editor.View.Behaviors;assembly=Stride.Core.Assets.Editor"
                     xmlns:valueConverters="clr-namespace:Stride.Core.Assets.Editor.View.ValueConverters;assembly=Stride.Core.Assets.Editor"

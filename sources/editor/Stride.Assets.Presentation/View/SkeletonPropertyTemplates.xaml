@@ -4,7 +4,7 @@
                     xmlns:sd="http://schemas.stride3d.net/xaml/presentation"
                     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:qvm="clr-namespace:Stride.Core.Presentation.Quantum.ViewModels;assembly=Stride.Core.Presentation.Quantum"
-                    xmlns:view="clr-namespace:Stride.Core.Presentation.Quantum.View;assembly=Stride.Core.Presentation.Quantum">
+                    xmlns:view="clr-namespace:Stride.Core.Presentation.Quantum.View;assembly=Stride.Core.Presentation.Quantum.Wpf">
 
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="/Stride.Core.Assets.Editor;component/View/DefaultPropertyTemplateProviders.xaml"/>
