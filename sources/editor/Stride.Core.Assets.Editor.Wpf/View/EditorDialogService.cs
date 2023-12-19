@@ -1,5 +1,6 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -12,14 +13,12 @@ using Stride.Core.Assets.Editor.Components.AddAssets;
 using Stride.Core.Assets.Editor.Components.AddAssets.View;
 using Stride.Core.Assets.Editor.Components.FixAssetReferences;
 using Stride.Core.Assets.Editor.Components.FixAssetReferences.Views;
-using Stride.Core.Assets.Editor.Components.TemplateDescriptions;
 using Stride.Core.Assets.Editor.Components.TemplateDescriptions.ViewModels;
 using Stride.Core.Assets.Editor.Components.TemplateDescriptions.Views;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Editor.ViewModel.Progress;
 using Stride.Core.Assets.Templates;
-using Stride.Core.Annotations;
 using Stride.Core.Extensions;
 using Stride.Core.Settings;
 using Stride.Core.Presentation.Commands;
@@ -31,9 +30,7 @@ using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.View
 {
-    using MessageBoxButton = Presentation.Services.MessageBoxButton;
-    using MessageBoxImage = Presentation.Services.MessageBoxImage;
-    using MessageBoxResult = Presentation.Services.MessageBoxResult;
+    using MessageBoxImage = Core.Presentation.Services.MessageBoxImage;
 
     public class EditorDialogService : DialogService, IEditorDialogService
     {

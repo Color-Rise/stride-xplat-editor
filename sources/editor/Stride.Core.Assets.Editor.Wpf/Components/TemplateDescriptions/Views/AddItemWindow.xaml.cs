@@ -34,7 +34,7 @@ namespace Stride.Core.Assets.Editor.Components.TemplateDescriptions.Views
 
             validated = true;
             SelectedTemplate = template;
-            Result = SelectedTemplate != null ? Presentation.Services.DialogResult.Ok : Presentation.Services.DialogResult.Cancel;
+            Result = SelectedTemplate != null ? Core.Presentation.Services.DialogResult.Ok : Core.Presentation.Services.DialogResult.Cancel;
             Close();
         }
     }

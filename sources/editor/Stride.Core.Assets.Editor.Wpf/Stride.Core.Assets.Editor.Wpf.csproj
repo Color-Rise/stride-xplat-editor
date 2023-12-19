@@ -38,6 +38,7 @@
     <ProjectReference Include="..\..\presentation\Stride.Core.Presentation.Dialogs\Stride.Core.Presentation.Dialogs.csproj" />
     <ProjectReference Include="..\..\presentation\Stride.Core.Presentation.Quantum.Wpf\Stride.Core.Presentation.Quantum.Wpf.csproj" />
     <ProjectReference Include="..\..\presentation\Stride.Core.Translation.Presentation\Stride.Core.Translation.Presentation.csproj" />
+    <ProjectReference Include="..\Stride.Core.Assets.Presentation\Stride.Core.Assets.Presentation.csproj" />
   </ItemGroup>
   <!-- Resources -->
   <ItemGroup>

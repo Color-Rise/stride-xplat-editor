@@ -95,7 +95,7 @@ namespace Stride.Core.Assets.Editor.View
 
             await base.ShowModal();
 
-            if (Result == Presentation.Services.DialogResult.Ok)
+            if (Result == Core.Presentation.Services.DialogResult.Ok)
             {
                 selectedAssets.AddRange(AssetView.SelectedAssets);
             }
@@ -130,7 +130,7 @@ namespace Stride.Core.Assets.Editor.View
             var asset = AssetView.SingleSelectedAsset;
             if (asset != null)
             {
-                Result = Presentation.Services.DialogResult.Ok;
+                Result = Core.Presentation.Services.DialogResult.Ok;
                 Close();
             }
         }
