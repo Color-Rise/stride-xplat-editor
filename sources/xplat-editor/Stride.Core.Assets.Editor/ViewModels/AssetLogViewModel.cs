@@ -3,13 +3,14 @@
 
 using Stride.Core.Assets.Analysis;
 using Stride.Core.Assets.Editor.Services;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Diagnostics;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.ViewModels;
 
-public sealed class AssetLogViewModel : LoggerViewModel
+public sealed class AssetLogViewModel : LoggerViewModel, IAssetLogViewModel
 {
     private readonly SessionViewModel session;
     private readonly Dictionary<LogKey, Logger> loggers = new();

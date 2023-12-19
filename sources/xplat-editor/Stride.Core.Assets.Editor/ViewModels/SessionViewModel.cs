@@ -79,7 +79,7 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
         AssetCollection.SelectedLocations.CollectionChanged += (s, e) => UpdateSessionState();
 
         // Initialize logs
-        AssetLog = new AssetLogViewModel(ServiceProvider, this);
+        AssetLogs = new AssetLogViewModel(ServiceProvider, this);
 
         // Construct package categories
         var localPackageName = session.SolutionPath != null ? string.Format(Tr._(@"Solution '{0}'"), session.SolutionPath.GetFileNameWithoutExtension()) : LocalPackageCategoryName;
@@ -133,7 +133,7 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
 
     public AssetCollectionViewModel AssetCollection { get; }
 
-    public AssetLogViewModel AssetLog { get; }
+    public IAssetLogViewModel AssetLogs { get; }
 
     public AssetNodeContainer AssetNodeContainer { get; }
 
@@ -211,7 +211,7 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
     {
         EnsureNotDestroyed(nameof(SessionViewModel));
 
-        AssetLog.Destroy();
+        AssetLogs.Destroy();
         Thumbnails.Destroy();
 
         var debugService = ServiceProvider.Get<IEditorDebugService>();

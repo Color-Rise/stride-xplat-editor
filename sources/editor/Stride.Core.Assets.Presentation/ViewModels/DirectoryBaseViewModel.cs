@@ -11,7 +11,7 @@ public abstract class DirectoryBaseViewModel : SessionObjectViewModel
 {
     public const string Separator = "/";
     private readonly AutoUpdatingSortedObservableCollection<DirectoryViewModel> subDirectories = new(CompareDirectories);
-    private readonly ObservableSet<AssetViewModel> assets = new();
+    private readonly ObservableSet<AssetViewModel> assets = [];
 
     protected DirectoryBaseViewModel(ISessionViewModel session)
         : base(session)
@@ -25,7 +25,7 @@ public abstract class DirectoryBaseViewModel : SessionObjectViewModel
     /// Gets the package containing this directory.
     /// </summary>
     public abstract PackageViewModel Package { get; }
-    
+
     /// <summary>
     /// Gets or sets the parent directory of this directory.
     /// </summary>
@@ -45,6 +45,10 @@ public abstract class DirectoryBaseViewModel : SessionObjectViewModel
     /// Gets the read-only collection of sub-directories contained in this directory.
     /// </summary>
     public ReadOnlyObservableCollection<DirectoryViewModel> SubDirectories { get; }
+
+    public abstract bool CanDelete(out string error);
+
+    public abstract void Delete();
 
     public IReadOnlyCollection<DirectoryBaseViewModel> GetDirectoryHierarchy()
     {

@@ -40,6 +40,12 @@ public abstract class MountPointViewModel : DirectoryBaseViewModel
     public override MountPointViewModel Root => this;
 
     /// <inheritdoc/>
+    public override void Delete()
+    {
+        throw new NotSupportedException("Cannot delete a MountPointViewModel");
+    }
+
+    /// <inheritdoc/>
     public override string TypeDisplayName => "Mount Point";
 
     /// <inheritdoc/>

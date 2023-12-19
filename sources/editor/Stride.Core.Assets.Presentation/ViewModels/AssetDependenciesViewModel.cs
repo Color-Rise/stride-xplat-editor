@@ -11,7 +11,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels;
 
 public sealed class AssetDependenciesViewModel : DispatcherViewModel
 {
-    private static readonly HashSet<AssetViewModel> DirtyDependencies = new();
+    private static readonly HashSet<AssetViewModel> DirtyDependencies = [];
     private static TaskCompletionSource<int>? dependenciesUpdated;
     private IReadOnlyCollection<AssetViewModel> referencerAssets = new List<AssetViewModel>();
     private IReadOnlyCollection<AssetViewModel> referencedAssets = new List<AssetViewModel>();
@@ -167,8 +167,8 @@ public sealed class AssetDependenciesViewModel : DispatcherViewModel
                     var dependencies = dependencyManager.ComputeDependencies(asset.AssetItem.Id, AssetDependencySearchOptions.In | AssetDependencySearchOptions.Out, ContentLinkType.Reference); // TODO: Change ContentLinkType.Reference to handle other types
                     if (dependencies != null)
                     {
-                        dependencies.LinksIn.Select(x => session.GetAssetById(x.Item.Id)).NotNull().ForEach(x => referencerAssets.Add(x));
-                        dependencies.LinksOut.Select(x => session.GetAssetById(x.Item.Id)).NotNull().ForEach(x => referencedAssets.Add(x));
+                        dependencies.LinksIn.Select(x => session.GetAssetById(x.Item.Id)).NotNull().ForEach(x => referencerAssets.Add(x!));
+                        dependencies.LinksOut.Select(x => session.GetAssetById(x.Item.Id)).NotNull().ForEach(x => referencedAssets.Add(x!));
                     }
                     dirtyAssets.Add(asset);
 

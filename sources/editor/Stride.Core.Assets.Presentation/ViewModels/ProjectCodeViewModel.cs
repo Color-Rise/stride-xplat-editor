@@ -5,13 +5,15 @@ namespace Stride.Core.Assets.Presentation.ViewModels;
 
 public sealed class ProjectCodeViewModel : MountPointViewModel
 {
-    public ProjectCodeViewModel(ProjectViewModel package)
-        : base(package)
+    public ProjectCodeViewModel(ProjectViewModel project)
+        : base(project)
     {
     }
 
+    /// <inheritdoc/>
     public override bool IsEditable => false;
 
+    /// <inheritdoc/>
     public override string Name
     {
         get => "Code";
@@ -19,4 +21,12 @@ public sealed class ProjectCodeViewModel : MountPointViewModel
     }
 
     public ProjectViewModel Project => (ProjectViewModel)Package;
+
+    /// <inheritdoc/>
+    public override bool CanDelete(out string error)
+    {
+        error = "Projects can't be deleted from Game Studio.";
+        return false;
+    }
+
 }

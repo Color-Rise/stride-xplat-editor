@@ -15,6 +15,8 @@ public interface ISessionViewModel
 
     IEnumerable<PackageViewModel> AllPackages { get; }
 
+    IAssetLogViewModel AssetLogs { get; }
+
     AssetNodeContainer AssetNodeContainer { get; }
 
     ProjectViewModel? CurrentProject { get; }

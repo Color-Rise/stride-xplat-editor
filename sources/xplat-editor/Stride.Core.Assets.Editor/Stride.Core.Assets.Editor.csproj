@@ -3,7 +3,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\Stride.Core.Translation\Stride.Core.Translation.csproj" />
-    <ProjectReference Include="..\Stride.Core.Assets.Presentation\Stride.Core.Assets.Presentation.csproj" />
+    <ProjectReference Include="..\..\editor\Stride.Core.Assets.Presentation\Stride.Core.Assets.Presentation.csproj" />
   </ItemGroup>
 
   <Import Project="$(StrideSdkTargets)" />

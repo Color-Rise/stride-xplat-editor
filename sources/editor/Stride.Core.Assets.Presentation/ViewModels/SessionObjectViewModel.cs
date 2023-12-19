@@ -5,7 +5,7 @@ using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Presentation.ViewModels;
 
-public abstract class SessionObjectViewModel : DirtiableEditableViewModel, IIsEditableViewModel
+public abstract class SessionObjectViewModel : DirtiableEditableViewModel, ISessionObjectViewModel, IIsEditableViewModel
 {
     private bool isEditing;
     private bool isDeleted = true;
@@ -37,6 +37,11 @@ public abstract class SessionObjectViewModel : DirtiableEditableViewModel, IIsEd
     /// Gets the session in which this object is currently in.
     /// </summary>
     public ISessionViewModel Session { get; }
+
+    /// <summary>
+    /// Gets the <see cref="ThumbnailData"/> associated to this <see cref="SessionObjectViewModel"/>.
+    /// </summary>
+    ThumbnailData? ISessionObjectViewModel.ThumbnailData { get; } = null;
 
     /// <summary>
     /// Gets the display name of the type of this <see cref="SessionObjectViewModel"/>.

@@ -46,7 +46,7 @@ public abstract class AssetCompositeItemViewModel<TAssetViewModel, TItemViewMode
     where TAssetViewModel : AssetViewModel
     where TItemViewModel : AssetCompositeItemViewModel<TAssetViewModel, TItemViewModel>
 {
-    private readonly ObservableList<TItemViewModel> children = new();
+    private readonly ObservableList<TItemViewModel> children = [];
     private TItemViewModel? parent;
 
     protected AssetCompositeItemViewModel(AssetViewModel asset)

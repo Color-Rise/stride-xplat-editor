@@ -15,7 +15,7 @@ public abstract class AssetCompositeHierarchyViewModel<TAssetPartDesign, TAssetP
     {
     }
 
-    public AssetCompositeHierarchyPropertyGraph<TAssetPartDesign, TAssetPart> AssetHierarchyPropertyGraph => (AssetCompositeHierarchyPropertyGraph<TAssetPartDesign, TAssetPart>)PropertyGraph;
+    public AssetCompositeHierarchyPropertyGraph<TAssetPartDesign, TAssetPart> AssetHierarchyPropertyGraph => (AssetCompositeHierarchyPropertyGraph<TAssetPartDesign, TAssetPart>?)PropertyGraph!;
 
     public abstract AssetCompositeItemViewModel CreatePartViewModel(TAssetPartDesign partDesign);
 

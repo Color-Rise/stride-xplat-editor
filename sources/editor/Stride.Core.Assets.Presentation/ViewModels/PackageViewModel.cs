@@ -56,7 +56,7 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
 
     public IEnumerable<MountPointViewModel> MountPoints => Content.OfType<MountPointViewModel>();
 
-    internal ObservableList<AssetViewModel> DeletedAssetsInternal { get; } = new ObservableList<AssetViewModel>();
+    internal ObservableList<AssetViewModel> DeletedAssetsInternal { get; } = [];
 
     /// <summary>
     /// Gets or sets the name of this package.
@@ -90,12 +90,36 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
     /// <summary>
     /// Gets the collection of root assets for this package.
     /// </summary>
-    public ObservableSet<AssetViewModel> RootAssets { get; } = new ObservableSet<AssetViewModel>();
+    public ObservableSet<AssetViewModel> RootAssets { get; } = [];
 
     public UDirectory RootDirectory => Package.RootDirectory;
 
     /// <inheritdoc/>
     public override string TypeDisplayName => "Package";
+
+    public void CheckConsistency()
+    {
+        //var assetList = Package.Assets.Where(item => item.Asset.GetType().GetCustomAttribute<AssetDescriptionAttribute>()?.Referenceable ?? true).ToDictionary(x => x.Location.FullPath);
+        //var assetViewModels = Assets.ToList();
+        //var logger = Session.AssetLogs.GetLogger(LogKey.Get("Consistency"));
+
+        //foreach (var asset in assetViewModels)
+        //{
+        //    if (!assetList.ContainsKey(asset.Url))
+        //    {
+        //        logger.Log(new AssetSerializableLogMessage(asset.Id, asset.Url, LogMessageType.Fatal, $"The asset {asset.Url} is missing or incorrectly indexed in the package. Please report this issue."));
+        //    }
+        //    else
+        //    {
+        //        assetList.Remove(asset.Url);
+        //    }
+        //}
+
+        //foreach (var asset in assetList.Values)
+        //{
+        //    logger.Log(new AssetSerializableLogMessage(asset.Id, asset.Location, LogMessageType.Fatal, $"The asset {asset.Location} is incorrectly indexed in the package. Please report this issue."));
+        //}
+    }
 
     /// <inheritdoc/>
     public int CompareTo(PackageViewModel? other)

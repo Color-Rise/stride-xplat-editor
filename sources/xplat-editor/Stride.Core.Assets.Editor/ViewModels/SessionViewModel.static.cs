@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
 using Stride.Core.Assets.Editor.Services;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.IO;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Services;
@@ -71,7 +72,7 @@ partial class SessionViewModel
         actionService.Resize(200);
 
         // Copy the result of the asset loading to the log panel.
-        sessionViewModel?.AssetLog.AddLogger(LogKey.Get("Session"), sessionResult);
+        sessionViewModel?.AssetLogs.AddLogger(LogKey.Get("Session"), sessionResult);
 
         // Notify that the task is finished
         sessionResult.OperationCancelled = token.IsCancellationRequested;

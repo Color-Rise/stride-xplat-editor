@@ -12,5 +12,5 @@ public abstract class AssetCompositeViewModel<TAsset> : AssetViewModel<TAsset> w
     {
     }
 
-    public AssetCompositePropertyGraph AssetCompositePropertyGraph => (AssetCompositePropertyGraph)PropertyGraph;
+    public AssetCompositePropertyGraph AssetCompositePropertyGraph => (AssetCompositePropertyGraph?)PropertyGraph!;
 }

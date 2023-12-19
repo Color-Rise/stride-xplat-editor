@@ -19,4 +19,12 @@ public sealed class AssetMountPointViewModel : MountPointViewModel
         get => "Assets";
         set => throw new InvalidOperationException($"Cannot change the name of a {nameof(AssetMountPointViewModel)}");
     }
+
+    /// <inheritdoc/>
+    public override bool CanDelete(out string error)
+    {
+        error = "Unable to delete the asset root folder.";
+        return false;
+    }
+
 }

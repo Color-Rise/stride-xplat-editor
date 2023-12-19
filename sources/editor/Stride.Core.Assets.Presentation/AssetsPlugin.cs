@@ -10,7 +10,7 @@ namespace Stride.Core.Assets.Presentation;
 
 public abstract class AssetsPlugin
 {
-    private static readonly List<AssetsPlugin> registeredPlugins = new();
+    private static readonly List<AssetsPlugin> registeredPlugins = [];
 
     public static IReadOnlyList<AssetsPlugin> RegisteredPlugins => registeredPlugins;
 
@@ -29,7 +29,7 @@ public abstract class AssetsPlugin
         if (RegisteredPlugins.Any(x => x.GetType() == type))
             throw new InvalidOperationException("The plugin type is already registered.");
 
-        var plugin = (AssetsPlugin)Activator.CreateInstance(type)!;
+        var plugin = (AssetsPlugin?)Activator.CreateInstance(type)!;
         registeredPlugins.Add(plugin);
     }
 

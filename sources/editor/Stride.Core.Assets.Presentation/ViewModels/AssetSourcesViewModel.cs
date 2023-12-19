@@ -12,7 +12,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels;
 public sealed class AssetSourcesViewModel : DispatcherViewModel
 {
     private readonly AssetViewModel asset;
-    private readonly HashSet<UFile> currentSourceFiles = new();
+    private readonly HashSet<UFile> currentSourceFiles = [];
     private bool needUpdateFromSource;
     private IReadOnlyDictionary<UFile, ObjectId> updatedHashes;
 

@@ -5,7 +5,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels;
 
 public class PackageCategoryViewModel : CategoryViewModel<PackageViewModel>, IChildViewModel
 {
-    public PackageCategoryViewModel(string name, ISessionViewModel session, IComparer<PackageViewModel> childComparer = null)
+    public PackageCategoryViewModel(string name, ISessionViewModel session, IComparer<PackageViewModel>? childComparer = null)
         : base(name, session, childComparer)
     {
     }

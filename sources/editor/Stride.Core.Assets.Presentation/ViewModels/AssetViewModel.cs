@@ -5,7 +5,6 @@ using System.Reflection;
 using Stride.Core.Assets.Presentation.Components.Properties;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Presentation.Quantum;
-using Stride.Core.Presentation.Services;
 using Stride.Core.Quantum;
 
 namespace Stride.Core.Assets.Presentation.ViewModels;
@@ -40,15 +39,15 @@ public abstract class AssetViewModel : SessionObjectViewModel, IAssetPropertyPro
     {
         Initializing = true;
 
-        this.assetItem = parameters.AssetItem;
-        this.directory = parameters.Directory;
+        assetItem = parameters.AssetItem;
+        directory = parameters.Directory;
         var forcedRoot = AssetType.GetCustomAttribute<AssetDescriptionAttribute>()?.AlwaysMarkAsRoot ?? false;
         Dependencies = new AssetDependenciesViewModel(this, forcedRoot);
         Sources = new AssetSourcesViewModel(this);
 
         InitialUndelete(parameters.CanUndoRedoCreation);
 
-        this.name = Path.GetFileName(assetItem.Location);
+        name = Path.GetFileName(assetItem.Location);
         PropertyGraph = Session.GraphContainer.TryGetGraph(assetItem.Id);
         Initializing = false;
     }
@@ -119,8 +118,6 @@ public abstract class AssetViewModel : SessionObjectViewModel, IAssetPropertyPro
     protected bool Initializing { get; private set; }
 
     protected Package Package => Directory.Package.Package;
-
-    protected internal IUndoRedoService? UndoRedoService => ServiceProvider.TryGet<IUndoRedoService>();
 
     /// <summary>
     /// Initializes this asset. This method is guaranteed to be called once every other assets are loaded in the session.

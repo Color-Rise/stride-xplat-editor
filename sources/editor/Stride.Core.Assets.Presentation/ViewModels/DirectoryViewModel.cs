@@ -1,6 +1,8 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
+using Stride.Core.Translation;
+
 namespace Stride.Core.Assets.Presentation.ViewModels;
 
 public sealed class DirectoryViewModel : DirectoryBaseViewModel
@@ -53,6 +55,36 @@ public sealed class DirectoryViewModel : DirectoryBaseViewModel
 
     /// <inheritdoc/>
     public override string TypeDisplayName => "Folder";
+
+    public override bool CanDelete(out string error)
+    {
+        error = "";
+        if (!IsEditable)
+        {
+            error = Tr._p("Message", "This package that contains this folder can't be edited.");
+        }
+        return IsEditable;
+    }
+
+    /// <summary>
+    /// Deletes this directory and all its subdirectories and contained assets.
+    /// </summary>
+    public override void Delete()
+    {
+        string message = $@"Delete folder ""{Path}""";
+        var previousProject = Package;
+        using (var transaction = UndoRedoService.CreateTransaction())
+        {
+            var hierarchy = GetDirectoryHierarchy();
+            foreach (var asset in hierarchy.SelectMany(directory => directory.Assets))
+            {
+                asset.IsDeleted = true;
+            }
+            Parent = null!;
+            UndoRedoService.SetName(transaction, message);
+        }
+        previousProject.CheckConsistency();
+    }
 
     protected override void UpdateIsDeletedStatus()
     {
