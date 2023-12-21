@@ -32,9 +32,13 @@ using Stride.Assets.Presentation.View;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Presentation.ViewModel.CopyPasteProcessors;
 using Stride.Engine;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
 {
+    using AssetCompositeItemViewModel = AssetCompositeGameEditor.ViewModels.AssetCompositeItemViewModel;
+    using AssetViewModel = Core.Assets.Editor.ViewModel.AssetViewModel;
+
     /// <summary>
     /// Base class for the view model of an <see cref="EntityHierarchyViewModel"/> editor.
     /// </summary>
@@ -181,7 +185,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
         }
 
         /// <inheritdoc />
-        public override AssetCompositeItemViewModel CreatePartViewModel(AssetCompositeHierarchyViewModel<EntityDesign, Entity> asset, EntityDesign partDesign)
+        public override AssetCompositeItemViewModel CreatePartViewModel(Core.Assets.Editor.ViewModel.AssetCompositeHierarchyViewModel<EntityDesign, Entity> asset, EntityDesign partDesign)
         {
             return new EntityViewModel(this, (EntityHierarchyViewModel)asset, partDesign);
         }
@@ -624,7 +628,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
 
         private void CreatePrefabFromSelection()
         {
-            Dictionary<AssetCompositeHierarchyViewModel<EntityDesign, Entity>, Dictionary<Guid, Guid>> idRemappings;
+            Dictionary<Core.Assets.Editor.ViewModel.AssetCompositeHierarchyViewModel<EntityDesign, Entity>, Dictionary<Guid, Guid>> idRemappings;
             CreateAssetFromSelectedParts(() => new PrefabAsset(), e => e?.Name ?? "Prefab", true, out idRemappings);
         }
 

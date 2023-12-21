@@ -4,17 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Stride.Core.Assets;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Core.Mathematics;
 using Stride.Assets.Entities;
 using Stride.Engine;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
 {
+    using AssetViewModel = Core.Assets.Editor.ViewModel.AssetViewModel;
+
     public abstract class AddAssetPolicyBase<TAsset, TAssetViewModel> : IAddAssetPolicy
         where TAsset : Asset
-        where TAssetViewModel : AssetViewModel, IAssetViewModel<TAsset>
+        where TAssetViewModel : AssetViewModel, Core.Assets.Editor.ViewModel.IAssetViewModel<TAsset>
     {
         /// <inheritdoc />
         public bool Accept(Type type)
@@ -45,7 +47,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
 
     public abstract class CreateComponentPolicyBase<TAsset, TAssetViewModel> : AddAssetPolicyBase<TAsset, TAssetViewModel>, ICreateComponentPolicy
         where TAsset : Asset
-        where TAssetViewModel : AssetViewModel, IAssetViewModel<TAsset>
+        where TAssetViewModel : AssetViewModel, Core.Assets.Editor.ViewModel.IAssetViewModel<TAsset>
     {
         /// <inheritdoc />
         protected override bool CanAddOrInsert(EntityHierarchyItemViewModel parent, TAssetViewModel asset, AddChildModifiers modifier, int index, out string message, params object[] messageArgs)
@@ -73,7 +75,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
 
     public abstract class CreateEntitiesPolicyBase<TAsset, TAssetViewModel> : AddAssetPolicyBase<TAsset, TAssetViewModel>, ICreateEntitiesPolicy
         where TAsset : Asset
-        where TAssetViewModel : AssetViewModel, IAssetViewModel<TAsset>
+        where TAssetViewModel : AssetViewModel, Core.Assets.Editor.ViewModel.IAssetViewModel<TAsset>
     {
         /// <inheritdoc />
         public AssetCompositeHierarchyData<EntityDesign, Entity> CreateEntitiesFromAsset(EntityHierarchyItemViewModel parent, AssetViewModel asset)
@@ -94,7 +96,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
 
     public abstract class CustomPolicyBase<TAsset, TAssetViewModel> : AddAssetPolicyBase<TAsset, TAssetViewModel>, ICustomPolicy
         where TAsset : Asset
-        where TAssetViewModel : AssetViewModel, IAssetViewModel<TAsset>
+        where TAssetViewModel : AssetViewModel, Core.Assets.Editor.ViewModel.IAssetViewModel<TAsset>
     {
         /// <inheritdoc />
         public void ApplyPolicy(EntityHierarchyItemViewModel parent, IEnumerable<AssetViewModel> assets, int index, Vector3 position)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 
 namespace Stride.Core.Assets.Editor.View.Behaviors

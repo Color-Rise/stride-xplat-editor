@@ -2,7 +2,6 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Annotations;
@@ -12,6 +11,7 @@ using Stride.Core.Storage;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Services;
 using Stride.Core.Translation;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.ViewModel
 {

@@ -1,19 +1,21 @@
-﻿// Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
+// Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Stride.Core.Assets.Editor.Components.Properties;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Quantum;
 using Stride.Core.Presentation.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels
 {
+    using AssetViewModel = Core.Assets.Editor.ViewModel.AssetViewModel;
+
     /// <summary>
     /// A view model representing an item, real or virtual, of a hierarchical composite asset.
     /// </summary>

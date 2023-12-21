@@ -12,7 +12,6 @@ using Stride.Core.Assets.Diagnostics;
 using Stride.Core.Assets.Editor.Components.Properties;
 using Stride.Core.Assets.Editor.Components.TemplateDescriptions;
 using Stride.Core.Assets.Editor.Services;
-using Stride.Core.Assets.Editor.ViewModel.Logs;
 using Stride.Core.Assets.Editor.ViewModel.Progress;
 using Stride.Core.Assets.Templates;
 using Stride.Core.Annotations;
@@ -29,6 +28,7 @@ using Stride.Core.Translation;
 using System.IO;
 using Stride.Core.Packages;
 using Stride.Core.Presentation.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.ViewModel
 {

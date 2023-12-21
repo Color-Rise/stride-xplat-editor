@@ -47,7 +47,7 @@ namespace Stride.Core.Assets.Editor.View
             var initialDirectory = InitialLocation ?? Session.LocalPackages.First().AssetMountPoint;
             var selectedItem = initialDirectory;
             DirectoryTreeView.SelectedItems.Add(selectedItem);
-            DirectoryTreeView.BringItemToView(selectedItem, x => (x as IChildViewModel)?.GetParent());
+            DirectoryTreeView.BringItemToView(selectedItem, x => (x as Presentation.ViewModels.IChildViewModel)?.GetParent());
 
             if (InitialAsset != null)
             {

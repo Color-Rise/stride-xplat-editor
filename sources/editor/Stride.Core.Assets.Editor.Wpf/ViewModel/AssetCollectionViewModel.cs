@@ -32,6 +32,7 @@ using Stride.Core.Presentation.Interop;
 using Stride.Core.Presentation.Services;
 using Stride.Core.Translation;
 using Stride.Core.Presentation.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.ViewModel
 {

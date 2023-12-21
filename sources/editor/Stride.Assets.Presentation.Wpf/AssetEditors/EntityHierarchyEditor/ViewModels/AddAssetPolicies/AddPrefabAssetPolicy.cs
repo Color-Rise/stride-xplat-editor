@@ -2,11 +2,11 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System.Linq;
 using Stride.Core.Assets;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Assets.Entities;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Engine;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
 {

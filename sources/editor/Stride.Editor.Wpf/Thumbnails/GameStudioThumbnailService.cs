@@ -18,6 +18,7 @@ using Stride.Editor.Build;
 using Stride.Editor.Wpf.Resources;
 using Stride.Graphics;
 using Stride.Shaders.Compiler;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Editor.Thumbnails
 { 

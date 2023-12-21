@@ -3,8 +3,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.Extensions
 {

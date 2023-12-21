@@ -7,7 +7,6 @@ using System.Linq;
 using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.Quantum;
 using Stride.Core.Assets.Editor.View.Behaviors;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Assets.Quantum.Visitors;
 using Stride.Core.Assets.Serializers;
@@ -21,16 +20,18 @@ using Stride.Core.Presentation.Services;
 using Stride.Core.Quantum;
 using Stride.Assets.Entities;
 using Stride.Assets.Models;
-using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.EntityFactories;
 using Stride.Assets.Presentation.AssetEditors.SceneEditor.ViewModels;
 using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Engine;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
 {
-    public abstract class EntityHierarchyItemViewModel : AssetCompositeItemViewModel<EntityHierarchyViewModel, EntityHierarchyItemViewModel>, IAddChildViewModel, IInsertChildViewModel
+    using AssetViewModel = Core.Assets.Editor.ViewModel.AssetViewModel;
+
+    public abstract class EntityHierarchyItemViewModel : AssetCompositeGameEditor.ViewModels.AssetCompositeItemViewModel<EntityHierarchyViewModel, EntityHierarchyItemViewModel>, IAddChildViewModel, IInsertChildViewModel
     {
         private readonly List<IAddAssetPolicy> addAssetPolicies;
         private readonly ObservableList<EntityViewModel> subEntities = new ObservableList<EntityViewModel>();

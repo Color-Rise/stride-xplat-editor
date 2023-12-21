@@ -6,21 +6,18 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
-using Stride.Core.Assets;
-using Stride.Core.Assets.Editor.Components.TemplateDescriptions;
 using Stride.Core.Assets.Editor.Components.TemplateDescriptions.ViewModels;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
 using Stride.Core.Transactions;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.Commands;
-using Stride.Core.Presentation.Quantum;
 using Stride.Core.Presentation.Quantum.ViewModels;
 using Stride.Core.Quantum;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Scripts;
 using Stride.Core.Presentation.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.VisualScriptEditor
 {

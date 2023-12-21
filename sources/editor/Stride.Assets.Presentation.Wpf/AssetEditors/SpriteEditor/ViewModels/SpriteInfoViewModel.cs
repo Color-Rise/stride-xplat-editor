@@ -7,8 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Stride.Core.Assets.Editor.Components.Properties;
-using Stride.Core.Assets.Editor.View.Behaviors;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core;
 using Stride.Core.Extensions;
 using Stride.Core.IO;
@@ -20,9 +18,12 @@ using Stride.Core.Quantum;
 using Stride.Core.Translation;
 using Stride.Assets.Sprite;
 using Stride.Core.Presentation.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.SpriteEditor.ViewModels
 {
+    using AssetViewModel = Core.Assets.Editor.ViewModel.AssetViewModel;
+
     /// <summary>
     /// The class represents a single <see cref="SpriteInfo"/> into an <see cref="SpriteSheetEditorViewModel"/>.
     /// </summary>

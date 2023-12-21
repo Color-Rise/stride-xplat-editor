@@ -6,8 +6,6 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Stride.Core.Assets.Editor.View.Behaviors;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core;
 using Stride.Core.Annotations;
 using Stride.Core.Extensions;
@@ -21,6 +19,7 @@ using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels;
 using Stride.Assets.Presentation.SceneEditor;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Engine;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.SceneEditor.ViewModels
 {

@@ -25,7 +25,6 @@ using Stride.Core.Presentation.Windows;
 using Stride.Core.Quantum;
 using Stride.Core.Translation;
 using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels;
-using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.UIEditor.Game;
@@ -38,9 +37,12 @@ using Stride.Engine;
 using Stride.Engine.Processors;
 using Stride.UI;
 using Stride.UI.Panels;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
 {
+    using AssetCompositeItemViewModel = AssetCompositeGameEditor.ViewModels.AssetCompositeItemViewModel;
+
     /// <summary>
     /// Base class for the view model of an <see cref="UIBaseViewModel"/> editor.
     /// </summary>
@@ -311,7 +313,7 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
         }
 
         /// <inheritdoc/>
-        public override AssetCompositeItemViewModel CreatePartViewModel(AssetCompositeHierarchyViewModel<UIElementDesign, UIElement> asset, UIElementDesign partDesign)
+        public override AssetCompositeItemViewModel CreatePartViewModel(Core.Assets.Editor.ViewModel.AssetCompositeHierarchyViewModel<UIElementDesign, UIElement> asset, UIElementDesign partDesign)
         {
             return UIElementViewModelFactory.Instance.ProvideViewModel(this, (UIBaseViewModel)asset, partDesign);
         }
@@ -555,7 +557,7 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
 
         private void CreateLibraryFromSelection()
         {
-            Dictionary<AssetCompositeHierarchyViewModel<UIElementDesign, UIElement>, Dictionary<Guid, Guid>> idRemappings;
+            Dictionary<Core.Assets.Editor.ViewModel.AssetCompositeHierarchyViewModel<UIElementDesign, UIElement>, Dictionary<Guid, Guid>> idRemappings;
             var assetItem = CreateAssetFromSelectedParts(() => new UILibraryAsset { Design = new UIAssetBase.UIDesign { Resolution = UIAsset.Design.Resolution } }, e => e?.Name ?? "UILibrary", true, out idRemappings);
             if (assetItem != null)
             {
@@ -570,7 +572,7 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
             if (SelectedItems.Count != 1)
                 return;
 
-            Dictionary<AssetCompositeHierarchyViewModel<UIElementDesign, UIElement>, Dictionary<Guid, Guid>> idRemappings;
+            Dictionary<Core.Assets.Editor.ViewModel.AssetCompositeHierarchyViewModel<UIElementDesign, UIElement>, Dictionary<Guid, Guid>> idRemappings;
             CreateAssetFromSelectedParts(() => new UIPageAsset { Design = new UIAssetBase.UIDesign { Resolution = UIAsset.Design.Resolution } }, e => e?.Name ?? "UIPage", false, out idRemappings);
         }
 

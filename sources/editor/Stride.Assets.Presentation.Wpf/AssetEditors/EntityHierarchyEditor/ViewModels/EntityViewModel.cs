@@ -5,12 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Stride.Core.Assets;
 using Stride.Core.Assets.Analysis;
 using Stride.Core.Assets.Editor.Components.Properties;
 using Stride.Core.Assets.Editor.Quantum.NodePresenters;
-using Stride.Core.Assets.Editor.View.Behaviors;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Quantum;
 using Stride.Core;
 using Stride.Core.Annotations;
@@ -24,14 +21,16 @@ using Stride.Assets.Entities;
 using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.EntityFactories;
 using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.Services;
-using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Engine;
 using Stride.Core.Presentation.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
 {
+    using AssetViewModel = Core.Assets.Editor.ViewModel.AssetViewModel;
+
     [DebuggerDisplay("Entity = {Name}")]
     public sealed class EntityViewModel : EntityHierarchyElementViewModel, IEditorDesignPartViewModel<EntityDesign, Entity>, IIsEditableViewModel, IDisposable, IAddChildrenPropertiesProviderViewModel
     {
