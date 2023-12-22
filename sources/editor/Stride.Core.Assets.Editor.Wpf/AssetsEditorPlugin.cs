@@ -19,7 +19,7 @@ namespace Stride.Core.Assets.Editor
         public override void InitializePlugin(ILogger logger)
         {
             if (imageDictionary == null)
-                imageDictionary = (ResourceDictionary)Application.LoadComponent(new Uri("/Stride.Core.Assets.Editor;component/View/ImageDictionary.xaml", UriKind.RelativeOrAbsolute));
+                imageDictionary = (ResourceDictionary)Application.LoadComponent(new Uri("/Stride.Core.Assets.Editor.Wpf;component/View/ImageDictionary.xaml", UriKind.RelativeOrAbsolute));
         }
 
         /// <inheritdoc />

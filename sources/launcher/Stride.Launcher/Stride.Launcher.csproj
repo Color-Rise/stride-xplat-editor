@@ -50,7 +50,7 @@
     <Compile Include="..\..\assets\Stride.Core.Assets\Package.Constants.cs">
       <Link>Packages\Package.Constants.cs</Link>
     </Compile>
-    <Compile Include="..\..\editor\Stride.Core.Assets.Editor\EditorPath.cs">
+    <Compile Include="..\..\editor\Stride.Core.Assets.Editor.Wpf\EditorPath.cs">
       <Link>Editor\EditorPath.cs</Link>
     </Compile>
   </ItemGroup>

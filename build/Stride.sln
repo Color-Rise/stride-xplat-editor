@@ -148,7 +148,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets", "..\sources\engine\Stride.Assets\Stride.Assets.csproj", "{39AE9C77-E94B-404F-8768-B6261B3C1E0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.Editor", "..\sources\editor\Stride.Core.Assets.Editor\Stride.Core.Assets.Editor.csproj", "{5863574D-7A55-49BC-8E65-BABB74D8E66E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.Editor.Wpf", "..\sources\editor\Stride.Core.Assets.Editor.Wpf\Stride.Core.Assets.Editor.Wpf.csproj", "{5863574D-7A55-49BC-8E65-BABB74D8E66E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.CompilerApp", "..\sources\assets\Stride.Core.Assets.CompilerApp\Stride.Core.Assets.CompilerApp.csproj", "{50D1A3BB-4B41-4EF5-8D2F-3618A3B6C698}"
 EndProject
