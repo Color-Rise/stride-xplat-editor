@@ -7,16 +7,16 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Extensions;
 using Stride.Assets.Materials;
 using Stride.Rendering.Materials;
-using Stride.Core.Presentation.Quantum;
 using Stride.Core.Quantum;
 using Stride.Core.Shaders.Ast;
 using Stride.Core.Shaders.Ast.Stride;
 using Stride.Assets.Effect;
 using Stride.Rendering.Materials.ComputeColors;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(MaterialAsset))]
+    [AssetViewModel<MaterialAsset>]
     public class MaterialViewModel : AssetViewModel<MaterialAsset>
     {
         public MaterialViewModel(AssetViewModelConstructionParameters parameters)

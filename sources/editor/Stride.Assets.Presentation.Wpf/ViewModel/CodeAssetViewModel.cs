@@ -4,9 +4,9 @@ using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.IO;
-using Stride.Core.Presentation.Dirtiables;
 using Stride.Assets.Effect;
 using Stride.Editor.Build;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
@@ -14,7 +14,7 @@ namespace Stride.Assets.Presentation.ViewModel
     /// View model for <see cref="SourceCodeAsset"/>.
     /// </summary>
     /// <typeparam name="TSourceCodeAsset"></typeparam>
-    public abstract class CodeAssetViewModel<TSourceCodeAsset> : AssetViewModel<TSourceCodeAsset> where TSourceCodeAsset : SourceCodeAsset
+    public abstract class CodeAssetViewModel<TSourceCodeAsset> : Core.Assets.Editor.ViewModel.AssetViewModel<TSourceCodeAsset> where TSourceCodeAsset : SourceCodeAsset
     {
         protected CodeAssetViewModel(AssetViewModelConstructionParameters parameters)
             : base(parameters)
@@ -40,7 +40,7 @@ namespace Stride.Assets.Presentation.ViewModel
         public UFile FullPath => AssetItem.FullPath;
     }
 
-    [AssetViewModel(typeof(SourceCodeAsset))]
+    [AssetViewModel<SourceCodeAsset>]
     public class CodeAssetViewModel : CodeAssetViewModel<SourceCodeAsset>
     {
         public CodeAssetViewModel(AssetViewModelConstructionParameters parameters) : base(parameters)

@@ -3,13 +3,12 @@
 
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
-using Stride.Core.Quantum;
 using Stride.Assets.Navigation;
-using Stride.Navigation;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(NavigationMeshAsset))]
+    [AssetViewModel<NavigationMeshAsset>]
     public class NavigationViewModel : AssetViewModel<NavigationMeshAsset>
     {
         public NavigationViewModel([NotNull] AssetViewModelConstructionParameters parameters) : base(parameters)

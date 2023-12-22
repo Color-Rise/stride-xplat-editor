@@ -23,10 +23,11 @@ using Stride.Core.Annotations;
 using Stride.Core.Translation;
 using TextDocument = ICSharpCode.AvalonEdit.Document.TextDocument;
 using Stride.Core.Assets;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(ScriptSourceFileAsset))]
+    [AssetViewModel<ScriptSourceFileAsset>]
     public class ScriptSourceFileAssetViewModel : CodeAssetViewModel<ScriptSourceFileAsset>
     {
         private Rope<char> mirroredText;

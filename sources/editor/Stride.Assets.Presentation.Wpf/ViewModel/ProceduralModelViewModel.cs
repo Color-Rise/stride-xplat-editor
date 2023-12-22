@@ -6,10 +6,11 @@ using Stride.Core.Quantum;
 using Stride.Assets.Models;
 using Stride.Rendering;
 using Stride.Rendering.ProceduralModels;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(ProceduralModelAsset))]
+    [AssetViewModel<ProceduralModelAsset>]
     public class ProceduralModelViewModel : AssetViewModel<ProceduralModelAsset>
     {
         private readonly IMemberNode typeNode;

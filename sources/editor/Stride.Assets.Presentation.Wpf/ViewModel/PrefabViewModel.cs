@@ -4,10 +4,11 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Core.Quantum;
 using Stride.Assets.Entities;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(PrefabAsset))]
+    [AssetViewModel<PrefabAsset>]
     public class PrefabViewModel : EntityHierarchyViewModel, IAssetViewModel<PrefabAsset>
     {
         public PrefabViewModel([NotNull] AssetViewModelConstructionParameters parameters)

@@ -2,10 +2,11 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Assets.SpriteFont;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(PrecompiledSpriteFontAsset))]
+    [AssetViewModel<PrecompiledSpriteFontAsset>]
     public class PrecompiledSpriteFontViewModel : AssetViewModel<PrecompiledSpriteFontAsset>
     {
         public PrecompiledSpriteFontViewModel(AssetViewModelConstructionParameters parameters)

@@ -8,8 +8,9 @@ using Stride.Core.Assets.Editor.Components.Properties;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Core.Diagnostics;
-using Stride.Core.Extensions;
 using Stride.Core.Presentation.View;
+using Stride.Core.Assets.Presentation.Annotations;
+using AssetViewModel = Stride.Core.Assets.Editor.ViewModel.AssetViewModel;
 
 namespace Stride.Core.Assets.Editor.Services
 {
@@ -43,31 +44,10 @@ namespace Stride.Core.Assets.Editor.Services
             var pluginAssembly = GetType().Assembly;
             foreach (var type in pluginAssembly.GetTypes())
             {
-                if (typeof(AssetViewModel).IsAssignableFrom(type))
+                if (typeof(AssetViewModel).IsAssignableFrom(type) &&
+                    type.GetCustomAttribute<AssetViewModelAttribute>() is { } attribute)
                 {
-                    var attribute = type.GetCustomAttribute<AssetViewModelAttribute>();
-                    if (attribute != null)
-                    {
-                        Type closureType = type;
-                        attribute.AssetTypes.ForEach(x => assetViewModelTypes.Add(x, closureType));
-                    }
-                }
-            }
-        }
-
-        public void RegisterAssetPropertyGraphViewModelTypes([NotNull] IDictionary<Type, Type> assetViewModelTypes)
-        {
-            var pluginAssembly = GetType().Assembly;
-            foreach (var type in pluginAssembly.GetTypes())
-            {
-                if (typeof(AssetViewModel).IsAssignableFrom(type))
-                {
-                    var attribute = type.GetCustomAttribute<AssetViewModelAttribute>();
-                    if (attribute != null)
-                    {
-                        Type closureType = type;
-                        attribute.AssetTypes.ForEach(x => assetViewModelTypes.Add(x, closureType));
-                    }
+                    assetViewModelTypes.Add(attribute.AssetType, type);
                 }
             }
         }

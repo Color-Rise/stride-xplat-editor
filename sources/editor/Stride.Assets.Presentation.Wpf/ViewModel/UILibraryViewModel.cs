@@ -3,13 +3,14 @@
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
     /// <summary>
     /// View model for <see cref="UILibraryAsset"/>.
     /// </summary>
-    [AssetViewModel(typeof(UILibraryAsset))]
+    [AssetViewModel<UILibraryAsset>]
     public class UILibraryViewModel : UIBaseViewModel, IAssetViewModel<UILibraryAsset>
     {
         public UILibraryViewModel([NotNull] AssetViewModelConstructionParameters parameters)

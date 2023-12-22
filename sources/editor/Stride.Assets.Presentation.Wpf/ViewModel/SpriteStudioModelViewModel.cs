@@ -3,13 +3,13 @@
 using System.Linq;
 using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.Quantum;
+using Stride.Core.Assets.Presentation.Annotations;
 using Stride.SpriteStudio.Offline;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
     // FIXME: this view model should be in the SpriteStudio offline assembly! Can't be done now, because of a circular reference in CompilerApp referencing SpriteStudio, and Editor referencing CompilerApp
-    [AssetViewModel(typeof(SpriteStudioModelAsset))]
+    [AssetViewModel<SpriteStudioModelAsset>]
     public class SpriteStudioModelViewModel : ImportedAssetViewModel<SpriteStudioModelAsset>
     {
         public SpriteStudioModelViewModel(AssetViewModelConstructionParameters parameters)

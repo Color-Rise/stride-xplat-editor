@@ -12,10 +12,11 @@ using Stride.Core.Presentation.Services;
 using Stride.Core.Presentation.Windows;
 using Stride.Core.Translation;
 using Stride.Graphics;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(SpriteFontAsset))]
+    [AssetViewModel<SpriteFontAsset>]
     public class SpriteFontViewModel : AssetViewModel<SpriteFontAsset>
     {
         /// <summary>

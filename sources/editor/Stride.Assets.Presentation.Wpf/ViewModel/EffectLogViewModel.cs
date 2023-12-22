@@ -3,10 +3,11 @@
 
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Assets.Effect;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(EffectLogAsset))]
+    [AssetViewModelAttribute<EffectLogAsset>]
     public class EffectLogViewModel : AssetViewModel<EffectLogAsset>
     {
         public EffectLogViewModel(AssetViewModelConstructionParameters parameters) : base(parameters)

@@ -5,13 +5,14 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Quantum;
 using Stride.Assets.Scripts;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
     /// <summary>
     /// View model for a <see cref="VisualScriptAsset"/>.
     /// </summary>
-    [AssetViewModel(typeof(VisualScriptAsset))]
+    [AssetViewModel<VisualScriptAsset>]
     public class VisualScriptViewModel : AssetCompositeViewModel<VisualScriptAsset>
     {
         private readonly IObjectNode propertiesContent;

@@ -3,14 +3,14 @@
 using System.Linq;
 using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.Assets.Quantum;
 using Stride.Core.Reflection;
 using Stride.Core.Quantum;
 using Stride.Assets.Models;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(SkeletonAsset))]
+    [AssetViewModel<SkeletonAsset>]
     public class SkeletonViewModel : ImportedAssetViewModel<SkeletonAsset>
     {
         public SkeletonViewModel(AssetViewModelConstructionParameters parameters)

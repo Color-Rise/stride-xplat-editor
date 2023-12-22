@@ -3,10 +3,11 @@
 
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Assets.Skyboxes;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(SkyboxAsset))]
+    [AssetViewModel<SkyboxAsset>]
     public class SkyboxViewModel : AssetViewModel<SkyboxAsset>
     {
         public SkyboxViewModel(AssetViewModelConstructionParameters parameters)

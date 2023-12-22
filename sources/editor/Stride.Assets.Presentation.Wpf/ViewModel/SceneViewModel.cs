@@ -15,10 +15,11 @@ using Stride.Core.Presentation.Commands;
 using Stride.Core.Quantum;
 using Stride.Assets.Entities;
 using Stride.Engine;
+using Stride.Core.Assets.Presentation.Annotations;
 
 namespace Stride.Assets.Presentation.ViewModel
 {
-    [AssetViewModel(typeof(SceneAsset))]
+    [AssetViewModel<SceneAsset>]
     public sealed class SceneViewModel : EntityHierarchyViewModel, IAssetViewModel<SceneAsset>
     {
         private readonly IObjectNode childrenNode;
