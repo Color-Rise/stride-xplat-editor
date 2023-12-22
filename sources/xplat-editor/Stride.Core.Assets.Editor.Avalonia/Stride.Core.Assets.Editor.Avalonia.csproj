@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Stride.Core.Assets.Editor\Stride.Core.Assets.Editor.csproj" />
+    <ProjectReference Include="..\..\editor\Stride.Core.Assets.Editor\Stride.Core.Assets.Editor.csproj" />
   </ItemGroup>
 
   <Import Project="$(StrideSdkTargets)" />
