@@ -25,6 +25,8 @@ public class BrowseDirectoryCommand : ChangeValueWithPickerCommandBase
     /// <param name="initialDirectoryProvider">An object that provide the initial directory to use in the picker.</param>
     public BrowseDirectoryCommand(IDialogService dialogService, IInitialDirectoryProvider? initialDirectoryProvider = null)
     {
+        ArgumentNullException.ThrowIfNull(dialogService);
+
         this.dialogService = dialogService;
         this.initialDirectoryProvider = initialDirectoryProvider;
     }

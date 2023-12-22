@@ -22,7 +22,7 @@ public abstract class AssetCompositeEditorViewModel<TAsset, TAssetViewModel> : A
         ServiceProvider.Get<SelectionService>().RegisterSelectionScope(GetObjectToSelect, GetSelectedObjectId, SelectedContent);
     }
 
-    public ObservableSet<object> SelectedContent { get; } = new ObservableSet<object>();
+    public ObservableSet<object> SelectedContent { get; } = [];
 
     public override void Destroy()
     {

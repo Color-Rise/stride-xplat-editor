@@ -23,7 +23,7 @@ public class ResetOverrideCommand : SyncNodePresenterCommandBase
     }
 
     /// <inheritdoc/>
-    protected override void ExecuteSync(INodePresenter nodePresenter, object parameter, object preExecuteResult)
+    protected override void ExecuteSync(INodePresenter nodePresenter, object? parameter, object? preExecuteResult)
     {
         var assetNodePresenter = (IAssetNodePresenter)nodePresenter;
         assetNodePresenter.ResetOverride();

@@ -47,7 +47,7 @@ public class AddPrimitiveKeyCommand : SyncNodePresenterCommandBase
     }
 
     /// <inheritdoc/>
-    protected override void ExecuteSync(INodePresenter nodePresenter, object parameter, object preExecuteResult)
+    protected override void ExecuteSync(INodePresenter nodePresenter, object? parameter, object? preExecuteResult)
     {
         var assetNodePresenter = nodePresenter as IAssetNodePresenter;
         var dictionaryDescriptor = (DictionaryDescriptor)nodePresenter.Descriptor;

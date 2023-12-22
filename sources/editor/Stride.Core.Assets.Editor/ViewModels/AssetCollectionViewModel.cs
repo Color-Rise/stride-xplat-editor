@@ -12,10 +12,10 @@ namespace Stride.Core.Assets.Editor.ViewModels;
 
 public sealed class AssetCollectionViewModel : DispatcherViewModel
 {
-    private readonly ObservableSet<AssetViewModel> assets = new();
-    private readonly HashSet<DirectoryBaseViewModel> monitoredDirectories = new();
-    private readonly ObservableSet<AssetViewModel> selectedAssets = new();
-    private readonly ObservableSet<object> selectedContent = new();
+    private readonly ObservableSet<AssetViewModel> assets = [];
+    private readonly HashSet<DirectoryBaseViewModel> monitoredDirectories = [];
+    private readonly ObservableSet<AssetViewModel> selectedAssets = [];
+    private readonly ObservableSet<object> selectedContent = [];
     private object? singleSelectedContent;
 
     public AssetCollectionViewModel(SessionViewModel session)
@@ -50,7 +50,7 @@ public sealed class AssetCollectionViewModel : DispatcherViewModel
     /// </summary>
     public IReadOnlyObservableCollection<object> SelectedContent => selectedContent;
 
-    public ObservableCollection<object> SelectedLocations { get; } = new ObservableCollection<object>();
+    public ObservableCollection<object> SelectedLocations { get; } = [];
 
     public SessionViewModel Session { get; }
 

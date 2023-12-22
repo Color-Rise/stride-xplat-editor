@@ -15,7 +15,7 @@ namespace Stride.Core.Assets.Editor.ViewModels;
 public class ThumbnailsViewModel : DispatcherViewModel
 {
     private readonly SessionViewModel session;
-    private readonly HashSet<PackageViewModel> initialQueue = new();
+    private readonly HashSet<PackageViewModel> initialQueue = [];
     private IThumbnailService? thumbnailService;
 
     /// <summary>

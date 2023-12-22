@@ -42,7 +42,7 @@ public class MoveItemCommand : SyncNodePresenterCommandBase
     }
 
     /// <inheritdoc/>
-    protected override void ExecuteSync(INodePresenter nodePresenter, object parameter, object preExecuteResult)
+    protected override void ExecuteSync(INodePresenter nodePresenter, object? parameter, object? preExecuteResult)
     {
         var itemNode = (ItemNodePresenter)nodePresenter;
         var collectionNode = itemNode.OwnerCollection;

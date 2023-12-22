@@ -2,7 +2,6 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
 using System.Collections.Specialized;
-using Stride.Core.Annotations;
 using Stride.Core.Transactions;
 
 namespace Stride.Core.Assets.Editor.Services;
@@ -34,7 +33,7 @@ public class SelectionOperation : Operation
     /// </summary>
     /// <param name="scope"></param>
     /// <param name="collection">The collection to register.</param>
-    public void RegisterCollection([NotNull] SelectionScope scope, [NotNull] INotifyCollectionChanged collection)
+    public void RegisterCollection(SelectionScope scope, INotifyCollectionChanged collection)
     {
         previousState.RegisterCollection(scope, collection);
         nextState.RegisterCollection(scope, collection);
@@ -44,7 +43,7 @@ public class SelectionOperation : Operation
     /// Unregisters a collection from the previous and next states of this operation.
     /// </summary>
     /// <param name="collection">The collection to unregister.</param>
-    public void UnregisterCollection([NotNull] INotifyCollectionChanged collection)
+    public void UnregisterCollection(INotifyCollectionChanged collection)
     {
         previousState.UnregisterCollection(collection);
         nextState.UnregisterCollection(collection);

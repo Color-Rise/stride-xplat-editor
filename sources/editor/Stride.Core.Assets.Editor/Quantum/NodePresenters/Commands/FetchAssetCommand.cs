@@ -41,7 +41,7 @@ public class FetchAssetCommand : NodePresenterCommandBase
     }
 
     /// <inheritdoc/>
-    public override Task Execute(INodePresenter nodePresenter, object parameter, object preExecuteResult)
+    public override Task Execute(INodePresenter nodePresenter, object? parameter, object? preExecuteResult)
     {
         return Fetch(Session, nodePresenter.Value);
     }

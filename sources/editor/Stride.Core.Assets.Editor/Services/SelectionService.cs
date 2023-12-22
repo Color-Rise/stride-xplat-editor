@@ -15,7 +15,7 @@ namespace Stride.Core.Assets.Editor.Services;
 public class SelectionService
 {
     private readonly IDispatcherService dispatcher;
-    private readonly List<SelectionScope> scopes = new();
+    private readonly List<SelectionScope> scopes = [];
     private readonly ITransactionStack stack = TransactionStackFactory.Create(int.MaxValue);
     private ITransaction? currentTransaction;
 
@@ -133,7 +133,8 @@ public class SelectionService
     /// <param name="scope">The selection scope to unregister.</param>
     public void UnregisterSelectionScope(SelectionScope scope)
     {
-        if (scope == null) throw new ArgumentNullException(nameof(scope));
+        ArgumentNullException.ThrowIfNull(scope);
+
         foreach (var collection in scope.Collections)
             collection.CollectionChanged -= CollectionChanged;
         scopes.Remove(scope);

@@ -10,9 +10,9 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Updaters;
 
 public sealed class DocumentationNodeUpdater : AssetNodePresenterUpdaterBase
 {
-    private readonly UserDocumentationService documentationService;
+    private readonly IUserDocumentationService documentationService;
 
-    public DocumentationNodeUpdater(UserDocumentationService documentationService)
+    public DocumentationNodeUpdater(IUserDocumentationService documentationService)
     {
         this.documentationService = documentationService;
     }

@@ -5,7 +5,7 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys;
 
 public static class CollectionData
 {
-    //public const string ReorderCollectionItem = nameof(ReorderCollectionItem);
+    public const string ReorderCollectionItem = nameof(ReorderCollectionItem);
     public const string ReadOnlyCollection = nameof(ReadOnlyCollection);
     //public static readonly PropertyKey<ReorderCollectionItemViewModel> ReorderCollectionItemKey = new(ReorderCollectionItem, typeof(CollectionData));
     public static readonly PropertyKey<bool> ReadOnlyCollectionKey = new(ReadOnlyCollection, typeof(CollectionData));

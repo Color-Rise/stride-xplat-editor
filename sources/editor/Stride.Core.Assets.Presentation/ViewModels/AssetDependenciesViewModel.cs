@@ -139,7 +139,7 @@ public sealed class AssetDependenciesViewModel : DispatcherViewModel
 
     private static void UpdateReferences(ISessionViewModel session)
     {
-        if (session == null) throw new ArgumentNullException(nameof(session));
+        ArgumentNullException.ThrowIfNull(session);
 
         var dirtyReferencers = new HashSet<AssetViewModel>();
         var dirtyAssets = new HashSet<AssetViewModel>();

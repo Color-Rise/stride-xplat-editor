@@ -46,7 +46,7 @@ public class RemoveItemCommand : SyncNodePresenterCommandBase
     }
 
     /// <inheritdoc/>
-    protected override void ExecuteSync(INodePresenter nodePresenter, object parameter, object preExecuteResult)
+    protected override void ExecuteSync(INodePresenter nodePresenter, object? parameter, object? preExecuteResult)
     {
         var collectionNode = ((ItemNodePresenter)nodePresenter).OwnerCollection;
         collectionNode.RemoveItem(nodePresenter.Value, nodePresenter.Index);

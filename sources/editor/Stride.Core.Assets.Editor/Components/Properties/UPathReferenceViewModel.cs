@@ -11,7 +11,7 @@ public class UPathReferenceViewModel : AddReferenceViewModel
 {
     public override bool CanAddChildren(IReadOnlyCollection<object> children, AddChildModifiers modifiers, out string message)
     {
-        UPath path = null;
+        UPath? path = null;
         var singleChild = true;
         foreach (var child in children)
         {

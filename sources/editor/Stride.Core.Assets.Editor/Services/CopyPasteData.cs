@@ -25,7 +25,7 @@ internal class CopyPasteData
     /// </summary>
     [DataMember]
     [NonIdentifiableCollectionItems]
-    public List<CopyPasteItem> Items { get; } = new List<CopyPasteItem>();
+    public List<CopyPasteItem> Items { get; } = [];
 
     /// <summary>
     /// Gets the collection of overridden members in the copied data.

@@ -37,7 +37,7 @@ public abstract class AssetCompositeHierarchyEditorViewModel<TAssetPartDesign, T
 
     public TItemViewModel RootPart { get => rootPart; private set => SetValue(ref rootPart, value); }
 
-    public ObservableSet<TItemViewModel> SelectedItems { get; } = new ObservableSet<TItemViewModel>();
+    public ObservableSet<TItemViewModel> SelectedItems { get; } = [];
     
     /// <inheritdoc/>
     public override void Destroy()

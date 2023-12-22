@@ -24,7 +24,7 @@ public class CreateNewInstanceCommand : ChangeValueCommandBase
     public override bool CanAttach(INodePresenter nodePresenter)
     {
         // We are not in a collection...
-        if (nodePresenter.Descriptor is CollectionDescriptor collectionDescriptor)
+        if (nodePresenter.Descriptor is CollectionDescriptor)
             return false;
 
         var type = nodePresenter.Type;
@@ -35,7 +35,7 @@ public class CreateNewInstanceCommand : ChangeValueCommandBase
     }
 
     /// <inheritdoc/>
-    protected override object ChangeValue(object currentValue, object parameter, object preExecuteResult)
+    protected override object ChangeValue(object currentValue, object? parameter, object? preExecuteResult)
     {
         var entry = (AbstractNodeEntry)parameter;
 

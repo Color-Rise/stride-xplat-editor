@@ -8,10 +8,10 @@ using Stride.Core.Mathematics;
 
 namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Updaters;
 
-internal sealed class MathematicsNodeUpdater : AssetNodePresenterUpdaterBase
+public sealed class MathematicsNodeUpdater : AssetNodePresenterUpdaterBase
 {
-    private readonly Type[] mathematicsTypes = new[]
-    {
+    private readonly Type[] mathematicsTypes =
+    [
         typeof(Vector2),
         typeof(Vector3),
         typeof(Vector4),
@@ -21,7 +21,7 @@ internal sealed class MathematicsNodeUpdater : AssetNodePresenterUpdaterBase
         typeof(Matrix),
         typeof(Rectangle),
         typeof(RectangleF),
-    };
+    ];
 
     protected override void UpdateNode(IAssetNodePresenter node)
     {

@@ -9,7 +9,7 @@ using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 
 namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Updaters;
 
-internal sealed class CollectionPropertyNodeUpdater : AssetNodePresenterUpdaterBase
+public sealed class CollectionPropertyNodeUpdater : AssetNodePresenterUpdaterBase
 {
     protected override void UpdateNode(IAssetNodePresenter node)
     {

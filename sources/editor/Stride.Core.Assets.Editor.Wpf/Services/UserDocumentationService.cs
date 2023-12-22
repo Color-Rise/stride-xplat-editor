@@ -14,7 +14,7 @@ using Stride.Core.Reflection;
 
 namespace Stride.Core.Assets.Editor.Services
 {
-    public class UserDocumentationService
+    public class UserDocumentationService : IUserDocumentationService
     {
         private static readonly Logger Log = GlobalLogger.GetLogger(nameof(UserDocumentationService));
 

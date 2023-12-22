@@ -27,7 +27,7 @@ public sealed class OperationViewModel : DispatcherViewModel
 
     public string Type => Operation.GetType().Name;
 
-    public ObservableList<OperationViewModel> Children { get; } = new();
+    public ObservableList<OperationViewModel> Children { get; } = [];
 
     internal Operation Operation { get; }
 }

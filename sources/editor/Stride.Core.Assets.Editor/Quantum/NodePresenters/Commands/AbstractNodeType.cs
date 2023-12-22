@@ -26,7 +26,7 @@ public sealed class AbstractNodeType : AbstractNodeEntry
     public override string DisplayValue => DisplayAttribute.GetDisplayName(Type);
 
     /// <inheritdoc/>
-    public override object? GenerateValue(object currentValue)
+    public override object? GenerateValue(object? currentValue)
     {
         // Check if this type can be created first to avoid exceptions
         if (!ObjectFactoryRegistry.CanCreateInstance(Type))

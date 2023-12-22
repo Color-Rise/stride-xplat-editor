@@ -27,9 +27,9 @@ public sealed class UndoRedoViewModel : DispatcherViewModel, ITitledPage
 
     public string Title { get; init; } = string.Empty;
 
-    public ObservableList<OperationViewModel> Transactions { get; } = new ObservableList<OperationViewModel>();
+    public ObservableList<OperationViewModel> Transactions { get; } = [];
 
-    public ObservableList<OperationViewModel> DiscardedTransactions { get; } = new ObservableList<OperationViewModel>();
+    public ObservableList<OperationViewModel> DiscardedTransactions { get; } = [];
 
     public ICommandBase ClearDiscardedItemsCommand { get; private set; }
 

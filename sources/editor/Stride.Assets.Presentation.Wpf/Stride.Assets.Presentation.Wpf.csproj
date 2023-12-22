@@ -66,6 +66,9 @@
     <ProjectReference Include="..\..\tools\Stride.Graphics.RenderDocPlugin\Stride.Graphics.RenderDocPlugin.csproj" />
     <ProjectReference Include="..\..\tools\Stride.Core.ProjectTemplating\Stride.Core.ProjectTemplating.csproj" />
     <ProjectReference Include="..\Stride.Core.Assets.Editor.Wpf\Stride.Core.Assets.Editor.Wpf.csproj" />
+    <ProjectReference Include="..\Stride.Core.Assets.Editor\Stride.Core.Assets.Editor.csproj">
+      <Aliases>XplatEditor</Aliases>
+    </ProjectReference>
     <ProjectReference Include="..\Stride.Editor.Wpf\Stride.Editor.Wpf.csproj" />
     <ProjectReference Include="..\Stride.Samples.Templates\Stride.Samples.Templates.csproj" />
   </ItemGroup>

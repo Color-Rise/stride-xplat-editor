@@ -18,6 +18,7 @@ public sealed class AbstractNodeTypeGroup : AbstractNodeEntry
     /// <exception cref="ArgumentNullException">If groupName or types is null or empty.</exception>
     public AbstractNodeTypeGroup(string groupName, IEnumerable<AbstractNodeType> types)
     {
+        ArgumentException.ThrowIfNullOrEmpty(groupName);
         if (types.IsNullOrEmpty())
         {
             throw new ArgumentNullException(nameof(types));

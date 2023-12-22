@@ -38,7 +38,7 @@ public class SelectionState : IEquatable<SelectionState>
     /// Represents a snapshot of a set of collection. The key is the collection itself, used to retrieve the snapshot by reference.
     /// The value is the snapshot, which is a copy of the key content converted to absolute identifiers.
     /// </summary>
-    private readonly Dictionary<INotifyCollectionChanged, State> states = new();
+    private readonly Dictionary<INotifyCollectionChanged, State> states = [];
 
     /// <summary>
     /// Gets whether this state represents a valid selection.
@@ -96,12 +96,12 @@ public class SelectionState : IEquatable<SelectionState>
     /// <param name="collection">The collection to register.</param>
     public void RegisterCollection(SelectionScope scope, INotifyCollectionChanged collection)
     {
-        if (scope == null) throw new ArgumentNullException(nameof(scope));
-        if (collection == null) throw new ArgumentNullException(nameof(collection));
+        ArgumentNullException.ThrowIfNull(scope);
+        ArgumentNullException.ThrowIfNull(collection);
 
         if (!states.ContainsKey(collection))
         {
-            states.Add(collection, new State(new HashSet<AbsoluteId>(), scope.GetObjectToSelect));
+            states.Add(collection, new State([], scope.GetObjectToSelect));
         }
     }
 
@@ -111,7 +111,8 @@ public class SelectionState : IEquatable<SelectionState>
     /// <param name="collection">The collection to unregister.</param>
     public void UnregisterCollection(INotifyCollectionChanged collection)
     {
-        if (collection == null) throw new ArgumentNullException(nameof(collection));
+        ArgumentNullException.ThrowIfNull(collection);
+
         states.Remove(collection);
     }
 

@@ -13,8 +13,8 @@ namespace Stride.Core.Assets.Editor.ViewModels;
 public sealed class EditorCollectionViewModel : DispatcherViewModel
 {
     private AssetEditorViewModel? activeEditor;
-    private readonly ObservableList<AssetEditorViewModel> editors = new();
-    private readonly Dictionary<AssetViewModel, AssetEditorViewModel> openedAssets = new();
+    private readonly ObservableList<AssetEditorViewModel> editors = [];
+    private readonly Dictionary<AssetViewModel, AssetEditorViewModel> openedAssets = [];
 
     public EditorCollectionViewModel(SessionViewModel session)
         : base(session.ServiceProvider)

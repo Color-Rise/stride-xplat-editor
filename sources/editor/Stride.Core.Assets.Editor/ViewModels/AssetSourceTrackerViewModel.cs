@@ -15,7 +15,7 @@ namespace Stride.Core.Assets.Editor.ViewModels;
 public sealed class AssetSourceTrackerViewModel : DispatcherViewModel, IAssetSourceTrackerViewModel
 {
     private readonly CancellationTokenSource cts = new();
-    private readonly ObservableSet<AssetViewModel> assetsToUpdate = new();
+    private readonly ObservableSet<AssetViewModel> assetsToUpdate = [];
 
     public AssetSourceTrackerViewModel(SessionViewModel session)
         : base(session.ServiceProvider)

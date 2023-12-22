@@ -38,7 +38,7 @@ namespace Stride.Core.Assets.Editor.Components.Properties
             ViewModelService.NodeViewModelFactory = new AssetNodeViewModelFactory();
 
             var dialogService = ServiceProvider.Get<IDialogService>();
-            var documentationService = session.ServiceProvider.Get<UserDocumentationService>();
+            var documentationService = session.ServiceProvider.Get<IUserDocumentationService>();
 
             RegisterNodePresenterCommand(new CopyPropertyCommand());
             RegisterNodePresenterCommand(new PastePropertyCommand());

@@ -1,8 +1,6 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
-using Stride.Core.Annotations;
-
 namespace Stride.Core.Assets.Editor.Services;
 
 /// <summary>
@@ -13,7 +11,6 @@ public interface IPasteResult
     /// <summary>
     /// The collection of the pasted items.
     /// </summary>
-    [ItemNotNull, NotNull]
     IReadOnlyList<IPasteItem> Items { get; }
 }
 
@@ -25,12 +22,10 @@ public interface IPasteItem
     /// <summary>
     /// The pasted data.
     /// </summary>
-    [CanBeNull]
-    object Data { get; }
+    object? Data { get; }
 
     /// <summary>
     /// The processor that was used to process the data.
     /// </summary>
-    [CanBeNull]
-    IPasteProcessor Processor { get; }
+    IPasteProcessor? Processor { get; }
 }

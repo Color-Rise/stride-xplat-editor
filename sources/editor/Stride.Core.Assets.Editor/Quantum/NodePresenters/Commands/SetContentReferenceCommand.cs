@@ -43,7 +43,7 @@ public class SetContentReferenceCommand : ChangeValueCommandBase
     }
 
     /// <inheritdoc />
-    protected override object ChangeValue(object currentValue, object parameter, object preExecuteResult)
+    protected override object ChangeValue(object currentValue, object? parameter, object? preExecuteResult)
     {
         var param = (Parameter)parameter;
         var asset = param.Asset;

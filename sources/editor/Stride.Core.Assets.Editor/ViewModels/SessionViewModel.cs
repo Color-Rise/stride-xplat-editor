@@ -28,8 +28,8 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
     private SessionObjectPropertiesViewModel activeProperties;
     private readonly ConcurrentDictionary<AssetId, AssetViewModel> assetIdMap = new();
     private ProjectViewModel? currentProject;
-    private readonly Dictionary<string, PackageCategoryViewModel> packageCategories = new();
-    private readonly Dictionary<PackageViewModel, PackageContainer> packageMap = new();
+    private readonly Dictionary<string, PackageCategoryViewModel> packageCategories = [];
+    private readonly Dictionary<PackageViewModel, PackageContainer> packageMap = [];
     private readonly PackageSession session;
     private bool sessionStateUpdating;
 

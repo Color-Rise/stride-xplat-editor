@@ -6,7 +6,7 @@ using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 
 namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Updaters;
 
-internal sealed class OwnerAssetUpdater : AssetNodePresenterUpdaterBase
+public sealed class OwnerAssetUpdater : AssetNodePresenterUpdaterBase
 {
     protected override void UpdateNode(IAssetNodePresenter node)
     {

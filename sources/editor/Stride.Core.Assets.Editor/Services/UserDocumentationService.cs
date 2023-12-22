@@ -10,13 +10,13 @@ using Stride.Core.Reflection;
 
 namespace Stride.Core.Assets.Editor.Services;
 
-public sealed class UserDocumentationService
+public sealed class UserDocumentationService : IUserDocumentationService
 {
     private static readonly Logger Log = GlobalLogger.GetLogger(nameof(UserDocumentationService));
 
-    private readonly Dictionary<string, string> cachedDocumentations = new();
-    private readonly HashSet<string> undocumentedAssemblies = new();
-    private readonly HashSet<string> documentedAssemblies = new();
+    private readonly Dictionary<string, string> cachedDocumentations = [];
+    private readonly HashSet<string> undocumentedAssemblies = [];
+    private readonly HashSet<string> documentedAssemblies = [];
     private readonly object lockObj = new();
     private readonly SessionViewModel session;
 

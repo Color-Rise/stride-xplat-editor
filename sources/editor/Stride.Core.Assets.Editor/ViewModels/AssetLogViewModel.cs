@@ -13,7 +13,7 @@ namespace Stride.Core.Assets.Editor.ViewModels;
 public sealed class AssetLogViewModel : LoggerViewModel, IAssetLogViewModel
 {
     private readonly SessionViewModel session;
-    private readonly Dictionary<LogKey, Logger> loggers = new();
+    private readonly Dictionary<LogKey, Logger> loggers = [];
     private bool waiting;
     private int errorCount;
 
@@ -22,7 +22,7 @@ public sealed class AssetLogViewModel : LoggerViewModel, IAssetLogViewModel
     {
         MinLevel = LogMessageType.Warning;
         this.session = session;
-        FilteredMessages = new ObservableList<ILogMessage>();
+        FilteredMessages = [];
         session.AssetCollection.SelectedAssets.CollectionChanged += (s, e) => RefreshFilteredMessages();
         Messages.CollectionChanged += (s, e) => RefreshFilteredMessages();
 

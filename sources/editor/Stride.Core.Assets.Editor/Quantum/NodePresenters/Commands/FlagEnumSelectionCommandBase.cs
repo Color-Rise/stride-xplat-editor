@@ -11,11 +11,11 @@ public abstract class FlagEnumSelectionCommandBase : ChangeValueCommandBase
     /// inheritdoc/>
     public override bool CanAttach(INodePresenter nodePresenter)
     {
-        return nodePresenter.Type.IsEnum && nodePresenter.Type.GetCustomAttribute<FlagsAttribute>() != null;
+        return nodePresenter.Type.IsEnum && nodePresenter.Type.GetCustomAttribute<FlagsAttribute>() is not null;
     }
 
     /// inheritdoc/>
-    protected override object ChangeValue(object currentValue, object parameter, object preExecuteResult)
+    protected override object ChangeValue(object currentValue, object? parameter, object? preExecuteResult)
     {
         var result = UpdateSelection((Enum)currentValue);
         return result;

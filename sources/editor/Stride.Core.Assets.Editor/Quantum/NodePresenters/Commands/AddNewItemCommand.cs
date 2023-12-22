@@ -45,12 +45,12 @@ public class AddNewItemCommand : SyncNodePresenterCommandBase
     }
 
     /// <inheritdoc/>
-    protected override void ExecuteSync(INodePresenter nodePresenter, object parameter, object preExecuteResult)
+    protected override void ExecuteSync(INodePresenter nodePresenter, object? parameter, object? preExecuteResult)
     {
         var assetNodePresenter = nodePresenter as IAssetNodePresenter;
         var collectionDescriptor = (CollectionDescriptor)nodePresenter.Descriptor;
 
-        object itemToAdd;
+        object? itemToAdd;
 
         // First, check if parameter is an AbstractNodeEntry
         var abstractNodeEntry = parameter as AbstractNodeEntry;

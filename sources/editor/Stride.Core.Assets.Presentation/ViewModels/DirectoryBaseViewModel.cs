@@ -59,7 +59,8 @@ public abstract class DirectoryBaseViewModel : SessionObjectViewModel
 
     public DirectoryBaseViewModel GetOrCreateDirectory(string path)
     {
-        if (path == null) throw new ArgumentNullException(nameof(path));
+        ArgumentNullException.ThrowIfNull(path);
+
         DirectoryBaseViewModel result = this;
         if (!string.IsNullOrEmpty(path))
         {

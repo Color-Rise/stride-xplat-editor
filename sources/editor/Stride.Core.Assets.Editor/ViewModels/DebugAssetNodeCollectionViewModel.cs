@@ -19,7 +19,7 @@ public class DebugAssetNodeCollectionViewModel : DispatcherViewModel, ITitledPag
     private readonly ISessionViewModel session;
 
     private object? selectedNode;
-    private static readonly Dictionary<Guid, AssetViewModel> NodeToAssetMap = new();
+    private static readonly Dictionary<Guid, AssetViewModel> NodeToAssetMap = [];
 
     static DebugAssetNodeCollectionViewModel()
     {
@@ -38,7 +38,7 @@ public class DebugAssetNodeCollectionViewModel : DispatcherViewModel, ITitledPag
         RefreshQuantumNodesCommand = new AnonymousCommand(ServiceProvider, RefreshQuantumViewModel);
     }
 
-    public ObservableList<DebugAssetRootNodeViewModel> AssetNodes { get; } = new ObservableList<DebugAssetRootNodeViewModel>();
+    public ObservableList<DebugAssetRootNodeViewModel> AssetNodes { get; } = [];
 
     public object? SelectedNode
     {

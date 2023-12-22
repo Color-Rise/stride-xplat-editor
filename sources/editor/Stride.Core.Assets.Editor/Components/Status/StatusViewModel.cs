@@ -10,8 +10,8 @@ public sealed class StatusViewModel : DispatcherViewModel
     private string? currentStatus;
     private int currentToken;
 
-    private readonly SortedList<int, JobProgressViewModel> jobList = new();
-    private readonly SortedList<int, string> statusList = new();
+    private readonly SortedList<int, JobProgressViewModel> jobList = [];
+    private readonly SortedList<int, string> statusList = [];
 
     public StatusViewModel(IViewModelServiceProvider serviceProvider)
         : base(serviceProvider)

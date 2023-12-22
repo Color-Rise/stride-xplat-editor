@@ -10,7 +10,7 @@ using Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys;
 
 namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Updaters;
 
-internal sealed class InlineMemberNodeUpdater : NodePresenterUpdaterBase
+public sealed class InlineMemberNodeUpdater : NodePresenterUpdaterBase
 {
     public override void FinalizeTree(INodePresenter root)
     {

@@ -50,7 +50,7 @@ public class RenameStringKeyCommand : SyncNodePresenterCommandBase
     }
 
     /// <inheritdoc/>
-    protected override void ExecuteSync(INodePresenter nodePresenter, object parameter, object preExecuteResult)
+    protected override void ExecuteSync(INodePresenter nodePresenter, object? parameter, object? preExecuteResult)
     {
         var currentValue = nodePresenter.Value;
         var collectionNode = ((ItemNodePresenter)nodePresenter).OwnerCollection;

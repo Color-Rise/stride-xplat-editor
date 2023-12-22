@@ -6,7 +6,7 @@ namespace Stride.Core.Assets.Editor.Services;
 /// <inheritdoc cref="IPasteResult" />
 internal class PasteResult : IPasteResult
 {
-    private readonly List<PasteItem> items = new();
+    private readonly List<PasteItem> items = [];
 
     /// <inheritdoc/>
     public IReadOnlyList<IPasteItem> Items => items;
