@@ -26,6 +26,10 @@ public sealed class AssetLogViewModel : LoggerViewModel, IAssetLogViewModel
         session.AssetCollection.SelectedAssets.CollectionChanged += (s, e) => RefreshFilteredMessages();
         Messages.CollectionChanged += (s, e) => RefreshFilteredMessages();
 
+        // FIXME: reverse dependency
+        // should not depend on build service
+        // on the contrary build service should register the logs to this
+
         // Listen if IBuildService gets registered
         ServiceProvider.ServiceRegistered += ServiceRegistered;
         // Initial check, in case it is already registered

@@ -9,7 +9,7 @@ using Stride.Core.Mathematics;
 
 namespace Stride.Core.Assets.Editor.Services;
 
-public class AssetBuilderService : IBuildService, IDisposable
+public abstract class AssetBuilderService : IBuildService, IDisposable
 {
     private const string IndexName = "AssetBuilderServiceIndex";
 
@@ -21,7 +21,7 @@ public class AssetBuilderService : IBuildService, IDisposable
     // TODO: this is temporary until we have thread local databases (and a better solution for databases used in standard tasks)
     public static readonly object OutOfMicrothreadDatabaseLock = new();      
 
-    public AssetBuilderService(string buildDirectory)
+    protected AssetBuilderService(string buildDirectory)
     {
         // We want at least 2 threads, since one will be used for DynamicBuildStep (which is a special blocking step)
         var processorCount = Environment.ProcessorCount;
