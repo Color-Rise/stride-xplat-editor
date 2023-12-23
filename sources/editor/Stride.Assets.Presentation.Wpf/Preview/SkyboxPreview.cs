@@ -7,6 +7,7 @@ using Stride.Core;
 using Stride.Core.Mathematics;
 using Stride.Assets.Presentation.Preview.Views;
 using Stride.Assets.Skyboxes;
+using Stride.Editor.Annotations;
 using Stride.Editor.Preview;
 using Stride.Engine;
 using Stride.Rendering.Skyboxes;
@@ -24,7 +25,7 @@ namespace Stride.Assets.Presentation.Preview
     /// <summary>
     /// An implementation of the <see cref="AssetPreview"/> that can preview models.
     /// </summary>
-    [AssetPreview(typeof(SkyboxAsset), typeof(SkyboxPreviewView))]
+    [AssetPreview<SkyboxAsset>]
     public class SkyboxPreview : PreviewFromEntity<SkyboxAsset>
     {
         private Entity targetEntity;

@@ -4,13 +4,14 @@ using System;
 using Stride.Assets.Physics;
 using Stride.Assets.Presentation.Preview.Views;
 using Stride.Core.Mathematics;
+using Stride.Editor.Annotations;
 using Stride.Editor.Preview;
 using Stride.Graphics;
 using Stride.Physics;
 
 namespace Stride.Assets.Presentation.Preview
 {
-    [AssetPreview(typeof(HeightmapAsset), typeof(HeightmapPreviewView))]
+    [AssetPreview<HeightmapAsset>]
     public class HeightmapPreview : PreviewFromSpriteBatch<HeightmapAsset>
     {
         private Heightmap heightmap;
