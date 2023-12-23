@@ -11,7 +11,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
+using Stride.Assets.Presentation.ViewModel;
+using Stride.Assets.Rendering;
+using Stride.Assets.Scripts;
 using Stride.Core.Assets;
+using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.Components.TemplateDescriptions;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Extensions;
@@ -25,15 +29,12 @@ using Stride.Core.Presentation.Quantum.ViewModels;
 using Stride.Core.Presentation.ViewModels;
 using Stride.Core.Quantum;
 using Stride.Core.Quantum.References;
-using Stride.Assets.Presentation.ViewModel;
-using Stride.Assets.Scripts;
-using Stride.Assets.Rendering;
 using Accessibility = Stride.Assets.Scripts.Accessibility;
 using RoslynAccessibility = Microsoft.CodeAnalysis.Accessibility;
 
 namespace Stride.Assets.Presentation.AssetEditors.VisualScriptEditor
 {
-    [AssetEditorViewModel(typeof(VisualScriptAsset), typeof(VisualScriptEditorView))]
+    [AssetEditorViewModel<VisualScriptViewModel>]
     public partial class VisualScriptEditorViewModel : AssetEditorViewModel
     {
         private static readonly object NewMethodSymbol = new object();

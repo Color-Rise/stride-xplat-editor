@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RoslynPad.Roslyn.Diagnostics;
+using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Assets.Presentation.ViewModel;
@@ -27,6 +28,7 @@ namespace Stride.Assets.Presentation.AssetEditors.ScriptEditor
     /// <summary>
     /// Interaction logic for ScriptEditorView.xaml
     /// </summary>
+    [AssetEditorView<ScriptEditorViewModel>]
     public partial class ScriptEditorView : IEditorView
     {
         private readonly TaskCompletionSource<bool> editorInitializationNotifier = new TaskCompletionSource<bool>();

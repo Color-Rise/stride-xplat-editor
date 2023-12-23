@@ -3,6 +3,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Assets.Presentation.AssetEditors.GraphicsCompositorEditor.ViewModels;
@@ -13,6 +14,7 @@ namespace Stride.Assets.Presentation.AssetEditors.GraphicsCompositorEditor.Views
     /// <summary>
     /// Interaction logic for GraphicsCompositorEditorView.xaml
     /// </summary>
+    [AssetEditorView<GraphicsCompositorEditorViewModel>]
     public partial class GraphicsCompositorEditorView : IEditorView
     {
         private readonly TaskCompletionSource<bool> editorInitializationNotifier = new TaskCompletionSource<bool>();

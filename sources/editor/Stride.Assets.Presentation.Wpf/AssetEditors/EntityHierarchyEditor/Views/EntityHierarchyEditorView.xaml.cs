@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
@@ -15,6 +16,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.Views
     /// <summary>
     /// Interaction logic for EntityHierarchyEditorView.xaml
     /// </summary>
+    [AssetEditorView<EntityHierarchyEditorViewModel>]
     public abstract partial class EntityHierarchyEditorView : IEditorView
     {
         private readonly TaskCompletionSource<bool> editorInitializationNotifier = new TaskCompletionSource<bool>();

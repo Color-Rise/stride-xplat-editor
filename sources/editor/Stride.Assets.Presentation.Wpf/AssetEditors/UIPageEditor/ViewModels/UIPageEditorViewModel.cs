@@ -4,9 +4,6 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Stride.Core.Assets;
-using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.Annotations;
 using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels;
@@ -15,13 +12,17 @@ using Stride.Assets.Presentation.AssetEditors.UIPageEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.UIPageEditor.Views;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.UI;
+using Stride.Core.Annotations;
+using Stride.Core.Assets;
+using Stride.Core.Assets.Editor.Annotations;
+using Stride.Core.Assets.Editor.ViewModel;
 
 namespace Stride.Assets.Presentation.AssetEditors.UIPageEditor.ViewModels
 {
     /// <summary>
     /// View model for a <see cref="UIPageViewModel"/> editor.
     /// </summary>
-    [AssetEditorViewModel(typeof(UIPageAsset), typeof(UIPageEditorView))]
+    [AssetEditorViewModel<UIPageViewModel>]
     public sealed class UIPageEditorViewModel : UIEditorBaseViewModel
     {
         /// <summary>

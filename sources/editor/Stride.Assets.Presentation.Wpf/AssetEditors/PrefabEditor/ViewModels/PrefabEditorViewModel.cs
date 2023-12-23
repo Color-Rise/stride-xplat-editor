@@ -2,9 +2,6 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System;
 using System.Threading.Tasks;
-using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.Annotations;
-using Stride.Core.Extensions;
 using Stride.Assets.Entities;
 using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor;
@@ -15,13 +12,17 @@ using Stride.Assets.Presentation.AssetEditors.PrefabEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.PrefabEditor.Views;
 using Stride.Assets.Presentation.SceneEditor;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Annotations;
+using Stride.Core.Assets.Editor.Annotations;
+using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Extensions;
 
 namespace Stride.Assets.Presentation.AssetEditors.PrefabEditor.ViewModels
 {
     /// <summary>
     /// View model of a <see cref="PrefabViewModel"/> editor.
     /// </summary>
-    [AssetEditorViewModel(typeof(PrefabAsset), typeof(PrefabEditorView))]
+    [AssetEditorViewModel<PrefabViewModel>]
     public sealed class PrefabEditorViewModel : EntityHierarchyEditorViewModel
     {
         /// <summary>

@@ -7,25 +7,26 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
+using Stride.Assets.Presentation.ViewModel;
+using Stride.Assets.Rendering;
+using Stride.Core.Annotations;
+using XplatEditor.Stride.Core.Assets.Editor.Annotations;
 using XplatEditor.Stride.Core.Assets.Editor.Quantum.NodePresenters.Commands;
 using XplatEditor.Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.Annotations;
 using Stride.Core.Extensions;
-using Stride.Core.Reflection;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Quantum;
 using Stride.Core.Presentation.ViewModels;
 using Stride.Core.Quantum;
-using Stride.Assets.Presentation.ViewModel;
-using Stride.Assets.Rendering;
+using Stride.Core.Reflection;
 using Stride.Rendering;
 using Stride.Rendering.Compositing;
 
 namespace Stride.Assets.Presentation.AssetEditors.GraphicsCompositorEditor.ViewModels
 {
-    [AssetEditorViewModel(typeof(GraphicsCompositorAsset), typeof(Views.GraphicsCompositorEditorView))]
+    [AssetEditorViewModel<GraphicsCompositorViewModel>]
     public class GraphicsCompositorEditorViewModel : AssetEditorViewModel
     {
         protected readonly GraphViewModelService ViewModelService;

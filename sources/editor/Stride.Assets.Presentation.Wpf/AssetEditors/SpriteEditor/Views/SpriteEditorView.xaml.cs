@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Presentation.Controls;
@@ -17,6 +18,7 @@ namespace Stride.Assets.Presentation.AssetEditors.SpriteEditor.Views
     /// <summary>
     /// Interaction logic for SpriteEditorView.xaml
     /// </summary>
+    [AssetEditorView<SpriteSheetEditorViewModel>]
     public partial class SpriteEditorView : IEditorView
     {
         static SpriteEditorView()

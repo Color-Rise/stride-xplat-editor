@@ -5,13 +5,19 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
+using Stride.Assets.Presentation.AssetEditors.SpriteEditor.Services;
+using Stride.Assets.Presentation.AssetEditors.SpriteEditor.Views;
+using Stride.Assets.Presentation.ViewModel;
+using Stride.Assets.Sprite;
+using Stride.Core;
+using Stride.Core.Annotations;
 using Stride.Core.Assets;
+using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.View.Behaviors;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Assets.Quantum;
-using Stride.Core;
-using Stride.Core.Annotations;
 using Stride.Core.Extensions;
 using Stride.Core.IO;
 using Stride.Core.Mathematics;
@@ -22,11 +28,6 @@ using Stride.Core.Presentation.Extensions;
 using Stride.Core.Presentation.Interop;
 using Stride.Core.Presentation.Quantum;
 using Stride.Core.Quantum;
-using Stride.Assets.Presentation.AssetEditors.SpriteEditor.Services;
-using Stride.Assets.Presentation.AssetEditors.SpriteEditor.Views;
-using Stride.Assets.Presentation.ViewModel;
-using Stride.Assets.Sprite;
-using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.SpriteEditor.ViewModels
 {
@@ -41,7 +42,7 @@ namespace Stride.Assets.Presentation.AssetEditors.SpriteEditor.ViewModels
         Borders,
     };
 
-    [AssetEditorViewModel(typeof(SpriteSheetAsset), typeof(SpriteEditorView))]
+    [AssetEditorViewModel<SpriteSheetViewModel>]
     public sealed class SpriteSheetEditorViewModel : AssetEditorViewModel, IAddChildViewModel
     {
         private readonly ObservableList<SpriteInfoViewModel> sprites;

@@ -6,11 +6,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Stride.Core.Assets;
-using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.Annotations;
-using Stride.Core.Extensions;
-using Stride.Core.Quantum;
+using Stride.Assets.UI;
 using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels;
@@ -18,14 +14,19 @@ using Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.UILibraryEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.UILibraryEditor.Views;
 using Stride.Assets.Presentation.ViewModel;
-using Stride.Assets.UI;
+using Stride.Core.Annotations;
+using Stride.Core.Assets;
+using Stride.Core.Assets.Editor.Annotations;
+using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Extensions;
+using Stride.Core.Quantum;
 
 namespace Stride.Assets.Presentation.AssetEditors.UILibraryEditor.ViewModels
 {
     /// <summary>
     /// View model for a <see cref="UILibraryViewModel"/> editor.
     /// </summary>
-    [AssetEditorViewModel(typeof(UILibraryAsset), typeof(UILibraryEditorView))]
+    [AssetEditorViewModel<UILibraryViewModel>]
     public sealed class UILibraryEditorViewModel : UIEditorBaseViewModel
     {
         /// <summary>

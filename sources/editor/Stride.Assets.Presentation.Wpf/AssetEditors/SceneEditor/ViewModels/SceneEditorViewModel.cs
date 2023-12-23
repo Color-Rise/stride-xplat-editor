@@ -5,11 +5,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
-using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.Annotations;
-using Stride.Core.Extensions;
-using Stride.Core.Threading;
-using Stride.Core.Presentation.Collections;
 using Stride.Assets.Entities;
 using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels;
@@ -20,13 +15,19 @@ using Stride.Assets.Presentation.AssetEditors.SceneEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.SceneEditor.Views;
 using Stride.Assets.Presentation.SceneEditor;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Annotations;
+using Stride.Core.Assets.Editor.Annotations;
+using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Extensions;
+using Stride.Core.Threading;
+using Stride.Core.Presentation.Collections;
 
 namespace Stride.Assets.Presentation.AssetEditors.SceneEditor.ViewModels
 {
     /// <summary>
     /// View model of a <see cref="SceneViewModel"/> editor.
     /// </summary>
-    [AssetEditorViewModel(typeof(SceneAsset), typeof(SceneEditorView))]
+    [AssetEditorViewModel<SceneViewModel>]
     public sealed class SceneEditorViewModel : EntityHierarchyEditorViewModel, IMultipleAssetEditorViewModel
     {
         private readonly ObservableSet<SceneViewModel> allScenes = new ObservableSet<SceneViewModel>();

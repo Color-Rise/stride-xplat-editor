@@ -5,18 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using RoslynPad.Editor;
 using RoslynPad.Roslyn.Diagnostics;
-using Stride.Core.Assets.Editor.Services;
-using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.Annotations;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Scripts;
+using Stride.Core.Annotations;
+using Stride.Core.Assets.Editor.Annotations;
+using Stride.Core.Assets.Editor.Services;
+using Stride.Core.Assets.Editor.ViewModel;
 
 namespace Stride.Assets.Presentation.AssetEditors.ScriptEditor
 {
     /// <summary>
     /// View model for the script editor (using Roslyn & AvalonEdit and RoslynPad).
     /// </summary>
-    [AssetEditorViewModel(typeof(ScriptSourceFileAsset), typeof(ScriptEditorView))]
+    [AssetEditorViewModel<ScriptSourceFileViewModel>]
     public class ScriptEditorViewModel : AssetEditorViewModel
     {
         public ScriptEditorViewModel([NotNull] ScriptSourceFileAssetViewModel script, AvalonEditTextContainer sourceTextContainer)
