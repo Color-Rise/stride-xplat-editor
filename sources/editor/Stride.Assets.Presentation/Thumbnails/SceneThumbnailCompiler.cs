@@ -3,7 +3,6 @@
 using Stride.Core.Assets.Compiler;
 using Stride.Assets.Entities;
 using Stride.Assets.Presentation.Resources.Thumbnails;
-using Stride.Editor.Resources;
 using Stride.Editor.Thumbnails;
 
 namespace Stride.Assets.Presentation.Thumbnails

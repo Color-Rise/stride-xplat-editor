@@ -3,7 +3,6 @@
 using Stride.Core.Assets.Compiler;
 using Stride.Assets.Models;
 using Stride.Assets.Presentation.Resources.Thumbnails;
-using Stride.Editor.Resources;
 using Stride.Editor.Thumbnails;
 using Stride.SpriteStudio.Offline;
 

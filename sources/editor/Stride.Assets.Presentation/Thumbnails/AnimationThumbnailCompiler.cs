@@ -12,7 +12,6 @@ using Stride.Animations;
 using Stride.Assets.Models;
 using Stride.Assets.Presentation.Resources.Thumbnails;
 using Stride.Assets.Presentation.ViewModel.Preview;
-using Stride.Editor.Resources;
 using Stride.Editor.Thumbnails;
 using Stride.Engine;
 using Stride.Graphics;
