@@ -20,3 +20,4 @@ using System.Runtime.InteropServices;
 
 [assembly: InternalsVisibleTo("Stride.Assets" + Stride.PublicKeys.Default)]
 [assembly: InternalsVisibleTo("Stride.Assets.Presentation" + Stride.PublicKeys.Default)]
+[assembly: InternalsVisibleTo("Stride.Assets.Presentation.Wpf" + Stride.PublicKeys.Default)]

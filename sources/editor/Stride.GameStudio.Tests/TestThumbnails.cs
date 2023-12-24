@@ -38,7 +38,7 @@ namespace Stride.GameStudio.Tests
         {
             // load assembly to register the assets extensions
             RuntimeHelpers.RunModuleConstructor(typeof(Asset).Module.ModuleHandle);
-            var assembly = Assembly.Load("Stride.Assets.Presentation");
+            var assembly = Assembly.Load("Stride.Assets.Presentation.Wpf");
             foreach (var module in assembly.Modules)
             {
                 RuntimeHelpers.RunModuleConstructor(module.ModuleHandle);

@@ -176,7 +176,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.StorageTool", "..\so
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.ProjectTemplating", "..\sources\tools\Stride.Core.ProjectTemplating\Stride.Core.ProjectTemplating.csproj", "{2E2382F7-9576-49F0-AE43-93AFD7DB2368}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets.Presentation", "..\sources\editor\Stride.Assets.Presentation\Stride.Assets.Presentation.csproj", "{550C1B7C-B7AD-46DF-ACF3-C36AEF35D5FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets.Presentation.Wpf", "..\sources\editor\Stride.Assets.Presentation.Wpf\Stride.Assets.Presentation.Wpf.csproj", "{550C1B7C-B7AD-46DF-ACF3-C36AEF35D5FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.ProjectTemplating.Tests", "..\sources\tools\Stride.Core.ProjectTemplating.Tests\Stride.Core.ProjectTemplating.Tests.csproj", "{862C7C39-8E2B-4F18-88E9-ACD6EDF818CD}"
 EndProject

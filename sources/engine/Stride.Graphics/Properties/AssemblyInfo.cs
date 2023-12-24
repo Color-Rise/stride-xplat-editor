@@ -24,4 +24,5 @@ using System.Runtime.CompilerServices;
 #if !STRIDE_SIGNED
 [assembly: InternalsVisibleTo("Stride.Assets.Editor")] // FIXME xplat-editor
 [assembly: InternalsVisibleTo("Stride.Assets.Presentation")]
+[assembly: InternalsVisibleTo("Stride.Assets.Presentation.Wpf")]
 #endif
