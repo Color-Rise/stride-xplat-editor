@@ -342,9 +342,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.GameStudio.Avalonia.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.Editor", "..\sources\editor\Stride.Core.Assets.Editor\Stride.Core.Assets.Editor.csproj", "{CF5D2741-B515-467F-B8E2-31F450AE5531}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets.Presentation", "..\sources\xplat-editor\Stride.Assets.Presentation\Stride.Assets.Presentation.csproj", "{BB6F37DE-40E5-4AC6-B599-358D99EFD493}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets.Presentation", "..\sources\editor\Stride.Assets.Presentation\Stride.Assets.Presentation.csproj", "{BB6F37DE-40E5-4AC6-B599-358D99EFD493}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets.Editor", "..\sources\xplat-editor\Stride.Assets.Editor\Stride.Assets.Editor.csproj", "{B7FD8293-7F32-46FF-AAF6-36D2C594760D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets.Editor", "..\sources\editor\Stride.Assets.Editor\Stride.Assets.Editor.csproj", "{B7FD8293-7F32-46FF-AAF6-36D2C594760D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Assets.Editor.Avalonia", "..\sources\xplat-editor\Stride.Assets.Editor.Avalonia\Stride.Assets.Editor.Avalonia.csproj", "{6F5A1D7F-15A0-4439-86AE-7102478DAA8B}"
 EndProject
@@ -359,6 +359,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Presentation.Quantum.Wpf", "..\sources\presentation\Stride.Core.Presentation.Quantum.Wpf\Stride.Core.Presentation.Quantum.Wpf.csproj", "{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stride.Core.Assets.Presentation", "..\sources\editor\Stride.Core.Assets.Presentation\Stride.Core.Assets.Presentation.csproj", "{ECEBC826-7B53-4B9E-9996-774E445C8C65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{B502432D-34AA-4891-97F1-0D93FC8076CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1780,8 +1782,8 @@ Global
 		{FBD0417E-94F5-433A-967C-997F66AAA9BB} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{19838BC4-E889-422B-B234-B94A3996A4AA} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{CF5D2741-B515-467F-B8E2-31F450AE5531} = {5D2D3BE8-9910-45CA-8E45-95660DA4C563}
-		{BB6F37DE-40E5-4AC6-B599-358D99EFD493} = {358506E6-D2AE-4678-A434-C25F09417858}
-		{B7FD8293-7F32-46FF-AAF6-36D2C594760D} = {358506E6-D2AE-4678-A434-C25F09417858}
+		{BB6F37DE-40E5-4AC6-B599-358D99EFD493} = {B502432D-34AA-4891-97F1-0D93FC8076CA}
+		{B7FD8293-7F32-46FF-AAF6-36D2C594760D} = {B502432D-34AA-4891-97F1-0D93FC8076CA}
 		{6F5A1D7F-15A0-4439-86AE-7102478DAA8B} = {358506E6-D2AE-4678-A434-C25F09417858}
 		{FFC5B452-0799-4B74-B1AC-200EB287F9D8} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{CC16DE9A-F346-4AE3-9BF0-EE8A4D385B14} = {5D2D3BE8-9910-45CA-8E45-95660DA4C563}
@@ -1789,6 +1791,7 @@ Global
 		{358506E6-D2AE-4678-A434-C25F09417858} = {BD3F1AB2-28DA-4C23-B819-B5873C74E962}
 		{EBCF360A-2320-4F54-BCF6-66FECEDF9BA1} = {75A820AB-0F21-40F2-9448-5D7F495B97A0}
 		{ECEBC826-7B53-4B9E-9996-774E445C8C65} = {5D2D3BE8-9910-45CA-8E45-95660DA4C563}
+		{B502432D-34AA-4891-97F1-0D93FC8076CA} = {5D2D3BE8-9910-45CA-8E45-95660DA4C563}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF877973-604D-4EA7-B5F5-A129961F9EF2}
