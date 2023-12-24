@@ -20,6 +20,7 @@
       "..\\sources\\core\\Stride.Core\\Stride.Core.csproj",
       "..\\sources\\editor\\Stride.Core.Assets.Editor\\Stride.Core.Assets.Editor.csproj",
       "..\\sources\\editor\\Stride.Core.Assets.Presentation\\Stride.Core.Assets.Presentation.csproj",
+      "..\\sources\\editor\\Stride.Editor\\Stride.Editor.csproj",
       "..\\sources\\engine\\Stride.Assets.Models\\Stride.Assets.Models.csproj",
       "..\\sources\\engine\\Stride.Assets\\Stride.Assets.csproj",
       "..\\sources\\engine\\Stride.Audio\\Stride.Audio.csproj",
@@ -59,7 +60,6 @@
       "..\\sources\\xplat-editor\\Stride.Assets.Presentation\\Stride.Assets.Presentation.csproj",
       "..\\sources\\xplat-editor\\Stride.Core.Assets.Editor.Avalonia\\Stride.Core.Assets.Editor.Avalonia.csproj",
       "..\\sources\\xplat-editor\\Stride.Editor.Avalonia\\Stride.Editor.Avalonia.csproj",
-      "..\\sources\\xplat-editor\\Stride.Editor\\Stride.Editor.csproj",
       "..\\sources\\xplat-editor\\Stride.GameStudio.Avalonia.Desktop\\Stride.GameStudio.Avalonia.Desktop.csproj",
       "..\\sources\\xplat-editor\\Stride.GameStudio.Avalonia\\Stride.GameStudio.Avalonia.csproj"
     ]

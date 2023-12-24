@@ -2,8 +2,8 @@
   <Import Project="..\..\targets\Stride.props" />
 
   <ItemGroup>
+    <ProjectReference Include="..\..\editor\Stride.Editor\Stride.Editor.csproj" />
     <ProjectReference Include="..\Stride.Core.Assets.Editor.Avalonia\Stride.Core.Assets.Editor.Avalonia.csproj" />
-    <ProjectReference Include="..\Stride.Editor\Stride.Editor.csproj" />
   </ItemGroup>
 
   <Import Project="$(StrideSdkTargets)" />
