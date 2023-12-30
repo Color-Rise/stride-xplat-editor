@@ -4,12 +4,13 @@
 using Avalonia.Threading;
 using Stride.Core.Presentation.Services;
 
-namespace Stride.GameStudio.Avalonia.Services;
+namespace Stride.Core.Presentation.Avalonia.Services;
 
 /// <summary>
 /// This class is the implementation of the <see cref="IDispatcherService"/> interface for WPF.
 /// </summary>
-internal sealed class DispatcherService : IDispatcherService
+// Note: this class is shared with the Launcher. Beware before adding new dependencies.
+public sealed class DispatcherService : IDispatcherService
 {
     private readonly Dispatcher dispatcher;
 

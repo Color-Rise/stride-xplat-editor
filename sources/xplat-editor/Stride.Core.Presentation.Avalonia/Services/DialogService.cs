@@ -8,11 +8,10 @@ using Avalonia.Platform.Storage;
 using Stride.Core.IO;
 using Stride.Core.Presentation.Services;
 
-namespace Stride.GameStudio.Avalonia.Services;
+namespace Stride.Core.Presentation.Avalonia.Services;
 
-// TODO: consider moving it to a new assembly (such as Stride.Core.Presentation.Avalonia)
-//       to make it reusable outside the context of an editor
-internal class DialogService : IDialogService
+// Note: this class is shared with the Launcher. Beware before adding new dependencies.
+public class DialogService : IDialogService
 {
     public DialogService(IDispatcherService dispatcher)
     {
@@ -63,7 +62,7 @@ internal class DialogService : IDialogService
     public async Task<IReadOnlyList<UFile>> OpenMultipleFilesPickerAsync(UDirectory? initialPath = null, IReadOnlyList<FilePickerFilter>? filters = null)
     {
         if (StorageProvider is null) return Array.Empty<UFile>();
-        
+
         return await Dispatcher.InvokeTask(async () =>
         {
             var initialLocation = await StorageProvider.TryGetFolderFromPathAsync(initialPath);
