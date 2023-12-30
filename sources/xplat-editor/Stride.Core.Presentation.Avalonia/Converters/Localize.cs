@@ -4,7 +4,7 @@ using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
 using Stride.Core.Translation;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
 public sealed class Localize : MarkupExtension, IValueConverter
 {

@@ -4,7 +4,7 @@
 using Avalonia.Markup.Xaml;
 using Avalonia.Metadata;
 
-namespace Stride.Core.Assets.Editor.Avalonia.MarkupExtensions;
+namespace Stride.Core.Presentation.Avalonia.MarkupExtensions;
 
 public sealed class DoubleExtension : MarkupExtension
 {

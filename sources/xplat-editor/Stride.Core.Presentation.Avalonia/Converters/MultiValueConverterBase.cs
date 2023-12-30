@@ -5,7 +5,7 @@ using System.Globalization;
 using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
 /// <summary>
 /// An abstract class for implementations of <see cref="IMultiValueConverter"/> that supports markup extensions.

@@ -4,7 +4,7 @@
 using System.Globalization;
 using Avalonia.Data.Converters;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
 /// <summary>
 /// An abstract implementation of <see cref="ValueConverterBase{T}"/> that does not support <see cref="ConvertBack"/>.

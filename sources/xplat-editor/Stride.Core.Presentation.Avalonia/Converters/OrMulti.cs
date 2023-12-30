@@ -3,9 +3,9 @@
 
 using System.Globalization;
 using Avalonia;
-using Stride.Core.Assets.Editor.Avalonia.Internal;
+using Stride.Core.Presentation.Avalonia.Internal;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
 public class OrMulti : MultiValueConverterBase<OrMulti>
 {

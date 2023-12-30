@@ -5,7 +5,7 @@ using System.Globalization;
 using Avalonia.Data.Converters;
 using Avalonia.Markup.Xaml;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
 /// <summary>
 /// This converter can chain up to <see cref="MaxConverterCount"/> <see cref="IValueConverter"/> to convert a value. The first converter takes

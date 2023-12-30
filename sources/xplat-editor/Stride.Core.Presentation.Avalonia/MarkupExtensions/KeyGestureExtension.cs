@@ -5,7 +5,7 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Metadata;
 
-namespace Stride.Core.Assets.Editor.Avalonia.MarkupExtensions;
+namespace Stride.Core.Presentation.Avalonia.MarkupExtensions;
 
 /// <summary>
 /// This markup extension allows to create a <see cref="KeyGesture"/> instance from a string representing the gesture.

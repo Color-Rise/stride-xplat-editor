@@ -6,7 +6,7 @@ using Avalonia;
 using Stride.Core.Mathematics;
 using Stride.Core.Reflection;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
 /// <summary>
 /// Helper class with similar methods than <see cref="Convert"/> but returns the default value of the expected type if value is <see cref="AvaloniaProperty.UnsetValue"/>.

@@ -6,7 +6,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Metadata;
 using Stride.Core.Translation;
 
-namespace Stride.Core.Assets.Editor.Avalonia.MarkupExtensions;
+namespace Stride.Core.Presentation.Avalonia.MarkupExtensions;
 
 public sealed class LocalizeExtension : MarkupExtension
 {

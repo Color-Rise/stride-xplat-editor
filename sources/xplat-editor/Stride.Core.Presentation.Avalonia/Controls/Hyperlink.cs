@@ -3,7 +3,7 @@
 
 using Avalonia.Controls;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Controls;
+namespace Stride.Core.Presentation.Avalonia.Controls;
 
 public class Hyperlink : Button
 {

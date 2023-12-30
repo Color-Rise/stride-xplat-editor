@@ -4,7 +4,7 @@
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Themes;
+namespace Stride.Core.Presentation.Avalonia.Themes;
 
 public class HyperlinkStyle : Styles
 {
