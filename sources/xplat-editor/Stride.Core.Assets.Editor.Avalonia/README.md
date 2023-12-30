@@ -1,16 +1,12 @@
 # Stride.Core.Assets.Editor.Avalonia
 
-This project contains helpers for views.
+This project contains helpers for asset views.
 
 ## Depencencies
 
 * It can only references *Core.Assets* libraries.
 * It is a specific implementation using Avalonia.
-* It will likely only reference `Stride.Core.Assets.Editor`.
-
-## Implementations
-
-Value converters, markup extensions and custom controls are here.
+* It will likely only reference `Stride.Core.Assets.Editor` and `Stride.Core.Presentation.Avalonia`.
 
 ## Notes
 

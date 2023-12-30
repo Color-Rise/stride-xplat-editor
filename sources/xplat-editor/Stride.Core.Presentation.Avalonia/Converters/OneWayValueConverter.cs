@@ -12,7 +12,7 @@ namespace Stride.Core.Assets.Editor.Avalonia.Converters;
 /// </summary>
 /// <typeparam name="T">The type of <see cref="IValueConverter"/> being implemented.</typeparam>
 public abstract class OneWayValueConverter<T> : ValueConverterBase<T>
-    where T : class, IValueConverter, new()
+    where T : OneWayValueConverter<T>, IValueConverter, new()
 {
     /// <inheritdoc/>
     public sealed override object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
