@@ -2,9 +2,10 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
 using System.Globalization;
-using Stride.Core.Assets.Editor.Avalonia.Internal;
+using Stride.Core.Presentation.Avalonia.Converters;
+using Stride.Core.Presentation.Avalonia.Internal;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
 public class InvertBool : ValueConverterBase<InvertBool>
 {

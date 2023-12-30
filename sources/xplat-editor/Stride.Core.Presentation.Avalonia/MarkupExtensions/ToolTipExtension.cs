@@ -3,7 +3,7 @@
 
 using Avalonia.Markup.Xaml;
 
-namespace Stride.Core.Assets.Editor.Avalonia.MarkupExtensions;
+namespace Stride.Core.Presentation.Avalonia.MarkupExtensions;
 
 /// <summary>
 /// This markup extension allows to format the text of a tooltip a text and a gesture.

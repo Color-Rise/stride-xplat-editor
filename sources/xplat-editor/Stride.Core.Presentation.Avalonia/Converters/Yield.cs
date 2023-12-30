@@ -5,7 +5,7 @@ using System.Globalization;
 using Avalonia;
 using Stride.Core.Extensions;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
 public class Yield : OneWayValueConverter<Yield>
 {

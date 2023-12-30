@@ -4,7 +4,7 @@
 using Avalonia;
 using Avalonia.Markup.Xaml;
 
-namespace Stride.Core.Assets.Editor.Avalonia.MarkupExtensions;
+namespace Stride.Core.Presentation.Avalonia.MarkupExtensions;
 
 /// <summary>
 /// Finds and returns the root object of the current XAML document.

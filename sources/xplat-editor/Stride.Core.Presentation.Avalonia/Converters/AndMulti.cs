@@ -3,11 +3,11 @@
 
 using System.Globalization;
 using Avalonia;
-using Stride.Core.Assets.Editor.Avalonia.Internal;
+using Stride.Core.Presentation.Avalonia.Internal;
 
-namespace Stride.Core.Assets.Editor.Avalonia.Converters;
+namespace Stride.Core.Presentation.Avalonia.Converters;
 
-public class AndMulti : MultiValueConverterBase<OrMulti>
+public class AndMulti : MultiValueConverterBase<AndMulti>
 {
     public override object Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
     {
