@@ -1,30 +1,29 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Stride.Assets;
+using Stride.Core;
 using Stride.Core.Assets;
-using Stride.Core.Assets.Analysis;
 using Stride.Core.Assets.Compiler;
-using Stride.Core.Assets.Editor.Extensions;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
-using Stride.Core.BuildEngine;
-using Stride.Core;
 using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Controls;
 using Stride.Core.Presentation.Services;
-using Stride.Assets;
 using Stride.Editor.Build;
-using Stride.Editor.Engine;
+using Stride.Editor.Preview;
+using Stride.Editor.Wpf.Engine;
 using Stride.Games;
 using Stride.Graphics;
 
-namespace Stride.Editor.Preview
+namespace Stride.Editor.Wpf.Preview
 {
     public class GameStudioPreviewService : IAssetPreviewService, IPreviewBuilder
     {

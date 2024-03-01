@@ -1,6 +1,7 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -285,7 +286,7 @@ namespace Stride.Assets.Presentation
         }
 
         /// <inheritdoc />
-        protected override void RegisterResourceDictionary(ResourceDictionary dictionary)
+        protected override void RegisterResourceDictionary(IDictionary dictionary)
         {
             base.RegisterResourceDictionary(dictionary);
 

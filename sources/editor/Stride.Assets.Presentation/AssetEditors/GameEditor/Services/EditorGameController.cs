@@ -22,7 +22,7 @@ using Stride.Editor.Build;
 using Stride.Editor.EditorGame.ContentLoader;
 using Stride.Editor.EditorGame.Game;
 using Stride.Editor.EditorGame.ViewModels;
-using Stride.Editor.Engine;
+using Stride.Editor.Wpf.Engine;
 using Stride.Engine.Processors;
 using Stride.Games;
 using Stride.Shaders.Compiler;

@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\assets\Stride.Core.Assets.Quantum\Stride.Core.Assets.Quantum.csproj" />
+    <ProjectReference Include="..\..\engine\Stride.Voxels\Stride.Voxels.csproj" />
     <ProjectReference Include="..\..\presentation\Stride.Core.Presentation.Dialogs\Stride.Core.Presentation.Dialogs.csproj" />
     <ProjectReference Include="..\..\presentation\Stride.Core.Presentation.Graph\Stride.Core.Presentation.Graph.csproj" />
     <ProjectReference Include="..\..\presentation\Stride.Core.Translation.Presentation\Stride.Core.Translation.Presentation.csproj" />
@@ -66,7 +67,7 @@
     <ProjectReference Include="..\..\tools\Stride.Graphics.RenderDocPlugin\Stride.Graphics.RenderDocPlugin.csproj" />
     <ProjectReference Include="..\..\tools\Stride.Core.ProjectTemplating\Stride.Core.ProjectTemplating.csproj" />
     <ProjectReference Include="..\Stride.Core.Assets.Editor\Stride.Core.Assets.Editor.csproj" />
-    <ProjectReference Include="..\Stride.Editor\Stride.Editor.csproj" />
+    <ProjectReference Include="..\Stride.Editor.Wpf\Stride.Editor.Wpf.csproj" />
     <ProjectReference Include="..\Stride.Samples.Templates\Stride.Samples.Templates.csproj" />
   </ItemGroup>
   <ItemGroup>

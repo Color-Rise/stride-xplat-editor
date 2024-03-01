@@ -9,6 +9,7 @@ using Stride.Core.Presentation.Controls;
 using Stride.Core.Presentation.Core;
 using Stride.Editor.Annotations;
 using Stride.Editor.Preview.View;
+using Stride.Editor.Wpf.Preview.Views;
 
 namespace Stride.Assets.Presentation.Preview.Views
 {

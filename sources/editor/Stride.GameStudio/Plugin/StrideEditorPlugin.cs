@@ -15,6 +15,7 @@ using Stride.Editor.Annotations;
 using Stride.Editor.Build;
 using Stride.Editor.Preview;
 using Stride.Editor.Thumbnails;
+using Stride.Editor.Wpf.Preview;
 using Stride.GameStudio.Debugging;
 using Stride.GameStudio.Helpers;
 using Stride.GameStudio.ViewModels;

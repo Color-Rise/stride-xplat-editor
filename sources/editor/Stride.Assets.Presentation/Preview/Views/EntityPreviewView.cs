@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System.Windows;
 using Stride.Editor.Preview.View;
+using Stride.Editor.Wpf.Preview.Views;
 
 namespace Stride.Assets.Presentation.Preview.Views
 {

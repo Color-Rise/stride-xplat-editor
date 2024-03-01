@@ -1,0 +1,24 @@
+<Project>
+  <Import Project="..\..\targets\Stride.props" />
+
+  <PropertyGroup>
+    <StrideBuildTags>WindowsTools</StrideBuildTags>
+    <TargetFramework>$(StrideEditorTargetFramework)</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\shared\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stride.Editor\Stride.Editor.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(StrideSdkTargets)" />
+</Project>

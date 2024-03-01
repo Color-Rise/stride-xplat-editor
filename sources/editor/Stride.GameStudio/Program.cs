@@ -33,7 +33,6 @@ using Stride.Core.Translation.Providers;
 using Stride.Assets.Presentation;
 using Stride.Editor.Build;
 using Stride.Editor.Engine;
-using Stride.Editor.Preview;
 using Stride.GameStudio.View;
 using Stride.Graphics;
 using Stride.Metrics;
@@ -48,6 +47,7 @@ using Stride.GameStudio.Plugin;
 using Stride.GameStudio.Services;
 using Stride.Core.Presentation.ViewModels;
 using Stride.Core.Presentation.Services;
+using Stride.Editor.Wpf.Preview;
 
 namespace Stride.GameStudio;
 

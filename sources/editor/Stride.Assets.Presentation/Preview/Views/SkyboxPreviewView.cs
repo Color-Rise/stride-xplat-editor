@@ -4,6 +4,7 @@
 using System.Windows;
 using Stride.Editor.Annotations;
 using Stride.Editor.Preview.View;
+using Stride.Editor.Wpf.Preview.Views;
 
 namespace Stride.Assets.Presentation.Preview.Views
 {

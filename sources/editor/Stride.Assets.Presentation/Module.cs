@@ -12,6 +12,7 @@ using Stride.Editor.Preview;
 using Stride.Editor.Preview.View;
 using Stride.Rendering;
 using Stride.Rendering.Materials;
+using Stride.Editor.Wpf.Preview.Views;
 
 namespace Stride.Assets.Presentation
 {

@@ -1,11 +1,8 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
 using System.Reflection;
-using System.Windows;
 using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
@@ -28,7 +25,7 @@ namespace Stride.Editor
         private readonly Dictionary<object, object> enumImagesDictionary = [];
         private readonly List<ITemplateProvider> templateProviderList = [];
 
-        protected virtual void RegisterResourceDictionary(ResourceDictionary dictionary)
+        protected virtual void RegisterResourceDictionary(IDictionary dictionary)
         {
             foreach (object entry in dictionary.Keys)
             {
@@ -40,8 +37,7 @@ namespace Stride.Editor
 
             foreach (object value in dictionary.Values)
             {
-                var provider = value as ITemplateProvider;
-                if (provider != null)
+                if (value is ITemplateProvider provider)
                 {
                     templateProviderList.Add(provider);
                 }
