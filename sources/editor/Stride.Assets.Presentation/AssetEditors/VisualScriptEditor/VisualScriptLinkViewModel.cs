@@ -10,6 +10,7 @@ using Stride.Core.Quantum;
 using Stride.Core.Quantum.References;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Scripts;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.VisualScriptEditor

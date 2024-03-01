@@ -13,6 +13,7 @@ using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.PrefabEditor.Game;
 using Stride.Assets.Presentation.AssetEditors.PrefabEditor.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.EditorGame.Game;
 using Stride.Engine;
 using Stride.Shaders.Compiler;

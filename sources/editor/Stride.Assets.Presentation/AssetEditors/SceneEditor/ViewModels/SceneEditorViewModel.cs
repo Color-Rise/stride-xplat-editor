@@ -18,6 +18,7 @@ using Stride.Assets.Presentation.AssetEditors.SceneEditor.Services;
 using Stride.Assets.Presentation.SceneEditor;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Core.Assets.Editor.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.SceneEditor.ViewModels
 {

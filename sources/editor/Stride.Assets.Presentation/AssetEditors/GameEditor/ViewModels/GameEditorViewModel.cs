@@ -7,6 +7,7 @@ using Stride.Core.Annotations;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Interop;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels
 {

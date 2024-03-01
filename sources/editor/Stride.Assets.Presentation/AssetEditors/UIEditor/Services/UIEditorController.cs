@@ -21,6 +21,7 @@ using Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels;
 using Stride.Assets.SpriteFont;
 using Stride.Assets.SpriteFont.Compiler;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.EditorGame.Game;
 using Stride.Engine;
 using Stride.Graphics.Font;

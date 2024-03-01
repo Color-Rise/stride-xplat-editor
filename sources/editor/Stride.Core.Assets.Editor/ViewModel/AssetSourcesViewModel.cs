@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel.Progress;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Assets.Tracking;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;

@@ -16,6 +16,7 @@ using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.Game;
 using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.SceneEditor;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Navigation;
 using Stride.Core.Presentation.ViewModels;
 

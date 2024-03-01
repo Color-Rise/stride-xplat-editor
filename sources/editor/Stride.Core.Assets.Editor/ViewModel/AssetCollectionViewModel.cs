@@ -21,6 +21,7 @@ using Stride.Core.Assets.Templates;
 using Stride.Core.Assets.Tracking;
 using Stride.Core;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
 using Stride.Core.IO;

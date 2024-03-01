@@ -11,6 +11,7 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Extensions;
 using Stride.Assets;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.Preview.View;
 using Stride.Editor.Preview.ViewModel;
 using Stride.Engine;

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Stride.Core.Assets.Analysis;
 using Stride.Core.Assets.Editor.Services;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Diagnostics;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.ViewModel;

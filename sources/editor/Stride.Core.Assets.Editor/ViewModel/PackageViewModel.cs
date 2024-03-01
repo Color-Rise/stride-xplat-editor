@@ -27,6 +27,7 @@ using Stride.Core.Presentation.Services;
 using Stride.Core.Quantum;
 using Stride.Core.Translation;
 using System.IO;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Packages;
 using Stride.Core.Presentation.ViewModels;
 

@@ -1,13 +1,10 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
-using System;
 using Stride.Core.Annotations;
-using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 
-#nullable enable
-
-namespace Stride.Core.Assets.Editor.Annotations;
+namespace Stride.Core.Assets.Presentation.Annotations;
 
 public abstract class AssetViewModelAttribute : Attribute
 {

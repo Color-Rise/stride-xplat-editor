@@ -5,6 +5,7 @@ using System.Linq;
 using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.Annotations;
 using Stride.SpriteStudio.Offline;
 
 namespace Stride.Assets.Presentation.ViewModel

@@ -13,6 +13,7 @@ using Stride.Core.Annotations;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Quantum.Presenters;
 using Stride.Assets.Navigation;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Navigation;
 
 namespace Stride.Assets.Presentation.NodePresenters.Updaters

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.IO;
 using Stride.Core.Storage;

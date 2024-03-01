@@ -11,6 +11,7 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.IO;
 using Stride.Core.Assets.Templates;
 using Stride.Core;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.IO;
 using Stride.Core.Serialization.Contents;
 using Stride.Core.Presentation.Services;

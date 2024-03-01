@@ -3,6 +3,7 @@
 
 using System.Threading.Tasks;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.ViewModel
 {

@@ -1,20 +1,12 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
-using System;
-using System.Collections.Generic;
+
 using System.Collections.Specialized;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using Stride.Core.Assets.Analysis;
-using Stride.Core.Assets.Editor.Components.Properties;
-using Stride.Core.Assets.Editor.Quantum;
-using Stride.Core.Assets.Editor.Services;
-using Stride.Core.Assets.Quantum;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Analysis;
+using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Quantum;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
 using Stride.Core.IO;
@@ -27,7 +19,7 @@ using Stride.Core.Presentation.Services;
 using Stride.Core.Quantum;
 using Stride.Core.Translation;
 
-namespace Stride.Core.Assets.Editor.ViewModel
+namespace Stride.Core.Assets.Presentation.ViewModels
 {
     /// <summary>
     /// An interface representing the view model of an <see cref="Asset"/>.
@@ -39,7 +31,6 @@ namespace Stride.Core.Assets.Editor.ViewModel
         /// <summary>
         /// Gets the asset object related to this view model.
         /// </summary>
-        [NotNull]
         TAsset Asset { get; }
     }
 
@@ -54,7 +45,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
         /// Initializes a new instance of the <see cref="AssetViewModel{TAsset}"/> class.
         /// </summary>
         /// <param name="parameters">The constructor parameter for this asset view model.</param>
-        public AssetViewModel([NotNull] AssetViewModelConstructionParameters parameters)
+        public AssetViewModel(AssetViewModelConstructionParameters parameters)
             : base(parameters)
         {
         }
@@ -80,11 +71,11 @@ namespace Stride.Core.Assets.Editor.ViewModel
         private bool updatingUrl;
         private ThumbnailData thumbnailData;
         private AssetItem assetItem;
-        private IAssetEditorViewModel editor;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AssetViewModel"/> class.
         /// </summary>
-        protected AssetViewModel([NotNull] AssetViewModelConstructionParameters parameters)
+        protected AssetViewModel(AssetViewModelConstructionParameters parameters)
             : base(parameters.SafeArgument(nameof(parameters)).Directory.Session)
         {
             Initializing = true;
@@ -168,7 +159,6 @@ namespace Stride.Core.Assets.Editor.ViewModel
         /// <summary>
         /// Gets the type of this asset.
         /// </summary>
-        [NotNull]
         public Type AssetType => AssetItem.Asset.GetType();
 
         /// <summary>
@@ -179,7 +169,6 @@ namespace Stride.Core.Assets.Editor.ViewModel
         /// <summary>
         /// Gets the asset object related to this view model.
         /// </summary>
-        [NotNull]
         public Asset Asset => AssetItem.Asset;
 
         public AssetPropertyGraph PropertyGraph { get; }
@@ -273,15 +262,13 @@ namespace Stride.Core.Assets.Editor.ViewModel
             }
         }
 
-        [NotNull]
-        public static HashSet<AssetViewModel> ComputeRecursiveReferencerAssets([NotNull] IEnumerable<AssetViewModel> assets)
+        public static HashSet<AssetViewModel> ComputeRecursiveReferencerAssets(IEnumerable<AssetViewModel> assets)
         {
             var result = new HashSet<AssetViewModel>(assets.SelectMany(x => x.Dependencies.RecursiveReferencerAssets));
             return result;
         }
 
-        [NotNull]
-        public static HashSet<AssetViewModel> ComputeRecursiveReferencedAssets([NotNull] IEnumerable<AssetViewModel> assets)
+        public static HashSet<AssetViewModel> ComputeRecursiveReferencedAssets(IEnumerable<AssetViewModel> assets)
         {
             var result = new HashSet<AssetViewModel>(assets.SelectMany(x => x.Dependencies.RecursiveReferencedAssets));
             return result;
@@ -360,15 +347,14 @@ namespace Stride.Core.Assets.Editor.ViewModel
             return AssetRootNode;
         }
 
-        [NotNull]
         protected virtual GraphNodePath GetPathToPropertiesRootNode()
         {
             return new GraphNodePath(AssetRootNode);
         }
 
-        protected virtual bool ShouldConstructPropertyMember([NotNull] IMemberNode member) => true;
+        protected virtual bool ShouldConstructPropertyMember(IMemberNode member) => true;
 
-        protected virtual bool ShouldConstructPropertyItem([NotNull] IObjectNode collection, NodeIndex index) => true;
+        protected virtual bool ShouldConstructPropertyItem(IObjectNode collection, NodeIndex index) => true;
 
         protected virtual bool ShouldListenToTargetNode(IMemberNode member, IGraphNode targetNode) => true;
 
@@ -570,7 +556,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
             return true;
         }
 
-        private void TagsCollectionChanged(object sender, [NotNull] NotifyCollectionChangedEventArgs e)
+        private void TagsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Reset)
             {
@@ -630,7 +616,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
             Session.AssetViewProperties.RefreshSelectedPropertiesAsync().Forget();
         }
 
-        private void RestoreArchetype([NotNull] List<AssetPropertyGraph.NodeOverride> clearedOverrides)
+        private void RestoreArchetype(List<AssetPropertyGraph.NodeOverride> clearedOverrides)
         {
             AssetViewModel baseViewModel = null;
             if (Asset.Archetype != null)

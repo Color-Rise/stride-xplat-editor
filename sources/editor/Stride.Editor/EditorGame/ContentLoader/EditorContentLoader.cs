@@ -24,6 +24,7 @@ using Stride.Assets.Entities;
 using Stride.Assets.Materials;
 using Stride.Assets.Navigation;
 using Stride.Assets.Textures;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.Build;
 using Stride.Editor.EditorGame.Game;
 using Stride.Graphics;

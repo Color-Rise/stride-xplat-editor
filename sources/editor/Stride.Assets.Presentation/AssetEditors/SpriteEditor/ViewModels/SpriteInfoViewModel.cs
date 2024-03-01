@@ -19,6 +19,7 @@ using Stride.Core.Presentation.Services;
 using Stride.Core.Quantum;
 using Stride.Core.Translation;
 using Stride.Assets.Sprite;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.SpriteEditor.ViewModels

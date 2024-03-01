@@ -31,6 +31,7 @@ using Stride.Assets.Presentation.SceneEditor;
 using Stride.Assets.Presentation.View;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Presentation.ViewModel.CopyPasteProcessors;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels

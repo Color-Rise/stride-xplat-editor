@@ -4,6 +4,7 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Assets.Presentation.AssetEditors.UIEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.UILibraryEditor.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.UILibraryEditor.Services
 {

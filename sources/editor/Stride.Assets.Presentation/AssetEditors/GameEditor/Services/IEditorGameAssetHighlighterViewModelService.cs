@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.EditorGame.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.GameEditor.Services

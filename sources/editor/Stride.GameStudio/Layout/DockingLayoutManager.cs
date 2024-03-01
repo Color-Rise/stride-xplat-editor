@@ -16,6 +16,7 @@ using AvalonDock;
 using AvalonDock.Layout;
 using AvalonDock.Layout.Serialization;
 using Microsoft.Xaml.Behaviors;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.GameStudio.ViewModels;
 using Stride.GameStudio.Helpers;
 using Stride.GameStudio.View;

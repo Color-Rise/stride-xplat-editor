@@ -22,6 +22,7 @@ using Stride.Animations;
 using Stride.Assets.Presentation.CurveEditor.ViewModels;
 using Stride.Assets.Presentation.CurveEditor.Views;
 using AvalonDock.Layout;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.GameStudio.Helpers;
 using Stride.GameStudio.Layout;
 
