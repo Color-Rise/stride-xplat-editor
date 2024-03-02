@@ -34,6 +34,7 @@ using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.SceneEditor;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 using Stride.Engine.Processors;
 using Stride.UI;

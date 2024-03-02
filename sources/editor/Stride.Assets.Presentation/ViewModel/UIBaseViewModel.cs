@@ -6,6 +6,7 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Core.Quantum;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.UI;
 using Stride.UI.Controls;
 using Stride.UI.Panels;

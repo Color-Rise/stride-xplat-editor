@@ -6,6 +6,7 @@ using Stride.Assets.Scripts;
 using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Presentation.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Quantum;
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Reflection;
 using Stride.Core.Presentation.Controls;

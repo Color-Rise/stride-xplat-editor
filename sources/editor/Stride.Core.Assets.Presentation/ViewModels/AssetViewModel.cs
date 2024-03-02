@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Reflection;
 using Stride.Core.Annotations;
 using Stride.Core.Assets.Analysis;
-using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
@@ -96,7 +95,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels
             RegisterMemberCollectionForActionStack(nameof(Tags), Tags);
             Tags.CollectionChanged += TagsCollectionChanged;
 
-            assetCommands = new ObservableList<MenuCommandInfo>();
+            assetCommands = [];
             createDerivedAssetCommand = new AnonymousCommand(ServiceProvider, CreateDerivedAsset) { IsEnabled = CanDerive };
             clearArchetypeCommand = new AnonymousCommand(ServiceProvider, ClearArchetype) { IsEnabled = Asset.Archetype != null };
             // TODO: make the view model independent of the view (ie. MenuCommandInfo.Icon and remove this dispatcher call.
@@ -144,7 +143,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels
         /// <summary>
         /// Gets or sets the collection of tags associated to this asset.
         /// </summary>
-        public ObservableList<string> Tags { get; } = new ObservableList<string>();
+        public ObservableList<string> Tags { get; } = [];
 
         /// <summary>
         /// Gets or sets the directory containing this asset.
@@ -249,7 +248,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels
         /// <param name="newPackage">The target project.</param>
         /// <param name="newDirectory">The view model of the target directory.</param>
         /// <returns></returns>
-        public bool MoveAsset(Package newPackage, [NotNull] DirectoryBaseViewModel newDirectory)
+        public bool MoveAsset(Package newPackage, DirectoryBaseViewModel newDirectory)
         {
             if (!newDirectory.Package.Match(newPackage)) throw new ArgumentException("The given directory is not contained in the given package.");
 
@@ -281,7 +280,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels
         /// <param name="initialLocation">The initial location where to create the asset.</param>
         /// <returns>A <see cref="DirectoryBaseViewModel"/> corresponding to a valid location to create the asset, if available. <c>Null</c> otherwise.</returns>
         [CanBeNull]
-        public static DirectoryBaseViewModel FindValidCreationLocation(Type assetType, [NotNull] DirectoryBaseViewModel initialLocation, PackageViewModel currentPackage = null)
+        public static DirectoryBaseViewModel FindValidCreationLocation(Type assetType, DirectoryBaseViewModel initialLocation, PackageViewModel currentPackage = null)
         {
             if (!AssetRegistry.IsAssetType(assetType)) throw new ArgumentException(@"The given type is not an asset type", nameof(AssetType));
             // If the mount point of the current folder does not support this type of asset, try to select the first mount point that support it.

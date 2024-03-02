@@ -5,6 +5,7 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Sprite;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 using Stride.Graphics;
 using Stride.Rendering.Sprites;

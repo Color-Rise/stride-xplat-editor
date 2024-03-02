@@ -7,6 +7,7 @@ using Stride.Core.Reflection;
 using Stride.Assets.Entities;
 using Stride.Core.Quantum;
 using Stride.Animations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 
 namespace Stride.Assets.Presentation.ViewModel

@@ -12,7 +12,7 @@ public interface ISessionObjectViewModel
 
     string Name { get; set; }
 
-    SessionViewModel Session { get; }
+    ISessionViewModel Session { get; }
 
     ThumbnailData ThumbnailData { get; }
 

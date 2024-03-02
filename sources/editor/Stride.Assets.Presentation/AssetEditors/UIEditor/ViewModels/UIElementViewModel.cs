@@ -22,6 +22,7 @@ using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.UI;
 using Stride.Core.Assets.Presentation.ViewModels;
+using Stride.Core.Presentation.ViewModels;
 using Stride.UI;
 
 namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels

@@ -7,6 +7,7 @@ using System.Linq;
 using Stride.Core.Assets.Quantum;
 using Stride.Core;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Quantum;
 
