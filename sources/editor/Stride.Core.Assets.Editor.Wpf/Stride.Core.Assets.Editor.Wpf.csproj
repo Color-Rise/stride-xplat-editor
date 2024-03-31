@@ -1,0 +1,23 @@
+<Project>
+  <Import Project="..\..\targets\Stride.Core.props" />
+
+  <PropertyGroup>
+    <TargetFramework>$(StrideEditorTargetFramework)</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\shared\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\presentation\Stride.Core.Presentation.Dialogs\Stride.Core.Presentation.Dialogs.csproj" />
+    <ProjectReference Include="..\..\presentation\Stride.Core.Translation.Presentation\Stride.Core.Translation.Presentation.csproj" />
+    <ProjectReference Include="..\Stride.Core.Assets.Editor\Stride.Core.Assets.Editor.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(StrideSdkTargets)" />
+</Project>
