@@ -6,21 +6,20 @@ using System.Linq;
 using Stride.Core.Presentation.Quantum.Presenters;
 using Stride.Core.Presentation.Quantum.ViewModels;
 
-namespace Stride.Core.Assets.Editor.Quantum.ViewModels
+namespace Stride.Core.Assets.Presentation.Quantum.ViewModels;
+
+public class AssetNodeViewModelFactory : NodeViewModelFactory
 {
-    public class AssetNodeViewModelFactory : NodeViewModelFactory
+    protected override NodeViewModel CreateNodeViewModel(GraphViewModel owner, NodeViewModel parent, Type nodeType, List<INodePresenter> nodePresenters, bool isRootNode = false)
     {
-        protected override NodeViewModel CreateNodeViewModel(GraphViewModel owner, NodeViewModel parent, Type nodeType, List<INodePresenter> nodePresenters, bool isRootNode = false)
+        // TODO: properly compute the name
+        var viewModel = new AssetNodeViewModel(owner, parent, nodePresenters.First().Name, nodeType, nodePresenters);
+        if (isRootNode)
         {
-            // TODO: properly compute the name
-            var viewModel = new AssetNodeViewModel(owner, parent, nodePresenters.First().Name, nodeType, nodePresenters);
-            if (isRootNode)
-            {
-                owner.RootNode = viewModel;
-            }
-            GenerateChildren(owner, viewModel, nodePresenters);
-            viewModel.FinishInitialization();
-            return viewModel;
+            owner.RootNode = viewModel;
         }
+        GenerateChildren(owner, viewModel, nodePresenters);
+        viewModel.FinishInitialization();
+        return viewModel;
     }
 }

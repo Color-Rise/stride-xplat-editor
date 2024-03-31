@@ -1,23 +1,22 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
-using Stride.Core.Assets.Editor.Services;
 
-namespace Stride.Core.Assets.Editor.ViewModel
+using Stride.Core.Assets.Editor.ViewModel;
+
+namespace Stride.Core.Assets.Presentation.ViewModels;
+
+/// <summary>
+/// Interface for session objects.
+/// </summary>
+public interface ISessionObjectViewModel
 {
-    /// <summary>
-    /// Interface for session objects.
-    /// </summary>
-    public interface ISessionObjectViewModel
-    {
-        bool IsEditable { get; }
+    bool IsEditable { get; }
 
-        string Name { get; set; }
+    string Name { get; set; }
 
-        SessionViewModel Session { get; }
+    SessionViewModel Session { get; } // FIXME ISessionViewModel
 
-        ThumbnailData ThumbnailData { get; }
+    ThumbnailData ThumbnailData { get; }
 
-        string TypeDisplayName { get; }
-    }
+    string TypeDisplayName { get; }
 }
- 

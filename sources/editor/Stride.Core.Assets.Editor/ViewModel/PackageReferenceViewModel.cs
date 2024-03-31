@@ -1,100 +1,69 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
+
 using System;
 using System.Collections.Generic;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Dirtiables;
 
-namespace Stride.Core.Assets.Editor.ViewModel
+namespace Stride.Core.Assets.Presentation.ViewModels;
+
+/// <summary>
+/// Abstract base class that represents a package being referenced by another one.
+/// </summary>
+public abstract class PackageReferenceViewModel : SessionObjectViewModel, IComparable<PackageReferenceViewModel>
 {
-    /// <summary>
-    /// Abstract base class that represents a package being referenced by another one.
-    /// </summary>
-    public abstract class PackageReferenceViewModel : SessionObjectViewModel, IComparable<PackageReferenceViewModel>
+    private readonly DependencyCategoryViewModel dependencies;
+
+    protected PackageReferenceViewModel(PackageViewModel referencer, DependencyCategoryViewModel dependencies)
+        : base(referencer.SafeArgument(nameof(referencer)).Session)
     {
-        private readonly DependencyCategoryViewModel dependencies;
-
-        protected PackageReferenceViewModel(PackageViewModel referencer, DependencyCategoryViewModel dependencies)
-            : base(referencer.SafeArgument(nameof(referencer)).Session)
-        {
-            this.dependencies = dependencies;
-            Referencer = referencer;
-        }
-
-        /// <summary>
-        /// Gets the referencer package of this package reference.
-        /// </summary>
-        public PackageViewModel Referencer { get; }
-
-        /// <summary>
-        /// Gets the target package of this package reference.
-        /// </summary>
-        public PackageViewModel Target { get; protected set; }
-
-        public override string TypeDisplayName => "Package Reference";
-
-        public override IEnumerable<IDirtiable> Dirtiables => dependencies.Dirtiables;
-
-        public override bool IsEditable => Referencer.IsEditable;
-
-        /// <inheritdoc/>
-        public int CompareTo(PackageReferenceViewModel other)
-        {
-            return other != null ? string.Compare(Name, other.Name, StringComparison.InvariantCultureIgnoreCase) : -1;
-        }
-
-        public abstract void AddReference();
-
-        public abstract void RemoveReference();
-
-        public void Delete()
-        {
-            IsDeleted = true;
-        }
-
-        protected override void UpdateIsDeletedStatus()
-        {
-            if (IsDeleted)
-            {
-                dependencies.Content.Remove(this);
-                RemoveReference();
-            }
-            else
-            {
-                dependencies.Content.Add(this);
-                AddReference();
-            }
-        }
+        this.dependencies = dependencies;
+        Referencer = referencer;
     }
 
-    public class DirectDependencyReferenceViewModel : PackageReferenceViewModel
+    /// <summary>
+    /// Gets the referencer package of this package reference.
+    /// </summary>
+    public PackageViewModel Referencer { get; }
+
+    /// <summary>
+    /// Gets the target package of this package reference.
+    /// </summary>
+    public PackageViewModel Target { get; protected set; }
+
+    public override string TypeDisplayName => "Package Reference";
+
+    public override IEnumerable<IDirtiable> Dirtiables => dependencies.Dirtiables;
+
+    public override bool IsEditable => Referencer.IsEditable;
+
+    /// <inheritdoc/>
+    public int CompareTo(PackageReferenceViewModel other)
     {
-        private readonly DependencyRange dependency;
+        return other != null ? string.Compare(Name, other.Name, StringComparison.InvariantCultureIgnoreCase) : -1;
+    }
 
-        public DirectDependencyReferenceViewModel(DependencyRange dependency, PackageViewModel referencer, DependencyCategoryViewModel dependencies, bool canUndoRedoCreation)
-            : base(referencer, dependencies)
+    public abstract void AddReference();
+
+    public abstract void RemoveReference();
+
+    public void Delete()
+    {
+        IsDeleted = true;
+    }
+
+    protected override void UpdateIsDeletedStatus()
+    {
+        if (IsDeleted)
         {
-            this.dependency = dependency;
-            InitialUndelete(canUndoRedoCreation);
+            dependencies.Content.Remove(this);
+            RemoveReference();
         }
-
-        public override string Name
+        else
         {
-            get => dependency.Name;
-            set => throw new InvalidOperationException("The name of a package reference cannot be set");
-        }
-
-        public override void AddReference()
-        {
-            if (!Referencer.Package.Container.DirectDependencies.Contains(dependency))
-            {
-                Referencer.Package.Container.DirectDependencies.Add(dependency);
-            }
-        }
-
-        public override void RemoveReference()
-        {
-            Referencer.Package.Container.DirectDependencies.Remove(dependency);
+            dependencies.Content.Add(this);
+            AddReference();
         }
     }
 }

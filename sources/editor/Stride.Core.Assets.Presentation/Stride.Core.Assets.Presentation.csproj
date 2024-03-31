@@ -19,5 +19,10 @@
     <ProjectReference Include="..\..\presentation\Stride.Core.Presentation.Quantum\Stride.Core.Presentation.Quantum.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Annotations\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
   <Import Project="$(StrideSdkTargets)" />
 </Project>

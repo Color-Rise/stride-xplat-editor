@@ -2,29 +2,28 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System;
 
-namespace Stride.Core.Assets.Editor.ViewModel
+namespace Stride.Core.Assets.Presentation.ViewModels;
+
+/// <summary>
+/// An flag enum representing the modifier keys currently active when invoking methods of <see cref="IAddChildViewModel"/>.
+/// </summary>
+[Flags]
+public enum AddChildModifiers
 {
     /// <summary>
-    /// An flag enum representing the modifier keys currently active when invoking methods of <see cref="IAddChildViewModel"/>.
+    /// No modifier key is pressed.
     /// </summary>
-    [Flags]
-    public enum AddChildModifiers
-    {
-        /// <summary>
-        /// No modifier key is pressed.
-        /// </summary>
-        None = 0,
-        /// <summary>
-        /// The Ctrl key is pressed.
-        /// </summary>
-        Ctrl = 1,
-        /// <summary>
-        /// The Shift key is pressed.
-        /// </summary>
-        Shift = 2,
-        /// <summary>
-        /// The Alt key is pressed.
-        /// </summary>
-        Alt = 4,
-    }
+    None = 0,
+    /// <summary>
+    /// The Ctrl key is pressed.
+    /// </summary>
+    Ctrl = 1,
+    /// <summary>
+    /// The Shift key is pressed.
+    /// </summary>
+    Shift = 2,
+    /// <summary>
+    /// The Alt key is pressed.
+    /// </summary>
+    Alt = 4,
 }

@@ -1,36 +1,36 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
+
 using System;
-using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Presentation.Quantum.Presenters;
 
-namespace Stride.Core.Assets.Editor.Quantum.NodePresenters
+namespace Stride.Core.Assets.Presentation.Quantum.NodePresenters;
+
+public interface IAssetNodePresenter : INodePresenter
 {
-    public interface IAssetNodePresenter : INodePresenter
-    {
-        new IAssetNodePresenter this[string childName] { get; }
+    new IAssetNodePresenter this[string childName] { get; }
 
-        bool HasBase { get; }
+    bool HasBase { get; }
 
-        bool IsInherited { get; }
+    bool IsInherited { get; }
 
-        bool IsOverridden { get; }
+    bool IsOverridden { get; }
 
-        AssetViewModel Asset { get; }
+    AssetViewModel Asset { get; }
 
-        new AssetNodePresenterFactory Factory { get; }
+    new AssetNodePresenterFactory Factory { get; }
 
-        event EventHandler<EventArgs> OverrideChanging;
+    event EventHandler<EventArgs> OverrideChanging;
 
-        event EventHandler<EventArgs> OverrideChanged;
+    event EventHandler<EventArgs> OverrideChanged;
 
-        /// <summary>
-        /// Indicates if the given value, when assigned to this node, would be an object reference.
-        /// </summary>
-        /// <param name="value">The value to test.</param>
-        /// <returns>True if the given value is an object reference, False otherwise.</returns>
-        bool IsObjectReference(object value);
+    /// <summary>
+    /// Indicates if the given value, when assigned to this node, would be an object reference.
+    /// </summary>
+    /// <param name="value">The value to test.</param>
+    /// <returns>True if the given value is an object reference, False otherwise.</returns>
+    bool IsObjectReference(object value);
 
-        void ResetOverride();
-    }
+    void ResetOverride();
 }
