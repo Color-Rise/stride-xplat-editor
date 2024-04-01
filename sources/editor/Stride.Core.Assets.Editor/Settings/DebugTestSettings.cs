@@ -19,23 +19,23 @@ namespace Stride.Core.Assets.Editor.Settings
 
         public static SettingsContainer Container = EditorSettings.SettingsContainer;
 
-        public static SettingsKey<bool> BoolValue = new SettingsKey<bool>("Test/Values/BoolValue", Container, true);
+        public static SettingsKey<bool> BoolValue = new("Test/Values/BoolValue", Container, true);
 
-        public static SettingsKey<int> IntValue = new SettingsKey<int>("Test/Values/IntValue", Container, 10);
+        public static SettingsKey<int> IntValue = new("Test/Values/IntValue", Container, 10);
 
-        public static SettingsKey<double> DoubleValue = new SettingsKey<double>("Test/Values/DoubleValue", Container, 3.14);
+        public static SettingsKey<double> DoubleValue = new("Test/Values/DoubleValue", Container, 3.14);
 
-        public static SettingsKey<string> StringValue = new SettingsKey<string>("Test/Values/StringValue", Container, "Test string");
+        public static SettingsKey<string> StringValue = new("Test/Values/StringValue", Container, "Test string");
 
-        public static SettingsKey<StructSettings> StuctValue = new SettingsKey<StructSettings>("Test/Values/StructValue", Container, new StructSettings { Bool = true, Integer = 6, Double = 3.14, String = "Struct!" });
+        public static SettingsKey<StructSettings> StuctValue = new("Test/Values/StructValue", Container, new StructSettings { Bool = true, Integer = 6, Double = 3.14, String = "Struct!" });
 
-        public static SettingsKey<List<int>> IntList = new SettingsKey<List<int>>("Test/Lists/IntList", Container, new List<int> { 2, 6 });
+        public static SettingsKey<List<int>> IntList = new("Test/Lists/IntList", Container, [2, 6]);
 
-        public static SettingsKey<List<double>> DoubleList = new SettingsKey<List<double>>("Test/Lists/DoubleList", Container, new List<double> { 3.1, 3.2 });
+        public static SettingsKey<List<double>> DoubleList = new("Test/Lists/DoubleList", Container, [3.1, 3.2]);
 
-        public static SettingsKey<List<string>> StringList = new SettingsKey<List<string>>("Test/Lists/StringList", Container, new List<string> { "aaa", "bbb" });
+        public static SettingsKey<List<string>> StringList = new("Test/Lists/StringList", Container, ["aaa", "bbb"]);
 
-        public static SettingsKey<List<StructSettings>> StructList = new SettingsKey<List<StructSettings>>("Test/Lists/StructList", Container, new List<StructSettings> { new StructSettings { Bool = true, Integer = 6, Double = 3.14, String = "Struct!" } });
+        public static SettingsKey<List<StructSettings>> StructList = new("Test/Lists/StructList", Container, [new StructSettings { Bool = true, Integer = 6, Double = 3.14, String = "Struct!" }]);
 
         public static void Initialize()
         {

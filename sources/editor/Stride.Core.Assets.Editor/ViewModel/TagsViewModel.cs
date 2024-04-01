@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.Commands;
@@ -52,7 +53,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
             /// Gets the list of assets that contain this tag.
             /// </summary>
             /// <remarks>The <see cref="ObservableList{AssetViewModel}.Clear"/> method is not supported and will throw an exception.</remarks>
-            public ObservableList<AssetViewModel> Assets { get; } = new ObservableList<AssetViewModel>();
+            public ObservableList<AssetViewModel> Assets { get; } = [];
 
             /// <summary>
             /// Gets the name of this tag.
@@ -127,7 +128,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
             }
         }
 
-        private readonly AutoUpdatingSortedObservableCollection<TagViewModel> tags = new AutoUpdatingSortedObservableCollection<TagViewModel>(new AnonymousComparer<TagViewModel>((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal)));
+        private readonly AutoUpdatingSortedObservableCollection<TagViewModel> tags = new(new AnonymousComparer<TagViewModel>((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal)));
         private readonly AssetCollectionViewModel assetCollection;
         private bool modifyingTag;
 
@@ -201,7 +202,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
                     List<AssetViewModel> assets;
                     if (!assetTags.TryGetValue(tag, out assets))
                     {
-                        assets = new List<AssetViewModel>();
+                        assets = [];
                         assetTags.Add(tag, assets);
                     }
                     assets.Add(asset);

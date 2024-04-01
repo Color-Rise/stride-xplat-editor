@@ -33,8 +33,8 @@ namespace Stride.Assets.Presentation.AssetEditors.UILibraryEditor.ViewModels
             if (index < 0)
                 throw new ArgumentException(@"The given source panel is not a root element of this asset.", nameof(sourcePanel));
 
-            Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(sourcePanel.UIElementDesign);
-            Asset.AssetHierarchyPropertyGraph.AddPartToAsset(hierarchy.Parts, hierarchy.Parts[targetPanelId], null, index);
+            Asset.PropertyGraph.RemovePartFromAsset(sourcePanel.UIElementDesign);
+            Asset.PropertyGraph.AddPartToAsset(hierarchy.Parts, hierarchy.Parts[targetPanelId], null, index);
         }
 
         /// <inheritdoc />

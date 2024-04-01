@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Extensions;
 using Stride.Core.Reflection;
@@ -163,7 +164,7 @@ namespace Stride.Core.Assets.Editor.View.DebugTools
         //private readonly NodeContainer nodeContainer;
 
         private object selectedNode;
-        private static readonly Dictionary<Guid, AssetViewModel> NodeToAssetMap = new Dictionary<Guid, AssetViewModel>();
+        private static readonly Dictionary<Guid, AssetViewModel> NodeToAssetMap = [];
 
         static DebugAssetNodeCollectionViewModel()
         {
@@ -189,7 +190,7 @@ namespace Stride.Core.Assets.Editor.View.DebugTools
             //SelectNodeCommand = new AnonymousCommand<Guid>(ServiceProvider, SelectNodeByGuid);
         }
 
-        public ObservableList<DebugAssetRootNodeViewModel> AssetNodes { get; } = new ObservableList<DebugAssetRootNodeViewModel>();
+        public ObservableList<DebugAssetRootNodeViewModel> AssetNodes { get; } = [];
 
         public object SelectedNode { get => selectedNode; set => SetValue(ref selectedNode, value); }
 

@@ -44,7 +44,7 @@ namespace Stride.Core.MostRecentlyUsedFiles
 
         private readonly SettingsKey<MRUDictionary> settingsKey;
         private readonly Action save;
-        private readonly ObservableSet<MostRecentlyUsedFile> mostRecentlyUsedFiles = new ObservableSet<MostRecentlyUsedFile>(new MostRecentlyUsedFileEqualityComparer());
+        private readonly ObservableSet<MostRecentlyUsedFile> mostRecentlyUsedFiles = new(new MostRecentlyUsedFileEqualityComparer());
 
         public MostRecentlyUsedFileCollection([NotNull] Func<SettingsProfile> loadLatestProfile, [NotNull] SettingsKey<MRUDictionary> settingsKey, Action save)
         {

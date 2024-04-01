@@ -11,6 +11,7 @@ using Stride.Core.Serialization;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.Build;
 using Stride.Editor.EditorGame.Game;
 using Stride.Rendering.Compositing;

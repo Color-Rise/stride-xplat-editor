@@ -12,7 +12,7 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Updaters
     /// </summary>
     public sealed class DictionaryNodeUpdater : NodePresenterUpdaterBase
     {
-        public static PropertyKey<Type> DictionaryNodeKeyType = new PropertyKey<Type>(nameof(DictionaryNodeKeyType), typeof(DictionaryNodeUpdater));
+        public static PropertyKey<Type> DictionaryNodeKeyType = new(nameof(DictionaryNodeKeyType), typeof(DictionaryNodeUpdater));
         
         public override void UpdateNode(INodePresenter node)
         {

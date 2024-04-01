@@ -10,6 +10,7 @@ using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.Internal;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.View;

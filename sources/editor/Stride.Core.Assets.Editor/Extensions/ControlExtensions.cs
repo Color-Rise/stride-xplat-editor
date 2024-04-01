@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Threading;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using TreeView = Stride.Core.Presentation.Controls.TreeView;
 

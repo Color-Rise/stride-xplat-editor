@@ -14,6 +14,7 @@ using Stride.Core.BuildEngine;
 using Stride.Core.Collections;
 using Stride.Core.Diagnostics;
 using Stride.Assets;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.Build;
 using Stride.Editor.Resources;
 using Stride.Graphics;

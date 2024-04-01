@@ -18,10 +18,10 @@ namespace Stride.Core.Assets.Editor.View.Behaviors
     /// </summary>
     public class PropertyViewAutoExpandNodesBehavior : Behavior<PropertyView>
     {
-        private readonly List<PropertyViewItem> expandedItems = new List<PropertyViewItem>();
+        private readonly List<PropertyViewItem> expandedItems = [];
         // These are static so that we remember their state for the entire session.
-        private static readonly HashSet<string> expandedPropertyPaths = new HashSet<string>();
-        private static readonly HashSet<string> collapsedPropertyPaths = new HashSet<string>();
+        private static readonly HashSet<string> expandedPropertyPaths = [];
+        private static readonly HashSet<string> collapsedPropertyPaths = [];
 
         /// <summary>
         /// Identifies the <see cref="ViewModel"/> dependency property.

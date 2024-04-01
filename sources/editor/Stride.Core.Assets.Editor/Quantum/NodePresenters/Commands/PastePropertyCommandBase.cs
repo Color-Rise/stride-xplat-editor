@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel.CopyPasteProcessors;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Core.Reflection;
 using Stride.Core.Presentation.Interop;
 using Stride.Core.Presentation.Quantum.Presenters;

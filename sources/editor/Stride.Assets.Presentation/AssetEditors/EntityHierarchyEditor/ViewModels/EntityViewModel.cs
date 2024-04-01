@@ -27,6 +27,8 @@ using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
@@ -383,7 +385,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
             // rename the entity to avoid having the same names
             if (Parent == null) throw new InvalidOperationException($"{nameof(Parent)} cannot be null");
             addedRoot.Entity.Name = EntityFactory.ComputeNewName(Parent, addedRoot.Entity.Name);
-            Asset.AssetHierarchyPropertyGraph.AddPartToAsset(clonedHierarchy.Parts, addedRoot, (Parent.Owner as EntityViewModel)?.AssetSideEntity, Parent.Owner.IndexOfEntity(this) + 1);
+            Asset.PropertyGraph.AddPartToAsset(clonedHierarchy.Parts, addedRoot, (Parent.Owner as EntityViewModel)?.AssetSideEntity, Parent.Owner.IndexOfEntity(this) + 1);
             var cloneId = addedRoot.Entity.Id;
 
             // The view model should already exist at that point

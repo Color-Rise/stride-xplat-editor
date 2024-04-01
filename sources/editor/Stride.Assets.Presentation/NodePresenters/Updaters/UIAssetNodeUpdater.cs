@@ -12,6 +12,7 @@ using Stride.Core.Reflection;
 using Stride.Core.Presentation.Services;
 using Stride.Core.Quantum;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.UI;
 
 namespace Stride.Assets.Presentation.NodePresenters.Updaters

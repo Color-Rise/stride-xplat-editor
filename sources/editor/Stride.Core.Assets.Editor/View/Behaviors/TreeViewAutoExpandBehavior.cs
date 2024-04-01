@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using Microsoft.Xaml.Behaviors;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Controls;
 using TreeView = Stride.Core.Presentation.Controls.TreeView;
@@ -14,8 +15,8 @@ namespace Stride.Core.Assets.Editor.View.Behaviors
 {
     public class TreeViewAutoExpandBehavior : Behavior<TreeView>
     {
-        private readonly HashSet<string> expandedPropertyPaths = new HashSet<string>();
-        private readonly HashSet<string> collapsedPropertyPaths = new HashSet<string>();
+        private readonly HashSet<string> expandedPropertyPaths = [];
+        private readonly HashSet<string> collapsedPropertyPaths = [];
 
         /// <inheritdoc/>
         protected override void OnAttached()

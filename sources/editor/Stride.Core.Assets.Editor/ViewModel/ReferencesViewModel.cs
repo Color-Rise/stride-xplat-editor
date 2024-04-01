@@ -2,6 +2,7 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 using System.Collections.Generic;
 using System.Linq;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.ViewModels;
 
@@ -20,12 +21,12 @@ namespace Stride.Core.Assets.Editor.ViewModel
         /// <summary>
         /// The collection of referencers for the current selection of assets.
         /// </summary>
-        private readonly HashSet<AssetViewModel> referencerAssets = new HashSet<AssetViewModel>();
+        private readonly HashSet<AssetViewModel> referencerAssets = [];
 
         /// <summary>
         /// The collection of referencees for the current selection of assets.
         /// </summary>
-        private readonly HashSet<AssetViewModel> referencedAssets = new HashSet<AssetViewModel>();
+        private readonly HashSet<AssetViewModel> referencedAssets = [];
 
         /// <summary>
         /// Backing field for the <see cref="ShowReferencers"/> property.

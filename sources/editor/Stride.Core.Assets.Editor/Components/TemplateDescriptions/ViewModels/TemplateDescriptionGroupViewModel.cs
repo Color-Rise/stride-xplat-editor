@@ -13,7 +13,7 @@ namespace Stride.Core.Assets.Editor.Components.TemplateDescriptions.ViewModels
     {
         public const string Separator = "/";
 
-        private readonly SortedObservableCollection<TemplateDescriptionGroupViewModel> subGroups = new SortedObservableCollection<TemplateDescriptionGroupViewModel>();
+        private readonly SortedObservableCollection<TemplateDescriptionGroupViewModel> subGroups = [];
 
         public TemplateDescriptionGroupViewModel(TemplateDescriptionGroupViewModel parent, string name)
             : this(parent.SafeArgument(nameof(parent)).ServiceProvider, name)
@@ -28,7 +28,7 @@ namespace Stride.Core.Assets.Editor.Components.TemplateDescriptions.ViewModels
         {
             if (name == null) throw new ArgumentNullException(nameof(name));
             Name = name;
-            Templates = new ObservableList<ITemplateDescriptionViewModel>();
+            Templates = [];
             DependentProperties.Add(nameof(Parent), new[] { nameof(Path) });
         }
 

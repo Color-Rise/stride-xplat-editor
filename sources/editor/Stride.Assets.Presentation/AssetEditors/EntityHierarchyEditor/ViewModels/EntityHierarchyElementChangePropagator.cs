@@ -8,6 +8,7 @@ using Stride.Core.Quantum;
 using Stride.Assets.Entities;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels;
 using Stride.Assets.Presentation.Quantum;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
@@ -25,7 +26,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
             // Don't propagate if we're updating the EntityComponentCollection (not a reference),
             // or if we're updating TransformComponent.Children (handled as a part addition/removal)
             var nodeIndex = (e as ItemChangeEventArgs)?.Index ?? NodeIndex.Empty;
-            if (component != null && e.Node.Type != typeof(EntityComponentCollection) && !((EntityHierarchyPropertyGraph)Owner.Asset.PropertyGraph).IsChildPartReference(e.Node, nodeIndex))
+            if (component != null && e.Node.Type != typeof(EntityComponentCollection) && !((EntityHierarchyPropertyGraph)((AssetViewModel)Owner.Asset).PropertyGraph).IsChildPartReference(e.Node, nodeIndex))
             {
                 var index = component.Entity.Components.IndexOf(component);
                 var partId = new AbsoluteId(Owner.Id.AssetId, component.Entity.Id); // FIXME: what about cross-asset references?

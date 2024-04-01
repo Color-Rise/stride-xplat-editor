@@ -10,6 +10,7 @@ using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Services;
 using Stride.Core.Quantum;
@@ -27,15 +28,14 @@ namespace Stride.Core.Assets.Editor.Components.FixAssetReferences
         {
             if (dependencyManager == null) throw new ArgumentNullException(nameof(dependencyManager));
             this.dependencyManager = dependencyManager;
-            hashIds = new HashSet<AssetId>();
-            hashIds.AddRange(deletedObjects.Select(x => x.Id));
+            hashIds = [.. deletedObjects.Select(x => x.Id)];
         }
 
         protected override IEnumerable<KeyValuePair<object, List<AssetViewModel>>> FindReferencers(AssetViewModel deletedObject)
         {
             var session = deletedObject.Session;
             var dependencies = dependencyManager.ComputeDependencies(deletedObject.AssetItem.Id, AssetDependencySearchOptions.In, ContentLinkType.Reference);
-            var referencers = dependencies?.LinksIn.Select(x => session.GetAssetById(x.Item.Id)).NotNull().Where(x => !hashIds.Contains(x.Id)).ToList() ?? new List<AssetViewModel>();
+            var referencers = dependencies?.LinksIn.Select(x => session.GetAssetById(x.Item.Id)).NotNull().Where(x => !hashIds.Contains(x.Id)).ToList() ?? [];
             yield return new KeyValuePair<object, List<AssetViewModel>>(deletedObject, referencers);
         }
 

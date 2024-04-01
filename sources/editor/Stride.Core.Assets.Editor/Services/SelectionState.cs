@@ -45,7 +45,7 @@ namespace Stride.Core.Assets.Editor.Services
         /// Represents a snapshot of a set of collection. The key is the collection itself, used to retrieve the snapshot by reference.
         /// The value is the snapshot, which is a copy of the key content converted to absolute identifiers.
         /// </summary>
-        private readonly Dictionary<INotifyCollectionChanged, State> states = new Dictionary<INotifyCollectionChanged, State>();
+        private readonly Dictionary<INotifyCollectionChanged, State> states = [];
 
         /// <summary>
         /// Gets whether this state represents a valid selection.
@@ -109,7 +109,7 @@ namespace Stride.Core.Assets.Editor.Services
 
             if (!states.ContainsKey(collection))
             {
-                states.Add(collection, new State(new HashSet<AbsoluteId>(), scope.GetObjectToSelect));
+                states.Add(collection, new State([], scope.GetObjectToSelect));
             }
         }
 

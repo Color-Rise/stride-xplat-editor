@@ -12,7 +12,7 @@ namespace Stride.Core.Assets.Editor.View.ValueConverters
     /// </summary>
     public class NameBreakingLine : OneWayValueConverter<NameBreakingLine>
     {
-        private static readonly Regex Regex = new Regex("(?<BEFORE>[^a-zA-Z0-9])" + // Non-alphanumeric
+        private static readonly Regex Regex = new("(?<BEFORE>[^a-zA-Z0-9])" + // Non-alphanumeric
                                                         "|(?<BEFORE>[a-z])(?<AFTER>[A-Z0-9])" + // aA or a0
                                                         "|(?<BEFORE>[A-Z])(?<AFTER>[0-9])"); // A0
 

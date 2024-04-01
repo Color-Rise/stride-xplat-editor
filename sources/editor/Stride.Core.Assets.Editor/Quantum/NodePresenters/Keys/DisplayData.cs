@@ -8,7 +8,7 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys
         public const string AutoExpandRule = nameof(AutoExpandRule);
         public const string UnloadableObjectInfo = nameof(UnloadableObjectInfo);
 
-        public static readonly PropertyKey<string> AttributeDisplayNameKey = new PropertyKey<string>(AttributeDisplayName, typeof(DisplayData));
-        public static readonly PropertyKey<ExpandRule> AutoExpandRuleKey = new PropertyKey<ExpandRule>(AutoExpandRule, typeof(DisplayData));
+        public static readonly PropertyKey<string> AttributeDisplayNameKey = new(AttributeDisplayName, typeof(DisplayData));
+        public static readonly PropertyKey<ExpandRule> AutoExpandRuleKey = new(AutoExpandRule, typeof(DisplayData));
     }
 }

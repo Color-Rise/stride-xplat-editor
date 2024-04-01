@@ -16,9 +16,9 @@ namespace Stride.Core.Assets.Editor.Services
 {
     internal class CopyPasteService : ICopyPasteService
     {
-        private readonly List<ICopyProcessor> copyProcessors = new List<ICopyProcessor>();
-        private readonly List<IPasteProcessor> pasteProcessors = new List<IPasteProcessor>();
-        private readonly List<IAssetPostPasteProcessor> postProcessors = new List<IAssetPostPasteProcessor>();
+        private readonly List<ICopyProcessor> copyProcessors = [];
+        private readonly List<IPasteProcessor> pasteProcessors = [];
+        private readonly List<IAssetPostPasteProcessor> postProcessors = [];
 
         public CopyPasteService()
         {

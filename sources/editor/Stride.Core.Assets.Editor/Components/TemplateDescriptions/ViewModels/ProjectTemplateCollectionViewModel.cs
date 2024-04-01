@@ -53,7 +53,7 @@ namespace Stride.Core.Assets.Editor.Components.TemplateDescriptions.ViewModels
         protected string GenerateUniqueNameAtLocation(List<string> conflictingNames = null)
         {
             if (conflictingNames == null)
-                conflictingNames = new List<string>();
+                conflictingNames = [];
 
             if (Directory.Exists(Location))
             {

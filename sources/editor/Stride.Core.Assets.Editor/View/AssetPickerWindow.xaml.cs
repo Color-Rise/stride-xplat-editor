@@ -8,6 +8,7 @@ using System.Windows;
 using Stride.Core.Assets.Editor.Extensions;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Controls;
@@ -27,14 +28,14 @@ namespace Stride.Core.Assets.Editor.View
         public static readonly DependencyProperty MessageProperty =
             DependencyProperty.Register(nameof(Message), typeof(string), typeof(AssetPickerWindow), new PropertyMetadata(string.Empty));
 
-        private static readonly List<SessionObjectViewModel> ExpandedObjects = new List<SessionObjectViewModel>();
-        private readonly List<AssetViewModel> selectedAssets = new List<AssetViewModel>();
+        private static readonly List<SessionObjectViewModel> ExpandedObjects = [];
+        private readonly List<AssetViewModel> selectedAssets = [];
 
         public AssetPickerWindow(SessionViewModel session)
         {
             InitializeComponent();
             Session = session;
-            AcceptedTypes = new List<Type>();
+            AcceptedTypes = [];
             AssetDoubleClickCommand = new AnonymousCommand(session.ServiceProvider, OnAssetDoubleClick);
             DataContext = this;
             Loaded += AssetPickerWindowLoaded;
@@ -95,7 +96,7 @@ namespace Stride.Core.Assets.Editor.View
 
             await base.ShowModal();
 
-            if (Result == Presentation.Services.DialogResult.Ok)
+            if (Result == Core.Presentation.Services.DialogResult.Ok)
             {
                 selectedAssets.AddRange(AssetView.SelectedAssets);
             }
@@ -130,7 +131,7 @@ namespace Stride.Core.Assets.Editor.View
             var asset = AssetView.SingleSelectedAsset;
             if (asset != null)
             {
-                Result = Presentation.Services.DialogResult.Ok;
+                Result = Core.Presentation.Services.DialogResult.Ok;
                 Close();
             }
         }

@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Core.Reflection;
 using Stride.Core.Presentation.Quantum;
 using Stride.Core.Presentation.Quantum.Presenters;

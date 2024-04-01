@@ -31,6 +31,7 @@ using Stride.Assets.Presentation.SceneEditor;
 using Stride.Assets.Presentation.View;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Presentation.ViewModel.CopyPasteProcessors;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
@@ -413,7 +414,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
 
                 using (var transaction = UndoRedoService.CreateTransaction())
                 {
-                    parent.Asset.AssetHierarchyPropertyGraph.AddPartToAsset(collection, collection.Single().Value, (parent.Owner as EntityViewModel)?.AssetSideEntity, parent.Owner.EntityCount);
+                    parent.Asset.PropertyGraph.AddPartToAsset(collection, collection.Single().Value, (parent.Owner as EntityViewModel)?.AssetSideEntity, parent.Owner.EntityCount);
                     UndoRedoService.SetName(transaction, $"Create entity '{entity.Name}'");
                 }
                 // Select the newly created entity
@@ -516,7 +517,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
                 foreach (var entities in entitiesPerScene)
                 {
                     HashSet<Tuple<Guid, Guid>> mapping;
-                    entities.Key.AssetHierarchyPropertyGraph.DeleteParts(entities.Select(x => x.EntityDesign), out mapping);
+                    entities.Key.PropertyGraph.DeleteParts(entities.Select(x => x.EntityDesign), out mapping);
                     var operation = new DeletedPartsTrackingOperation<EntityDesign, Entity>(entities.Key, mapping);
                     UndoRedoService.PushOperation(operation);
                 }

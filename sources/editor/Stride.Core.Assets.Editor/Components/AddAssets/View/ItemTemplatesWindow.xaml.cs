@@ -47,7 +47,7 @@ namespace Stride.Core.Assets.Editor.Components.AddAssets.View
         private void Validate()
         {
             SelectedTemplate = ViewModel.SelectedTemplate.Key;
-            Result = SelectedTemplate != null ? Presentation.Services.DialogResult.Ok : Presentation.Services.DialogResult.Cancel;
+            Result = SelectedTemplate != null ? Core.Presentation.Services.DialogResult.Ok : Core.Presentation.Services.DialogResult.Cancel;
             Close();
         }
 

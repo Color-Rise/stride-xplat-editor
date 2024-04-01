@@ -17,6 +17,7 @@ using Stride.Core.Assets.Editor.Components.TemplateDescriptions.Views;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Editor.ViewModel.Progress;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Assets.Templates;
 using Stride.Core.Extensions;
 using Stride.Core.Settings;
@@ -29,7 +30,7 @@ using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.View
 {
-    using MessageBoxImage = Presentation.Services.MessageBoxImage;
+    using MessageBoxImage = Core.Presentation.Services.MessageBoxImage;
 
     public class EditorDialogService : DialogService, IEditorDialogService
     {
@@ -46,10 +47,10 @@ namespace Stride.Core.Assets.Editor.View
             public TaskCompletionSource<int> Displayed { get; }
         }
 
-        private static readonly List<ITemplateProvider> AdditionalProviders = new List<ITemplateProvider>();
-        private readonly List<NotificationWindow> notificationWindows = new List<NotificationWindow>();
-        private readonly List<PendingWorkProgress> pendingProgressWindows = new List<PendingWorkProgress>();
-        private readonly ConcurrentQueue<Tuple<SettingsKey, Action>> delayedNotifications = new ConcurrentQueue<Tuple<SettingsKey, Action>>();
+        private static readonly List<ITemplateProvider> AdditionalProviders = [];
+        private readonly List<NotificationWindow> notificationWindows = [];
+        private readonly List<PendingWorkProgress> pendingProgressWindows = [];
+        private readonly ConcurrentQueue<Tuple<SettingsKey, Action>> delayedNotifications = new();
 
         private SettingsWindow settingsWindow;
 

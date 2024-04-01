@@ -460,10 +460,10 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
                 // Remove all children from this panel.
                 foreach (var child in children)
                 {
-                    Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(child.UIElementDesign);
+                    Asset.PropertyGraph.RemovePartFromAsset(child.UIElementDesign);
                 }
                 // Remove the current panel.
-                Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(UIElementDesign);
+                Asset.PropertyGraph.RemovePartFromAsset(UIElementDesign);
                 // Add the children into the parent panel.
                 foreach (var child in children)
                 {
@@ -547,7 +547,7 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
             // Remove all children from the source panel.
             foreach (var child in children)
             {
-                Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(child.UIElementDesign);
+                Asset.PropertyGraph.RemovePartFromAsset(child.UIElementDesign);
             }
 
             // Swap panels in the parent
@@ -562,8 +562,8 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
             {
                 // Remove current panel from Parent
                 var index = elementParent.Children.IndexOf(sourcePanel);
-                Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(sourcePanel.UIElementDesign);
-                Asset.AssetHierarchyPropertyGraph.AddPartToAsset(hierarchy.Parts, targetPanel, elementParent.AssetSideUIElement, index);
+                Asset.PropertyGraph.RemovePartFromAsset(sourcePanel.UIElementDesign);
+                Asset.PropertyGraph.AddPartToAsset(hierarchy.Parts, targetPanel, elementParent.AssetSideUIElement, index);
             }
             else
             {

@@ -11,6 +11,7 @@ using Stride.Core.Quantum;
 using Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.UI;
 
 namespace Stride.Assets.Presentation.AssetEditors.UIPageEditor.ViewModels
@@ -42,8 +43,8 @@ namespace Stride.Assets.Presentation.AssetEditors.UIPageEditor.ViewModels
             if (sourcePanel.Id.ObjectId != Asset.Asset.Hierarchy.RootParts.Single().Id)
                 throw new ArgumentException(@"The given source panel does not match the currently set root element", nameof(sourcePanel));
 
-            Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(sourcePanel.UIElementDesign);
-            Asset.AssetHierarchyPropertyGraph.AddPartToAsset(hierarchy.Parts, hierarchy.Parts[targetPanelId], null, Asset.Asset.Hierarchy.RootParts.Count);
+            Asset.PropertyGraph.RemovePartFromAsset(sourcePanel.UIElementDesign);
+            Asset.PropertyGraph.AddPartToAsset(hierarchy.Parts, hierarchy.Parts[targetPanelId], null, Asset.Asset.Hierarchy.RootParts.Count);
         }
 
         /// <inheritdoc />

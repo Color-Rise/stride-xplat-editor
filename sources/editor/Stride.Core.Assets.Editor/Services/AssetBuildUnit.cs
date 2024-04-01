@@ -10,7 +10,7 @@ namespace Stride.Core.Assets.Editor.Services
 {
     public struct AssetBuildUnitIdentifier
     {
-        public static AssetBuildUnitIdentifier Default = new AssetBuildUnitIdentifier(Guid.Empty, AssetId.Empty);
+        public static AssetBuildUnitIdentifier Default = new(Guid.Empty, AssetId.Empty);
         
         public AssetBuildUnitIdentifier(Guid contextIdentifier, AssetId assetIdentifier)
         {
@@ -25,7 +25,7 @@ namespace Stride.Core.Assets.Editor.Services
 
     public abstract class AssetBuildUnit : IComparable<AssetBuildUnit>
     {
-        private readonly TaskCompletionSource<ResultStatus> taskCompletionSource = new TaskCompletionSource<ResultStatus>();
+        private readonly TaskCompletionSource<ResultStatus> taskCompletionSource = new();
         private ListBuildStep buildStep;
 
         protected AssetBuildUnit(AssetBuildUnitIdentifier identifier)

@@ -20,6 +20,7 @@ using Microsoft.CodeAnalysis.MSBuild;
 using Stride.Core.Collections;
 using Stride.Core.Extensions;
 using Stride.Assets.Presentation.AssetEditors.ScriptEditor;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Project = Microsoft.CodeAnalysis.Project;
 
 namespace Stride.Assets.Presentation.AssetEditors

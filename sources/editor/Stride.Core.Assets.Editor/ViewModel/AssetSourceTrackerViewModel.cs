@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModel.Progress;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Assets.Tracking;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
@@ -24,8 +25,8 @@ namespace Stride.Core.Assets.Editor.ViewModel
     {
         private readonly PackageSession session;
         private readonly SessionViewModel sessionViewModel;
-        private readonly CancellationTokenSource cancel = new CancellationTokenSource();
-        private readonly ObservableSet<AssetViewModel> assetsToUpdate = new ObservableSet<AssetViewModel>();
+        private readonly CancellationTokenSource cancel = new();
+        private readonly ObservableSet<AssetViewModel> assetsToUpdate = [];
 
         public AssetSourceTrackerViewModel(IViewModelServiceProvider serviceProvider, PackageSession packageSession, SessionViewModel session)
             : base(serviceProvider)

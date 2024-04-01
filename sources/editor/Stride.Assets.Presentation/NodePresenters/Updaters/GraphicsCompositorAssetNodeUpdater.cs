@@ -10,6 +10,7 @@ using Stride.Core;
 using Stride.Core.Extensions;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Rendering;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Rendering;
 using Stride.Rendering.Compositing;
 

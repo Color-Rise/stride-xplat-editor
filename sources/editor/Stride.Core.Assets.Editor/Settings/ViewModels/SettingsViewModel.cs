@@ -52,7 +52,7 @@ namespace Stride.Core.Assets.Editor.Settings.ViewModels
         /// <summary>
         /// Gets the collection of root categories of settings.
         /// </summary>
-        public SortedObservableCollection<SettingsCategoryViewModel> Categories { get; } = new SortedObservableCollection<SettingsCategoryViewModel>();
+        public SortedObservableCollection<SettingsCategoryViewModel> Categories { get; } = [];
 
         /// <summary>
         /// Gets or sets the currently selected category.

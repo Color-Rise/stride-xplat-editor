@@ -8,6 +8,7 @@ using Stride.Assets.Presentation.AssetEditors.VisualScriptEditor;
 using Stride.Assets.Presentation.NodePresenters.Keys;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.Scripts;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 
 namespace Stride.Assets.Presentation.NodePresenters.Updaters
 {

@@ -15,6 +15,7 @@ using Stride.Assets.Presentation.AssetEditors.ScriptEditor;
 using Stride.Assets.Scripts;
 using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.IO;
 using Stride.Core.Presentation.Dirtiables;

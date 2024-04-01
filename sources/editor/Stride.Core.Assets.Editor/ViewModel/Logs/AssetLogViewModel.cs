@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Stride.Core.Assets.Analysis;
 using Stride.Core.Assets.Editor.Services;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Diagnostics;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.ViewModel;
@@ -17,7 +18,7 @@ namespace Stride.Core.Assets.Editor.ViewModel.Logs
     public class AssetLogViewModel : LoggerViewModel
     {
         private readonly SessionViewModel session;
-        private readonly Dictionary<LogKey, Logger> loggers = new Dictionary<LogKey, Logger>();
+        private readonly Dictionary<LogKey, Logger> loggers = [];
         private bool waiting;
         private int errorCount;
 
@@ -27,7 +28,7 @@ namespace Stride.Core.Assets.Editor.ViewModel.Logs
             if (session == null) throw new ArgumentNullException(nameof(session));
             MinLevel = LogMessageType.Warning;
             this.session = session;
-            FilteredMessages = new ObservableList<ILogMessage>();
+            FilteredMessages = [];
             session.ActiveAssetView.SelectedAssets.CollectionChanged += (s, e) => RefreshFilteredMessages();
             Messages.CollectionChanged += (s, e) => RefreshFilteredMessages();
 

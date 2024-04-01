@@ -21,6 +21,8 @@ using Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels;
 using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.Components.Properties;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.UI;
 
 namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
@@ -152,7 +154,7 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
             // Inside a library, rename the element to avoid having the same name
             if (Asset is UILibraryViewModel && !string.IsNullOrEmpty(addedRoot.UIElement.Name))
                 addedRoot.UIElement.Name = NamingHelper.ComputeNewName(addedRoot.UIElement.Name, Parent.Children, x => x.Name);
-            Asset.AssetHierarchyPropertyGraph.AddPartToAsset(clonedHierarchy.Parts, addedRoot, parentPanel.AssetSideUIElement, parentPanel.Children.IndexOf(this) + 1);
+            Asset.PropertyGraph.AddPartToAsset(clonedHierarchy.Parts, addedRoot, parentPanel.AssetSideUIElement, parentPanel.Children.IndexOf(this) + 1);
             var cloneId = addedRoot.UIElement.Id;
 
             // The view model should already exist at that point

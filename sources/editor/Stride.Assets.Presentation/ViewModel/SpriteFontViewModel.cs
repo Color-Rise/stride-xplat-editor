@@ -7,6 +7,8 @@ using Stride.Core;
 using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.IO;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Services;

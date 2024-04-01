@@ -10,7 +10,7 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys
     public static class AbstractNodeEntryData
     {
         public const string AbstractNodeMatchingEntries = nameof(AbstractNodeMatchingEntries);
-        public static readonly PropertyKey<IEnumerable<AbstractNodeEntry>> Key = new PropertyKey<IEnumerable<AbstractNodeEntry>>(AbstractNodeMatchingEntries, typeof(AbstractNodeEntryData), new PropertyCombinerMetadata(CombineProperty));
+        public static readonly PropertyKey<IEnumerable<AbstractNodeEntry>> Key = new(AbstractNodeMatchingEntries, typeof(AbstractNodeEntryData), new PropertyCombinerMetadata(CombineProperty));
 
         public static object CombineProperty(IEnumerable<object> properties)
         {

@@ -13,6 +13,7 @@ using Stride.Core.Reflection;
 using Stride.Assets.Entities;
 using Stride.Assets.Presentation.NodePresenters.Keys;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Engine;
 using Stride.Core.Presentation.Core;
 

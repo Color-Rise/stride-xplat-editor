@@ -19,13 +19,13 @@ namespace Stride.Core.Assets.Editor.View
     {
         private readonly SessionViewModel session;
 
-        private readonly List<PickablePackageViewModel> selectedPackages = new List<PickablePackageViewModel>();
+        private readonly List<PickablePackageViewModel> selectedPackages = [];
 
         public PackagePickerWindow(SessionViewModel session)
         {
             this.session = session;
             InitializeComponent();
-            Packages = new List<PickablePackageViewModel>();
+            Packages = [];
             DataContext = this;
             Width = Math.Min(Width, SystemParameters.WorkArea.Width);
             Height = Math.Min(Height, SystemParameters.WorkArea.Height);
@@ -51,7 +51,7 @@ namespace Stride.Core.Assets.Editor.View
 
             await base.ShowModal();
 
-            if (Result == Presentation.Services.DialogResult.Ok)
+            if (Result == Core.Presentation.Services.DialogResult.Ok)
             {
                 selectedPackages.AddRange(PackageListBox.SelectedItems.Cast<PickablePackageViewModel>());
             }

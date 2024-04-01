@@ -16,7 +16,7 @@ namespace Stride.Core.Assets.Editor.ViewModel.Progress
     /// </summary>
     public class WorkProgressViewModel : DispatcherViewModel
     {
-        private readonly object asyncUpdateLock = new object();
+        private readonly object asyncUpdateLock = new();
         private string title = "Work in progress...";
         private string progressMessage;
         private bool isIndeterminate;
@@ -34,7 +34,7 @@ namespace Stride.Core.Assets.Editor.ViewModel.Progress
         private double nextProgressValue;
         private bool asyncUpdate;
         private bool windowWillOpen;
-        private readonly TaskCompletionSource<int> workProgressClosed = new TaskCompletionSource<int>();
+        private readonly TaskCompletionSource<int> workProgressClosed = new();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkProgressViewModel"/> class with a single logger.

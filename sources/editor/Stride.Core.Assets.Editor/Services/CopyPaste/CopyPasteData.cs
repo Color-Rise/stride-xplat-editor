@@ -27,7 +27,7 @@ namespace Stride.Core.Assets.Editor.Services
         [DataMember]
         [NonIdentifiableCollectionItems]
         [ItemNotNull, NotNull]
-        public List<CopyPasteItem> Items { get; } = new List<CopyPasteItem>();
+        public List<CopyPasteItem> Items { get; } = [];
 
         /// <summary>
         /// Gets the collection of overridden members in the copied data.

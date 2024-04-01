@@ -35,9 +35,9 @@ namespace Stride.Core.Assets.Editor.Components.FixReferences
             }
         }
 
-        private readonly List<ReferenceReplacementViewModel<T>> referencesToFix = new List<ReferenceReplacementViewModel<T>>();
-        private readonly List<ReferenceReplacementViewModel<T>> referencesToClear = new List<ReferenceReplacementViewModel<T>>();
-        private readonly Dictionary<ReferenceTarget, List<T>> referencersMap = new Dictionary<ReferenceTarget, List<T>>();
+        private readonly List<ReferenceReplacementViewModel<T>> referencesToFix = [];
+        private readonly List<ReferenceReplacementViewModel<T>> referencesToClear = [];
+        private readonly Dictionary<ReferenceTarget, List<T>> referencersMap = [];
 
         private T currentObjectToReplace;
         private IEnumerator<KeyValuePair<ReferenceTarget, List<T>>> currentObjectToReplaceEnumerator;
@@ -54,7 +54,7 @@ namespace Stride.Core.Assets.Editor.Components.FixReferences
             : base(serviceProvider)
         {
             this.dialog = dialog;
-            CurrentReplacements = new ObservableList<ReferenceReplacementViewModel<T>>();
+            CurrentReplacements = [];
             PickupSingleReplacementObjectCommand = new AnonymousTaskCommand(serviceProvider, PickupSingleReplacementObject);
             FixReferencesCommand = new AnonymousCommand(serviceProvider, () => FixReferences());
             ClearReferencesCommand = new AnonymousCommand(serviceProvider, () => ClearReferences());

@@ -34,6 +34,8 @@ using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.SceneEditor;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.Extensions;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 using Stride.Engine.Processors;
 using Stride.UI;
@@ -443,7 +445,7 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
             {
                 ClearSelection();
                 HashSet<Tuple<Guid, Guid>> mapping;
-                asset.AssetHierarchyPropertyGraph.DeleteParts(elementsToDelete.Select(x => x.UIElementDesign), out mapping);
+                asset.PropertyGraph.DeleteParts(elementsToDelete.Select(x => x.UIElementDesign), out mapping);
                 var operation = new DeletedPartsTrackingOperation<UIElementDesign, UIElement>(asset, mapping);
                 UndoRedoService.PushOperation(operation);
                 UndoRedoService.SetName(transaction, "Delete selected UI elements");
@@ -615,7 +617,7 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
                 // Remove all children from their partDesign panel.
                 foreach (var child in children)
                 {
-                    child.Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(child.UIElementDesign);
+                    child.Asset.PropertyGraph.RemovePartFromAsset(child.UIElementDesign);
                 }
                 // Add the new panel in place of the selected content.
                 parent.Asset.InsertUIElement(hierarchy.Parts, newPanelDesign, (parent as UIElementViewModel)?.AssetSideUIElement);

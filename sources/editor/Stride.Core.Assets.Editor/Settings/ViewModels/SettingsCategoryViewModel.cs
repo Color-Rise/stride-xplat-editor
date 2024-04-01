@@ -6,6 +6,7 @@ using Stride.Core.Assets.Editor.Components.Properties;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Settings;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.Core;
@@ -21,7 +22,7 @@ namespace Stride.Core.Assets.Editor.Settings.ViewModels
     internal class SettingsCategoryViewModel : DispatcherViewModel, IComparable<SettingsCategoryViewModel>, IPropertyProviderViewModel
     {
         private readonly AssetNodeContainer nodeContainer;
-        private readonly SettingsContainerNode settingsList = new SettingsContainerNode();
+        private readonly SettingsContainerNode settingsList = [];
 
         [MemberCollection(ReadOnly = true)]
         internal class SettingsContainerNode : Dictionary<string, object>
@@ -34,7 +35,7 @@ namespace Stride.Core.Assets.Editor.Settings.ViewModels
             this.nodeContainer = nodeContainer;
             Name = name;
             Parent = parent;
-            SubCategories = new SortedObservableCollection<SettingsCategoryViewModel>();
+            SubCategories = [];
 
             // Get all settings key and sort them by display name
             var settingsKeys = profile.Container.GetAllSettingsKeys();

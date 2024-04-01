@@ -6,7 +6,7 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys
     {
         public const string Category = nameof(Category);
 
-        public static readonly PropertyKey<bool> Key = new PropertyKey<bool>(Category, typeof(CategoryData));
+        public static readonly PropertyKey<bool> Key = new(Category, typeof(CategoryData));
 
         public static string ComputeCategoryNodeName(string categoryName) => categoryName + Category;
     }

@@ -6,7 +6,7 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys
     {
         public const string InlineMember = nameof(InlineMember);
         public const string InlinedProperty = nameof(InlinedProperty);
-        public static readonly PropertyKey<bool> InlineMemberKey = new PropertyKey<bool>(InlineMember, typeof(InlineData));
-        public static readonly PropertyKey<bool> InlinedPropertyKey = new PropertyKey<bool>(InlinedProperty, typeof(InlineData));
+        public static readonly PropertyKey<bool> InlineMemberKey = new(InlineMember, typeof(InlineData));
+        public static readonly PropertyKey<bool> InlinedPropertyKey = new(InlinedProperty, typeof(InlineData));
     }
 }

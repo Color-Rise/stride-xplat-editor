@@ -21,6 +21,7 @@ using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Quantum;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Reflection;
 using Stride.Core.Presentation.Interop;
 using Stride.Core.Presentation.Services;
@@ -206,7 +207,7 @@ namespace Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewM
                 // Break links to the base for selected parts of their respective asset.
                 foreach (var grp in SelectedItems.GroupBy(e => (AssetCompositeHierarchyViewModel<TAssetPartDesign, TAssetPart>)e.Asset))
                 {
-                    grp.Key.AssetHierarchyPropertyGraph.BreakBasePartLinks(grp.Select(x => x.PartDesign));
+                    grp.Key.PropertyGraph.BreakBasePartLinks(grp.Select(x => x.PartDesign));
                 }
                 UndoRedoService.SetName(transaction, $"Break link to {baseTypeName}");
             }
@@ -369,7 +370,7 @@ namespace Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewM
                             NodeContainer.GetNode(partDesign)[nameof(IAssetPartDesign.Base)].Update(new BasePart(new AssetReference(assetItem.Id, assetItem.Location), id.Value, instanceId));
                         }
                         // Re-link the parts to their (new) bases
-                        currentAsset.PropertyGraph.RefreshBase();
+                        ((AssetViewModel)currentAsset).PropertyGraph.RefreshBase();
 
                         foreach (var id in idRemapping)
                         {
@@ -552,7 +553,7 @@ namespace Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewM
                 {
                     var hierarchy = AssetCompositeHierarchyPropertyGraph<TAssetPartDesign, TAssetPart>.CloneSubHierarchies(Session.AssetNodeContainer, x.asset.Asset, x.commonParts.Select(r => r.Id.ObjectId), SubHierarchyCloneFlags.None, out _);
                     PrepareToCopy(hierarchy, x.commonRoots, x.commonParts);
-                    return ((AssetPropertyGraph)x.asset.AssetHierarchyPropertyGraph, (AssetId?)x.asset.Id, (object)hierarchy, false);
+                    return ((AssetPropertyGraph)x.asset.PropertyGraph, (AssetId?)x.asset.Id, (object)hierarchy, false);
                 }).ToList(), typeof(AssetCompositeHierarchyData<TAssetPartDesign, TAssetPart>));
                 if (string.IsNullOrEmpty(text))
                     return;

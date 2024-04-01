@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows;
 using Stride.Core.Assets.Editor.Components.Properties;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Presentation.Controls;
 using Stride.Core.Presentation.Quantum.ViewModels;
 using Stride.Core.Presentation.Services;

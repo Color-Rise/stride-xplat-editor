@@ -11,6 +11,7 @@ using Microsoft.Xaml.Behaviors;
 using System.Windows.Media;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Presentation.Adorners;
 using Stride.Core.Presentation.Extensions;
 using Stride.Core.Translation;

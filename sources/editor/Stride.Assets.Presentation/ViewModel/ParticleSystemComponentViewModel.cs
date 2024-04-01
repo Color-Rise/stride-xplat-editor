@@ -6,6 +6,7 @@ using Stride.Core.Assets.Editor.Quantum.NodePresenters;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Quantum.Presenters;
 using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Engine;
 using Stride.Particles;
 using Stride.Particles.Initializers;

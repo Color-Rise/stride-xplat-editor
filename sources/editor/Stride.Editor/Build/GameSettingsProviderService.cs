@@ -6,6 +6,7 @@ using Stride.Core.Assets;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Presentation.Extensions;
 using Stride.Assets;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Data;
 
 namespace Stride.Editor.Build

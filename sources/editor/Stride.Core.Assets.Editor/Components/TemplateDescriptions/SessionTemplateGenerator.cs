@@ -15,7 +15,7 @@ namespace Stride.Core.Assets.Editor.Components.TemplateDescriptions
     /// </summary>
     public abstract class SessionTemplateGenerator : TemplateGeneratorBase<SessionTemplateGeneratorParameters>
     {
-        private readonly AssetPropertyGraphContainer graphContainer = new AssetPropertyGraphContainer(new AssetNodeContainer { NodeBuilder = { NodeFactory = new AssetNodeFactory() } });
+        private readonly AssetPropertyGraphContainer graphContainer = new(new AssetNodeContainer { NodeBuilder = { NodeFactory = new AssetNodeFactory() } });
         // TODO: move .gitignore content into an external file
         private static readonly string GitIgnore = @"
 *.user

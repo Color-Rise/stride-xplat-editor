@@ -13,6 +13,7 @@ using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModel
 using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.ViewModels;
 
 namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
 {
@@ -82,19 +83,19 @@ namespace Stride.Assets.Presentation.AssetEditors.UIEditor.ViewModels
                         var flags = element.Asset == Asset ? SubHierarchyCloneFlags.None : SubHierarchyCloneFlags.GenerateNewIdsForIdentifiableObjects;
                         var hierarchy = UIAssetPropertyGraph.CloneSubHierarchies(element.Asset.Session.AssetNodeContainer, element.Asset.Asset, element.Id.ObjectId.Yield(), flags, out Dictionary<Guid, Guid> idRemapping);
                         // Remove from previous asset
-                        element.Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(element.UIElementDesign);
+                        element.Asset.PropertyGraph.RemovePartFromAsset(element.UIElementDesign);
                         // Get the id of the new element
                         if (!idRemapping.TryGetValue(element.Id.ObjectId, out Guid partId))
                             partId = element.Id.ObjectId;
                         // Insert it in the new parent, or as root if the new parent is null.
-                        Asset.AssetHierarchyPropertyGraph.AddPartToAsset(hierarchy.Parts, hierarchy.Parts[partId], (this as UIElementViewModel)?.AssetSideUIElement, index++);
+                        Asset.PropertyGraph.AddPartToAsset(hierarchy.Parts, hierarchy.Parts[partId], (this as UIElementViewModel)?.AssetSideUIElement, index++);
                         moved = true;
                         continue;
                     }
                     if (child is IUIElementFactory factory)
                     {
                         var childHierarchy = factory.Create(UIAsset);
-                        Asset.AssetHierarchyPropertyGraph.AddPartToAsset(childHierarchy.Parts, childHierarchy.Parts[childHierarchy.RootParts.Single().Id], (this as UIElementViewModel)?.AssetSideUIElement, index++);
+                        Asset.PropertyGraph.AddPartToAsset(childHierarchy.Parts, childHierarchy.Parts[childHierarchy.RootParts.Single().Id], (this as UIElementViewModel)?.AssetSideUIElement, index++);
                     }
                 }
                 Editor.UndoRedoService.SetName(transaction, $"{(moved ? "Move" : "Add")} {children.Count} element{(children.Count > 1 ? "s" : string.Empty)} to {GetDropLocationName()}");

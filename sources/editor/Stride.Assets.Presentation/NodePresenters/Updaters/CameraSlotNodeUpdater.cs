@@ -10,6 +10,7 @@ using Stride.Core.Extensions;
 using Stride.Core.Presentation.Quantum.Presenters;
 using Stride.Assets.Presentation.NodePresenters.Keys;
 using Stride.Assets.Rendering;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Rendering.Compositing;
 
 namespace Stride.Assets.Presentation.NodePresenters.Updaters

@@ -19,14 +19,14 @@ namespace Stride.Core.Assets.Editor.Services
     public class SelectionService
     {
         private readonly IDispatcherService dispatcher;
-        private readonly List<SelectionScope> scopes = new List<SelectionScope>();
+        private readonly List<SelectionScope> scopes = [];
         private readonly ITransactionStack stack = TransactionStackFactory.Create(int.MaxValue);
         private ITransaction currentTransaction;
 
         /// <summary>
         /// The current state of the selection.
         /// </summary>
-        internal SelectionState CurrentState = new SelectionState();
+        internal SelectionState CurrentState = new();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SelectionService"/> class.

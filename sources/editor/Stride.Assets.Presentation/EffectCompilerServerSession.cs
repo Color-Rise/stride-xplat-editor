@@ -15,6 +15,7 @@ using Stride.Core.Serialization;
 using Stride.Assets.Effect;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.ConnectionRouter;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine.Network;
 using Stride.Shaders.Compiler;
 using Stride.Core.Presentation.Commands;

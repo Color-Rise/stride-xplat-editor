@@ -9,7 +9,7 @@ namespace Stride.Core.Assets.Editor.Components.TemplateDescriptions.ViewModels
 {
     public abstract class TemplateDescriptionCollectionViewModel : DispatcherViewModel
     {
-        private readonly ObservableList<ITemplateDescriptionViewModel> templates = new ObservableList<ITemplateDescriptionViewModel>();
+        private readonly ObservableList<ITemplateDescriptionViewModel> templates = [];
 
         private TemplateDescriptionGroupViewModel selectedGroup;
         private ITemplateDescriptionViewModel selectedTemplate;

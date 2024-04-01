@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Dirtiables;
 
@@ -31,7 +32,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
         {
             if (deletedPartsMapping == null) throw new ArgumentNullException(nameof(deletedPartsMapping));
             this.deletedPartsMapping = deletedPartsMapping;
-            propertyGraph = viewmodel.AssetHierarchyPropertyGraph;
+            propertyGraph = viewmodel.PropertyGraph;
 
         }
 

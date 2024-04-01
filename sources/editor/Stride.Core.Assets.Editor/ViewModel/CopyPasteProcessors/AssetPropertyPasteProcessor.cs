@@ -25,7 +25,7 @@ namespace Stride.Core.Assets.Editor.ViewModel.CopyPasteProcessors
     /// </summary>
     public class AssetPropertyPasteProcessor : PasteProcessorBase
     {
-        public static readonly PropertyKey<bool> IsReplaceKey = new PropertyKey<bool>(nameof(IsReplaceKey), typeof(AssetPropertyPasteProcessor));
+        public static readonly PropertyKey<bool> IsReplaceKey = new(nameof(IsReplaceKey), typeof(AssetPropertyPasteProcessor));
 
         /// <inheritdoc />
         public override bool Accept(Type targetRootType, Type targetMemberType, Type pastedDataType)

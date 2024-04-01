@@ -10,9 +10,9 @@ namespace Stride.Core.Assets.Editor.Components.Status
     public class StatusViewModel : DispatcherViewModel
     {
         private const int DiscardableStatus = -1;
-        private readonly SortedList<int, string> statusList = new SortedList<int, string>();
-        private readonly SortedList<int, JobProgressViewModel> jobList = new SortedList<int, JobProgressViewModel>();
-        private readonly object lockObject = new object();
+        private readonly SortedList<int, string> statusList = [];
+        private readonly SortedList<int, JobProgressViewModel> jobList = [];
+        private readonly object lockObject = new();
         private int currentToken;
         private string currentStatus;
         private JobProgressViewModel currentJob;

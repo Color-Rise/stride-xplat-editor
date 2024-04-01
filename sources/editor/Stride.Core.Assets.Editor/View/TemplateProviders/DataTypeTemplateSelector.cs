@@ -12,7 +12,7 @@ namespace Stride.Core.Assets.Editor.View.TemplateProviders
     [ContentProperty("TemplateDefinitions")]
     public class DataTypeTemplateSelector : DataTemplateSelector
     {
-        public TemplateDefinitionCollection TemplateDefinitions { get; } = new TemplateDefinitionCollection();
+        public TemplateDefinitionCollection TemplateDefinitions { get; } = [];
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {

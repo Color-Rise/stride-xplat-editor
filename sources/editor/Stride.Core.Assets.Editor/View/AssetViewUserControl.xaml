@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:Stride.Core.Assets.Editor.ViewModel"
+             xmlns:viewModels="clr-namespace:Stride.Core.Assets.Presentation.ViewModels"
              xmlns:sd="http://schemas.stride3d.net/xaml/presentation"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:view="clr-namespace:Stride.Core.Assets.Editor.View"
@@ -31,7 +32,7 @@
 
         <DataTemplate x:Key="AssetTileView">
           <DataTemplate.Resources>
-            <DataTemplate x:Key="ItemTemplate" DataType="{x:Type viewModel:ISessionObjectViewModel}">
+            <DataTemplate x:Key="ItemTemplate" DataType="{x:Type viewModels:ISessionObjectViewModel}">
               <HeaderedContentControl SnapsToDevicePixels="True" ToolTipService.InitialShowDelay="1">
                 <i:Interaction.Behaviors>
                   <sd:OnEventCommandBehavior EventName="MouseDoubleClick" Command="{Binding AssetDoubleClick, RelativeSource={RelativeSource AncestorType=view:AssetViewUserControl}}"
@@ -85,14 +86,14 @@
                   <ContentControl Content="{Binding}">
                     <FrameworkElement.Resources>
                       <!-- default template (fallback) -->
-                      <DataTemplate DataType="{x:Type viewModel:SessionObjectViewModel}">
+                      <DataTemplate DataType="{x:Type viewModels:SessionObjectViewModel}">
                         <StackPanel>
                           <TextBlock Text="{Binding Name, StringFormat={sd:Localize Name: {0}}}" FontWeight="Bold"/>
                           <TextBlock Text="{Binding TypeDisplayName, StringFormat={sd:Localize Type: {0}}}"/>
                         </StackPanel>
                       </DataTemplate>
                       <!-- asset -->
-                      <DataTemplate DataType="{x:Type viewModel:AssetViewModel}">
+                      <DataTemplate DataType="{x:Type viewModels:AssetViewModel}">
                         <StackPanel>
                           <TextBlock Text="{Binding Url, StringFormat={sd:Localize URL: {0}}}" FontWeight="Bold"/>
                           <TextBlock Text="{Binding TypeDisplayName, StringFormat={sd:Localize Type: {0}}}"/>
@@ -112,7 +113,7 @@
                         </StackPanel>
                       </DataTemplate>
                       <!-- folder -->
-                      <DataTemplate DataType="{x:Type viewModel:DirectoryViewModel}">
+                      <DataTemplate DataType="{x:Type viewModels:DirectoryViewModel}">
                         <StackPanel>
                           <TextBlock Text="{Binding Path, StringFormat={sd:Localize URL: {0}}}" FontWeight="Bold"/>
                           <TextBlock Text="{Binding TypeDisplayName, StringFormat={sd:Localize Type: {0}}}"/>
@@ -125,7 +126,7 @@
               </HeaderedContentControl>
             </DataTemplate>
 
-            <DataTemplate  x:Key="EditItemTemplate" DataType="{x:Type viewModel:ISessionObjectViewModel}">
+            <DataTemplate  x:Key="EditItemTemplate" DataType="{x:Type viewModels:ISessionObjectViewModel}">
               <HeaderedContentControl>
                 <HeaderedContentControl.Header>
                   <Grid>
@@ -158,7 +159,7 @@
               </ItemsPanelTemplate>
             </controls:EditableContentListBox.ItemsPanel>
             <controls:EditableContentListBox.ItemContainerStyle>
-              <Style TargetType="controls:EditableContentListBoxItem" BasedOn="{StaticResource {x:Type controls:EditableContentListBoxItem}}" d:DataContext="{d:DesignInstance viewModel:AssetViewModel}">
+              <Style TargetType="controls:EditableContentListBoxItem" BasedOn="{StaticResource {x:Type controls:EditableContentListBoxItem}}" d:DataContext="{d:DesignInstance viewModels:AssetViewModel}">
                 <Setter Property="CanEdit" Value="{Binding IsLocked, Converter={sd:InvertBool}}"/>
                 <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
                 <Setter Property="sd:Interaction.Behaviors">

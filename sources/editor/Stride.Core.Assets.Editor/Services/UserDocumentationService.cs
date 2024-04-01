@@ -17,10 +17,10 @@ namespace Stride.Core.Assets.Editor.Services
     {
         private static readonly Logger Log = GlobalLogger.GetLogger(nameof(UserDocumentationService));
 
-        private readonly Dictionary<string, string> cachedDocumentations = new Dictionary<string, string>();
-        private readonly HashSet<string> undocumentedAssemblies = new HashSet<string>();
-        private readonly HashSet<string> documentedAssemblies = new HashSet<string>();
-        private readonly object lockObj = new object();
+        private readonly Dictionary<string, string> cachedDocumentations = [];
+        private readonly HashSet<string> undocumentedAssemblies = [];
+        private readonly HashSet<string> documentedAssemblies = [];
+        private readonly object lockObj = new();
 
         [CanBeNull]
         public string GetMemberDocumentation([NotNull] IMemberDescriptor member, Type rootType)

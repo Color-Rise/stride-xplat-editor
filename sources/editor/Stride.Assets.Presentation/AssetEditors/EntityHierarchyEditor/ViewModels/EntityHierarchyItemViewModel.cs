@@ -26,6 +26,8 @@ using Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.EntityFactor
 using Stride.Assets.Presentation.AssetEditors.SceneEditor.ViewModels;
 using Stride.Assets.Presentation.Quantum;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Assets.Presentation.Quantum;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Engine;
 
 namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewModels
@@ -199,7 +201,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
             {
                 entity.Transform.Position += rootPosition;
 
-                Asset.AssetHierarchyPropertyGraph.AddPartToAsset(newEntities.Parts, newEntities.Parts[entity.Id], (Owner as EntityViewModel)?.AssetSideEntity, index++);
+                Asset.PropertyGraph.AddPartToAsset(newEntities.Parts, newEntities.Parts[entity.Id], (Owner as EntityViewModel)?.AssetSideEntity, index++);
 
                 // Make sure to mark the position node as overridden if this entity has a base.
                 var positionNode = (IAssetMemberNode)Editor.NodeContainer.GetNode(entity.Transform)[nameof(TransformComponent.Position)];
@@ -267,7 +269,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
                     subFolder = new EntityFolderViewModel(parent.Editor, parent.Asset, folderName, Enumerable.Empty<EntityDesign>());
                     parent.Folders.Add(subFolder);
                     // Note: we don't push an operation when the new folder comes from a change in the base prefab, since the order of operation would be incorrect when undoing.
-                    if (!Editor.UndoRedoService.UndoRedoInProgress && !Asset.PropertyGraph.UpdatingPropertyFromBase)
+                    if (!Editor.UndoRedoService.UndoRedoInProgress && !((AssetViewModel)Asset).PropertyGraph.UpdatingPropertyFromBase)
                     {
                         var operation = new EntityFolderOperation(Asset, EntityFolderOperation.Action.FolderCreated, subFolder.Path, subFolder.Owner.Id);
                         Editor.UndoRedoService.PushOperation(operation);
@@ -615,7 +617,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
                     hierarchies.Add(entity.Id.ObjectId, hierarchy);
 
                     // Remove from previous asset
-                    entity.Asset.AssetHierarchyPropertyGraph.RemovePartFromAsset(entityToMove);
+                    entity.Asset.PropertyGraph.RemovePartFromAsset(entityToMove);
                     assetsToFixup.Add(entity.Asset);
                 }
                 // insert all
@@ -636,7 +638,7 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
                     // TODO: update the folder after insert, and subscribe to changes in EntityDesignData.Folder from EntityViewModel to propagate folder change at that level
                     var actionItem = new ContentValueChangeOperation(node, ContentChangeType.ValueChange, NodeIndex.Empty, oldValue, folderName, Asset.Dirtiables);
                     Asset.ServiceProvider.Get<IUndoRedoService>().PushOperation(actionItem);
-                    Asset.AssetHierarchyPropertyGraph.AddPartToAsset(hierarchy.Parts, movedEntity, (Owner as EntityViewModel)?.AssetSideEntity, index++);
+                    Asset.PropertyGraph.AddPartToAsset(hierarchy.Parts, movedEntity, (Owner as EntityViewModel)?.AssetSideEntity, index++);
                     moved = true;
                 }
 
@@ -649,15 +651,15 @@ namespace Stride.Assets.Presentation.AssetEditors.EntityHierarchyEditor.ViewMode
                     var targetPropertyGraph = Editor.Session.GraphContainer.TryGetGraph(asset.Id);
                     var referenceableObjects = IdentifiableObjectCollector.Collect(targetPropertyGraph.Definition, targetPropertyGraph.RootNode);
                     // Replace references in the hierarchy being pasted by the real objects from the target asset.
-                    var externalReferences = new HashSet<Guid>(ExternalReferenceCollector.GetExternalReferences(asset.PropertyGraph.Definition, asset.PropertyGraph.RootNode).Select(x => x.Id));
-                    var visitor = new ObjectReferencePathGenerator(asset.PropertyGraph.Definition)
+                    var externalReferences = new HashSet<Guid>(ExternalReferenceCollector.GetExternalReferences(((AssetViewModel)asset).PropertyGraph.Definition, ((AssetViewModel)asset).PropertyGraph.RootNode).Select(x => x.Id));
+                    var visitor = new ObjectReferencePathGenerator(((AssetViewModel)asset).PropertyGraph.Definition)
                     {
                         ShouldOutputReference = x => externalReferences.Contains(x)
                     };
-                    visitor.Visit(asset.PropertyGraph.RootNode);
+                    visitor.Visit(((AssetViewModel)asset).PropertyGraph.RootNode);
                     FixupObjectReferences.FixupReferences(asset.Asset, visitor.Result, referenceableObjects, true, (memberPath, _, value) =>
                     {
-                        var graphPath = GraphNodePath.From(asset.PropertyGraph.RootNode, memberPath, out NodeIndex i);
+                        var graphPath = GraphNodePath.From(((AssetViewModel)asset).PropertyGraph.RootNode, memberPath, out NodeIndex i);
                         var node = graphPath.GetNode();
                         if (node is IMemberNode memberNode)
                         {

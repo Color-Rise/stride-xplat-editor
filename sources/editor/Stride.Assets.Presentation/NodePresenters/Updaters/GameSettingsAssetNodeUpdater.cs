@@ -9,6 +9,7 @@ using Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys;
 using Stride.Core;
 using Stride.Core.Presentation.Quantum.Presenters;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Data;
 
 namespace Stride.Assets.Presentation.NodePresenters.Updaters

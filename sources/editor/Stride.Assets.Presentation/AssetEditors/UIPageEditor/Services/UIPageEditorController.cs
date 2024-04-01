@@ -7,6 +7,7 @@ using Stride.Core.Diagnostics;
 using Stride.Assets.Presentation.AssetEditors.UIEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.UIPageEditor.ViewModels;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.UI;
 
 namespace Stride.Assets.Presentation.AssetEditors.UIPageEditor.Services

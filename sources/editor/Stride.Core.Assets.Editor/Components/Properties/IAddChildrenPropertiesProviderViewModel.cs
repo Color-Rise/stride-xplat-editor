@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Presentation.Quantum;
 
 namespace Stride.Core.Assets.Editor.Components.Properties

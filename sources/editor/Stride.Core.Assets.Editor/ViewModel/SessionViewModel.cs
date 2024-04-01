@@ -1,5 +1,6 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net) and Silicon Studio Corp. (https://www.siliconstudio.co.jp)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
+
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Stride.Core.Annotations;
 using Stride.Core.Assets.Analysis;
 using Stride.Core.Assets.Editor.Components.Properties;
 using Stride.Core.Assets.Editor.Components.Transactions;
@@ -20,37 +22,35 @@ using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.Settings;
 using Stride.Core.Assets.Editor.ViewModel.Logs;
 using Stride.Core.Assets.Editor.ViewModel.Progress;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Assets.Quantum;
 using Stride.Core.Assets.Templates;
-using Stride.Core;
-using Stride.Core.Annotations;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
 using Stride.Core.IO;
-using Stride.Core.VisualStudio;
+using Stride.Core.Packages;
 using Stride.Core.Presentation.Collections;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Dirtiables;
 using Stride.Core.Presentation.Quantum.ViewModels;
 using Stride.Core.Presentation.Services;
+using Stride.Core.Presentation.ViewModels;
 using Stride.Core.Presentation.Windows;
 using Stride.Core.Translation;
-using Stride.Core.Packages;
-using Stride.Core.Presentation.ViewModels;
+using Stride.Core.VisualStudio;
 
 namespace Stride.Core.Assets.Editor.ViewModel
 {
-    public class SessionViewModel : DirtiableEditableViewModel, IAssetFinder
+    public class SessionViewModel : DirtiableEditableViewModel, ISessionViewModel, IAssetFinder
     {
         public static string StorePackageCategoryName = Tr._("External packages");
         public static string LocalPackageCategoryName = Tr._("Local packages");
         public const string SolutionExtension = ".sln";
-        public const int SaveIrreversibleSourceFileOperationsMessageCount = 5;
 
         private readonly IUndoRedoService undoRedoService;
-        private readonly Dictionary<string, PackageCategoryViewModel> packageCategories = new Dictionary<string, PackageCategoryViewModel>();
-        private readonly Dictionary<PackageViewModel, PackageContainer> packageMap = new Dictionary<PackageViewModel, PackageContainer>();
-        private readonly ConcurrentDictionary<AssetId, AssetViewModel> assetIdMap = new ConcurrentDictionary<AssetId, AssetViewModel>();
+        private readonly Dictionary<string, PackageCategoryViewModel> packageCategories = [];
+        private readonly Dictionary<PackageViewModel, PackageContainer> packageMap = [];
+        private readonly ConcurrentDictionary<AssetId, AssetViewModel> assetIdMap = [];
         private bool sessionStateUpdating;
 
         private ProjectViewModel currentProject;
@@ -1820,7 +1820,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
             return TemplateManager.FindTemplates(asset, session);
         }
 
-        public List<PackageName> SuggestedPackages { get; } = new List<PackageName>();
+        public List<PackageName> SuggestedPackages { get; } = [];
 
         public async Task<IEnumerable<PickablePackageViewModel>> SuggestPackagesToAdd()
         {

@@ -18,6 +18,7 @@ using Stride.Core.Extensions;
 using Stride.Core.Presentation.Controls;
 using Stride.Core.Presentation.Services;
 using Stride.Assets;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.Build;
 using Stride.Editor.Engine;
 using Stride.Games;

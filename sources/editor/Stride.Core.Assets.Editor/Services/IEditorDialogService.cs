@@ -7,6 +7,7 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Assets.Editor.ViewModel.Progress;
 using Stride.Core.Assets.Templates;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Settings;
 using Stride.Core.Presentation.Commands;
 using Stride.Core.Presentation.Services;

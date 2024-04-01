@@ -11,6 +11,7 @@ using Stride.Core.Annotations;
 using Stride.Core.Extensions;
 using Stride.Assets.Presentation.AssetEditors.AssetHighlighters;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.EditorGame.Game;
 
 namespace Stride.Assets.Presentation.AssetEditors.GameEditor.Game

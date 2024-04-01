@@ -19,6 +19,7 @@ using Stride.Engine;
 using Stride.Assets.Presentation.ViewModel;
 using Stride.Core.Assets.Editor.Components.Properties;
 using Stride.Assets.Presentation.AssetEditors;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Core.Presentation.Dirtiables;
 
 namespace Stride.Assets.Presentation.NodePresenters.Commands

@@ -8,7 +8,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
 {
     public static class ColorPaletteViewModel
     {
-        public static Dictionary<string, Color3> Colors = new Dictionary<string, Color3>
+        public static Dictionary<string, Color3> Colors = new()
         {
             { "Silver", new Color3(0.98695203f, 0.981576133f, 0.960581067f) },
             { "Aluminium", new Color3(0.959559115f, 0.963518888f, 0.964957682f) },

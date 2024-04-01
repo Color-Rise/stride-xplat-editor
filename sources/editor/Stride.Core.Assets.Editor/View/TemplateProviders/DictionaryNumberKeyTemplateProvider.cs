@@ -17,14 +17,14 @@ namespace Stride.Core.Assets.Editor.View.TemplateProviders
         /// </summary>
         public bool ApplyForItems { get; set; }
 
-        private static readonly HashSet<Type> NumericTypes = new HashSet<Type>
-        {
+        private static readonly HashSet<Type> NumericTypes =
+        [
             typeof(sbyte),  typeof(byte),  typeof(short),
             typeof(ushort),  typeof(int),  typeof(uint),
             typeof(long), typeof(ulong),   typeof(nint),
             typeof(nuint), typeof(float),   typeof(double),
             typeof(decimal),
-        };
+        ];
 
         public override bool MatchNode(NodeViewModel node)
         {

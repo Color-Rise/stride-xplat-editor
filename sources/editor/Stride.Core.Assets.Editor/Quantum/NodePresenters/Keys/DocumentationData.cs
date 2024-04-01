@@ -6,6 +6,6 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys
     {
         public const string Documentation = nameof(Documentation);
 
-        public static readonly PropertyKey<string> Key = new PropertyKey<string>(Documentation, typeof(DocumentationData));
+        public static readonly PropertyKey<string> Key = new(Documentation, typeof(DocumentationData));
     }
 }

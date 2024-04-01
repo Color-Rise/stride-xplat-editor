@@ -9,6 +9,7 @@ using System.Windows.Documents;
 using Microsoft.Xaml.Behaviors;
 using System.Windows.Media;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Adorners;
 using Stride.Core.Presentation.Core;
@@ -22,16 +23,16 @@ namespace Stride.Core.Assets.Editor.View.Behaviors
     /// </summary>
     internal static class DragDropAdornerManager
     {
-        private static readonly Dictionary<Visual, Tuple<AdornerLayer, HighlightBorderAdorner>> DropAdorners = new Dictionary<Visual, Tuple<AdornerLayer, HighlightBorderAdorner>>();
-        private static readonly TimeoutDispatcherTimer DragLeaveTimer = new TimeoutDispatcherTimer(100);
+        private static readonly Dictionary<Visual, Tuple<AdornerLayer, HighlightBorderAdorner>> DropAdorners = [];
+        private static readonly TimeoutDispatcherTimer DragLeaveTimer = new(100);
         private static readonly DependencyProperty BehaviorsProperty;
         private static bool dropAdornersCreated;
         private static InsertAdorner insertAdorner;
         private static AdornerLayer currentLayer;
         private static DisplayDropAdorner dataType;
 
-        private static readonly Dictionary<FrameworkElement, Window> ElementToWindowLookup = new Dictionary<FrameworkElement, Window>();
-        private static readonly Dictionary<Window, HashSet<FrameworkElement>> WindowToElementsLookup = new Dictionary<Window, HashSet<FrameworkElement>>();
+        private static readonly Dictionary<FrameworkElement, Window> ElementToWindowLookup = [];
+        private static readonly Dictionary<Window, HashSet<FrameworkElement>> WindowToElementsLookup = [];
 
         static DragDropAdornerManager()
         {
@@ -172,7 +173,7 @@ namespace Stride.Core.Assets.Editor.View.Behaviors
                 window.PreviewDragEnter += OnDragOver;
                 window.PreviewDragOver += OnDragOver;
                 window.Closed += OnWindowClosed;
-                return new HashSet<FrameworkElement>();
+                return [];
             });
             elements.Add(element);
         }

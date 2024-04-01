@@ -17,8 +17,8 @@ namespace Stride.Core.Assets.Editor.Services
 
     public static class EditorDebugTools
     {
-        internal static readonly List<IDebugPage> DebugPages = new List<IDebugPage>();
-        private static readonly List<DebugWindow> DebugWindows = new List<DebugWindow>();
+        internal static readonly List<IDebugPage> DebugPages = [];
+        private static readonly List<DebugWindow> DebugWindows = [];
 
         public static void RegisterDebugPage(IDebugPage page)
         {

@@ -5,6 +5,8 @@ using System.Linq;
 using Stride.Assets.Models;
 using Stride.Core.Assets.Editor.Annotations;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Quantum;
 using Stride.Rendering;
 using Stride.Rendering.ProceduralModels;

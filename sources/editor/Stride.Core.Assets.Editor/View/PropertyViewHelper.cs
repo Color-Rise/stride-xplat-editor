@@ -36,11 +36,11 @@ namespace Stride.Core.Assets.Editor.View
 
         public static RoutedCommand ToggleNestedPropertiesCommand { get; }
 
-        public static readonly TemplateProviderSelector HeaderProviders = new TemplateProviderSelector();
+        public static readonly TemplateProviderSelector HeaderProviders = new();
 
-        public static readonly TemplateProviderSelector EditorProviders = new TemplateProviderSelector();
+        public static readonly TemplateProviderSelector EditorProviders = new();
 
-        public static readonly TemplateProviderSelector FooterProviders = new TemplateProviderSelector();
+        public static readonly TemplateProviderSelector FooterProviders = new();
 
         public static double GetIncrement(DependencyObject target)
         {

@@ -28,7 +28,7 @@ namespace Stride.Core.Assets.Editor.Components.DebugTools.UndoRedo
 
         public string Type => Operation.GetType().Name;
 
-        public ObservableList<OperationViewModel> Children { get; } = new ObservableList<OperationViewModel>();
+        public ObservableList<OperationViewModel> Children { get; } = [];
 
         internal Operation Operation { get; }
     }

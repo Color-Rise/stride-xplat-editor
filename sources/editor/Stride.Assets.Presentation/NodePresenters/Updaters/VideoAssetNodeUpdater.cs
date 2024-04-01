@@ -2,6 +2,7 @@ using System.Linq;
 using Stride.Core.Assets.Editor.Quantum.NodePresenters;
 using Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys;
 using Stride.Assets.Media;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 
 namespace Stride.Assets.Presentation.NodePresenters.Updaters
 {

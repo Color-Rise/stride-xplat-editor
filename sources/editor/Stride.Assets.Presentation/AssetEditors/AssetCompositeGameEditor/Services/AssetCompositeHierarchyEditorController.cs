@@ -14,6 +14,7 @@ using Stride.Core.Extensions;
 using Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.ViewModels;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.Services;
 using Stride.Assets.Presentation.AssetEditors.GameEditor.ViewModels;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Editor.EditorGame.Game;
 
 namespace Stride.Assets.Presentation.AssetEditors.AssetCompositeGameEditor.Services

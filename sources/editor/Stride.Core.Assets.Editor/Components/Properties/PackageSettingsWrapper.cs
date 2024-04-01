@@ -87,8 +87,8 @@ namespace Stride.Core.Assets.Editor.Components.Properties
             }
         }
 
-        internal readonly Dictionary<string, SettingsKeyWrapper> NonExecutableUserSettings = new Dictionary<string, SettingsKeyWrapper>();
-        internal readonly Dictionary<string, SettingsKeyWrapper> ExecutableUserSettings = new Dictionary<string, SettingsKeyWrapper>();
+        internal readonly Dictionary<string, SettingsKeyWrapper> NonExecutableUserSettings = [];
+        internal readonly Dictionary<string, SettingsKeyWrapper> ExecutableUserSettings = [];
 
         internal bool HasExecutables { get; set; }
 

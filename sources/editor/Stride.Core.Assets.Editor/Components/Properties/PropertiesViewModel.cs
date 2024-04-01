@@ -26,7 +26,7 @@ namespace Stride.Core.Assets.Editor.Components.Properties
     {
         protected readonly GraphViewModelService ViewModelService;
         protected readonly NodeContainer NodeContainer;
-        private readonly object lockObject = new object();
+        private readonly object lockObject = new();
 
         private GraphViewModel viewModel;
         private bool canDisplayProperties;

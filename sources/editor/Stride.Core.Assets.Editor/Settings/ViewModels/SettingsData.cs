@@ -8,8 +8,8 @@ namespace Stride.Core.Assets.Editor.Settings.ViewModels
     {
         public const string HasAcceptableValues = nameof(HasAcceptableValues);
         public const string AcceptableValues = nameof(AcceptableValues);
-        public static readonly PropertyKey<bool> HasAcceptableValuesKey = new PropertyKey<bool>(HasAcceptableValues, typeof(SettingsData));
-        public static readonly PropertyKey<IEnumerable<object>> AcceptableValuesKey = new PropertyKey<IEnumerable<object>>(AcceptableValues, typeof(SettingsData));
+        public static readonly PropertyKey<bool> HasAcceptableValuesKey = new(HasAcceptableValues, typeof(SettingsData));
+        public static readonly PropertyKey<IEnumerable<object>> AcceptableValuesKey = new(AcceptableValues, typeof(SettingsData));
 
     }
 }

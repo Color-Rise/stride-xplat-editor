@@ -14,15 +14,15 @@ namespace Stride.Core.Assets.Editor.Settings
 {
     public static class InternalSettings
     {
-        public static SettingsContainer SettingsContainer = new SettingsContainer();
+        public static SettingsContainer SettingsContainer = new();
 
-        public static SettingsKey<MRUDictionary> MostRecentlyUsedSessions = new SettingsKey<MRUDictionary>("Internal/MostRecentlyUsedSessions", SettingsContainer, () => new MRUDictionary());
-        public static SettingsKey<bool> LoadingStartupSession = new SettingsKey<bool>("Internal/LoadingStartupSession", SettingsContainer, false);
-        public static SettingsKey<string> FileDialogLastImportDirectory = new SettingsKey<string>("Internal/FileDialogLastImportDirectory", SettingsContainer, "");
-        public static SettingsKey<string> FileDialogLastOpenSessionDirectory = new SettingsKey<string>("Internal/FileDialogLastOpenSessionDirectory", SettingsContainer, "");
-        public static SettingsKey<string> TemplatesWindowDialogLastNewSessionTemplateDirectory = new SettingsKey<string>("Internal/TemplatesWindowDialogLastNewSessionTemplateDirectory", SettingsContainer, "");
-        public static SettingsKey<SortRule> AssetViewSortRule = new SettingsKey<SortRule>("Internal/AssetViewSortRule", SettingsContainer, SortRule.TypeOrderThenName);
-        public static SettingsKey<DisplayAssetMode> AssetViewDisplayMode = new SettingsKey<DisplayAssetMode>("Internal/AssetViewDisplayMode", SettingsContainer, DisplayAssetMode.AssetAndFolderInSelectedFolder);
+        public static SettingsKey<MRUDictionary> MostRecentlyUsedSessions = new("Internal/MostRecentlyUsedSessions", SettingsContainer, () => new MRUDictionary());
+        public static SettingsKey<bool> LoadingStartupSession = new("Internal/LoadingStartupSession", SettingsContainer, false);
+        public static SettingsKey<string> FileDialogLastImportDirectory = new("Internal/FileDialogLastImportDirectory", SettingsContainer, "");
+        public static SettingsKey<string> FileDialogLastOpenSessionDirectory = new("Internal/FileDialogLastOpenSessionDirectory", SettingsContainer, "");
+        public static SettingsKey<string> TemplatesWindowDialogLastNewSessionTemplateDirectory = new("Internal/TemplatesWindowDialogLastNewSessionTemplateDirectory", SettingsContainer, "");
+        public static SettingsKey<SortRule> AssetViewSortRule = new("Internal/AssetViewSortRule", SettingsContainer, SortRule.TypeOrderThenName);
+        public static SettingsKey<DisplayAssetMode> AssetViewDisplayMode = new("Internal/AssetViewDisplayMode", SettingsContainer, DisplayAssetMode.AssetAndFolderInSelectedFolder);
 
         private static readonly SettingsProfile Profile;
 

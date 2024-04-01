@@ -21,6 +21,7 @@ using Stride.Core.Assets.Templates;
 using Stride.Core.Assets.Tracking;
 using Stride.Core;
 using Stride.Core.Annotations;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
 using Stride.Core.IO;
@@ -155,34 +156,34 @@ namespace Stride.Core.Assets.Editor.ViewModel
 
         public static readonly IEnumerable<FilterCategory> AllFilterCategories = Enum.GetValues(typeof(FilterCategory)).Cast<FilterCategory>();
 
-        private readonly ObservableSet<AssetViewModel> assets = new ObservableSet<AssetViewModel>();
+        private readonly ObservableSet<AssetViewModel> assets = [];
 
         // /!\ FIXME: we need to rework that as we probably don't need that many lists
-        private readonly ObservableList<AssetViewModel> filteredAssets = new ObservableList<AssetViewModel>();
-        private readonly ObservableList<object> filteredContent = new ObservableList<object>();
+        private readonly ObservableList<AssetViewModel> filteredAssets = [];
+        private readonly ObservableList<object> filteredContent = [];
 
         /// <remarks>
         /// <see cref="selectedAssets"/> is a sub-collection of <see cref="selectedContent"/>. It should always be read from and never directly updated, except in <see cref="SelectedContentCollectionChanged"/>.
         /// </remarks>
-        private readonly ObservableList<AssetViewModel> selectedAssets = new ObservableList<AssetViewModel>();
+        private readonly ObservableList<AssetViewModel> selectedAssets = [];
 
         /// <summary>
         /// List of all selected items (e.g. in the asset view).
         /// </summary>
-        private readonly ObservableList<object> selectedContent = new ObservableList<object>();
+        private readonly ObservableList<object> selectedContent = [];
 
         private object singleSelectedContent;
 
         private readonly Lazy<AddAssetTemplateCollectionViewModel> addAssetTemplateCollection;
-        private readonly List<AssetFilterViewModel> typeFilters = new List<AssetFilterViewModel>();
+        private readonly List<AssetFilterViewModel> typeFilters = [];
         private readonly Dictionary<FilterCategory, bool> availableFilterCategories;
-        private readonly ObservableList<AssetFilterViewModel> availableAssetFilters = new ObservableList<AssetFilterViewModel>();
-        private readonly ObservableSet<AssetFilterViewModel> currentAssetFilters = new ObservableSet<AssetFilterViewModel>();
+        private readonly ObservableList<AssetFilterViewModel> availableAssetFilters = [];
+        private readonly ObservableSet<AssetFilterViewModel> currentAssetFilters = [];
         private string assetFilterPattern;
         private Func<AssetViewModel, bool> customFilter;
 
         private readonly IAssetDependencyManager dependencyManager;
-        private readonly HashSet<DirectoryBaseViewModel> monitoredDirectories = new HashSet<DirectoryBaseViewModel>();
+        private readonly HashSet<DirectoryBaseViewModel> monitoredDirectories = [];
         private readonly SessionObjectPropertiesViewModel assetProperties;
         private DisplayAssetMode displayMode = InternalSettings.AssetViewDisplayMode.GetValue();
         private SortRule sortRule = InternalSettings.AssetViewSortRule.GetValue();
@@ -190,7 +191,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
         private bool refreshing;
         private IEnumerable<TemplateDescriptionViewModel> lastMatchingTemplates;
 
-        private readonly FuncClipboardMonitor<bool> pasteMonitor = new FuncClipboardMonitor<bool>();
+        private readonly FuncClipboardMonitor<bool> pasteMonitor = new();
 
         public AssetCollectionViewModel([NotNull] IViewModelServiceProvider serviceProvider, [NotNull] SessionViewModel session, [NotNull] IEnumerable<FilterCategory> filterCategories, SessionObjectPropertiesViewModel assetProperties = null)
             : base(serviceProvider)
@@ -272,7 +273,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
         /// List of selected locations (in the solution explorer).
         /// </summary>
         [NotNull]
-        public ObservableList<object> SelectedLocations { get; } = new ObservableList<object>();
+        public ObservableList<object> SelectedLocations { get; } = [];
 
         public bool DisplayLocationContentRecursively => DisplayAssetMode == DisplayAssetMode.AssetInSelectedFolderAndSubFolder;
 
@@ -474,26 +475,26 @@ namespace Stride.Core.Assets.Editor.ViewModel
         public async Task<List<AssetViewModel>> RunAssetTemplate(ITemplateDescriptionViewModel template, [CanBeNull] IList<UFile> files, PropertyContainer? customParameters = null)
         {
             if (template == null)
-                return new List<AssetViewModel>();
+                return [];
 
             var loggerResult = new LoggerResult();
 
             var directory = await GetAssetCreationTargetFolder();
             if (directory == null)
-                return new List<AssetViewModel>();
+                return [];
 
             var templateDescription = template.GetTemplate() as TemplateAssetDescription;
             if (templateDescription == null)
             {
                 await Dialogs.MessageBoxAsync(Tr._p("Message", "Unable to use the selected template because it is not an asset template."), MessageBoxButton.OK, MessageBoxImage.Warning);
-                return new List<AssetViewModel>();
+                return [];
             }
             var assetType = templateDescription.GetAssetType();
             // If the mount point of the current folder does not support this type of asset, try to select the first mount point that support it.
             directory = AssetViewModel.FindValidCreationLocation(assetType, directory, Session.CurrentProject);
 
             if (directory == null)
-                return new List<AssetViewModel>();
+                return [];
 
             string name = string.Empty;
             if (templateDescription.RequireName)
@@ -573,7 +574,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
 
         private async Task<List<AssetViewModel>> InvokeAddAssetTemplate(LoggerResult logger, string name, DirectoryBaseViewModel directory, TemplateAssetDescription templateDescription, [CanBeNull] IList<UFile> files, PropertyContainer? customParameters)
         {
-            List<AssetViewModel> newAssets = new List<AssetViewModel>();
+            List<AssetViewModel> newAssets = [];
             if (files is not null)
             {
                 for (int i = 0; i < files.Count; i++)
@@ -1554,7 +1555,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
             {
                 // If we have a mismatch, we'll use a slightly different path. In this case we build a dictionary indicating the number of matching files per template
                 // NOTE: This will break the order, but it's not a problem as long as AssetTemplatesViewModel rebuild the proper order.
-                templatesDictionary = new Dictionary<TemplateAssetDescription, int>();
+                templatesDictionary = [];
                 foreach (var extension in extensionsList)
                 {
                     foreach (var template in extensions[extension.Key])

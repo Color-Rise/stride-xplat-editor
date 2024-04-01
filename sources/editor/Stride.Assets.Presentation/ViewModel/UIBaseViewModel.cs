@@ -6,6 +6,7 @@ using Stride.Core.Assets.Editor.ViewModel;
 using Stride.Core.Annotations;
 using Stride.Core.Quantum;
 using Stride.Assets.UI;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.UI;
 using Stride.UI.Controls;
 using Stride.UI.Panels;
@@ -32,7 +33,7 @@ namespace Stride.Assets.Presentation.ViewModel
         public void InsertUIElement([NotNull] AssetPartCollection<UIElementDesign, UIElement> newElementCollection, [NotNull] UIElementDesign child, UIElement parent, int index = -1)
         {
             index = ResolveInsertionIndex(parent, index);
-            AssetHierarchyPropertyGraph.AddPartToAsset(newElementCollection, child, parent, index);
+            PropertyGraph.AddPartToAsset(newElementCollection, child, parent, index);
         }
 
         /// <inheritdoc />

@@ -14,13 +14,13 @@ namespace Stride.Core.Assets.Editor.Services
     {
         private const string IndexName = "AssetBuilderServiceIndex";
 
-        private readonly object queueLock = new object();
+        private readonly object queueLock = new();
 
         private readonly DynamicBuilder builder;
-        private readonly PriorityNodeQueue<AssetBuildUnit> queue = new PriorityNodeQueue<AssetBuildUnit>();
+        private readonly PriorityNodeQueue<AssetBuildUnit> queue = new();
 
         // TODO: this is temporary until we have thread local databases (and a better solution for databases used in standard tasks)
-        public static readonly object OutOfMicrothreadDatabaseLock = new object();      
+        public static readonly object OutOfMicrothreadDatabaseLock = new();
 
         public AssetBuilderService([NotNull] string buildDirectory)
         {

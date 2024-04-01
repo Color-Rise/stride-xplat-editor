@@ -9,6 +9,7 @@ using System.Windows.Input;
 
 using Stride.Core.Assets.Diagnostics;
 using Stride.Core.Assets.Editor.ViewModel;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Diagnostics;
 using Stride.Core.Presentation.Collections;
 
@@ -101,7 +102,7 @@ namespace Stride.Core.Assets.Editor.View.Controls
             }
         }
 
-        public ObservableList<ILogMessage> FilteredLogMessages { get; set; } = new ObservableList<ILogMessage>();
+        public ObservableList<ILogMessage> FilteredLogMessages { get; set; } = [];
 
         /// <summary>
         /// Gets or sets whether the tool bar should be visible.

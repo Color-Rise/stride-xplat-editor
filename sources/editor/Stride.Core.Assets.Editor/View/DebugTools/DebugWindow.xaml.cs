@@ -16,7 +16,7 @@ namespace Stride.Core.Assets.Editor.View.DebugTools
         public DebugWindow()
         {
             InitializeComponent();
-            Pages = new ObservableList<IDebugPage>();
+            Pages = [];
             Width = Math.Min(Width, SystemParameters.WorkArea.Width);
             Height = Math.Min(Height, SystemParameters.WorkArea.Height);
             EditorDebugTools.RegisterDebugWindow(this);

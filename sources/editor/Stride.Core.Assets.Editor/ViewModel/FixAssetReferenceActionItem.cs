@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Stride.Core.Assets.Analysis;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Presentation.Dirtiables;
 
 namespace Stride.Core.Assets.Editor.ViewModel

@@ -26,6 +26,7 @@ using Stride.Core.Presentation.Services;
 using Stride.Core.Presentation.Windows;
 using Stride.Core.Translation;
 using AvalonDock.Layout;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.GameStudio.ViewModels;
 using Stride.GameStudio.Helpers;
 using Stride.GameStudio.AssetsEditors;

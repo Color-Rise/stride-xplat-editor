@@ -3,6 +3,8 @@
 using System;
 using Stride.Core.Assets.Editor.Components.Properties;
 using Stride.Core.Assets.Editor.Services;
+using Stride.Core.Assets.Presentation.Components.Properties;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Interop;
 using Stride.Core.Presentation.Quantum;

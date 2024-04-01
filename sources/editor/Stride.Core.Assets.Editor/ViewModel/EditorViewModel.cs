@@ -85,7 +85,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
 
         public MostRecentlyUsedFileCollection MRU { get; }
 
-        public ObservableList<MostRecentlyUsedFile> RecentFiles { get; } = new ObservableList<MostRecentlyUsedFile>();
+        public ObservableList<MostRecentlyUsedFile> RecentFiles { get; } = [];
 
         public ICommandBase ClearMRUCommand { get; }
 

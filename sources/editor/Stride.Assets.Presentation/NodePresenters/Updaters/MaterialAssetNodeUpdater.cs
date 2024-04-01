@@ -9,6 +9,7 @@ using Stride.Assets.Effect;
 using Stride.Assets.Materials;
 using Stride.Assets.Presentation.NodePresenters.Keys;
 using Stride.Assets.Presentation.ViewModel;
+using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
 using Stride.Rendering.Materials;
 using Stride.Rendering.Materials.ComputeColors;
 

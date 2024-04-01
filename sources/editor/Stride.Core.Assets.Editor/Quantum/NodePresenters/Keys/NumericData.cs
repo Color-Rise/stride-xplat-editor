@@ -10,10 +10,10 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys
         public const string LargeStep = nameof(LargeStep);
         public const string SmallStep = nameof(SmallStep);
 
-        public static readonly PropertyKey<object> MinimumKey = new PropertyKey<object>(Minimum, typeof(NumericData));
-        public static readonly PropertyKey<object> MaximumKey = new PropertyKey<object>(Maximum, typeof(NumericData));
-        public static readonly PropertyKey<int?> DecimalPlacesKey = new PropertyKey<int?>(DecimalPlaces, typeof(NumericData));
-        public static readonly PropertyKey<double?> LargeStepKey = new PropertyKey<double?>(LargeStep, typeof(NumericData));
-        public static readonly PropertyKey<double?> SmallStepKey = new PropertyKey<double?>(SmallStep, typeof(NumericData));
+        public static readonly PropertyKey<object> MinimumKey = new(Minimum, typeof(NumericData));
+        public static readonly PropertyKey<object> MaximumKey = new(Maximum, typeof(NumericData));
+        public static readonly PropertyKey<int?> DecimalPlacesKey = new(DecimalPlaces, typeof(NumericData));
+        public static readonly PropertyKey<double?> LargeStepKey = new(LargeStep, typeof(NumericData));
+        public static readonly PropertyKey<double?> SmallStepKey = new(SmallStep, typeof(NumericData));
     }
 }

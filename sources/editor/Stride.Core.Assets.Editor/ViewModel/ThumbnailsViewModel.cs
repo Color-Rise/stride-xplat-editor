@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using Stride.Core.Assets.Editor.Services;
+using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.ViewModels;
 
@@ -16,7 +17,7 @@ namespace Stride.Core.Assets.Editor.ViewModel
     public class ThumbnailsViewModel : DispatcherViewModel
     {
         private readonly SessionViewModel session;
-        private readonly HashSet<PackageViewModel> initialQueue = new HashSet<PackageViewModel>();
+        private readonly HashSet<PackageViewModel> initialQueue = [];
         private IThumbnailService thumbnailService;
 
         /// <summary>

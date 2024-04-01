@@ -9,7 +9,7 @@ namespace Stride.Core.Assets.Editor.Quantum.NodePresenters.Keys
         public const string Session = nameof(Session);
         public const string DynamicThumbnail = nameof(DynamicThumbnail);
 
-        public static readonly PropertyKey<SessionViewModel> SessionKey = new PropertyKey<SessionViewModel>(Session, typeof(SessionData));
-        public static readonly PropertyKey<bool> DynamicThumbnailKey = new PropertyKey<bool>(DynamicThumbnail, typeof(SessionData));
+        public static readonly PropertyKey<SessionViewModel> SessionKey = new(Session, typeof(SessionData));
+        public static readonly PropertyKey<bool> DynamicThumbnailKey = new(DynamicThumbnail, typeof(SessionData));
     }
 }
