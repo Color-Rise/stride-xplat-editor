@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:up="using:Avalonia.UpDock.Controls"
              xmlns:vm="using:Stride.GameStudio.Avalonia.ViewModels"
              xmlns:vw="using:Stride.GameStudio.Avalonia.Views"
              mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="768"
@@ -26,41 +27,41 @@
         <MenuItem Header="_About..." Command="{Binding AboutCommand}" />
       </MenuItem>
     </Menu>
-    <Grid Grid.Row="1"
-          RowDefinitions="2*, 2, *">
-        <Grid Grid.Row="0"
-              ColumnDefinitions="3*, 2, *">
-          <vw:MainEditorView Grid.Column="0"
-                             BorderThickness="2"
+    <up:DockingHost Grid.Row="1">
+      <up:SplitPanel Fractions="2, 1" Orientation="Vertical">
+        <up:SplitPanel Fractions="3, 1" Orientation="Horizontal">
+          <!-- this doesn't work as the docking control must be a direct child of a splitpanel or the docking host -->
+          <!-- see https://github.com/jupahe64/Avalonia.UpDock/issues/2 -->
+          <!--<vw:MainEditorView BorderThickness="2"
                              BorderBrush="Red"
-                             Padding="2" />
-          <GridSplitter Grid.Column="1" ResizeDirection="Auto" />
-          <vw:PropertyGridView Grid.Column="2"
-                               BorderThickness="2"
-                               BorderBrush="Orange"
-                               Padding="2" />
-        </Grid>
-        <GridSplitter Grid.Row="1" ResizeDirection="Auto" />
-        <Grid Grid.Row="2"
-              ColumnDefinitions="*, 2, 2*, 2, *">
-          <vw:SolutionExplorerView Grid.Column="0"
-                                   BorderThickness="2"
+                             Padding="2" />-->
+          <up:DockingTabControl BorderThickness="2"
+                                BorderBrush="Red"
+                                Padding="2">
+            <TabItem Header="Scene" />
+            <TabItem Header="Prefab" />
+          </up:DockingTabControl>
+          <up:DockingTabControl BorderThickness="2"
+                                BorderBrush="Orange"
+                                Padding="2">
+            <TabItem Header="Property Grid" />
+          </up:DockingTabControl>
+        </up:SplitPanel>
+        <up:SplitPanel Fractions="1, 2, 1">
+          <vw:SolutionExplorerView BorderThickness="2"
                                    BorderBrush="Black"
                                    Padding="2"
                                    DataContext="{Binding Session}" />
-          <GridSplitter Grid.Column="1" ResizeDirection="Auto" />
-          <vw:AssetExplorerView Grid.Column="2"
-                                BorderThickness="2"
+          <vw:AssetExplorerView BorderThickness="2"
                                 BorderBrush="Blue"
                                 Padding="2"
                                 DataContext="{Binding Session.AssetCollection}"/>
-          <GridSplitter Grid.Column="3" ResizeDirection="Auto" />
-          <vw:AssetPreviewView Grid.Column="5"
-                               BorderThickness="2"
+          <vw:AssetPreviewView BorderThickness="2"
                                BorderBrush="Cyan"
                                Padding="2" />
-        </Grid>
-    </Grid>
+        </up:SplitPanel>
+      </up:SplitPanel>
+    </up:DockingHost>
     
     <TextBlock Grid.Row="2"
                Text="{Binding Message}"
