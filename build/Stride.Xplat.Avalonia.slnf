@@ -2,6 +2,7 @@
   "solution": {
     "path": "Stride.sln",
     "projects": [
+      "..\\..\\..\\..\\Misc\\Avalonia.UpDock\\Avalonia.UpDock\\Avalonia.UpDock.csproj",
       "..\\sources\\assets\\Stride.Core.Assets.CompilerApp\\Stride.Core.Assets.CompilerApp.csproj",
       "..\\sources\\assets\\Stride.Core.Assets.Quantum\\Stride.Core.Assets.Quantum.csproj",
       "..\\sources\\assets\\Stride.Core.Assets.Yaml\\Stride.Core.Assets.Yaml.shproj",
