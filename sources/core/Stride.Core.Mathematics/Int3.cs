@@ -26,7 +26,7 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
 */
-using System;
+
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -133,8 +133,7 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="values"/> contains more or less than three elements.</exception>
     public Int3(int[] values)
     {
-        if (values == null)
-            throw new ArgumentNullException(nameof(values));
+        ArgumentNullException.ThrowIfNull(values);
         if (values.Length != 3)
             throw new ArgumentOutOfRangeException(nameof(values), "There must be three and only three input values for Int3.");
 
@@ -152,16 +151,15 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// <exception cref="System.ArgumentOutOfRangeException">Thrown when the <paramref name="index"/> is out of the range [0, 2].</exception>
     public int this[int index]
     {
-        get
+        readonly get
         {
-            switch (index)
+            return index switch
             {
-                case 0: return X;
-                case 1: return Y;
-                case 2: return Z;
-            }
-
-            throw new ArgumentOutOfRangeException(nameof(index), "Indices for Int3 run from 0 to 2, inclusive.");
+                0 => X,
+                1 => Y,
+                2 => Z,
+                _ => throw new ArgumentOutOfRangeException(nameof(index), "Indices for Int3 run from 0 to 2, inclusive."),
+            };
         }
 
         set
@@ -193,10 +191,10 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// </summary>
     /// <returns>The length of the vector.</returns>
     /// <remarks>
-    /// <see cref="Int3.LengthSquared"/> may be preferred when only the relative length is needed
+    /// <see cref="LengthSquared"/> may be preferred when only the relative length is needed
     /// and speed is of the essence.
     /// </remarks>
-    public int Length()
+    public readonly int Length()
     {
         return (int)MathF.Sqrt((X * X) + (Y * Y) + (Z * Z));
     }
@@ -205,7 +203,7 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// Calculates the untruncated length of the vector.
     /// </summary>
     /// <returns>The length of the vector untruncated.</returns>
-    public float LengthUntruncated()
+    public readonly float LengthUntruncated()
     {
         return (float)MathF.Sqrt((X * X) + (Y * Y) + (Z * Z));
     }
@@ -215,10 +213,10 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// </summary>
     /// <returns>The squared length of the vector.</returns>
     /// <remarks>
-    /// This method may be preferred to <see cref="Int3.Length"/> when only a relative length is needed
+    /// This method may be preferred to <see cref="Length"/> when only a relative length is needed
     /// and speed is of the essence.
     /// </remarks>
-    public int LengthSquared()
+    public readonly int LengthSquared()
     {
         return (X * X) + (Y * Y) + (Z * Z);
     }
@@ -238,7 +236,7 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// Creates an array containing the elements of the vector.
     /// </summary>
     /// <returns>A three-element array containing the components of the vector.</returns>
-    public int[] ToArray()
+    public readonly int[] ToArray()
     {
         return [X, Y, Z];
     }
@@ -441,8 +439,8 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// <param name="result">When the method completes, contains the linear interpolation of the two vectors.</param>
     /// <remarks>
     /// This method performs the linear interpolation based on the following formula.
-    /// <code>start + (end - start) * amount</code>
-    /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+    /// <c>start + (end - start) * amount</c>
+    /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned.
     /// </remarks>
     public static void Lerp(ref readonly Int3 start, ref readonly Int3 end, float amount, out Int3 result)
     {
@@ -460,8 +458,8 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// <returns>The linear interpolation of the two vectors.</returns>
     /// <remarks>
     /// This method performs the linear interpolation based on the following formula.
-    /// <code>start + (end - start) * amount</code>
-    /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned. 
+    /// <c>start + (end - start) * amount</c>
+    /// Passing <paramref name="amount"/> a value of 0 will cause <paramref name="start"/> to be returned; a value of 1 will cause <paramref name="end"/> to be returned.
     /// </remarks>
     public static Int3 Lerp(Int3 start, Int3 end, float amount)
     {
@@ -619,8 +617,8 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// <summary>
     /// Scales a vector by the given value.
     /// </summary>
-    /// <param name="value">The vector to scale.</param>
     /// <param name="scale">The amount by which to scale the vector.</param>
+    /// <param name="value">The vector to scale.</param>
     /// <returns>The scaled vector.</returns>
     public static Int3 operator *(float scale, Int3 value)
     {
@@ -761,7 +759,7 @@ public struct Int3 : IEquatable<Int3>, IFormattable
     /// Returns a hash code for this instance.
     /// </summary>
     /// <returns>
-    /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+    /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
     /// </returns>
     public override readonly int GetHashCode()
     {

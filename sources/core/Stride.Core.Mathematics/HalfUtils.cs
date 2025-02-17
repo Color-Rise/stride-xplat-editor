@@ -47,7 +47,7 @@ internal static class HalfUtils
     /// <returns>The float representation of the packed value.</returns>
     public static float Unpack(ushort h)
     {
-        var conv = new FloatToUint
+        FloatToUint conv = new()
         {
             UIntValue = HalfToFloatMantissaTable[HalfToFloatOffsetTable[h >> 10] + (((uint)h) & 0x3ff)] + HalfToFloatExponentTable[h >> 10]
         };
@@ -61,7 +61,7 @@ internal static class HalfUtils
     /// <returns>The packed representation of the float value.</returns>
     public static ushort Pack(float f)
     {
-        FloatToUint conv = new FloatToUint
+        FloatToUint conv = new()
         {
             FloatValue = f
         };

@@ -27,7 +27,6 @@
 * THE SOFTWARE.
 */
 
-using System;
 using System.Runtime.CompilerServices;
 
 namespace Stride.Core.Mathematics;
@@ -75,8 +74,8 @@ public static class MathUtil
     /// <param name="b">The right value to compare.</param>
     /// <returns><c>true</c> if a almost equal to b, <c>false</c> otherwise</returns>
     /// <remarks>
-    /// The code is using the technique described by Bruce Dawson in 
-    /// <a href="http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/">Comparing Floating point numbers 2012 edition</a>. 
+    /// The code is using the technique described by Bruce Dawson in
+    /// <a href="http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/">Comparing Floating point numbers 2012 edition</a>.
     /// </remarks>
     public static unsafe bool NearEqual(float a, float b)
     {
@@ -99,7 +98,7 @@ public static class MathUtil
         // Choose of maxUlp = 4
         // according to http://code.google.com/p/googletest/source/browse/trunk/include/gtest/internal/gtest-internal.h
         const int maxUlp = 4;
-        return (ulp <= maxUlp);
+        return ulp <= maxUlp;
     }
 
     /// <summary>
@@ -142,7 +141,7 @@ public static class MathUtil
     public static bool WithinEpsilon(float a, float b, float epsilon)
     {
         float num = a - b;
-        return ((-epsilon <= num) && (num <= epsilon));
+        return (-epsilon <= num) && (num <= epsilon);
     }
 
     /// <summary>
@@ -348,7 +347,7 @@ public static class MathUtil
     /// <returns>The result of linear interpolation of values based on the amount.</returns>
     public static double Lerp(double from, double to, double amount)
     {
-        return (1 - amount) * from + amount * to;
+        return ((1 - amount) * from) + (amount * to);
     }
 
     /// <summary>
@@ -364,7 +363,7 @@ public static class MathUtil
     /// <returns>The result of linear interpolation of values based on the amount.</returns>
     public static float Lerp(float from, float to, float amount)
     {
-        return (1 - amount) * from + amount * to;
+        return ((1 - amount) * from) + (amount * to);
     }
 
     /// <summary>
@@ -408,7 +407,7 @@ public static class MathUtil
     {
         return (amount <= 0) ? 0
             : (amount >= 1) ? 1
-            : amount * amount * amount * (amount * ((amount * 6) - 15) + 10);
+            : amount * amount * amount * ((amount * ((amount * 6) - 15)) + 10);
     }
 
     /// <summary>
@@ -442,7 +441,7 @@ public static class MathUtil
     /// <returns><c>true</c> if the specified x is pow2; otherwise, <c>false</c>.</returns>
     public static bool IsPow2(int x)
     {
-        return ((x != 0) && (x & (x - 1)) == 0);
+        return (x != 0) && (x & (x - 1)) == 0;
     }
 
     /// <summary>
@@ -464,7 +463,7 @@ public static class MathUtil
     public static float LinearToSRgb(float linearValue)
     {
         if (linearValue < 0.0031308f) return linearValue * 12.92f;
-        return (float)(1.055 * Math.Pow(linearValue, 1 / 2.4) - 0.055);
+        return (float)((1.055 * Math.Pow(linearValue, 1 / 2.4)) - 0.055);
     }
 
     /// <summary>
@@ -588,7 +587,7 @@ public static class MathUtil
     {
         if (gap == 0)
             return value;
-        return MathF.Round((value / gap), MidpointRounding.AwayFromZero) * gap;
+        return MathF.Round(value / gap, MidpointRounding.AwayFromZero) * gap;
     }
 
     /// <summary>
@@ -601,7 +600,7 @@ public static class MathUtil
     {
         if (gap == 0)
             return value;
-        return Math.Round((value / gap), MidpointRounding.AwayFromZero) * gap;
+        return Math.Round(value / gap, MidpointRounding.AwayFromZero) * gap;
     }
 
     /// <summary>
@@ -615,8 +614,8 @@ public static class MathUtil
         if (gap == 0)
             return value;
         return new Vector2(
-            MathF.Round((value.X / gap), MidpointRounding.AwayFromZero) * gap,
-            MathF.Round((value.Y / gap), MidpointRounding.AwayFromZero) * gap);
+            MathF.Round(value.X / gap, MidpointRounding.AwayFromZero) * gap,
+            MathF.Round(value.Y / gap, MidpointRounding.AwayFromZero) * gap);
     }
 
     /// <summary>
@@ -630,9 +629,9 @@ public static class MathUtil
         if (gap == 0)
             return value;
         return new Vector3(
-            MathF.Round((value.X / gap), MidpointRounding.AwayFromZero) * gap,
-            MathF.Round((value.Y / gap), MidpointRounding.AwayFromZero) * gap,
-            MathF.Round((value.Z / gap), MidpointRounding.AwayFromZero) * gap);
+            MathF.Round(value.X / gap, MidpointRounding.AwayFromZero) * gap,
+            MathF.Round(value.Y / gap, MidpointRounding.AwayFromZero) * gap,
+            MathF.Round(value.Z / gap, MidpointRounding.AwayFromZero) * gap);
     }
 
     /// <summary>
@@ -646,10 +645,10 @@ public static class MathUtil
         if (gap == 0)
             return value;
         return new Vector4(
-            MathF.Round((value.X / gap), MidpointRounding.AwayFromZero) * gap,
-            MathF.Round((value.Y / gap), MidpointRounding.AwayFromZero) * gap,
-            MathF.Round((value.Z / gap), MidpointRounding.AwayFromZero) * gap,
-            MathF.Round((value.W / gap), MidpointRounding.AwayFromZero) * gap);
+            MathF.Round(value.X / gap, MidpointRounding.AwayFromZero) * gap,
+            MathF.Round(value.Y / gap, MidpointRounding.AwayFromZero) * gap,
+            MathF.Round(value.Z / gap, MidpointRounding.AwayFromZero) * gap,
+            MathF.Round(value.W / gap, MidpointRounding.AwayFromZero) * gap);
     }
 
     /// <summary>
@@ -664,9 +663,9 @@ public static class MathUtil
     }
 
     /// <summary>
-    /// Exponential damping. 
-    /// Alternative to 
-    /// <code>a = lerp(a, b, damping * dt)</code>
+    /// Exponential damping.
+    /// Alternative to
+    /// <c>a = lerp(a, b, damping * dt)</c>
     /// using the exponential function flipped around the Y axis: e^(-t)
     /// </summary>
     /// <param name="a">Initial value</param>
@@ -676,13 +675,13 @@ public static class MathUtil
     /// <returns>A value interpolated from a to b depending on lambda and dt.</returns>
     public static float ExpDecay(float a, float b, float lambda, float dt)
     {
-        return b + (a - b) * MathF.Exp(-lambda * dt);
+        return b + ((a - b) * MathF.Exp(-lambda * dt));
     }
 
     /// <summary>
-    /// Exponential damping. 
-    /// Alternative to 
-    /// <code>a = lerp(a, b, damping * dt)</code>
+    /// Exponential damping.
+    /// Alternative to
+    /// <c>a = lerp(a, b, damping * dt)</c>
     /// using the exponential function flipped around the Y axis: e^(-t)
     /// </summary>
     /// <param name="a">Initial value</param>
@@ -692,6 +691,6 @@ public static class MathUtil
     /// <returns>A value interpolated from a to b depending on lambda and dt.</returns>
     public static double ExpDecay(double a, double b, double lambda, double dt)
     {
-        return b + (a - b) * Math.Exp(-lambda * dt);
+        return b + ((a - b) * Math.Exp(-lambda * dt));
     }
 }

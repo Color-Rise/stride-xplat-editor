@@ -20,7 +20,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -129,8 +129,7 @@ public struct Int4 : IEquatable<Int4>, IFormattable
     /// <exception cref = "ArgumentOutOfRangeException">Thrown when <paramref name = "values" /> contains more or less than four elements.</exception>
     public Int4(int[] values)
     {
-        if (values == null)
-            throw new ArgumentNullException(nameof(values));
+        ArgumentNullException.ThrowIfNull(values);
         if (values.Length != 4)
             throw new ArgumentOutOfRangeException(nameof(values), "There must be four and only four input values for Int4.");
 
@@ -146,10 +145,10 @@ public struct Int4 : IEquatable<Int4>, IFormattable
     /// <value>The value of the X, Y, Z, or W component, depending on the index.</value>
     /// <param name = "index">The index of the component to access. Use 0 for the X component, 1 for the Y component, 2 for the Z component, and 3 for the W component.</param>
     /// <returns>The value of the component at the specified index.</returns>
-    /// <exception cref = "System.ArgumentOutOfRangeException">Thrown when the <paramref name = "index" /> is out of the range [0, 3].</exception>
+    /// <exception cref = "ArgumentOutOfRangeException">Thrown when the <paramref name = "index" /> is out of the range [0, 3].</exception>
     public int this[int index]
     {
-        get => index switch
+        readonly get => index switch
         {
             0 => X,
             1 => Y,
@@ -197,10 +196,10 @@ public struct Int4 : IEquatable<Int4>, IFormattable
     /// </summary>
     /// <returns>The length of the vector.</returns>
     /// <remarks>
-    /// <see cref="Int4.LengthSquared"/> may be preferred when only the relative length is needed
+    /// <see cref="LengthSquared"/> may be preferred when only the relative length is needed
     /// and speed is of the essence.
     /// </remarks>
-    public int Length()
+    public readonly int Length()
     {
         return (int)Math.Sqrt((X * X) + (Y * Y) + (Z * Z) + (W * W));
     }
@@ -210,10 +209,10 @@ public struct Int4 : IEquatable<Int4>, IFormattable
     /// </summary>
     /// <returns>The squared length of the vector.</returns>
     /// <remarks>
-    /// This method may be preferred to <see cref="Int4.Length"/> when only a relative length is needed
+    /// This method may be preferred to <see cref="Length"/> when only a relative length is needed
     /// and speed is of the essence.
     /// </remarks>
-    public int LengthSquared()
+    public readonly int LengthSquared()
     {
         return (X * X) + (Y * Y) + (Z * Z) + (W * W);
     }
@@ -222,7 +221,7 @@ public struct Int4 : IEquatable<Int4>, IFormattable
     ///   Creates an array containing the elements of the vector.
     /// </summary>
     /// <returns>A four-element array containing the components of the vector.</returns>
-    public int[] ToArray()
+    public readonly int[] ToArray()
     {
         return [X, Y, Z, W];
     }
@@ -495,8 +494,8 @@ public struct Int4 : IEquatable<Int4>, IFormattable
     /// <summary>
     ///   Scales a vector by the given value.
     /// </summary>
-    /// <param name = "value">The vector to scale.</param>
     /// <param name = "scale">The amount by which to scale the vector.</param>
+    /// <param name = "value">The vector to scale.</param>
     /// <returns>The scaled vector.</returns>
     public static Int4 operator *(int scale, Int4 value)
     {
@@ -641,7 +640,7 @@ public struct Int4 : IEquatable<Int4>, IFormattable
     ///   Returns a hash code for this instance.
     /// </summary>
     /// <returns>
-    ///   A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+    ///   A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
     /// </returns>
     public override readonly int GetHashCode()
     {
