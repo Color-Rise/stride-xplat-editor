@@ -647,7 +647,7 @@ namespace Stride.Core.Presentation.Quantum.ViewModels
             IsReadOnly = shouldBeReadOnly;
 
             // TODO: find a way to "merge" display name if they are different (string.Join?)
-            DisplayName = Utils.SplitCamelCase(nodePresenters.First().DisplayName);
+            DisplayName = Utils.SplitCamelCase(nodePresenters[0].DisplayName);
 
             CheckDynamicMemberConsistency();
         }
