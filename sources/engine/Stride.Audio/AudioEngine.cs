@@ -24,10 +24,7 @@ namespace Stride.Audio
 
         static AudioEngine()
         {
-            if (!AudioLayer.Init())
-            {
-                throw new Exception("Failed to initialize the audio native layer.");
-            }
+            AudioLayer.Init();
         }
 
         /// <summary>
