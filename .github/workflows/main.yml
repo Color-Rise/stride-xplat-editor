@@ -22,9 +22,19 @@ jobs:
   #
   # Build Stride for Windows
   #
-  Windows-Debug:
+  # Windows-Debug:
+  #   needs: Setup
+  #   uses: ./.github/workflows/build-windows.yml
+  #   secrets: inherit
+  #   with:
+  #     build-type: Debug
+
+  #
+  # Build Stride for Linux
+  #
+  Windows-Linux:
     needs: Setup
-    uses: ./.github/workflows/build-windows.yml
+    uses: ./.github/workflows/build-linux.yml
     secrets: inherit
     with:
       build-type: Debug
