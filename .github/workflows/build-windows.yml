@@ -34,4 +34,4 @@ jobs:
           dotnet-version: '8.0.x'
       - uses: microsoft/setup-msbuild@v2
       - name: Build Stride
-        run: msbuild build\Stride.build -t:BuildWindows -m -nr:false -p:StrideSkipUnitTests=true -p:StrideSkipAutoPack=true -p:StrideEnableCodeAnalysis=true
+        run: msbuild build\Stride.build -t:BuildWindows -m:1 -nr:false -v:m -p:StrideSkipUnitTests=true -p:StrideSkipAutoPack=true -p:StrideEnableCodeAnalysis=true
