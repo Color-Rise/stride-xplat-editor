@@ -37,6 +37,9 @@
         <MenuItem Header="{sd:LocalizeString _Close, Context=Menu}"
                   Command="{Binding CloseCommand}"
                   IsEnabled="{Binding Session, Mode=OneWay, Converter={sd:ObjectToBool}}"/>
+        <MenuItem Header="{sd:LocalizeString _Save, Context=Menu}"
+                  Command="{Binding Session.SaveSessionCommand, FallbackValue={x:Static cpc:DisabledCommand.Instance}}"
+                  IsEnabled="{Binding Session, Mode=OneWay, Converter={sd:ObjectToBool}}"/>
         <Separator/>
         <MenuItem Header="{sd:LocalizeString E_xit, Context=Menu}"
                   Command="{Binding ExitCommand}"
@@ -73,6 +76,7 @@
         <MenuItem Header="{sd:LocalizeString _About..., Context=Menu}"
                   Command="{Binding AboutCommand}"/>
       </MenuItem>
+      <!-- Debug menu -->
       <MenuItem Header="Debug"
                 IsVisible="{Binding CrashCommand.IsEnabled, Mode=OneWay}">
         <MenuItem Header="Simulate a crash"
