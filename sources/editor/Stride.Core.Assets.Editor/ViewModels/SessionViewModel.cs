@@ -93,6 +93,7 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
         EditSelectedContentCommand = new AnonymousCommand(serviceProvider, OnEditSelectedContent);
         PreviousSelectionCommand = new AnonymousCommand(serviceProvider, () => { SelectionService?.NavigateBackward(); UpdateSelectionCommands(); });
         NextSelectionCommand = new AnonymousCommand(serviceProvider, () => { SelectionService?.NextSelection(); UpdateSelectionCommands(); });
+        SaveSessionCommand = new AnonymousTaskCommand(ServiceProvider, SaveSessionAsync);
 
         // This event must be subscribed before we create the package view models
         PackageCategories.ForEach(x => x.Value.Content.CollectionChanged += PackageCollectionChanged);
@@ -187,6 +188,8 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
 
     public ICommandBase PreviousSelectionCommand { get; }
 
+    public ICommandBase SaveSessionCommand { get; }
+
     internal PackageSession PackageSession => session;
 
     internal IAssetsPluginService PluginService => ServiceProvider.Get<IAssetsPluginService>();
@@ -266,6 +269,93 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
     public void UnregisterAsset(AssetViewModel asset)
     {
         ((IDictionary<AssetId, AssetViewModel>)assetIdMap).Remove(asset.Id);
+    }
+
+    public async Task<bool> SaveSessionAsync()
+    {
+        bool success = false;
+
+        // Check consistency
+        //AllPackages.ForEach(x => x.CheckConsistency()); // FIXME xplat-editor
+
+        // Ensure any edition is validated by triggering lost focus, etc.
+        ServiceProvider.Get<IEditorDialogService>().ClearFocus();
+
+        // Prepare packages to be saved by setting their dirty flag correctly
+        //foreach (var package in LocalPackages)
+        //{
+        //    package.PreparePackageForSaving();
+        //}
+
+        var sessionResult = new LoggerResult();
+        var workProgress = new WorkProgressViewModel(ServiceProvider, sessionResult)
+        {
+            Title = Tr._p("Title", "Saving session..."),
+            KeepOpen = KeepOpen.OnWarningsOrErrors,
+            IsIndeterminate = true
+        };
+        workProgress.RegisterProgressStatus(sessionResult);
+
+        ServiceProvider.Get<IEditorDialogService>().ShowProgressWindow(workProgress);
+        
+        // Ensure saving is finished
+        await Task.Run(() =>
+        {
+            try
+            {
+                var saveParameters = PackageSaveParameters.Default();
+
+                //AllAssets.ForEach(x => x.PrepareSave(sessionResult));
+                session.Save(sessionResult, saveParameters);
+
+                success = true;
+            }
+            catch (Exception e)
+            {
+                sessionResult.Error(string.Format(Tr._p("Log", "There was a problem saving the solution. {0}"), e.Message), e);
+            }
+        });
+        
+        // Fail on errors in the session result
+        if (sessionResult.HasErrors)
+            success = false;
+        
+        // Notify that the task is finished
+        await workProgress.NotifyWorkFinished(false, sessionResult.HasErrors);
+        
+        // Update view model (in case "Source" is updated due to "Keep source side by side" feature)
+        await ActiveProperties.RefreshSelectedPropertiesAsync();
+        
+        // Notify assets view model that their underlying assets has been saved
+        foreach (var asset in AllPackages.Where(project => !project.Package.IsSystem).SelectMany(package => package.Assets))
+        {
+            // Note: we use AssetItem.IsDirty rather than AssetViewModel.IsDirty since OnSessionSaved() might be the place where we update AssetViewModel.IsDirty
+            // FIXME xlat-editor
+            //if (!asset.AssetItem.IsDirty)
+            //    asset.OnSessionSaved();
+        }
+        
+        if (success)
+        {
+            ActionHistory?.NotifySave();
+
+            // Add entry to MRU: priority to the sln, then the first local package
+            var mruPath = session.SolutionPath;
+            if (session.LocalPackages.Any())
+            {
+                mruPath = session.LocalPackages.First().FullPath;
+            }
+            if (mruPath is not null)
+            {
+                //Editor.MRU.AddFile(mruPath, Editor.EditorVersionMajor);
+            }
+
+            //AllPackages.ForEach(x => x.OnSessionSaved()); // FIXME xlat-editor
+        }
+
+        UpdateSessionState();
+
+        return success;
     }
 
     private void AutoSelectCurrentProject()

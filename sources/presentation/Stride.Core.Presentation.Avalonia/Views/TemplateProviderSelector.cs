@@ -4,6 +4,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Stride.Core.Extensions;
+using Stride.Core.Presentation.Views;
 
 namespace Stride.Core.Presentation.Avalonia.Views;
 
@@ -34,6 +35,15 @@ public class TemplateProviderSelector : IDataTemplate
             throw new InvalidOperationException("A template provider with the same name has already been registered in this template selector.");
 
         InsertTemplateProvider(templateProviders, templateProvider, []);
+    }
+
+    /// <summary>
+    /// Unregisters all template providers.
+    /// </summary>
+    public void UnregisterAll()
+    {
+        templateProviders.Clear();
+        templateProviderNames.Clear();
     }
 
     /// <summary>

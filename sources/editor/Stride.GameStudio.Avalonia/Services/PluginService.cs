@@ -41,6 +41,8 @@ internal sealed class PluginService : IAssetsPluginService
 
     public void EnsureInitialized(ILogger logger)
     {
+        ClearTemplateProviders();
+
         foreach (var plugin in AssetsPlugin.RegisteredPlugins)
         {
             plugin.InitializePlugin(logger);
@@ -98,6 +100,13 @@ internal sealed class PluginService : IAssetsPluginService
         }
 
         return;
+
+        void ClearTemplateProviders()
+        {
+            PropertyViewHelper.HeaderProviders.UnregisterAll();
+            PropertyViewHelper.FooterProviders.UnregisterAll();
+            PropertyViewHelper.EditorProviders.UnregisterAll();
+        }
 
         void RegisterTemplateProvider(ITemplateProvider provider)
         {

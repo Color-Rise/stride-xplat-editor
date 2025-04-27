@@ -15,7 +15,7 @@ partial class SessionViewModel
 {
     private static SessionViewModel? instance;
     private static readonly SemaphoreSlim semaphore = new(1, 1);
-    
+
     /// <summary>
     /// The current instance of <see cref="SessionViewModel"/>.
     /// </summary>
@@ -110,7 +110,7 @@ partial class SessionViewModel
         actionService.Resize(200);
 
         // And initialize the actions view model
-        sessionViewModel.ActionHistory?.Initialize();
+        sessionViewModel?.ActionHistory?.Initialize();
 
         // Copy the result of the asset loading to the log panel.
         sessionViewModel?.AssetLog.AddLogger(LogKey.Get("Session"), sessionResult);
