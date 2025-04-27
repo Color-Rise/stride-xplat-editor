@@ -27,11 +27,11 @@ public sealed class UserDocumentationService
 
     public string? GetMemberDocumentation(IMemberDescriptor member, Type rootType)
     {
-        string result;
+        string? result;
         string key;
 
         var prefix = member is FieldDescriptor ? 'F' : 'P';
-        if (rootType != null && CacheAssemblyDocumentation(rootType.Assembly))
+        if (rootType is not null && CacheAssemblyDocumentation(rootType.Assembly))
         {
             // Remove generic type arguments specifications
             key = $"{prefix}:{rootType.FullName}.{member.Name}";
@@ -46,7 +46,7 @@ public sealed class UserDocumentationService
         if (!CacheAssemblyDocumentation(member.DeclaringType.Assembly))
             return null;
 
-        var declaringType = Regex.Replace(member.DeclaringType.FullName, @"\[.*\]", "").Replace('+', '.');
+        var declaringType = Regex.Replace(member.DeclaringType.FullName!, @"\[.*\]", "").Replace('+', '.');
 
         // Remove generic type arguments specifications
         key = $"{prefix}:{declaringType}.{member.Name}";
@@ -60,7 +60,7 @@ public sealed class UserDocumentationService
     public string? GetPropertyKeyDocumentation(PropertyKey propertyKey)
     {
         var ownerType = propertyKey.OwnerType;
-        if (ownerType == null)
+        if (ownerType is null)
             return null;
 
         if (!CacheAssemblyDocumentation(ownerType.Assembly))
@@ -72,7 +72,7 @@ public sealed class UserDocumentationService
 
         lock (lockObj)
         {
-            return cachedDocumentations.TryGetValue(key, out string result) ? result : null;
+            return cachedDocumentations.TryGetValue(key, out var result) ? result : null;
         }
     }
 
@@ -103,12 +103,12 @@ public sealed class UserDocumentationService
         if (!documentedAssemblies.Contains(assemblyName))
         {
             var location = assembly.Location;
-            if (string.IsNullOrEmpty(location) && session.CurrentProject?.Package != null)
+            if (string.IsNullOrEmpty(location) && session.CurrentProject?.Package is not null)
             {
                 //Try to find the assembly in the loaded assemblies, since Location won't be populated in the case of User assemblies
                 var package = session.CurrentProject.Package;
 
-                if (package.Container is SolutionProject solutionProject && solutionProject.Type == ProjectType.Executable)
+                if (package.Container is SolutionProject { Type: ProjectType.Executable } solutionProject)
                 {
                     Log.Info($"Package {solutionProject.Name} is a solution project. Attempting to cache documentation for dependencies.");
                     foreach (var dep in solutionProject.DirectDependencies)
@@ -184,25 +184,23 @@ public sealed class UserDocumentationService
 
         try
         {
-            using (var reader = new StreamReader(filePath))
+            using var reader = new StreamReader(filePath);
+            var doc = new XmlDocument();
+            doc.Load(reader);
+
+            foreach (XmlNode node in doc.GetElementsByTagName("userdoc"))
             {
-                var doc = new XmlDocument();
-                doc.Load(reader);
+                var key = node.ParentNode.Attributes["name"]?.Value;
+                var documentation = node.InnerText.Trim();
 
-                foreach (XmlNode node in doc.GetElementsByTagName("userdoc"))
+                if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(documentation))
                 {
-                    var key = node.ParentNode.Attributes["name"]?.Value;
-                    var documentation = node.InnerText.Trim();
+                    continue;
+                }
 
-                    if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(documentation))
-                    {
-                        continue;
-                    }
-
-                    lock (lockObj)
-                    {
-                        cachedDocumentations[key] = documentation;
-                    }
+                lock (lockObj)
+                {
+                    cachedDocumentations[key] = documentation;
                 }
             }
         }
@@ -229,31 +227,29 @@ public sealed class UserDocumentationService
 
         try
         {
-            using (var reader = new StreamReader(filePath))
+            using var reader = new StreamReader(filePath);
+            int lineNumber = 0;
+            while (!reader.EndOfStream)
             {
-                int lineNumber = 0;
-                while (!reader.EndOfStream)
+                var line = reader.ReadLine();
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                lineNumber++;
+
+                var separator = line.IndexOf('=');
+                if (separator < 0 || separator >= line.Length - 1)
                 {
-                    var line = reader.ReadLine();
-                    if (string.IsNullOrWhiteSpace(line))
-                        continue;
+                    Log.Warning($"Invalid doc format. File: {filePath}, Line {lineNumber}");
+                    continue;
+                }
 
-                    lineNumber++;
+                var key = line[..separator];
+                var documentation = line[(separator + 1)..];
 
-                    var separator = line.IndexOf('=');
-                    if (separator < 0 || separator >= line.Length - 1)
-                    {
-                        Log.Warning($"Invalid doc format. File: {filePath}, Line {lineNumber}");
-                        continue;
-                    }
-
-                    var key = line.Substring(0, separator);
-                    var documentation = line.Substring(separator + 1);
-
-                    lock (lockObj)
-                    {
-                        cachedDocumentations[key] = documentation;
-                    }
+                lock (lockObj)
+                {
+                    cachedDocumentations[key] = documentation;
                 }
             }
         }

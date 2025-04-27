@@ -3,6 +3,7 @@
 
 using Stride.Core.Assets.Editor.Quantum.NodePresenters.Commands;
 using Stride.Core.Assets.Editor.Quantum.NodePresenters.Updaters;
+using Stride.Core.Assets.Editor.Services;
 using Stride.Core.Assets.Editor.ViewModels;
 using Stride.Core.Assets.Presentation.Components.Properties;
 using Stride.Core.Assets.Presentation.Quantum.NodePresenters;
@@ -19,7 +20,7 @@ namespace Stride.Core.Assets.Editor.Components.Properties;
 /// belongs to a session. It adds specific associated data and command related to the session, and updates
 /// the <see cref="SessionViewModel.ActiveProperties"/> property when it creates a new view model.
 /// </summary>
-public class SessionObjectPropertiesViewModel : PropertiesViewModel
+public sealed class SessionObjectPropertiesViewModel : PropertiesViewModel
 {
     private static bool contextLock;
     private string typeDescription;
@@ -36,8 +37,7 @@ public class SessionObjectPropertiesViewModel : PropertiesViewModel
         ViewModelService.NodeViewModelFactory = new AssetNodeViewModelFactory();
 
         var dialogService = ServiceProvider.Get<IDialogService>();
-        // FIXME xplat-editor
-        //var documentationService = session.ServiceProvider.Get<UserDocumentationService>();
+        var documentationService = ServiceProvider.Get<UserDocumentationService>();
 
         RegisterNodePresenterCommand(new CopyPropertyCommand());
         RegisterNodePresenterCommand(new PastePropertyCommand());
@@ -50,8 +50,7 @@ public class SessionObjectPropertiesViewModel : PropertiesViewModel
         RegisterNodePresenterCommand(new ResetOverrideCommand());
 
         RegisterNodePresenterUpdater(new ArchetypeNodeUpdater());
-        // FIXME xplat-editor
-        //RegisterNodePresenterUpdater(new DocumentationNodeUpdater(documentationService));
+        RegisterNodePresenterUpdater(new DocumentationNodeUpdater(documentationService));
         RegisterNodePresenterUpdater(new OwnerAssetUpdater());
         RegisterNodePresenterUpdater(new SessionNodeUpdater(session));
     }

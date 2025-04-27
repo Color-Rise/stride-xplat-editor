@@ -50,6 +50,9 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
         // Initialize the node container used for asset properties
         AssetNodeContainer = new SessionNodeContainer(serviceProvider) { NodeBuilder = { NodeFactory = new AssetNodeFactory() } };
 
+        // Create the service that handles property documentation
+        serviceProvider.RegisterService(new UserDocumentationService(this));
+
         // Initialize the asset collection view model
         AssetCollection = new AssetCollectionViewModel(this);
 
