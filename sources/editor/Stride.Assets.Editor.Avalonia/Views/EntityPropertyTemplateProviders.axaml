@@ -134,12 +134,12 @@
                   ItemsSource="{Binding [AbstractNodeMatchingEntries]}"
                   Theme="{StaticResource AddItemComboBoxTheme}" Margin="2,0">
           <Interaction.Behaviors>
-            <EventTriggerBehavior EventName="DropDownClosed"
-                                  IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
+            <RoutedEventTriggerBehavior RoutedEvent="DropDownClosed"
+                                        IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
               <InvokeCommandAction Command="{Binding [AddNewItem]}"
                                    CommandParameter="{Binding #InstanceTypeSelectionComboBox.SelectedItem}"/>
               <ChangePropertyAction PropertyName="SelectedItem" Value="{x:Null}"/>
-            </EventTriggerBehavior>
+            </RoutedEventTriggerBehavior>
           </Interaction.Behaviors>
         </ComboBox>
       </StackPanel>

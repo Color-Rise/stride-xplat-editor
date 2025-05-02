@@ -285,12 +285,12 @@
                     ItemsSource="{Binding [AbstractNodeMatchingEntries]}"
                     Theme="{StaticResource AddItemComboBoxTheme}">
             <Interaction.Behaviors>
-              <EventTriggerBehavior EventName="DropDownClosed"
-                                    IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
+              <RoutedEventTriggerBehavior RoutedEvent="DropDownClosed"
+                                          IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
                 <InvokeCommandAction Command="{Binding [AddNewItem]}"
                                      CommandParameter="{Binding #InstanceTypeSelectionComboBox.SelectedItem}"/>
                 <ChangePropertyAction PropertyName="SelectedItem" Value="{x:Null}"/>
-              </EventTriggerBehavior>
+              </RoutedEventTriggerBehavior>
             </Interaction.Behaviors>
           </ComboBox>
         </StackPanel>
@@ -370,12 +370,12 @@
                   IsVisible="{sd:MultiBinding {Binding [HasCommand_CreateNewInstance]}, {Binding !IsReadOnly},
                                               Converter={sd:AndMulti}}">
           <Interaction.Behaviors>
-            <EventTriggerBehavior EventName="DropDownClosed"
-                                  IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
+            <RoutedEventTriggerBehavior RoutedEvent="DropDownClosed"
+                                        IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
               <InvokeCommandAction Command="{Binding [CreateNewInstance]}"
                                    CommandParameter="{Binding #InstanceTypeSelectionComboBox.SelectedItem}"/>
               <ChangePropertyAction PropertyName="SelectedItem" Value="{x:Null}"/>
-            </EventTriggerBehavior>
+            </RoutedEventTriggerBehavior>
           </Interaction.Behaviors>
         </ComboBox>
         <ContentControl x:Name="ContentControl"
@@ -440,12 +440,12 @@
                     Theme="{StaticResource AddItemComboBoxTheme}"
                     ItemsSource="{Binding [AbstractNodeMatchingEntries]}">
             <Interaction.Behaviors>
-              <EventTriggerBehavior EventName="DropDownClosed"
-                                    IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
+              <RoutedEventTriggerBehavior RoutedEvent="DropDownClosed"
+                                          IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
                 <InvokeCommandAction Command="{Binding [AddNewItem]}"
                                      CommandParameter="{Binding #InstanceTypeSelectionComboBox.SelectedItem}"/>
                 <ChangePropertyAction PropertyName="SelectedItem" Value="{x:Null}"/>
-              </EventTriggerBehavior>
+              </RoutedEventTriggerBehavior>
             </Interaction.Behaviors>
           </ComboBox>
         </StackPanel>
@@ -488,12 +488,12 @@
                         Theme="{StaticResource AddItemComboBoxTheme}" Margin="2,0"
                         ItemsSource="{Binding [AbstractNodeMatchingEntries]}">
                 <Interaction.Behaviors>
-                  <EventTriggerBehavior EventName="DropDownClosed"
-                                        IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
+                  <RoutedEventTriggerBehavior RoutedEvent="DropDownClosed"
+                                              IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
                     <InvokeCommandAction Command="{Binding [AddNewItem]}"
                                          CommandParameter="{Binding #InstanceTypeSelectionComboBox.SelectedItem}"/>
                     <ChangePropertyAction PropertyName="SelectedItem" Value="{x:Null}"/>
-                  </EventTriggerBehavior>
+                  </RoutedEventTriggerBehavior>
                 </Interaction.Behaviors>
               </ComboBox>
               <TextBlock FontStyle="Italic" TextTrimming="CharacterEllipsis"
@@ -554,12 +554,12 @@
                     ItemsSource="{Binding [AbstractNodeMatchingEntries]}"
                     Theme="{StaticResource AddItemComboBoxTheme}">
             <Interaction.Behaviors>
-              <EventTriggerBehavior EventName="DropDownClosed"
-                                    IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
+              <RoutedEventTriggerBehavior RoutedEvent="DropDownClosed"
+                                          IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
                 <InvokeCommandAction Command="{Binding [AddNewItem]}"
                                      CommandParameter="{Binding #InstanceTypeSelectionComboBox.SelectedItem}"/>
                 <ChangePropertyAction PropertyName="SelectedItem" Value="{x:Null}"/>
-              </EventTriggerBehavior>
+              </RoutedEventTriggerBehavior>
             </Interaction.Behaviors>
           </ComboBox>
         </StackPanel>
@@ -602,12 +602,12 @@
                         Theme="{StaticResource AddItemComboBoxTheme}" Margin="2,0"
                         ItemsSource="{Binding [AbstractNodeMatchingEntries]}">
                 <Interaction.Behaviors>
-                  <EventTriggerBehavior EventName="DropDownClosed"
-                                        IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
+                  <RoutedEventTriggerBehavior RoutedEvent="DropDownClosed"
+                                              IsEnabled="{Binding #InstanceTypeSelectionComboBox.SelectedItem, Converter={sd:ObjectToBool}}">
                     <InvokeCommandAction Command="{Binding [AddNewItem]}"
                                          CommandParameter="{Binding #InstanceTypeSelectionComboBox.SelectedItem}"/>
                     <ChangePropertyAction PropertyName="SelectedItem" Value="{x:Null}"/>
-                  </EventTriggerBehavior>
+                  </RoutedEventTriggerBehavior>
                 </Interaction.Behaviors>
               </ComboBox>
               <TextBlock FontStyle="Italic" TextTrimming="CharacterEllipsis"
@@ -789,11 +789,11 @@
                               ItemsSource="{Binding [DictionaryNodeKeyType], Converter={sd:EnumValues}, Mode=OneWay}"
                               SelectedItem="" MinWidth="60">
                       <Interaction.Behaviors>
-                        <EventTriggerBehavior EventName="DropDownClosed">
+                        <RoutedEventTriggerBehavior RoutedEvent="DropDownClosed">
                           <InvokeCommandAction Command="{Binding [AddPrimitiveKey]}"
                                                CommandParameter="{Binding #EnumKeySelectionComboBox.SelectedItem}"/>
                           <ChangePropertyAction TargetObject="ToggleButton1" PropertyName="IsChecked" Value="{x:False}"/>
-                        </EventTriggerBehavior>
+                        </RoutedEventTriggerBehavior>
                       </Interaction.Behaviors>
                     </ComboBox>
                   </DockPanel>
@@ -1435,9 +1435,9 @@
                      Source="{Binding ThumbnailData.Presenter, Mode=OneWay}"/>
               <Interaction.Behaviors>
                 <!-- FIXME only on pointer down -->
-                <EventTriggerBehavior EventName="PointerPressed" >
+                <RoutedEventTriggerBehavior RoutedEvent="PointerPressed" >
                   <InvokeCommandAction Command="{Binding [FetchAsset]}"/>
-                </EventTriggerBehavior>
+                </RoutedEventTriggerBehavior>
               </Interaction.Behaviors>
             </Border>
             <ProgressBar Width="16" Height="4" IsIndeterminate="True"
@@ -1452,10 +1452,10 @@
                      Source="{StaticResource ImagePickup}"/>
               <Interaction.Behaviors>
                 <!-- FIXME only on pointer down -->
-                <EventTriggerBehavior EventName="PointerPressed" >
+                <RoutedEventTriggerBehavior RoutedEvent="PointerPressed" >
                   <InvokeCommandAction Command="{Binding [PickupAsset]}"
                                        CommandParameter="{Binding Type}"/>
-                </EventTriggerBehavior>
+                </RoutedEventTriggerBehavior>
               </Interaction.Behaviors>
             </Border>
           </Grid>
