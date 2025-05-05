@@ -260,16 +260,16 @@ public abstract class AssetViewModel : SessionObjectViewModel, IAssetPropertyPro
         /// <summary>
         /// Gets the <see cref="AssetItem"/> instance representing the asset to construct.
         /// </summary>
-        internal readonly AssetItem AssetItem;
+        internal AssetItem AssetItem { get; }
 
         /// <summary>
         /// Gets whether the creation of this asset can be undone/redone.
         /// </summary>
-        internal readonly bool CanUndoRedoCreation;
+        internal bool CanUndoRedoCreation { get; }
 
         /// <summary>
         /// Gets the directory containing the asset to construct.
         /// </summary>
-        internal readonly DirectoryBaseViewModel Directory;
+        internal DirectoryBaseViewModel Directory { get; }
     }
 }

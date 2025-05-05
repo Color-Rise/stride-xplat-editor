@@ -12,8 +12,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels;
 
 public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewModel>, IChildViewModel
 {
-    // FIXME should only contain editable viewmodels
-    protected readonly SortedObservableCollection<ViewModelBase> content = new(ComparePackageContent);
+    protected readonly SortedObservableCollection<SessionObjectViewModel> content = new(ComparePackageContent);
 
     public PackageViewModel(ISessionViewModel session, PackageContainer packageContainer, bool packageAlreadyInSession)
         : base(session)
@@ -42,7 +41,7 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
     /// Gets the list of child item to be used to display in a hierachical view.
     /// </summary>
     /// <remarks>This collection usually contains categories and root folders.</remarks>
-    public IReadOnlyObservableCollection<ViewModelBase> Content => content;
+    public IReadOnlyObservableCollection<SessionObjectViewModel> Content => content;
 
     /// <summary>
     /// Gets the list of assets that have been deleted by the user since the beginning of the session.
@@ -92,7 +91,7 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
     /// </summary>
     public ObservableSet<AssetViewModel> RootAssets { get; } = [];
 
-    public UDirectory RootDirectory => Package.RootDirectory;
+    public UDirectory? RootDirectory => Package.RootDirectory;
 
     /// <inheritdoc/>
     public override string TypeDisplayName => "Package";
@@ -175,23 +174,27 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
         }
     }
 
-    private static int ComparePackageContent(ViewModelBase x, ViewModelBase y)
+    private static int ComparePackageContent(SessionObjectViewModel x, SessionObjectViewModel y)
     {
-        if (x is AssetMountPointViewModel xAssets)
+        switch (x)
         {
-            if (y is AssetMountPointViewModel yAssets)
-                return string.Compare(xAssets.Name, yAssets.Name, StringComparison.InvariantCultureIgnoreCase);
-            return -1;
-        }
-        if (x is ProjectViewModel xProject)
-        {
-            if (y is ProjectViewModel yProject)
+            case AssetMountPointViewModel xAssets:
             {
-                return xProject.CompareTo(yProject);
+                if (y is AssetMountPointViewModel yAssets)
+                    return string.Compare(xAssets.Name, yAssets.Name, StringComparison.InvariantCultureIgnoreCase);
+                return -1;
             }
-            return y is AssetMountPointViewModel ? 1 : -1;
+            case ProjectViewModel xProject:
+            {
+                if (y is ProjectViewModel yProject)
+                {
+                    return xProject.CompareTo(yProject);
+                }
+                return y is AssetMountPointViewModel ? 1 : -1;
+            }
+            default:
+                throw new InvalidOperationException("Unable to sort the given items for the Content collection of PackageViewModel");
         }
-        throw new InvalidOperationException("Unable to sort the given items for the Content collection of PackageViewModel");
     }
 
     // FIXME xplat-editor: most method here should be moved to an utility in the editor project (asset project should have minimum capability)
@@ -210,11 +213,11 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
     private void FillRootAssetCollection()
     {
         RootAssets.Clear();
-        RootAssets.AddRange(Package.RootAssets.Select(x => Session.GetAssetById(x.Id)).NotNull()!);
+        RootAssets.AddRange(Package.RootAssets.Select(x => Session.GetAssetById(x.Id)).NotNull());
         foreach (var dependency in PackageContainer.FlattenedDependencies)
         {
             if (dependency.Package != null)
-                RootAssets.AddRange(dependency.Package.RootAssets.Select(x => Session.GetAssetById(x.Id)).NotNull()!);
+                RootAssets.AddRange(dependency.Package.RootAssets.Select(x => Session.GetAssetById(x.Id)).NotNull());
         }
     }
 

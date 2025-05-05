@@ -9,7 +9,7 @@ namespace Stride.Core.Assets.Presentation.ViewModels;
 
 public abstract class DirectoryBaseViewModel : SessionObjectViewModel
 {
-    public const string Separator = "/";
+    public const char Separator = '/';
     private readonly AutoUpdatingSortedObservableCollection<DirectoryViewModel> subDirectories = new(CompareDirectories);
     private readonly ObservableSet<AssetViewModel> assets = new();
 
@@ -56,7 +56,7 @@ public abstract class DirectoryBaseViewModel : SessionObjectViewModel
     {
         ArgumentNullException.ThrowIfNull(path);
 
-        var directoryNames = path.Split(Separator.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+        var directoryNames = path.Split(Separator, StringSplitOptions.RemoveEmptyEntries);
         DirectoryBaseViewModel? currentDirectory = this;
         foreach (var directoryName in directoryNames)
         {
@@ -81,7 +81,7 @@ public abstract class DirectoryBaseViewModel : SessionObjectViewModel
         DirectoryBaseViewModel result = this;
         if (!string.IsNullOrEmpty(path))
         {
-            var directoryNames = path.Split(Separator.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            var directoryNames = path.Split(Separator, StringSplitOptions.RemoveEmptyEntries);
             result = directoryNames.Aggregate(result, (current, next) => current.SubDirectories.FirstOrDefault(x => string.Equals(next, x.Name, StringComparison.InvariantCultureIgnoreCase)) ?? new DirectoryViewModel(next, current));
         }
         return result;

@@ -18,7 +18,7 @@ public class AssetPropertyGraphContainer
 
     public bool PropagateChangesFromBase { get; set; } = true;
 
-    public AssetPropertyGraph? InitializeAsset(AssetItem assetItem, ILogger logger)
+    public AssetPropertyGraph? InitializeAsset(AssetItem assetItem, ILogger? logger)
     {
         // SourceCodeAssets have no property
         if (assetItem.Asset is SourceCodeAsset)
