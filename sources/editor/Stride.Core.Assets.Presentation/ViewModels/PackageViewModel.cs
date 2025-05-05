@@ -1,12 +1,9 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
-using Stride.Core.Diagnostics;
 using Stride.Core.Extensions;
 using Stride.Core.IO;
 using Stride.Core.Presentation.Collections;
-using Stride.Core.Presentation.ViewModels;
-using static Stride.Core.Assets.Presentation.ViewModels.AssetViewModel;
 
 namespace Stride.Core.Assets.Presentation.ViewModels;
 
@@ -135,7 +132,7 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
             {
                 directory = GetOrCreateAssetDirectory(url.GetFullDirectory());
             }
-            CreateAsset(asset, directory, false);
+            AssetViewModelManager.CreateAsset(asset, directory, false);
             progress++;
         }
 
@@ -195,19 +192,6 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
             default:
                 throw new InvalidOperationException("Unable to sort the given items for the Content collection of PackageViewModel");
         }
-    }
-
-    // FIXME xplat-editor: most method here should be moved to an utility in the editor project (asset project should have minimum capability)
-    public AssetViewModel CreateAsset(AssetItem assetItem, DirectoryBaseViewModel directory, bool canUndoRedoCreation, ILogger? logger = null)
-    {
-        AssetCollectionItemIdHelper.GenerateMissingItemIds(assetItem.Asset);
-        Session.GraphContainer.InitializeAsset(assetItem, logger);
-        var assetViewModelType = Session.GetAssetViewModelType(assetItem);
-        if (assetViewModelType.IsGenericType)
-        {
-            assetViewModelType = assetViewModelType.MakeGenericType(assetItem.Asset.GetType());
-        }
-        return (AssetViewModel)Activator.CreateInstance(assetViewModelType, new ConstructorParameters(assetItem, directory, canUndoRedoCreation))!;
     }
 
     private void FillRootAssetCollection()

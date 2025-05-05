@@ -344,7 +344,7 @@ partial class AssetCollectionViewModel
             var assetDirectory = project == null ?
                 package.GetOrCreateAssetDirectory(location) :
                 project.GetOrCreateProjectDirectory(location);
-            var assetViewModel = package.CreateAsset(asset, assetDirectory, true);
+            var assetViewModel = AssetViewModelManager.CreateAsset(asset, assetDirectory, true);
             viewModels.Add(assetViewModel);
         }
 
