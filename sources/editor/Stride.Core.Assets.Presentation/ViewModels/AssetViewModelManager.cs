@@ -23,3 +23,14 @@ public sealed class AssetViewModelManager
         return (AssetViewModel)Activator.CreateInstance(assetViewModelType, new AssetViewModel.ConstructorParameters(assetItem, directory, canUndoRedoCreation))!;
     }
 }
+
+/*
+ * ideas:
+ *
+ * - make IsDeleted either virtual in SessionObjectViewModel,
+ *   or add a virtual method SetIsDeleted() that is overriden in AssetViewModel to handle Add/RemoveAsset in directories/packages
+ * - move PackageViewModel.LoadPackageInformation() in this helper
+ * - try to reduce the API surface of ISessionViewModel to make it simpler to provide alternative implementations
+ *     - corollary: create a SimpleSessionViewModel with no undo/redo a simple node container etc. to be used as a readonly view of assets utility
+ * 
+ */
