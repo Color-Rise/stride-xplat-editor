@@ -2,16 +2,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sd="http://schemas.stride3d.net/xaml/presentation"
              xmlns:caevm="using:Stride.Core.Assets.Editor.ViewModels"
              xmlns:capvm="using:Stride.Core.Assets.Presentation.ViewModels"
              xmlns:gscv="using:Stride.GameStudio.Avalonia.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Stride.GameStudio.Avalonia.Views.AssetExplorerView"
              x:DataType="caevm:AssetCollectionViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <caevm:AssetCollectionViewModel/>
+  </Design.DataContext>
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Stride.Core.Assets.Editor.Avalonia/Views/ImageResources.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </UserControl.Resources>
   <DockPanel>
     <Grid DockPanel.Dock="Top">
       <TextBlock Text="Asset Explorer" />
     </Grid>
+    <!-- Toolbar -->
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"
+                MaxHeight="24">
+      <ToggleButton x:Name="ToggleButton">
+        <StackPanel Orientation="Horizontal">
+          <Image Source="{StaticResource ImageAdd}" />
+          <TextBlock Margin="2,2,4,2" VerticalAlignment="Center"
+                     Text="{sd:LocalizeString Add asset, Context=Button}" />
+        </StackPanel>
+      </ToggleButton>
+      <Popup IsLightDismissEnabled="True"
+             IsOpen="{Binding #ToggleButton.IsChecked, Mode=TwoWay}"
+             PlacementTarget="{Binding #ToggleButton}">
+        <!-- FIXME move this to a seperate file for reuse -->
+        <Grid ColumnDefinitions="Auto, 2, *">
+          <DockPanel Grid.Column="0" x:Name="LeftPanel"
+                     Margin="4">
+            <DockPanel DockPanel.Dock="Top"
+                       Margin="4">
+              <Button DockPanel.Dock="Right"/>
+              <TextBox/>
+            </DockPanel>
+            <ListBox x:Name="GroupList"
+                     ItemsSource="{Binding AddAssetTemplateCollection.RootGroup.SubGroups}">
+
+            </ListBox>
+          </DockPanel>
+          <Separator Grid.Column="1"
+                     Width="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                     IsVisible="{Binding #ListBox.ItemCount, Converter={sd:NumericToBool}}"/>
+          <ListBox Grid.Column="2" x:Name="ListBox"
+                   ItemsSource="{Binding AddAssetTemplateCollection.Templates}"/>
+        </Grid>
+      </Popup>
+    </StackPanel>
+    <!-- Asset list view -->
     <ListBox ItemsSource="{Binding Assets}"
              SelectedItems="{Binding SelectedContent}"
              SelectionMode="Multiple"

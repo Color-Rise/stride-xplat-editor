@@ -4,6 +4,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Stride.Core.Assets.Editor.Components.Properties;
+using Stride.Core.Assets.Editor.Components.Templates;
 using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Collections;
@@ -14,6 +15,7 @@ namespace Stride.Core.Assets.Editor.ViewModels;
 
 public sealed class AssetCollectionViewModel : DispatcherViewModel
 {
+    private readonly Lazy<AddAssetTemplateCollectionViewModel> addAssetTemplateCollection;
     private readonly ObservableSet<AssetViewModel> assets = [];
     private readonly HashSet<DirectoryBaseViewModel> monitoredDirectories = [];
     private readonly ObservableSet<AssetViewModel> selectedAssets = [];
@@ -21,6 +23,13 @@ public sealed class AssetCollectionViewModel : DispatcherViewModel
     private object? singleSelectedContent;
 
     private bool discardSelectionChanges;
+
+#if DEBUG
+    // Note: only required for the Avalonia designer
+    public AssetCollectionViewModel()
+        : base(ViewModelServiceProvider.NullServiceProvider)
+    { }
+#endif // DEBUG
 
     public AssetCollectionViewModel(SessionViewModel session)
         : base(session.SafeArgument().ServiceProvider)
@@ -30,11 +39,15 @@ public sealed class AssetCollectionViewModel : DispatcherViewModel
         // Initialize the view model that will manage the properties of the assets selected on the main asset view
         AssetViewProperties = new SessionObjectPropertiesViewModel(session);
 
+        addAssetTemplateCollection = new Lazy<AddAssetTemplateCollectionViewModel>(() => new AddAssetTemplateCollectionViewModel(session));
+
         SelectAssetCommand = new AnonymousCommand<AssetViewModel>(ServiceProvider, x => SelectAssets(x.Yield()!));
 
         selectedContent.CollectionChanged += SelectedContentCollectionChanged;
         SelectedLocations.CollectionChanged += SelectedLocationCollectionChanged;
     }
+
+    public AddAssetTemplateCollectionViewModel AddAssetTemplateCollection => addAssetTemplateCollection.Value;
 
     public IReadOnlyObservableCollection<AssetViewModel> Assets => assets;
 
