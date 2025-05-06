@@ -1,7 +1,10 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
+using System.Diagnostics.CodeAnalysis;
+using Stride.Core.IO;
 using Stride.Core.Presentation.ViewModels;
+using Stride.Core.Translation;
 
 namespace Stride.Core.Assets.Presentation.ViewModels;
 
@@ -61,6 +64,33 @@ public abstract class SessionObjectViewModel : DirtiableEditableViewModel, IIsEd
         {
             SetValueUncancellable(ref isDeleted, false, UpdateIsDeletedStatus, nameof(IsDeleted));
         }
+    }
+
+    protected virtual bool IsValidName(string value, [NotNullWhen(false)] out string? error)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        if (value.Length > 240)
+        {
+            error = Tr._p("Message", "The name is too long.");
+            return false;
+        }
+
+        if (value.Contains(UPath.DirectorySeparatorChar) || value.Contains(UPath.DirectorySeparatorCharAlt) || !UPath.IsValid(value))
+        {
+            error = Tr._p("Message", "The name contains invalid characters.");
+            return false;
+        }
+
+        if (string.IsNullOrEmpty(value))
+        {
+            error = Tr._p("Message", "The name is empty.");
+            return false;
+        }
+
+        error = null;
+
+        return true;
     }
 
     /// <summary>

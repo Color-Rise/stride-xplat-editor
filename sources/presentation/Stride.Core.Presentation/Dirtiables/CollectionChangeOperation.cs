@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 
 namespace Stride.Core.Presentation.Dirtiables;
 
-public class CollectionChangeOperation : DirtyingOperation
+public sealed class CollectionChangeOperation : DirtyingOperation
 {
     private readonly int index;
     private IList? list;

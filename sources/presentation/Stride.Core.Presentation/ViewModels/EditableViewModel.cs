@@ -158,10 +158,10 @@ public abstract class EditableViewModel : DispatcherViewModel
     /// <inheritdoc/>
     protected override void OnPropertyChanging(params string[] propertyNames)
     {
-        foreach (string propertyName in propertyNames.Where(x => x != "IsDirty" && !uncancellableChanges.Contains(x)))
+        foreach (string propertyName in propertyNames.Where(x => !uncancellableChanges.Contains(x)))
         {
             var propertyInfo = GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public);
-            if (propertyInfo?.GetSetMethod() is not null && propertyInfo.GetSetMethod().IsPublic)
+            if (propertyInfo?.GetSetMethod() is { IsPublic: true })
             {
                 preEditValues.Add(propertyName, propertyInfo.GetValue(this));
             }
@@ -175,7 +175,7 @@ public abstract class EditableViewModel : DispatcherViewModel
     {
         base.OnPropertyChanged(propertyNames);
 
-        foreach (string propertyName in propertyNames.Where(x => x != "IsDirty" && !uncancellableChanges.Contains(x)))
+        foreach (string propertyName in propertyNames.Where(x => !uncancellableChanges.Contains(x)))
         {
             string displayName = $"Update property '{propertyName}'";
             if (preEditValues.TryGetValue(propertyName, out var preEditValue) && !uncancellableChanges.Contains(propertyName))
@@ -192,14 +192,14 @@ public abstract class EditableViewModel : DispatcherViewModel
         }
     }
 
-    protected virtual Operation CreatePropertyChangeOperation(string displayName, string propertyName, object? preEditValue)
+    private PropertyChangeOperation CreatePropertyChangeOperation(string displayName, string propertyName, object? preEditValue)
     {
         var operation = new PropertyChangeOperation(propertyName, this, preEditValue, Dirtiables);
         UndoRedoService!.SetName(operation, displayName);
         return operation;
     }
 
-    protected virtual Operation CreateCollectionChangeOperation(string displayName, IList list, NotifyCollectionChangedEventArgs args)
+    private CollectionChangeOperation CreateCollectionChangeOperation(string displayName, IList list, NotifyCollectionChangedEventArgs args)
     {
         var operation = new CollectionChangeOperation(list, args, Dirtiables);
         UndoRedoService!.SetName(operation, displayName);
@@ -214,7 +214,7 @@ public abstract class EditableViewModel : DispatcherViewModel
         if (!EqualityComparer<T>.Default.Equals(field, value))
         {
             ITransaction? transaction = null;
-            if (!UndoRedoService.UndoRedoInProgress && createTransaction)
+            if (UndoRedoService?.UndoRedoInProgress == false && createTransaction)
             {
                 transaction = UndoRedoService.CreateTransaction();
                 var concatPropertyName = string.Join(", ", propertyNames.Where(x => !uncancellableChanges.Contains(x)).Select(s => $"'{s}'"));
@@ -226,7 +226,7 @@ public abstract class EditableViewModel : DispatcherViewModel
             }
             finally
             {
-                if (!UndoRedoService.UndoRedoInProgress && createTransaction)
+                if (UndoRedoService?.UndoRedoInProgress == false && createTransaction)
                 {
                     if (transaction is null)
                         throw new InvalidOperationException("A transaction failed to be created.");
@@ -245,7 +245,7 @@ public abstract class EditableViewModel : DispatcherViewModel
         if (hasChangedFunction is null || hasChangedFunction())
         {
             ITransaction? transaction = null;
-            if (!UndoRedoService.UndoRedoInProgress && createTransaction)
+            if (UndoRedoService?.UndoRedoInProgress == false && createTransaction)
             {
                 transaction = UndoRedoService.CreateTransaction();
                 var concatPropertyName = string.Join(", ", propertyNames.Where(x => !uncancellableChanges.Contains(x)).Select(s => $"'{s}'"));
@@ -257,7 +257,7 @@ public abstract class EditableViewModel : DispatcherViewModel
             }
             finally
             {
-                if (!UndoRedoService.UndoRedoInProgress && createTransaction)
+                if (UndoRedoService?.UndoRedoInProgress == false && createTransaction)
                 {
                     if (transaction is null)
                         throw new InvalidOperationException("A transaction failed to be created.");

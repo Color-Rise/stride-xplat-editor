@@ -6,7 +6,7 @@ using Stride.Core.Transactions;
 
 namespace Stride.Core.Presentation.Dirtiables;
 
-public class PropertyChangeOperation : DirtyingOperation, IMergeableOperation
+public sealed class PropertyChangeOperation : DirtyingOperation, IMergeableOperation
 {
     private readonly bool nonPublic;
     private object? container;
