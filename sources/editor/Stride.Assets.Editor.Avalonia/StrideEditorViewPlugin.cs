@@ -40,9 +40,13 @@ public sealed class StrideEditorViewPlugin : AssetsEditorPlugin
             }
         }
 
-        var previewService = new GameStudioPreviewService(session);
-        previewService.RegisterAssetPreviewFactories(previewFactories);
-        session.ServiceProvider.RegisterService(previewService);
+        // FIXME xplat-editor crashes on Linux (SDL issue)
+        if (OperatingSystem.IsWindows())
+        {
+            var previewService = new GameStudioPreviewService(session);
+            previewService.RegisterAssetPreviewFactories(previewFactories);
+            session.ServiceProvider.RegisterService(previewService);
+        }
     }
 
     public override void RegisterAssetPreviewViewModelTypes(IDictionary<Type, Type> assetPreviewViewModelTypes)
