@@ -7,8 +7,8 @@ namespace Stride.Core.Assets.Presentation.ViewModels;
 
 public sealed class ProjectViewModel : PackageViewModel
 {
-    public ProjectViewModel(ISessionViewModel session, SolutionProject project, bool packageAlreadyInSession)
-        : base(session, project, packageAlreadyInSession)
+    public ProjectViewModel(ISessionViewModel session, SolutionProject project)
+        : base(session, project)
     {
         content.Add(Code = new ProjectCodeViewModel(this));
     }

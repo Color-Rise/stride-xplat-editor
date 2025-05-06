@@ -98,7 +98,7 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
         PackageCategories.ForEach(x => x.Value.Content.CollectionChanged += PackageCollectionChanged);
 
         // Create package view models
-        this.session.Projects.ForEach(x => CreateProjectViewModel(x, true));
+        this.session.Projects.ForEach(x => CreateProjectViewModel(x));
 
         // Initialize other sub view models
         Thumbnails = new ThumbnailsViewModel(this);
@@ -277,24 +277,21 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
         }
     }
 
-    private PackageViewModel CreateProjectViewModel(PackageContainer packageContainer, bool packageAlreadyInSession)
+    // FIXME: move that to helper (AssetViewModelManager)?
+    private PackageViewModel CreateProjectViewModel(PackageContainer packageContainer)
     {
         switch (packageContainer)
         {
             case SolutionProject project:
                 {
-                    var packageContainerViewModel = new ProjectViewModel(this, project, packageAlreadyInSession);
+                    var packageContainerViewModel = new ProjectViewModel(this, project);
                     packageMap.Add(packageContainerViewModel, project);
-                    if (!packageAlreadyInSession)
-                        session.Projects.Add(project);
                     return packageContainerViewModel;
                 }
             case StandalonePackage standalonePackage:
                 {
-                    var packageContainerViewModel = new PackageViewModel(this, standalonePackage, packageAlreadyInSession);
+                    var packageContainerViewModel = new PackageViewModel(this, standalonePackage);
                     packageMap.Add(packageContainerViewModel, standalonePackage);
-                    if (!packageAlreadyInSession)
-                        session.Projects.Add(standalonePackage);
                     return packageContainerViewModel;
                 }
             default:
@@ -318,7 +315,7 @@ public sealed partial class SessionViewModel : DispatcherViewModel, ISessionView
             if (token.IsCancellationRequested)
                 return;
 
-            package.LoadPackageInformation(progressVM, ref progress, token);
+            AssetViewModelManager.LoadPackageInformation(package, progressVM, ref progress, token);
         }
 
         // Create actions corresponding to potential upgrades/fixes that occurred during the loading process.

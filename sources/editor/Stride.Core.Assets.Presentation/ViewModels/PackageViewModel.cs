@@ -1,7 +1,6 @@
 // Copyright (c) .NET Foundation and Contributors (https://dotnetfoundation.org/ & https://stride3d.net)
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
-using Stride.Core.Extensions;
 using System.Diagnostics.CodeAnalysis;
 using Stride.Core.IO;
 using Stride.Core.Presentation.Collections;
@@ -13,7 +12,7 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
 {
     protected readonly SortedObservableCollection<SessionObjectViewModel> content = new(ComparePackageContent);
 
-    public PackageViewModel(ISessionViewModel session, PackageContainer packageContainer, bool packageAlreadyInSession)
+    public PackageViewModel(ISessionViewModel session, PackageContainer packageContainer)
         : base(session)
     {
         AssetMountPoint = new AssetMountPointViewModel(this);
@@ -23,7 +22,7 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
         IsLoaded = Package.State >= PackageState.AssetsReady;
 
         // IsDeleted will make the package added to Session.LocalPackages, so let's do it last
-        InitialUndelete(!packageAlreadyInSession);
+        InitialUndelete(false);
     }
 
     /// <summary>
@@ -107,46 +106,6 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
     }
 
     /// <summary>
-    /// Creates the view models for each asset, directory, profile, project and reference of this package.
-    /// </summary>
-    /// <param name="token">A cancellation token to cancel the load process. Can be <c>null</c>.</param>
-    // FIXME xplat-editor: most method here should be moved to an utility in the editor project (asset project should have minimum capability)
-    public void LoadPackageInformation(IProgressViewModel? progressVM, ref double progress, CancellationToken token = default)
-    {
-        if (token.IsCancellationRequested)
-            return;
-
-        foreach (var asset in Package.Assets.ToList())
-        {
-            if (token.IsCancellationRequested)
-                return;
-
-            progressVM?.UpdateProgress($"Processing asset {progress + 1}/{progressVM.Maximum}...", progress);
-
-            var url = asset.Location;
-            DirectoryBaseViewModel directory;
-            // TODO CSPROJ=XKPKG override rather than cast to subclass
-            if (asset.Asset is IProjectAsset && this is ProjectViewModel project)
-            {
-                directory = project.GetOrCreateProjectDirectory(url.GetFullDirectory());
-            }
-            else
-            {
-                directory = GetOrCreateAssetDirectory(url.GetFullDirectory());
-            }
-            AssetViewModelManager.CreateAsset(asset, directory, false);
-            progress++;
-        }
-
-        FillRootAssetCollection();
-
-        foreach (var explicitDirectory in Package.ExplicitFolders)
-        {
-            GetOrCreateAssetDirectory(explicitDirectory);
-        }
-    }
-
-    /// <summary>
     /// Indicates whether the given asset in within the scope of this package, either by being part of this package or part of
     /// one of its dependencies.
     /// </summary>
@@ -194,32 +153,21 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
         switch (x)
         {
             case AssetMountPointViewModel xAssets:
-            {
-                if (y is AssetMountPointViewModel yAssets)
-                    return string.Compare(xAssets.Name, yAssets.Name, StringComparison.InvariantCultureIgnoreCase);
-                return -1;
-            }
-            case ProjectViewModel xProject:
-            {
-                if (y is ProjectViewModel yProject)
                 {
-                    return xProject.CompareTo(yProject);
+                    if (y is AssetMountPointViewModel yAssets)
+                        return string.Compare(xAssets.Name, yAssets.Name, StringComparison.InvariantCultureIgnoreCase);
+                    return -1;
                 }
-                return y is AssetMountPointViewModel ? 1 : -1;
-            }
+            case ProjectViewModel xProject:
+                {
+                    if (y is ProjectViewModel yProject)
+                    {
+                        return xProject.CompareTo(yProject);
+                    }
+                    return y is AssetMountPointViewModel ? 1 : -1;
+                }
             default:
                 throw new InvalidOperationException("Unable to sort the given items for the Content collection of PackageViewModel");
-        }
-    }
-
-    private void FillRootAssetCollection()
-    {
-        RootAssets.Clear();
-        RootAssets.AddRange(Package.RootAssets.Select(x => Session.GetAssetById(x.Id)).NotNull());
-        foreach (var dependency in PackageContainer.FlattenedDependencies)
-        {
-            if (dependency.Package != null)
-                RootAssets.AddRange(dependency.Package.RootAssets.Select(x => Session.GetAssetById(x.Id)).NotNull());
         }
     }
 
