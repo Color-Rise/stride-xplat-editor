@@ -1,0 +1,37 @@
+name: Build (Linux)
+
+on:
+  workflow_dispatch:
+    inputs:
+      build-type:
+        description: Build in Release or Debug?
+        required: true
+        default: Debug
+        type: choice
+        options:
+          - Debug
+          - Release
+  workflow_call:
+    inputs:
+      build-type:
+        required: true
+        default: Debug
+        type: string
+
+jobs:
+    #
+    # Build Stride for Linux
+    #
+    Windows:
+      name: Build (${{ github.event.inputs.build-type || inputs.build-type }})
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 1
+        - uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: '8.0.x'
+        - name: Build Stride
+          run: dotnet build build/Stride.Runtime.sln -m:1 -nr:false -v:m -p:StridePlatforms=Linux -p:StridePlatform=Linux -p:StrideGraphicsApis=OpenGL -p:StrideSkipUnitTests=true -p:StrideSkipAutoPack=true
+  
