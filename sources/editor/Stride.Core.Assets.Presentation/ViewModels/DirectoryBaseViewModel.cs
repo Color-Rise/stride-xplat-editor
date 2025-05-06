@@ -11,7 +11,7 @@ public abstract class DirectoryBaseViewModel : SessionObjectViewModel
 {
     public const char Separator = '/';
     private readonly AutoUpdatingSortedObservableCollection<DirectoryViewModel> subDirectories = new(CompareDirectories);
-    private readonly ObservableSet<AssetViewModel> assets = new();
+    private readonly ObservableSet<AssetViewModel> assets = [];
 
     protected DirectoryBaseViewModel(ISessionViewModel session)
         : base(session)
