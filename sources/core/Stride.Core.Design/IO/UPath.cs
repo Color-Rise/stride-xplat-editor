@@ -18,7 +18,7 @@ namespace Stride.Core.IO;
 /// </remarks>
 public abstract class UPath : IEquatable<UPath>, IComparable
 {
-    private static readonly HashSet<char> InvalidFileNameChars = new(Path.GetInvalidFileNameChars());
+    private static readonly HashSet<char> InvalidFileNameChars = [..Path.GetInvalidFileNameChars()];
 
     private readonly int hashCode;
 
@@ -57,7 +57,7 @@ public abstract class UPath : IEquatable<UPath>, IComparable
     /// <param name="isDirectory">if set to <c>true</c> the filePath is considered as a directory and not a filename.</param>
     internal UPath(string? filePath, bool isDirectory)
     {
-        if (!isDirectory && filePath != null && (filePath.EndsWith(DirectorySeparatorChar) || filePath.EndsWith(DirectorySeparatorCharAlt) || filePath.EndsWith(Path.VolumeSeparatorChar)))
+        if (!isDirectory && filePath is not null && (filePath.EndsWith(DirectorySeparatorChar) || filePath.EndsWith(DirectorySeparatorCharAlt) || filePath.EndsWith(Path.VolumeSeparatorChar)))
         {
             throw new ArgumentException("A file path cannot end with with directory char '\\' or '/', or a volume separator ':'.");
         }
@@ -87,13 +87,13 @@ public abstract class UPath : IEquatable<UPath>, IComparable
     public string FullPath { get; }
 
     /// <summary>
-    /// Gets a value indicating whether this instance has a <see cref="GetDrive"/> != null.
+    /// Gets a value indicating whether this instance has a <see cref="GetDrive"/> is not null.
     /// </summary>
     /// <value><c>true</c> if this instance has drive; otherwise, <c>false</c>.</value>
     public bool HasDrive => DriveSpan.IsValid;
 
     /// <summary>
-    /// Gets a value indicating whether this instance has a <see cref="GetDirectory()"/> != null;
+    /// Gets a value indicating whether this instance has a <see cref="GetDirectory()"/> is not null;
     /// </summary>
     /// <value><c>true</c> if this instance has directory; otherwise, <c>false</c>.</value>
     public bool HasDirectory => !IsFile || NameSpan.Start > 0;
@@ -127,7 +127,7 @@ public abstract class UPath : IEquatable<UPath>, IComparable
     /// </summary>
     /// <param name="path">The path to test</param>
     /// <returns><c>true</c> if the value parameter is null or empty, otherwise <c>false</c>.</returns>
-    public static bool IsNullOrEmpty(UPath path)
+    public static bool IsNullOrEmpty(UPath? path)
     {
         return string.IsNullOrEmpty(path?.FullPath);
     }
@@ -199,14 +199,14 @@ public abstract class UPath : IEquatable<UPath>, IComparable
             list.Add(FullPath.Substring(DriveSpan));
         }
 
-        if (DirectorySpan.IsValid && (DirectorySpan.Length >= 1))
+        if (DirectorySpan is { IsValid: true, Length: >= 1 })
         {
-            list.AddRange(FullPath.Substring(DirectorySpan.Start, DirectorySpan.Length).Split(new char[1] { DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries));
+            list.AddRange(FullPath.Substring(DirectorySpan.Start, DirectorySpan.Length).Split([DirectorySeparatorChar], StringSplitOptions.RemoveEmptyEntries));
         }
 
         var file = this as UFile;
         var fileName = file?.GetFileName();
-        if (fileName != null)
+        if (fileName is not null)
         {
             list.Add(fileName);
         }
@@ -422,7 +422,7 @@ public abstract class UPath : IEquatable<UPath>, IComparable
             relativePath.Append(file.GetFileName());
         }
         var newPath = relativePath.ToString();
-        return !IsFile ? (UPath)new UDirectory(newPath) : new UFile(newPath);
+        return !IsFile ? new UDirectory(newPath) : new UFile(newPath);
     }
 
     /// <summary>
@@ -441,9 +441,9 @@ public abstract class UPath : IEquatable<UPath>, IComparable
     /// </summary>
     /// <param name="path">The path.</param>
     /// <returns><c>true</c> if the specified path contains some directory characeters '\' or '/'; otherwise, <c>false</c>.</returns>
-    public static bool HasDirectoryChars(string path)
+    public static bool HasDirectoryChars(string? path)
     {
-        return path != null && (path.Contains(DirectorySeparatorChar) || path.Contains(DirectorySeparatorCharAlt));
+        return path is not null && (path.Contains(DirectorySeparatorChar) || path.Contains(DirectorySeparatorCharAlt));
     }
 
     /// <summary>
@@ -454,7 +454,7 @@ public abstract class UPath : IEquatable<UPath>, IComparable
     public static bool IsValid(string path)
     {
         Normalize(path, out var error);
-        return error == null;
+        return error is null;
     }
 
     /// <summary>
@@ -467,7 +467,7 @@ public abstract class UPath : IEquatable<UPath>, IComparable
     public static string? Normalize(string pathToNormalize)
     {
         var result = Normalize(pathToNormalize, out var error);
-        if (error != null)
+        if (error is not null)
         {
             throw new ArgumentException(error, nameof(pathToNormalize));
         }
@@ -513,11 +513,6 @@ public abstract class UPath : IEquatable<UPath>, IComparable
         directoryOrFileName = new StringSpan();
         fileName = new StringSpan();
         error = null;
-        var path = pathToNormalize;
-        if (path == null)
-        {
-            return null;
-        }
         var countDirectories = pathToNormalize.Count(pathItem => pathItem == DirectorySeparatorChar ||
                                                                  pathItem == DirectorySeparatorCharAlt ||
                                                                  pathItem == Path.VolumeSeparatorChar);
@@ -775,7 +770,7 @@ public abstract class UPath : IEquatable<UPath>, IComparable
         // Normalize path
         // TODO handle network path/http/file path
         var path = Normalize(pathToNormalize, out drive, out directory, out fileName, out var error)!;
-        if (error != null)
+        if (error is not null)
         {
             throw new ArgumentException(error);
         }
@@ -834,6 +829,6 @@ public abstract class UPath : IEquatable<UPath>, IComparable
             }
         }
 
-        return path.ToString() ?? string.Empty;
+        return path.ToString();
     }
 }

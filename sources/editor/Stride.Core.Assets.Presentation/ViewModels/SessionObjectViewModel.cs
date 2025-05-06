@@ -70,6 +70,7 @@ public abstract class SessionObjectViewModel : DirtiableEditableViewModel, IIsEd
     {
         ArgumentNullException.ThrowIfNull(value);
 
+        // FIXME xplat-editor limits might be different per OS
         if (value.Length > 240)
         {
             error = Tr._p("Message", "The name is too long.");

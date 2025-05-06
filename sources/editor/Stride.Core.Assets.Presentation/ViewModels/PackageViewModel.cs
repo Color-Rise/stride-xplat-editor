@@ -2,8 +2,10 @@
 // Distributed under the MIT license. See the LICENSE.md file in the project root for more information.
 
 using Stride.Core.Extensions;
+using System.Diagnostics.CodeAnalysis;
 using Stride.Core.IO;
 using Stride.Core.Presentation.Collections;
+using Stride.Core.Translation;
 
 namespace Stride.Core.Assets.Presentation.ViewModels;
 
@@ -155,6 +157,22 @@ public class PackageViewModel : SessionObjectViewModel, IComparable<PackageViewM
         var assetPackage = asset.Directory.Package;
         // Note: Would be better to switch to Dependencies view model as soon as we have FlattenedDependencies in those
         return assetPackage == this || Package.Container.FlattenedDependencies.Any(x => x.Package == assetPackage.Package);
+    }
+
+    protected override bool IsValidName(string value, [NotNullWhen(false)] out string? error)
+    {
+        if (!base.IsValidName(value, out error))
+        {
+            return false;
+        }
+
+        if (Session.AllPackages.Any(x => x != this && string.Equals(x.Name, value, StringComparison.InvariantCultureIgnoreCase)))
+        {
+            error = Tr._p("Message", "A package with the same name already exists in the session.");
+            return false;
+        }
+
+        return true;
     }
 
     protected override void UpdateIsDeletedStatus()
