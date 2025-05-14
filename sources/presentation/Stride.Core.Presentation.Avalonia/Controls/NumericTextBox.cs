@@ -24,6 +24,7 @@ public sealed class NumericTextBox : TemplatedControl
 
     static NumericTextBox()
     {
+        // TODO: configure hot keys for large and small increment
         MaximumProperty.Changed.AddClassHandler<NumericTextBox>(OnMaximumPropertyChanged);
         MinimumProperty.Changed.AddClassHandler<NumericTextBox>(OnMinimumPropertyChanged);
         TextProperty.Changed.AddClassHandler<NumericTextBox, string?>(OnTextPropertyChanged);
