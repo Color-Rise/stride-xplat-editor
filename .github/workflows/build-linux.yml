@@ -24,7 +24,7 @@ jobs:
   #
   Linux:
     name: Build (${{ github.event.inputs.build-type || inputs.build-type }})
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,6 +32,9 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      - uses: microsoft/setup-msbuild@v2
+      - name: Install dependencies
+        run: |
+          sudo apt-get install clang
+          sudo apt-get install lld
       - name: Build
-        run: msbuild build\Stride.build -t:BuildLinux -m:1 -nr:false -v:m -p:WarningLevel=0 -p:Configuration=${{ github.event.inputs.build-type || inputs.build-type }} -p:StrideSkipUnitTests=true -p:StrideSkipAutoPack=true -p:StrideEnableCodeAnalysis=true
+        run: dotnet build build/Stride.Runtime.sln -m:1 -nr:false -v:m -p:WarningLevel=0 -p:Configuration=${{ github.event.inputs.build-type || inputs.build-type }} -p:StridePlatforms=Linux -p:StrideGraphicsApis=OpenGL -p:StrideSkipUnitTests=true -p:StrideSkipAutoPack=true -p:StrideEnableCodeAnalysis=true
