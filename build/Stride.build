@@ -159,10 +159,10 @@ Example of use:
   <Target Name="BuildAvalonia">
     <PropertyGroup>
       <StrideSolution>$(StrideSolution).Editor.Avalonia</StrideSolution>
-      <StridePlatforms>Linux</StridePlatforms>
+      <StrideGraphicsApis Condition="'$(StrideGraphicsApis)' == ''">OpenGL</StrideGraphicsApis>
     </PropertyGroup>
     <MSBuild Targets="Restore" Projects="$(StrideSolution).slnf" Properties="StridePlatforms=$(StridePlatforms);StrideSolution=$(StrideSolution);StrideGraphicsApiDependentBuildAll=$(StrideGraphicsApiDependentBuildAll)"/>
-    <MSBuild Targets="Build" Projects="$(StrideSolution).slnf" Properties="$(BuildProperties);Configuration=Debug;StridePlatforms=$(StridePlatforms);StrideGraphicsApis=OpenGL;StrideSkipAutoPack=true;StrideSkipUnitTests=true;StrideGraphicsApiDependentBuildAll=$(StrideGraphicsApiDependentBuildAll)"/>
+    <MSBuild Targets="Build" Projects="$(StrideSolution).slnf" Properties="$(BuildProperties);Configuration=Debug;StridePlatforms=$(StridePlatforms);StrideGraphicsApis=$(StrideGraphicsApis);StrideSkipAutoPack=true;StrideSkipUnitTests=true;StrideGraphicsApiDependentBuildAll=$(StrideGraphicsApiDependentBuildAll)"/>
   </Target> 
 
   <Target Name="BuildWpf">
