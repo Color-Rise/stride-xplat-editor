@@ -34,7 +34,7 @@ public class DialogService : IDialogService
     {
         if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
         {
-            lifetime.Shutdown(exitCode);
+            lifetime.TryShutdown(exitCode);
         }
         else
         {
@@ -111,7 +111,7 @@ public class DialogService : IDialogService
             return path;
         });
     }
-    
+
     public async Task<UFile?> SaveFilePickerAsync(UDirectory? initialPath = null, IReadOnlyList<FilePickerFilter>? filters = null, string? defaultExtension = null, string? defaultFileName = null)
     {
         if (StorageProvider is null) return null;
@@ -133,7 +133,7 @@ public class DialogService : IDialogService
             return path;
         });
     }
-    
+
     public async Task<CheckedMessageBoxResult> CheckedMessageBoxAsync(string message, bool? isChecked, string checkboxMessage, MessageBoxButton buttons, MessageBoxImage image)
     {
         return await Dispatcher.InvokeTask(() => CheckedMessageBox.ShowAsync(ApplicationName, message, isChecked, checkboxMessage, IDialogService.GetButtons(buttons), image, MainWindow));
