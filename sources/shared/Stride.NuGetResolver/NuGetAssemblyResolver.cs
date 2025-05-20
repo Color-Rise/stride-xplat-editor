@@ -258,6 +258,9 @@ public static partial class NuGetAssemblyResolver
             ?? throw new InvalidOperationException($"Couldn't find method 'RegisterDependency' in {nativeLibraryHelperType}");
         foreach (var lib in nativeLibs)
         {
+#if DEBUG
+            Console.WriteLine($"Register native library: {lib}");
+#endif
             registerDependencyMethod.Invoke(null, [lib]);
         } 
     }
@@ -275,6 +278,9 @@ public static partial class NuGetAssemblyResolver
             ?? throw new InvalidOperationException($"Couldn't find method 'PreloadLibrary' in {nativeLibraryHelperType}");
         foreach (var lib in nativeLibs)
         {
+#if DEBUG
+            Console.WriteLine($"Preload native library: {lib}");
+#endif
             var libName = Path.GetFileNameWithoutExtension(lib);
             preloadLibraryMethod.Invoke(null, [libName, null]);
         }
