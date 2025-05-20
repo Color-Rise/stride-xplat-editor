@@ -1869,6 +1869,7 @@ Global
 		..\sources\shared\Stride.Core.ShellHelper\Stride.Core.ShellHelper.projitems*{3a3cb33c-64d9-4948-86c1-0d86320d23c3}*SharedItemsImports = 13
 		..\sources\shared\Stride.NuGetResolver.Targets\Stride.NuGetResolver.Targets.projitems*{50d1a3bb-4b41-4ef5-8d2f-3618a3b6c698}*SharedItemsImports = 5
 		..\sources\editor\Stride.Core.MostRecentlyUsedFiles\Stride.Core.MostRecentlyUsedFiles.projitems*{5863574d-7a55-49bc-8e65-babb74d8e66e}*SharedItemsImports = 5
+		..\sources\editor\Stride.Core.MostRecentlyUsedFiles\Stride.Core.MostRecentlyUsedFiles.projitems*{736be0da-ca67-43a4-a31a-a485022e81e9}*SharedItemsImports = 5
 		..\sources\shared\Stride.Core.ShellHelper\Stride.Core.ShellHelper.projitems*{75d71310-ecf7-4592-9e35-3fe540040982}*SharedItemsImports = 5
 		..\sources\shared\Stride.NuGetResolver.Targets\Stride.NuGetResolver.Targets.projitems*{75d71310-ecf7-4592-9e35-3fe540040982}*SharedItemsImports = 5
 		..\sources\shared\Stride.Core.ShellHelper\Stride.Core.ShellHelper.projitems*{77e2fcc0-4ca6-436c-be6f-9418cb807d45}*SharedItemsImports = 5
