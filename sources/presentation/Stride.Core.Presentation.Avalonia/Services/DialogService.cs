@@ -32,9 +32,20 @@ public class DialogService : IDialogService
 
     public void Exit(int exitCode = 0)
     {
-        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
         {
-            lifetime.TryShutdown(exitCode);
+            if (desktopLifetime.ShutdownMode == ShutdownMode.OnMainWindowClose && desktopLifetime.MainWindow is { } mainWindow)
+            {
+                mainWindow.Close();
+            }
+            else
+            {
+                desktopLifetime.TryShutdown(exitCode);
+            }
+        }
+        else if (Application.Current?.ApplicationLifetime is IControlledApplicationLifetime controlledLifetime)
+        {
+            controlledLifetime.Shutdown();
         }
         else
         {
