@@ -41,6 +41,11 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+      - name: Install dependencies
+        run: |
+          sudo apt install libassimp5
+          sudo apt install libfreeimage3
+          sudo apt install fonts-liberation
       - name: Build
         run: |
           dotnet build build\Stride.Tests.${{ github.event.inputs.test-category || inputs.test-category }}.slnf `
