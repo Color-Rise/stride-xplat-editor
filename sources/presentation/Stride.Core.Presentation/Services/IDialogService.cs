@@ -136,6 +136,11 @@ public interface IDialogService
     Task<CheckedMessageBoxResult> CheckedMessageBoxAsync(string message, bool? isChecked, string checkboxMessage, IReadOnlyCollection<DialogButtonInfo> buttons, MessageBoxImage image = MessageBoxImage.None);
 
     /// <summary>
+    /// Clears the current focus, usually by focusing on the main window.
+    /// </summary>
+    void ClearFocus();
+
+    /// <summary>
     /// Displays a modal message box and returns a task that completes when the message box is closed.
     /// </summary>
     /// <param name="message">The text to display as message in the message box.</param>

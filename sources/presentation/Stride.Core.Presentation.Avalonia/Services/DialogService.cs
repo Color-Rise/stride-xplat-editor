@@ -30,6 +30,11 @@ public class DialogService : IDialogService
 
     protected IStorageProvider? StorageProvider => MainWindow?.StorageProvider;
 
+    public void ClearFocus()
+    {
+        MainWindow?.Focus();
+    }
+
     public void Exit(int exitCode = 0)
     {
         if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
