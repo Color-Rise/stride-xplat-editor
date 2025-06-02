@@ -11,7 +11,11 @@
               SelectedItem="{Binding ActiveEditor}">
     <ItemsControl.ItemTemplate>
       <DataTemplate>
-        <TextBlock Text="{Binding Asset.Name}" />
+        <DockPanel>
+          <TextBlock DockPanel.Dock="Right"
+                     Text="*" IsVisible="{Binding Asset.IsDirty}"/>
+          <TextBlock Text="{Binding Asset.Name}"/>
+        </DockPanel>
       </DataTemplate>
     </ItemsControl.ItemTemplate>
     <TabControl.ContentTemplate>

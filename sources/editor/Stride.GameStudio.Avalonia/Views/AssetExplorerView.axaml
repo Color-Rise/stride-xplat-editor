@@ -23,17 +23,22 @@
       </ItemsControl.ItemsPanel>
       <ItemsControl.ItemTemplate>
         <DataTemplate DataType="{x:Type capvm:AssetViewModel}">
-          <StackPanel Orientation="Horizontal">
+          <HeaderedContentControl Background="Transparent">
             <Interaction.Behaviors>
               <EventTriggerBehavior EventName="DoubleTapped">
                 <InvokeCommandAction Command="{Binding ((caevm:SessionViewModel)Session).EditSelectedContentCommand}" />
               </EventTriggerBehavior>
             </Interaction.Behaviors>
-            <TextBlock Text="Asset: " />
-            <TextBlock Text="{Binding Name}" />
-            <Image Source="{Binding ThumbnailData.Presenter, Converter={gscv:StrideImage}, FallbackValue={x:Static AvaloniaProperty.UnsetValue}}"
-                   Width="64" Height="64"/>
-          </StackPanel>
+            <HeaderedContentControl.Header>
+              <Image Source="{Binding ThumbnailData.Presenter, Converter={gscv:StrideImage}, FallbackValue={x:Static AvaloniaProperty.UnsetValue}}"
+                     Width="64" Height="64"/>
+            </HeaderedContentControl.Header>
+            <DockPanel>
+              <TextBlock DockPanel.Dock="Right"
+                         Text="*" IsVisible="{Binding IsDirty}"/>
+              <TextBlock Text="{Binding Name}"/>
+            </DockPanel>
+          </HeaderedContentControl>
         </DataTemplate>
       </ItemsControl.ItemTemplate>
     </ListBox>
