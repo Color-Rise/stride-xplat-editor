@@ -22,6 +22,11 @@ internal class EditorDialogService : DialogService, IEditorDialogService
         this.serviceProvider = serviceProvider;
     }
 
+    public void CloseDebugWindow()
+    {
+        debugWindow?.Close();
+    }
+
     public async Task ShowAboutWindowAsync()
     {
         if (MainWindow == null) return;
@@ -76,7 +81,7 @@ internal class EditorDialogService : DialogService, IEditorDialogService
                     workProgress.NotifyWindowClosed();
                 };
                 workProgress.NotifyWindowWillOpen();
-                
+
                 if (MainWindow is not null) progressWindow.ShowDialog(MainWindow);
                 else progressWindow.Show();
             });

@@ -5,6 +5,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using Stride.Core.Assets.Editor.Services;
 using Stride.Core.IO;
 using Stride.Core.Presentation.Avalonia.Services;
@@ -29,9 +30,11 @@ public partial class App : Application
         // Without this line you will get duplicate validations from both Avalonia and CT
         BindingPlugins.DataValidators.RemoveAt(0);
 
+        string? initialSessionPath = null;
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow();
+            initialSessionPath = desktop.Args?.FirstOrDefault();
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
@@ -39,7 +42,12 @@ public partial class App : Application
         }
 
         base.OnFrameworkInitializationCompleted();
-        Restart();
+
+        // Delay through the dispatcher (to ensure the main window is loaded and visible
+        if (initialSessionPath is not null)
+            Dispatcher.UIThread.InvokeAsync(() => Restart(initialSessionPath));
+        else
+            Restart();
     }
 
     public void Restart(UFile? initialPath = null)

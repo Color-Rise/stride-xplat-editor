@@ -68,6 +68,7 @@
         <Separator/>
         <MenuItem Header="{sd:LocalizeString Show debug window, Context=Menu}"
                   Command="{Binding OpenDebugWindowCommand}"
+                  IsEnabled="{Binding Session, Mode=OneWay, Converter={sd:ObjectToBool}}"
                   HotKey="Ctrl+Shift+D" InputGesture="{Binding $self.HotKey, Mode=OneTime}"/>
         <Separator/>
         <MenuItem Header="{sd:LocalizeString _About..., Context=Menu}"

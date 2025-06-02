@@ -37,6 +37,18 @@ partial class SessionViewModel
                 semaphore.Release();
             }
         }
+        internal set
+        {
+            semaphore.Wait();
+            try
+            {
+                instance = value;
+            }
+            finally
+            {
+                semaphore.Release();
+            }
+        }
     }
 
     public static async Task<SessionViewModel?> OpenSessionAsync(UFile path, PackageSessionResult sessionResult, IMainViewModel main, IViewModelServiceProvider serviceProvider, CancellationToken token = default)
@@ -106,20 +118,6 @@ partial class SessionViewModel
         // Notify that the task is finished
         sessionResult.OperationCancelled = token.IsCancellationRequested;
         await workProgress.NotifyWorkFinished(token.IsCancellationRequested, sessionResult.HasErrors);
-
-        // Update the singleton instance
-        if (sessionViewModel is not null)
-        {
-            await semaphore.WaitAsync(token);
-            try
-            {
-                instance = sessionViewModel;
-            }
-            finally
-            {
-                semaphore.Release();
-            }
-        }
 
         return sessionViewModel;
     }

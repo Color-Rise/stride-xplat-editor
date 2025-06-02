@@ -7,5 +7,6 @@ namespace Stride.Core.Assets.Editor.ViewModels;
 
 public interface IMainViewModel
 {
+    SessionViewModel? Session { get; }
     StatusViewModel Status { get; }
 }

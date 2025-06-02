@@ -17,10 +17,9 @@ using Stride.GameStudio.Avalonia.Services;
 
 namespace Stride.GameStudio.Avalonia.ViewModels;
 
-internal sealed class MainViewModel : ViewModelBase, IMainViewModel
+internal sealed class MainViewModel : MainViewModelBase
 {
     private static readonly string baseTitle = $"Stride Game Studio {StrideVersion.NuGetVersion} ({RuntimeInformation.FrameworkDescription})";
-    private SessionViewModel? session;
     private string title = baseTitle;
 
 #if DEBUG
@@ -45,17 +44,8 @@ internal sealed class MainViewModel : ViewModelBase, IMainViewModel
         OpenDebugWindowCommand = new AnonymousTaskCommand(serviceProvider, OnOpenDebugWindow, () => DialogService.HasMainWindow);
         OpenWebPageCommand = new AnonymousTaskCommand<string>(serviceProvider, OnOpenWebPage);
 
-        Status = new StatusViewModel(ServiceProvider);
         Status.PushStatus("Ready");
     }
-
-    public SessionViewModel? Session
-    {
-        get => session;
-        set => SetValue(ref session, value);
-    }
-
-    public StatusViewModel Status { get; }
 
     public string Title
     {
@@ -79,7 +69,7 @@ internal sealed class MainViewModel : ViewModelBase, IMainViewModel
 
     public ICommandBase OpenDebugWindowCommand { get; }
 
-    public async Task<bool?> OpenSession(UFile? filePath, CancellationToken token = default)
+    public override async Task<bool?> OpenSession(UFile? filePath, CancellationToken token = default)
     {
         if (filePath == null || !File.Exists(filePath))
         {
@@ -89,10 +79,9 @@ internal sealed class MainViewModel : ViewModelBase, IMainViewModel
         if (filePath == null) return false;
 
         // We have a session, let's restart cleanly
-        if (session is not null)
+        if (Session is not null)
         {
-            session = null;
-            (Application.Current as App)?.Restart(filePath);
+            Restart(filePath);
             return true;
         }
 
@@ -125,11 +114,10 @@ internal sealed class MainViewModel : ViewModelBase, IMainViewModel
 
     private void OnClose()
     {
-        // We have a session, let's restart empty
-        if (session is not null && Application.Current is App app)
+        // We have a session, let's restart cleanly
+        if (Session is not null)
         {
-            session = null;
-            app.Restart();
+            Restart();
         }
     }
 
@@ -160,5 +148,12 @@ internal sealed class MainViewModel : ViewModelBase, IMainViewModel
     private async Task OnOpenDebugWindow()
     {
         await DialogService.ShowDebugWindowAsync();
+    }
+
+    private void Restart(UFile? initialPath = null)
+    {
+        DialogService.CloseDebugWindow();
+        Session = null;
+        (Application.Current as App)?.Restart(initialPath);
     }
 }
