@@ -35,7 +35,7 @@ namespace Stride.Assets.Presentation.AssetEditors.ScriptEditor
         public RoslynWorkspace(RoslynHost host) : base(host.HostServices, WorkspaceKind.Host)
         {
             this.host = host;
-            host.GetService<IDiagnosticService>().DiagnosticsUpdated += OnDiagnosticsUpdated;
+            //host.GetService<IDiagnosticService>().DiagnosticsUpdated += OnDiagnosticsUpdated;
         }
 
         /// <summary>
