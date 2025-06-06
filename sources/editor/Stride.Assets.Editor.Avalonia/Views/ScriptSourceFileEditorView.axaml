@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:rp="using:RoslynPad.Editor"
              xmlns:vm="using:Stride.Assets.Editor.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Stride.Assets.Editor.Avalonia.Views.ScriptSourceFileEditorView"
@@ -10,6 +11,7 @@
     <Grid DockPanel.Dock="Top">
       <TextBlock Text="ScriptSourceFile Editor" />
     </Grid>
-    <TextBlock Text="{Binding Asset.Name}" />
+    <!--<TextBlock Text="{Binding Asset.Name}" />-->
+    <rp:RoslynCodeEditor IsReadOnly="True"/>
   </DockPanel>
 </UserControl>
