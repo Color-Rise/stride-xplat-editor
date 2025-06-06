@@ -48,9 +48,9 @@ namespace Stride.Assets.Presentation.AssetEditors.ScriptEditor
 
             // Create default workspace
             workspace = new RoslynWorkspace(this);
-            workspace.EnableDiagnostics();
+            //workspace.EnableDiagnostics();
 
-            GetService<IDiagnosticService>().DiagnosticsUpdated += OnDiagnosticsUpdated;
+            //GetService<IDiagnosticService>().DiagnosticsUpdated += OnDiagnosticsUpdated;
 
             ParseOptions = CreateDefaultParseOptions();
         }
