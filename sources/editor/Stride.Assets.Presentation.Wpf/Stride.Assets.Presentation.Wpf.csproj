@@ -22,8 +22,6 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" />
     <PackageReference Include="RoslynPad.Editor.Windows" />
-    <PackageReference Include="RoslynPad.Roslyn.Windows" />
-    <PackageReference Include="RoslynPad.Roslyn" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\shared\SharedAssemblyInfo.cs">
