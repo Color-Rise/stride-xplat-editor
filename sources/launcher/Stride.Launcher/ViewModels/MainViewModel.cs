@@ -150,15 +150,15 @@ public sealed class MainViewModel : DispatcherViewModel, IPackagesLogger, IDispo
     /// </summary>
     public bool IsVisible { get { return isVisible; } set { SetValue(ref isVisible, value); } }
 
-    public CommandBase InstallLatestVersionCommand { get; }
+    public ICommandBase InstallLatestVersionCommand { get; }
 
-    public CommandBase OpenUrlCommand { get; }
+    public ICommandBase OpenUrlCommand { get; }
 
-    public CommandBase ReconnectCommand { get; }
+    public ICommandBase ReconnectCommand { get; }
 
-    public CommandBase StartStudioCommand { get; }
+    public ICommandBase StartStudioCommand { get; }
 
-    public CommandBase CheckDeprecatedSourcesCommand { get; }
+    public ICommandBase CheckDeprecatedSourcesCommand { get; }
 
     private async Task FetchOnlineData()
     {
