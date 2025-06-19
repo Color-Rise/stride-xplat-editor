@@ -12,7 +12,7 @@ using Stride.Core.Presentation.ViewModels;
 
 namespace Stride.Core.Assets.Editor.ViewModels;
 
-public sealed class AssetCollectionViewModel : DispatcherViewModel
+public sealed partial class AssetCollectionViewModel : DispatcherViewModel
 {
     private readonly ObservableSet<AssetViewModel> assets = [];
     private readonly HashSet<DirectoryBaseViewModel> monitoredDirectories = [];
@@ -161,12 +161,13 @@ public sealed class AssetCollectionViewModel : DispatcherViewModel
                     assets.Add(newItem);
                     refreshFilter = true;
                 }
-
-                //if (refreshFilter)
-                //{
-                //    // Some assets have been added, we need to refresh sorting
-                //    RefreshFilters();
-                //}
+                
+                // FIXME xplat-editor filters
+                if (refreshFilter)
+                {
+                    // Some assets have been added, we need to refresh sorting
+                    //RefreshFilters();
+                }
             }
         }
     }
