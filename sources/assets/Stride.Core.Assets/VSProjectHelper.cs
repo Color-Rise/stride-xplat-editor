@@ -58,10 +58,9 @@ public static class VSProjectHelper
         return (T)Enum.Parse(typeof(T), value);
     }
 
-    public static string GetOrCompileProjectAssembly(string fullProjectLocation, ILogger logger, string targets, bool autoCompileProject, string configuration, string platform = "AnyCPU", Dictionary<string, string>? extraProperties = null, bool onlyErrors = false, BuildRequestDataFlags flags = BuildRequestDataFlags.None)
+    public static string GetOrCompileProjectAssembly(string fullProjectLocation, ILogger? logger = null, string targets = "Build", bool autoCompileProject = true, string configuration = "Debug", string platform = "AnyCPU", Dictionary<string, string>? extraProperties = null, bool onlyErrors = false, BuildRequestDataFlags flags = BuildRequestDataFlags.None)
     {
         ArgumentNullException.ThrowIfNull(fullProjectLocation);
-        ArgumentNullException.ThrowIfNull(logger);
 
         var project = LoadProject(fullProjectLocation, configuration, platform, extraProperties);
         var assemblyPath = project.GetPropertyValue("TargetPath");
@@ -72,7 +71,7 @@ public static class VSProjectHelper
                 if (autoCompileProject)
                 {
                     var asyncBuild = new CancellableAsyncBuild(project, assemblyPath);
-                    asyncBuild.Build(project, targets, flags, new LoggerRedirect(logger, onlyErrors));
+                    asyncBuild.Build(project, targets, flags, logger is not null ? new LoggerRedirect(logger, onlyErrors) : null);
                     var buildResult = asyncBuild.BuildTask.Result;
                 }
             }
@@ -86,10 +85,9 @@ public static class VSProjectHelper
         return assemblyPath;
     }
 
-    public static ICancellableAsyncBuild? CompileProjectAssemblyAsync(string fullProjectLocation, ILogger logger, string targets = "Build", string configuration = "Debug", string platform = "AnyCPU", Dictionary<string, string>? extraProperties = null, BuildRequestDataFlags flags = BuildRequestDataFlags.None)
+    public static ICancellableAsyncBuild? CompileProjectAssemblyAsync(string fullProjectLocation, ILogger? logger = null, string targets = "Build", string configuration = "Debug", string platform = "AnyCPU", Dictionary<string, string>? extraProperties = null, BuildRequestDataFlags flags = BuildRequestDataFlags.None)
     {
         ArgumentNullException.ThrowIfNull(fullProjectLocation);
-        ArgumentNullException.ThrowIfNull(logger);
 
         var project = LoadProject(fullProjectLocation, configuration, platform, extraProperties);
         var assemblyPath = project.GetPropertyValue("TargetPath");
@@ -98,7 +96,7 @@ public static class VSProjectHelper
             if (!string.IsNullOrWhiteSpace(assemblyPath))
             {
                 var asyncBuild = new CancellableAsyncBuild(project, assemblyPath);
-                asyncBuild.Build(project, targets, flags, new LoggerRedirect(logger));
+                asyncBuild.Build(project, targets, flags, logger is not null ? new LoggerRedirect(logger) : null);
                 return asyncBuild;
             }
         }
@@ -330,10 +328,9 @@ public static class VSProjectHelper
 
         public bool IsCanceled { get; private set; }
 
-        internal void Build(MicrosoftProject project, string targets, BuildRequestDataFlags flags, Microsoft.Build.Utilities.Logger logger)
+        internal void Build(MicrosoftProject project, string targets, BuildRequestDataFlags flags, Microsoft.Build.Framework.ILogger? logger = null)
         {
             ArgumentNullException.ThrowIfNull(project);
-            ArgumentNullException.ThrowIfNull(logger);
 
             // Make sure that we are using the project collection from the loaded project, otherwise we are getting
             // weird cache behavior with the msbuild system
@@ -344,7 +341,7 @@ public static class VSProjectHelper
                 return mainBuildManager.Build(
                     new BuildParameters(project.ProjectCollection)
                     {
-                        Loggers = [logger],
+                        Loggers = logger is not null ? [logger] : [],
                         DisableInProcNode = true,
                     },
                     new BuildRequestData(projectInstance, targets.Split(';'), null, flags));
