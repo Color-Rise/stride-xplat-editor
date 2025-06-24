@@ -1,0 +1,30 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sd="http://schemas.stride3d.net/xaml/presentation">
+  <Style Selector="sd|SearchComboBox">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <TextBox x:Name="PART_EditableTextBox"
+                   VerticalAlignment="Center" Focusable="True"
+                   Text="{Binding SearchText, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWayToSource}"
+                   Watermark="{TemplateBinding Watermark}"
+                   IsEnabled="{TemplateBinding IsEnabled}"/>
+          <Popup x:Name="Popup"
+                 IsOpen="{TemplateBinding IsDropDownOpen}" IsLightDismissEnabled="True"
+                 Placement="Bottom" Focusable="False">
+            <ListBox x:Name="PART_ListBox"
+                     MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                     ItemsSource="{TemplateBinding ItemsSource}"
+                     ItemTemplate="{TemplateBinding ItemTemplate}"
+                     SelectedIndex="{TemplateBinding SelectedIndex}"
+                     SelectedItem="{TemplateBinding SelectedItem}"
+                     SelectedValue="{TemplateBinding SelectedValue}"
+                     SelectedValueBinding="{TemplateBinding SelectedValueBinding}"
+                     IsVisible="{Binding !!$self.Items.Count}"/>
+          </Popup>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>
