@@ -90,6 +90,7 @@
 
     <!-- Session area -->
     <Grid Grid.Row="1"
+          IsVisible="{Binding Session, Converter={sd:ObjectToBool}}"
           RowDefinitions="2*, 2, *">
       <Grid Grid.Row="0"
             ColumnDefinitions="2*, 2, *">
