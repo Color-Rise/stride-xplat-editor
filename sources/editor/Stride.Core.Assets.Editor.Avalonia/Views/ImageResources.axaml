@@ -151,4 +151,20 @@
       </DrawingGroup>
     </DrawingImage.Drawing>
   </DrawingImage>
+
+  <!--  Asset view icons  -->
+  <DrawingImage x:Key="ImageView">
+    <DrawingImage.Drawing>
+      <DrawingGroup>
+        <DrawingGroup.Children>
+          <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+          <GeometryDrawing Brush="#FFF6F6F6"
+                           Geometry="F1M16,9L16,10 11.443,10C10.75,11.189 9.475,12 8,12 6.526,12 5.25,11.189 4.556,10L0,10 0,9C0,4.589 3.589,1 8,1 12.411,1 16,4.589 16,9" />
+          <GeometryDrawing Brush="#FF424242"
+                           Geometry="F1M10,8C10,6.897 9.103,6 8,6 6.897,6 6,6.897 6,8 6,9.103 6.897,10 8,10 9.103,10 10,9.103 10,8 M11,8C11,9.654 9.654,11 8,11 6.346,11 5,9.654 5,8 5,6.346 6.346,5 8,5 9.654,5 11,6.346 11,8 M15,9L14,9C14,5.691 11.309,3 8,3 4.691,3 2,5.691 2,9L1,9C1,5.14 4.14,2 8,2 11.859,2 15,5.14 15,9" />
+        </DrawingGroup.Children>
+      </DrawingGroup>
+    </DrawingImage.Drawing>
+  </DrawingImage>
+
 </ResourceDictionary>

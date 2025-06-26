@@ -4,6 +4,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Stride.Core.Assets.Editor.Components.Properties;
+using Stride.Core.Assets.Editor.Settings;
 using Stride.Core.Assets.Presentation.ViewModels;
 using Stride.Core.Extensions;
 using Stride.Core.Presentation.Collections;
@@ -31,6 +32,8 @@ public sealed partial class AssetCollectionViewModel : DispatcherViewModel
         AssetViewProperties = new SessionObjectPropertiesViewModel(session);
 
         SelectAssetCommand = new AnonymousCommand<AssetViewModel>(ServiceProvider, x => SelectAssets(x.Yield()!));
+        SetDisplayAssetModeCommand = new AnonymousCommand<DisplayAssetMode>(ServiceProvider, x => DisplayAssetMode = x);
+        SetSortRuleCommand = new AnonymousCommand<SortRule>(ServiceProvider, x => SortRule = x);
 
         selectedContent.CollectionChanged += SelectedContentCollectionChanged;
         SelectedLocations.CollectionChanged += SelectedLocationCollectionChanged;
@@ -268,6 +271,7 @@ public sealed partial class AssetCollectionViewModel : DispatcherViewModel
         }
         UpdateAssetsCollection(newAssets, false);
 
+        InternalSettings.AssetViewDisplayMode.SetValue(DisplayAssetMode);
     }
 
     private void UpdateSingleSelectedContent()

@@ -21,7 +21,8 @@
     <sd:ToolBarTray DockPanel.Dock="Top">
       <!-- New asset -->
       <sd:ToolBar>
-        <ToggleButton x:Name="ToggleNewAsset">
+        <ToggleButton x:Name="ToggleNewAsset"
+                      sd:ToolBar.OverflowMode="Never">
           <StackPanel Orientation="Horizontal">
             <Image Source="{StaticResource ImageAdd}" MaxWidth="16" MaxHeight="16" />
             <TextBlock Text="{sd:LocalizeString Add asset}" Margin="2,2,4,2" VerticalAlignment="Center"/>
@@ -33,6 +34,58 @@
             <TextBlock Text="ADD ITEM PLACEHOLDER"/>
           </Border>
         </Popup>
+      </sd:ToolBar>
+      <!-- View options -->
+      <sd:ToolBar>
+        <Menu sd:ToolBar.OverflowMode="Never">
+          <MenuItem>
+            <MenuItem.Header>
+              <Image Source="{StaticResource ImageView}" MaxHeight="16"
+                     ToolTip.Tip="{sd:LocalizeString Asset view options, Context=ToolTip}"
+                     ToolTip.ShowOnDisabled="False"/>
+            </MenuItem.Header>
+            <MenuItem Header="{sd:LocalizeString Display, Context=Menu}">
+              <MenuItem Header="{sd:LocalizeString Assets in selected folder only, Context=Menu}"
+                        Command="{Binding SetDisplayAssetModeCommand}"
+                        CommandParameter="{x:Static caevm:DisplayAssetMode.AssetInSelectedFolderOnly}"
+                        ToggleType="CheckBox" IsChecked="{Binding DisplayAssetMode, Mode=OneWay, Converter={sd:IsEqualToParam}, ConverterParameter={x:Static caevm:DisplayAssetMode.AssetInSelectedFolderOnly}}"/>
+              <MenuItem Header="{sd:LocalizeString Assets and folders in selected folder, Context=Menu}"
+                        Command="{Binding SetDisplayAssetModeCommand}"
+                        CommandParameter="{x:Static caevm:DisplayAssetMode.AssetAndFolderInSelectedFolder}"
+                        ToggleType="CheckBox" IsChecked="{Binding DisplayAssetMode, Mode=OneWay, Converter={sd:IsEqualToParam}, ConverterParameter={x:Static caevm:DisplayAssetMode.AssetAndFolderInSelectedFolder}}"/>
+              <MenuItem Header="{sd:LocalizeString Assets in selected folder and subfolders, Context=Menu}"
+                        Command="{Binding SetDisplayAssetModeCommand}"
+                        CommandParameter="{x:Static caevm:DisplayAssetMode.AssetInSelectedFolderAndSubFolder}"
+                        ToggleType="CheckBox" IsChecked="{Binding DisplayAssetMode, Mode=OneWay, Converter={sd:IsEqualToParam}, ConverterParameter={x:Static caevm:DisplayAssetMode.AssetInSelectedFolderAndSubFolder}}"/>
+            </MenuItem>
+            <MenuItem Header="{sd:LocalizeString Sort by, Context=Menu}">
+              <MenuItem Header="{sd:LocalizeString Name, Context=Menu}"
+                        Command="{Binding SetSortRuleCommand}"
+                        CommandParameter="{x:Static caevm:SortRule.Name}"
+                        ToggleType="CheckBox" IsChecked="{Binding SortRule, Mode=OneWay, Converter={sd:IsEqualToParam}, ConverterParameter={x:Static caevm:SortRule.Name}}"/>
+              <MenuItem Header="{sd:LocalizeString Date modified, Context=Menu}"
+                        Command="{Binding SetSortRuleCommand}"
+                        CommandParameter="{x:Static caevm:SortRule.ModificationDateThenName}"
+                        ToggleType="CheckBox" IsChecked="{Binding SortRule, Mode=OneWay, Converter={sd:IsEqualToParam}, ConverterParameter={x:Static caevm:SortRule.ModificationDateThenName}}"/>
+              <MenuItem Header="{sd:LocalizeString Type, Context=Menu}"
+                        Command="{Binding SetSortRuleCommand}"
+                        CommandParameter="{x:Static caevm:SortRule.TypeOrderThenName}"
+                        ToggleType="CheckBox" IsChecked="{Binding SortRule, Mode=OneWay, Converter={sd:IsEqualToParam}, ConverterParameter={x:Static caevm:SortRule.TypeOrderThenName}}"/>
+              <MenuItem Header="{sd:LocalizeString Unsaved changes, Context=Menu}"
+                        Command="{Binding SetSortRuleCommand}"
+                        CommandParameter="{x:Static caevm:SortRule.DirtyThenName}"
+                        ToggleType="CheckBox" IsChecked="{Binding SortRule, Mode=OneWay, Converter={sd:IsEqualToParam}, ConverterParameter={x:Static caevm:SortRule.DirtyThenName}}"/>
+            </MenuItem>
+          </MenuItem>
+        </Menu>
+      </sd:ToolBar>
+      <!-- Filters -->
+      <sd:ToolBar>
+        <sd:SearchComboBox Watermark="{sd:LocalizeString Add a filter...}"
+                           ToolTip.Tip="{sd:LocalizeString Filter assets by name\, type or tag}"
+                           ToolTip.ShowOnDisabled="False">
+
+        </sd:SearchComboBox>
       </sd:ToolBar>
     </sd:ToolBarTray>
     <!-- Assets view -->

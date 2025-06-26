@@ -39,9 +39,25 @@ partial class AssetCollectionViewModel
     // /!\ FIXME: we need to rework that as we probably don't need that many lists
     private readonly ObservableList<AssetViewModel> filteredAssets = [];
     private readonly ObservableList<object> filteredContent = [];
-    
+
     private DisplayAssetMode displayMode = InternalSettings.AssetViewDisplayMode.GetValue();
     private SortRule sortRule = InternalSettings.AssetViewSortRule.GetValue();
+
+    public DisplayAssetMode DisplayAssetMode
+    {
+        get => displayMode;
+        private set => SetValue(ref displayMode, value);
+    }
+
+    public SortRule SortRule
+    {
+        get => sortRule;
+        private set => SetValue(ref sortRule, value);
+    }
+
+    public ICommandBase SetDisplayAssetModeCommand { get; }
+
+    public ICommandBase SetSortRuleCommand { get; }
 
     private void RefreshFilters()
     {
@@ -91,7 +107,7 @@ partial class AssetCollectionViewModel
                 });
             }
         }
-        
+
         public ICommandBase RemoveFilterCommand { get; }
 
         public ICommandBase ToggleIsActiveCommand { get; }
