@@ -22,44 +22,42 @@
     </ResourceDictionary>
   </UserControl.Resources>
   <DockPanel>
-    <Grid DockPanel.Dock="Top">
-      <TextBlock Text="Asset Explorer" />
-    </Grid>
     <!-- Toolbar -->
-    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"
-                MaxHeight="24">
-      <ToggleButton x:Name="ToggleButton">
-        <StackPanel Orientation="Horizontal">
-          <Image Source="{StaticResource ImageAdd}" />
-          <TextBlock Margin="2,2,4,2" VerticalAlignment="Center"
-                     Text="{sd:LocalizeString Add asset, Context=Button}" />
-        </StackPanel>
-      </ToggleButton>
-      <Popup IsLightDismissEnabled="True"
-             IsOpen="{Binding #ToggleButton.IsChecked, Mode=TwoWay}"
-             PlacementTarget="{Binding #ToggleButton}">
-        <!-- FIXME move this to a seperate file for reuse -->
-        <Grid ColumnDefinitions="Auto, 2, *">
-          <DockPanel Grid.Column="0" x:Name="LeftPanel"
-                     Margin="4">
-            <DockPanel DockPanel.Dock="Top"
+    <sd:ToolBarTray DockPanel.Dock="Top">
+      <!-- New asset -->
+      <sd:ToolBar>
+        <ToggleButton x:Name="ToggleNewAsset"
+                      sd:ToolBar.OverflowMode="Never">
+          <StackPanel Orientation="Horizontal">
+            <Image Source="{StaticResource ImageAdd}" MaxWidth="16" MaxHeight="16" />
+            <TextBlock Text="{sd:LocalizeString Add asset}" Margin="2,2,4,2" VerticalAlignment="Center"/>
+          </StackPanel>
+        </ToggleButton>
+        <Popup PlacementTarget="ToggleNewAsset" Placement="BottomEdgeAlignedLeft"
+               IsOpen="{Binding #ToggleNewAsset.IsChecked, Mode=TwoWay}" IsLightDismissEnabled="True">
+          <!-- FIXME move this to a seperate file for reuse -->
+          <Grid ColumnDefinitions="Auto, 2, *">
+            <DockPanel Grid.Column="0" x:Name="LeftPanel"
                        Margin="4">
-              <Button DockPanel.Dock="Right"/>
-              <TextBox/>
-            </DockPanel>
-            <ListBox x:Name="GroupList"
-                     ItemsSource="{Binding AddAssetTemplateCollection.RootGroup.SubGroups}">
+              <DockPanel DockPanel.Dock="Top"
+                         Margin="4">
+                <Button DockPanel.Dock="Right"/>
+                <TextBox/>
+              </DockPanel>
+              <ListBox x:Name="GroupList"
+                       ItemsSource="{Binding AddAssetTemplateCollection.RootGroup.SubGroups}">
 
-            </ListBox>
-          </DockPanel>
-          <Separator Grid.Column="1"
-                     Width="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                     IsVisible="{Binding #ListBox.ItemCount, Converter={sd:NumericToBool}}"/>
-          <ListBox Grid.Column="2" x:Name="ListBox"
-                   ItemsSource="{Binding AddAssetTemplateCollection.Templates}"/>
-        </Grid>
-      </Popup>
-    </StackPanel>
+              </ListBox>
+            </DockPanel>
+            <Separator Grid.Column="1"
+                       Width="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                       IsVisible="{Binding #ListBox.ItemCount, Converter={sd:NumericToBool}}"/>
+            <ListBox Grid.Column="2" x:Name="ListBox"
+                     ItemsSource="{Binding AddAssetTemplateCollection.Templates}"/>
+          </Grid>
+        </Popup>
+      </sd:ToolBar>
+    </sd:ToolBarTray>
     <!-- Asset list view -->
     <ListBox ItemsSource="{Binding Assets}"
              SelectedItems="{Binding SelectedContent}"
