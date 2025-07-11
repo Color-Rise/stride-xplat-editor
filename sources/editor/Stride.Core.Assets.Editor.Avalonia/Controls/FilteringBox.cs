@@ -9,6 +9,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Metadata;
 
+// FIXME xplat-editor move to Presentation ?
 namespace Stride.Core.Assets.Editor.Avalonia.Controls;
 
 [TemplatePart("PART_ListBox", typeof(ListBox))]

@@ -15,7 +15,8 @@
                      SelectedItem="{TemplateBinding SelectedFilter}"
                      IsEnabled="{Binding #PART_EditableTextBox.Text, Converter={sd:IsNullOrEmpty}}"/>
           </DockPanel>
-          <Separator Grid.Column="1"/>
+          <Separator Grid.Column="1"
+                     IsVisible="{Binding !!#PART_ListBox.ItemCount}"/>
           <ListBox Grid.Column="2" x:Name="PART_ListBox"
                    ItemsSource="{TemplateBinding ItemsSource}"
                    ItemTemplate="{TemplateBinding ItemTemplate}"
@@ -23,7 +24,7 @@
                    SelectedItem="{TemplateBinding SelectedItem}"
                    SelectedValue="{TemplateBinding SelectedValue}"
                    SelectedValueBinding="{TemplateBinding SelectedValueBinding}"
-                   IsVisible="{Binding !!$self.Items.Count}"/>
+                   IsVisible="{Binding !!$self.ItemCount}"/>
         </Grid>
       </ControlTemplate>
     </Setter>

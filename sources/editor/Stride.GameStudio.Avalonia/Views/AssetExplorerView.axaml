@@ -3,10 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:sd="http://schemas.stride3d.net/xaml/presentation"
+             xmlns:caec="using:Stride.Core.Assets.Editor.Avalonia.Controls"
              xmlns:caevm="using:Stride.Core.Assets.Editor.ViewModels"
+             xmlns:capct="using:Stride.Core.Assets.Presentation.Components.Templates"
              xmlns:capvm="using:Stride.Core.Assets.Presentation.ViewModels"
              xmlns:gscv="using:Stride.GameStudio.Avalonia.Converters"
-             xmlns:controls="clr-namespace:Stride.Core.Assets.Editor.Avalonia.Controls;assembly=Stride.Core.Assets.Editor.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Stride.GameStudio.Avalonia.Views.AssetExplorerView"
              x:DataType="caevm:AssetCollectionViewModel">
@@ -36,28 +37,25 @@
         </ToggleButton>
         <Popup PlacementTarget="ToggleNewAsset" Placement="BottomEdgeAlignedLeft"
                IsOpen="{Binding #ToggleNewAsset.IsChecked, Mode=TwoWay}" IsLightDismissEnabled="True">
-          <!-- FIXME move this to a seperate file for reuse -->
-          <controls:FilteringBox ItemsSource="{Binding AddAssetTemplateCollection.Templates}"
-                                 FiltersSource="{Binding AddAssetTemplateCollection.RootGroup.SubGroups}"/>
-          <!--<Grid ColumnDefinitions="Auto, 2, *">
-            <DockPanel Grid.Column="0" x:Name="LeftPanel"
-                       Margin="4">
-              <DockPanel DockPanel.Dock="Top"
-                         Margin="4">
-                <Button DockPanel.Dock="Right"/>
-                <TextBox/>
-              </DockPanel>
-              <ListBox x:Name="GroupList"
-                       ItemsSource="{Binding AddAssetTemplateCollection.RootGroup.SubGroups}">
-
-              </ListBox>
-            </DockPanel>
-            <Separator Grid.Column="1"
-                       Width="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                       IsVisible="{Binding #ListBox.ItemCount, Converter={sd:NumericToBool}}"/>
-            <ListBox Grid.Column="2" x:Name="ListBox"
-                     ItemsSource="{Binding AddAssetTemplateCollection.Templates}"/>
-          </Grid>-->
+          <caec:FilteringBox ItemsSource="{Binding AddAssetTemplateCollection.Templates}"
+                             FiltersSource="{Binding AddAssetTemplateCollection.RootGroup.SubGroups}"
+                             FilterText="{Binding AddAssetTemplateCollection.SearchToken, Mode=TwoWay}">
+            <caec:FilteringBox.FilterTemplate>
+              <DataTemplate DataType="capct:TemplateDescriptionGroupViewModel">
+                <TextBlock Text="{Binding Name}"/>
+              </DataTemplate>
+            </caec:FilteringBox.FilterTemplate>
+            <caec:FilteringBox.ItemTemplate>
+              <DataTemplate DataType="capct:ITemplateDescriptionViewModel">
+                <DockPanel MinHeight="24">
+                  <TextBlock DockPanel.Dock="Top"
+                             Text="{Binding Name}"/>
+                  <TextBlock Text="{Binding Description}"
+                             TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                </DockPanel>
+              </DataTemplate>
+            </caec:FilteringBox.ItemTemplate>
+          </caec:FilteringBox>
         </Popup>
       </sd:ToolBar>
     </sd:ToolBarTray>
