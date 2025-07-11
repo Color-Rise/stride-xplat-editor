@@ -6,6 +6,7 @@
              xmlns:caevm="using:Stride.Core.Assets.Editor.ViewModels"
              xmlns:capvm="using:Stride.Core.Assets.Presentation.ViewModels"
              xmlns:gscv="using:Stride.GameStudio.Avalonia.Converters"
+             xmlns:controls="clr-namespace:Stride.Core.Assets.Editor.Avalonia.Controls;assembly=Stride.Core.Assets.Editor.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Stride.GameStudio.Avalonia.Views.AssetExplorerView"
              x:DataType="caevm:AssetCollectionViewModel">
@@ -36,7 +37,9 @@
         <Popup PlacementTarget="ToggleNewAsset" Placement="BottomEdgeAlignedLeft"
                IsOpen="{Binding #ToggleNewAsset.IsChecked, Mode=TwoWay}" IsLightDismissEnabled="True">
           <!-- FIXME move this to a seperate file for reuse -->
-          <Grid ColumnDefinitions="Auto, 2, *">
+          <controls:FilteringBox ItemsSource="{Binding AddAssetTemplateCollection.Templates}"
+                                 FiltersSource="{Binding AddAssetTemplateCollection.RootGroup.SubGroups}"/>
+          <!--<Grid ColumnDefinitions="Auto, 2, *">
             <DockPanel Grid.Column="0" x:Name="LeftPanel"
                        Margin="4">
               <DockPanel DockPanel.Dock="Top"
@@ -54,7 +57,7 @@
                        IsVisible="{Binding #ListBox.ItemCount, Converter={sd:NumericToBool}}"/>
             <ListBox Grid.Column="2" x:Name="ListBox"
                      ItemsSource="{Binding AddAssetTemplateCollection.Templates}"/>
-          </Grid>
+          </Grid>-->
         </Popup>
       </sd:ToolBar>
     </sd:ToolBarTray>

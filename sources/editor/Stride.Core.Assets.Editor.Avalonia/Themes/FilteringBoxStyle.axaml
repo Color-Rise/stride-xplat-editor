@@ -1,0 +1,31 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Stride.Core.Assets.Editor.Avalonia.Controls"
+        xmlns:sd="http://schemas.stride3d.net/xaml/presentation">
+  <Style Selector="controls|FilteringBox">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ColumnDefinitions="Auto, 1, *">
+          <DockPanel Grid.Column="0" x:Name="LeftPanel">
+            <TextBox DockPanel.Dock="Top" x:Name="PART_EditableTextBox"
+                     Text="{Binding FilterText, RelativeSource={RelativeSource TemplatedParent}, Delay=300, Mode=OneWayToSource}"/>
+            <ListBox x:Name="FilterList"
+                     ItemsSource="{TemplateBinding FiltersSource}"
+                     ItemTemplate="{TemplateBinding FilterTemplate}"
+                     SelectedItem="{TemplateBinding SelectedFilter}"
+                     IsEnabled="{Binding #PART_EditableTextBox.Text, Converter={sd:IsNullOrEmpty}}"/>
+          </DockPanel>
+          <Separator Grid.Column="1"/>
+          <ListBox Grid.Column="2" x:Name="PART_ListBox"
+                   ItemsSource="{TemplateBinding ItemsSource}"
+                   ItemTemplate="{TemplateBinding ItemTemplate}"
+                   SelectedIndex="{TemplateBinding SelectedIndex}"
+                   SelectedItem="{TemplateBinding SelectedItem}"
+                   SelectedValue="{TemplateBinding SelectedValue}"
+                   SelectedValueBinding="{TemplateBinding SelectedValueBinding}"
+                   IsVisible="{Binding !!$self.Items.Count}"/>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>
